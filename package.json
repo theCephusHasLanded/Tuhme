@@ -1,9 +1,0 @@
-{
-  "name": "tuhme",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "cd tuhme-vite && npm install && npm run build",
-    "start": "cd tuhme-vite && npm start"
-  }
-}
