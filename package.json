@@ -7,4 +7,3 @@
     "start": "cd tuhme-vite && npm start"
   }
 }
-EOF < /dev/null
