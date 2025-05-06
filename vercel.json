@@ -1,6 +1,4 @@
 {
-  "buildCommand": "cd tuhme-vite && npm install && npm run build",
-  "outputDirectory": "tuhme-vite/dist",
-  "installCommand": "cd tuhme-vite && npm install",
+  "rootDirectory": "tuhme-vite",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
