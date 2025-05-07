@@ -6,7 +6,7 @@ TUHME is a luxury try-on service that delivers designer garments to your door. Y
 
 This project is built with:
 - React + Vite
-- Firebase (Authentication, Firestore, Storage, Hosting)
+- Firebase (Authentication, Firestore, Hosting)
 - Material UI
 
 ### Getting Started
@@ -66,8 +66,5 @@ The application uses Firestore for storing data:
 - Orders
 - Products
 
-## Storage
-
-Firebase Storage is used for storing:
-- Product images
-- User uploads
+<!-- Storage section removed as it's not being used yet -->
+<!-- Will add back when Firebase Storage is integrated -->
