@@ -25,7 +25,20 @@ This project is built with:
 
 The project is already configured with Firebase. The configuration is in `src/firebase/config.js`.
 
-### Deploying to Firebase
+#### First-time Firebase Setup
+
+Before deploying for the first time, you need to enable Firebase services:
+
+1. Run the setup guide:
+   ```
+   npm run firebase:setup
+   ```
+
+2. Follow the instructions to enable each Firebase service (Hosting, Authentication, Firestore, etc.)
+
+3. Wait 5-10 minutes for services to be fully enabled
+
+#### Deploying to Firebase
 
 1. Make sure you have Firebase CLI installed:
    ```
@@ -38,9 +51,14 @@ The project is already configured with Firebase. The configuration is in `src/fi
    ```
 
 3. Deploy to Firebase:
-   ```
-   npm run deploy
-   ```
+   - For hosting only (fastest option):
+     ```
+     npm run deploy
+     ```
+   - For all services (after they're enabled):
+     ```
+     npm run deploy:all
+     ```
 
 This will build the project and deploy it to Firebase Hosting.
 

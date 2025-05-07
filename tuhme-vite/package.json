@@ -10,8 +10,10 @@
     "preview": "vite preview",
     "firebase:login": "firebase login",
     "firebase:init": "firebase init",
-    "firebase:deploy": "firebase deploy --only hosting,firestore",
-    "deploy": "npm run build && firebase deploy --only hosting,firestore"
+    "firebase:setup": "node setup-firebase.js",
+    "firebase:deploy": "firebase deploy --only hosting",
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy:all": "npm run build && firebase deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
