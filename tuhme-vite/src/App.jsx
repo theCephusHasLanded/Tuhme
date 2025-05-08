@@ -8,6 +8,8 @@ import TuhmeCloudApp from './TuhmeCloudApp';
 // Pages
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import RegistrationSuccessPage from './pages/RegistrationSuccessPage';
 import DashboardPage from './pages/DashboardPage';
 import OrdersPage from './pages/OrdersPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
@@ -247,6 +249,8 @@ function App() {
             {/* Original app routes */}
             <Route path="/original" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/registration-success" element={<RegistrationSuccessPage />} />
             
             {/* New pages */}
             <Route path="/how-it-works" element={<HowItWorksPage />} />

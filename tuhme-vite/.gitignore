@@ -11,11 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
-.env
 
 # Editor directories and files
 .vscode/*
-\!.vscode/extensions.json
+!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -23,10 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# System files
-.DS_Store
-Thumbs.db
-Icon?
-EOF < /dev/null
-**/.claude/settings.local.json

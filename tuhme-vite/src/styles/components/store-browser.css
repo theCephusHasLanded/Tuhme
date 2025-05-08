@@ -1,0 +1,53 @@
+/**
+ * Store Web Browser styles
+ * For browsing store websites directly within TUHME
+ */
+
+.store-browser-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-overlay);
+  z-index: var(--z-modal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+}
+
+.store-browser-container {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  background-color: var(--color-gallery-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animation for browser appear */
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.store-browser-container {
+  animation: scaleIn 0.3s var(--transition-ease-out);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .store-browser-overlay {
+    padding: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .store-browser-overlay {
+    padding: var(--space-xs);
+  }
+}

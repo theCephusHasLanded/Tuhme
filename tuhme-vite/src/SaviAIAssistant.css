@@ -1,0 +1,406 @@
+/* Savi AI Assistant styles */
+.savi-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 16px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+  transition: all 0.3s ease;
+  background-color: #fff;
+  max-width: 380px;
+  width: 100%;
+}
+
+/* Collapsed state */
+.savi-container:not(.expanded) {
+  width: auto;
+  max-width: 240px;
+}
+
+.savi-toggle-button {
+  display: flex;
+  align-items: center;
+  background-color: #000000; /* Black instead of green */
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.savi-toggle-button:hover {
+  background-color: #333333;
+  transform: translateY(-2px);
+}
+
+.savi-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  color: #000000; /* Black instead of green */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+/* Expanded state */
+.savi-container.expanded {
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.savi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #000000; /* Black instead of green */
+  color: white;
+  border-radius: 16px 16px 0 0;
+}
+
+.savi-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.savi-title {
+  margin-left: 12px;
+}
+
+.savi-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.savi-title p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.savi-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.savi-minimize,
+.savi-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.savi-minimize:hover,
+.savi-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Messages area */
+.savi-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #f5f5f5;
+}
+
+.savi-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+}
+
+.savi-message.user {
+  align-self: flex-end;
+}
+
+.savi-message.ai {
+  align-self: flex-start;
+}
+
+.savi-message-content {
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.savi-message.user .savi-message-content {
+  background-color: #000000; /* Black instead of green */
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.savi-message.ai .savi-message-content {
+  background-color: white;
+  border-bottom-left-radius: 4px;
+}
+
+.savi-message p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.savi-timestamp {
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+  padding: 0 8px;
+}
+
+/* Typing indicator */
+.savi-typing-indicator {
+  display: flex;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+}
+
+.savi-typing-indicator span {
+  height: 8px;
+  width: 8px;
+  background: #bbb;
+  border-radius: 50%;
+  display: block;
+  margin: 0 2px;
+  opacity: 0.4;
+  animation: typing 1s infinite;
+}
+
+.savi-typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.savi-typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.savi-typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Input area */
+.savi-input-area {
+  display: flex;
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  background-color: white;
+  border-radius: 0 0 16px 16px;
+}
+
+.savi-input-area input {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.savi-input-area input:focus {
+  border-color: #000000; /* Black instead of green */
+}
+
+.savi-send-button {
+  background-color: #000000; /* Black instead of green */
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.savi-send-button:hover {
+  background-color: #333333; /* Darker gray on hover */
+}
+
+.savi-send-button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+/* Garment display */
+.savi-garments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.savi-garment-card {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.savi-garment-card img {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.savi-garment-info {
+  flex: 1;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.savi-garment-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.savi-garment-price {
+  color: #666;
+  margin: 0 0 8px 0;
+  font-size: 12px;
+}
+
+.savi-garment-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.savi-size-chip {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: #333;
+}
+
+.savi-add-button {
+  background-color: #000000; /* Black instead of green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.savi-add-button:hover {
+  background-color: #333333; /* Darker gray on hover */
+}
+
+/* Suggested prompts */
+.savi-suggested-prompts {
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  background-color: #f9f9f9;
+}
+
+.savi-suggested-prompts p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.savi-prompt-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.savi-prompt-buttons button {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.savi-prompt-buttons button:hover {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+/* Try-on list summary */
+.savi-try-on-summary {
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.savi-try-on-summary h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.savi-checkout-button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.savi-checkout-button:hover {
+  background-color: #333;
+}

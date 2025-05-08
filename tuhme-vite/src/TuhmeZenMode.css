@@ -1,0 +1,694 @@
+/* TuhmeZenMode.css - Japanese minimalist aesthetic with day/night mode */
+
+/* ===== Theme Variables ===== */
+:root {
+  /* Day Mode (Light) */
+  --day-primary: #ffffff;
+  --day-secondary: #f8f8f8;
+  --day-accent: #e9e5e0;
+  --day-text: #1a1a1a;
+  --day-text-secondary: #666666;
+  --day-border: #e0e0e0;
+  --day-shadow: rgba(0, 0, 0, 0.08);
+  --day-highlight: #d3a774;
+  --day-error: #c35252;
+  --day-success: #5e9270;
+  
+  /* Night Mode (Dark) */
+  --night-primary: #151515;
+  --night-secondary: #1c1c1c;
+  --night-accent: #2a2a2a;
+  --night-text: #f0f0f0;
+  --night-text-secondary: #aaaaaa;
+  --night-border: #333333;
+  --night-shadow: rgba(0, 0, 0, 0.25);
+  --night-highlight: #d3a774;
+  --night-error: #e07777;
+  --night-success: #7eba92;
+  
+  /* Shared */
+  --transition-speed: 0.5s;
+  --font-primary: 'Helvetica Neue', 'Avenir Next', 'Montserrat', sans-serif;
+  --font-secondary: 'Garamond', 'Times New Roman', serif;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+}
+
+/* ===== Theme Classes ===== */
+.zen-mode {
+  transition: background-color var(--transition-speed), 
+              color var(--transition-speed), 
+              border-color var(--transition-speed);
+}
+
+/* Day Mode (Light) */
+.zen-mode.day {
+  --primary-color: var(--day-primary);
+  --secondary-color: var(--day-secondary);
+  --accent-color: var(--day-accent);
+  --text-color: var(--day-text);
+  --text-secondary: var(--day-text-secondary);
+  --border-color: var(--day-border);
+  --shadow-color: var(--day-shadow);
+  --highlight-color: var(--day-highlight);
+  --error-color: var(--day-error);
+  --success-color: var(--day-success);
+}
+
+/* Night Mode (Dark) */
+.zen-mode.night {
+  --primary-color: var(--night-primary);
+  --secondary-color: var(--night-secondary);
+  --accent-color: var(--night-accent);
+  --text-color: var(--night-text);
+  --text-secondary: var(--night-text-secondary);
+  --border-color: var(--night-border);
+  --shadow-color: var(--night-shadow);
+  --highlight-color: var(--night-highlight);
+  --error-color: var(--night-error);
+  --success-color: var(--night-success);
+}
+
+/* ===== Core Layout Elements ===== */
+.zen-app {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.zen-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.zen-logo {
+  font-family: var(--font-secondary);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-color);
+}
+
+.zen-logo-image {
+  height: 32px;
+  width: auto;
+}
+
+.zen-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Mode Switcher ===== */
+.mode-switcher {
+  width: 50px;
+  height: 26px;
+  background-color: var(--accent-color);
+  border-radius: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-xs);
+}
+
+.mode-switcher:before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  transition: transform var(--transition-speed);
+  z-index: 2;
+}
+
+.mode-switcher.night:before {
+  transform: translateX(24px);
+}
+
+.mode-switcher .sun-icon,
+.mode-switcher .moon-icon {
+  font-size: 12px;
+  z-index: 1;
+  color: var(--text-secondary);
+}
+
+/* ===== Fashion Website Browser Components ===== */
+.fashion-components {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+.fashion-nav {
+  display: flex;
+  gap: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.fashion-nav::-webkit-scrollbar {
+  height: 3px;
+}
+
+.fashion-nav::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+}
+
+.fashion-tab {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  color: var(--text-secondary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.fashion-tab:hover {
+  color: var(--highlight-color);
+}
+
+.fashion-tab.active {
+  color: var(--highlight-color);
+  background-color: var(--accent-color);
+}
+
+.fashion-viewer {
+  width: 100%;
+  height: 70vh;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.fashion-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.fashion-capture {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.fashion-capture:hover {
+  transform: scale(1.05);
+  background-color: var(--error-color);
+}
+
+/* ===== Cart System ===== */
+.zen-cart {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: var(--spacing-lg);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--highlight-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 10;
+}
+
+.zen-cart:hover {
+  transform: scale(1.05);
+}
+
+.zen-cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--error-color);
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.zen-cart-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.zen-cart-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.zen-cart-content {
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+
+.zen-cart-modal.open .zen-cart-content {
+  transform: translateY(0);
+}
+
+.zen-cart-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.zen-cart-title {
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.zen-cart-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.zen-cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.zen-cart-item {
+  display: flex;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.zen-cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  margin-right: var(--spacing-md);
+}
+
+.zen-cart-item-details {
+  flex: 1;
+}
+
+.zen-cart-item-title {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.zen-cart-item-price {
+  color: var(--highlight-color);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.zen-cart-item-store {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.zen-cart-item-remove {
+  background: none;
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.zen-cart-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.zen-cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.zen-cart-schedule-btn {
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.zen-cart-schedule-btn:hover {
+  background-color: var(--error-color);
+}
+
+/* ===== Elite Access WhatsApp ===== */
+.elite-access {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.elite-chat {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.elite-chat:hover {
+  transform: scale(1.05);
+}
+
+.elite-badge {
+  background-color: var(--highlight-color);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  position: absolute;
+  top: -10px;
+  right: -5px;
+}
+
+/* ===== Schedule Modal ===== */
+.schedule-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.schedule-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.schedule-content {
+  width: 90%;
+  max-width: 500px;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+
+.schedule-modal.open .schedule-content {
+  transform: translateY(0);
+}
+
+.schedule-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-title {
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.schedule-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.schedule-body {
+  padding: var(--spacing-lg);
+}
+
+.schedule-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.form-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-input,
+.form-select {
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+}
+
+.schedule-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.schedule-cancel {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.schedule-cancel:hover {
+  background-color: var(--accent-color);
+}
+
+.schedule-confirm {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-md);
+  background-color: var(--highlight-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.schedule-confirm:hover {
+  background-color: var(--error-color);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ===== Media Queries ===== */
+@media screen and (max-width: 768px) {
+  .zen-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .fashion-components {
+    padding: var(--spacing-md);
+  }
+  
+  .fashion-viewer {
+    height: 60vh;
+  }
+  
+  .fashion-capture {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .zen-cart,
+  .elite-chat {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .zen-cart {
+    left: var(--spacing-md);
+    bottom: var(--spacing-md);
+  }
+  
+  .elite-access {
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .zen-header {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .zen-logo {
+    font-size: 20px;
+  }
+  
+  .zen-logo-image {
+    height: 24px;
+  }
+  
+  .fashion-tab {
+    font-size: 14px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .fashion-viewer {
+    height: 50vh;
+  }
+  
+  .zen-cart-item-image {
+    width: 60px;
+    height: 60px;
+  }
+}
