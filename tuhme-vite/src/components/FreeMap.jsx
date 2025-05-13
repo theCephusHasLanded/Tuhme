@@ -251,7 +251,10 @@ const FreeMap = ({ onStoreSelect, initialSelectedShops = [], stores = [] }) => {
               detail: {
                 storeName: store.name,
                 storeUrl: store.website || store.url,
-                storeType: store.category
+                storeType: store.category,
+                regionId: store.location.lat > 40.7 && store.location.lat < 40.9 && 
+                          store.location.lng > -74.0 && store.location.lng < -73.9 
+                          ? 'manhattan' : 'other'
               }
             });
             window.dispatchEvent(openStoreEvent);

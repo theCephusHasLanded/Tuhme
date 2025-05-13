@@ -39,6 +39,8 @@ import StoreLogoCarousel from '../components/StoreLogoCarousel';
 import StoreWebBrowser from '../components/StoreWebBrowser';
 import ScheduleModal from '../components/ScheduleModal';
 import ReplacementModal from '../components/ReplacementModal';
+import MembershipSection from '../components/MembershipSection';
+import CustomerJourneyPath from '../components/CustomerJourneyPath';
 
 // Add custom styles to mimic Bootstrap classes
 const styles = {
@@ -158,7 +160,7 @@ const LandingPage = () => {
     { name: 'Membership', path: '/membership' },
     { name: 'Careers', path: '/careers' },
     { name: 'My Account', path: '/my-account' },
-    { name: 'Get Started', anchor: 'contact', highlight: true }
+    { name: 'Get Started', anchor: 'start', highlight: true } // Changed to anchor to the new customer journey
   ];
 
   // Toggle mobile drawer
@@ -473,6 +475,31 @@ const LandingPage = () => {
         </Container>
       </Box>
 
+      {/* Customer Journey Path - New component aligned with tuhme.com */}
+      <Box id="start">
+        <CustomerJourneyPath 
+          onSelectionComplete={(path) => {
+            // Handle the selected path
+            if (path === 'express') {
+              // Show the map for express shopping
+              window.scrollTo({
+                top: document.getElementById('store-locations').offsetTop - 100,
+                behavior: 'smooth'
+              });
+            } else if (path === 'membership') {
+              // Show membership options
+              window.scrollTo({
+                top: document.getElementById('membership').offsetTop - 100,
+                behavior: 'smooth'
+              });
+            } else if (path === 'ondemand') {
+              // Open scheduling modal
+              setScheduleModalOpen(true);
+            }
+          }}
+        />
+      </Box>
+      
       {/* How It Works */}
       <Box id="how-it-works" sx={{ py: { xs: 6, md: 10 }, backgroundColor: 'white' }}>
         <Container>
@@ -669,6 +696,16 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </Container>
+      </Box>
+      
+      {/* Membership Section */}
+      <Box id="membership">
+        <MembershipSection
+          onSelectPlan={(planId) => {
+            // Navigate to membership page or show pricing details
+            window.location.href = `/membership?plan=${planId}`;
+          }}
+        />
       </Box>
 
       {/* Contact Section */}

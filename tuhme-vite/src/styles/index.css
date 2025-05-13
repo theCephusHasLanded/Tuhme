@@ -5,6 +5,7 @@
 
 /* Base styles */
 @import './base.css';
+@import './black-and-white.css'; /* New black and white theme */
 
 /* Components */
 @import './components/navigation.css';

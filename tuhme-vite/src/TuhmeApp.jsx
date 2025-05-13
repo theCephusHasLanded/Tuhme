@@ -27,6 +27,7 @@ import StoreWebBrowser from './components/StoreWebBrowser';
 import ExpressOrderModal from './components/ExpressOrderModal';
 import ResponsiveNavbar from './components/ResponsiveNavbar';
 import NavigationWarningModal from './components/NavigationWarningModal';
+import WhatsAppChatButton from './components/WhatsAppChatButton';
 
 // Import cart storage functions
 import {
@@ -1107,6 +1108,13 @@ const TuhmeApp = () => {
         onClose={() => setNavigationWarningOpen(false)}
         destination={destinationUrl}
         destinationName={selectedStore?.name || 'the store'}
+      />
+
+      {/* WhatsApp Chat Button */}
+      <WhatsAppChatButton 
+        uploadedImages={uploadedImages}
+        storeInfo={selectedStore}
+        hasNotification={false}
       />
     </Box>
   );

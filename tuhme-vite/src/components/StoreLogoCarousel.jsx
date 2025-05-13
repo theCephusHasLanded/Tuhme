@@ -170,10 +170,10 @@ const StoreLogoCarousel = ({ onStoreSelect }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
-    }, 5000);
+    }, 3000); // Faster rotation (3 seconds instead of 5)
 
     return () => clearInterval(timer);
-  }, [startIndex]);
+  }, [startIndex, isAnimating]);
 
   // Touch events for swipe on mobile
   const handleTouchStart = (e) => {
@@ -204,6 +204,17 @@ const StoreLogoCarousel = ({ onStoreSelect }) => {
   const handleStoreClick = (store) => {
     // Always open in a new tab to avoid captcha issues
     window.open(store.url, '_blank');
+
+    // Fire custom event with proper regionId
+    const openStoreEvent = new CustomEvent('openStoreWebsite', {
+      detail: {
+        storeName: store.name,
+        storeUrl: store.url,
+        storeType: 'luxury',
+        regionId: 'manhattan' // Add default regionId
+      }
+    });
+    window.dispatchEvent(openStoreEvent);
 
     // Show express order instructions modal via callback
     if (onStoreSelect) {
@@ -364,10 +375,16 @@ const StoreLogoCarousel = ({ onStoreSelect }) => {
             ref={carouselRef}
             sx={{
               display: 'flex',
-              transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+              transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
               justifyContent: 'center',
               mx: 'auto',
-              gap: { xs: 2, md: 4 }
+              gap: { xs: 2, md: 4 },
+              animation: 'float 6s ease-in-out infinite',
+              '@keyframes float': {
+                '0%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
+                '100%': { transform: 'translateY(0px)' }
+              }
             }}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
@@ -409,10 +426,17 @@ const StoreLogoCarousel = ({ onStoreSelect }) => {
                         transition: 'all 0.3s ease',
                         '&:hover': {
                           boxShadow: theme.shadows.lg,
-                          bgcolor: 'rgba(255, 255, 255, 0.95)'
+                          bgcolor: 'rgba(255, 255, 255, 0.95)',
+                          transform: 'scale(1.08) translateY(-5px)'
                         },
                         position: 'relative',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        animation: index % 2 === 0 ? 'pulse 3s infinite' : 'pulse 4s infinite 1s',
+                        '@keyframes pulse': {
+                          '0%': { transform: 'scale(1)' },
+                          '50%': { transform: 'scale(1.03)' },
+                          '100%': { transform: 'scale(1)' }
+                        }
                       }}
                     >
                       <Box

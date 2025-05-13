@@ -242,11 +242,12 @@ const ManhattanMap = ({ onShopSelect, initialSelectedShops = [] }) => {
           strictBounds: false
         },
         styles: [
-          // Apply grayscale to all elements
+          // Apply black and white theme to all elements
           {
             stylers: [
               { saturation: -100 },  // Full grayscale
-              { lightness: 40 }      // Adjust contrast for better visibility
+              { lightness: 20 },     // Darker for more contrast
+              { gamma: 0.8 }         // Enhance contrast
             ]
           },
           // Keep POI labels visible for shopping areas
@@ -330,17 +331,27 @@ const ManhattanMap = ({ onShopSelect, initialSelectedShops = [] }) => {
                 map: newMap,
                 position: place.geometry.location,
                 title: place.name,
-                // Custom styled marker
+                // Custom styled marker with pulsing effect
                 icon: {
                   path: window.google.maps.SymbolPath.CIRCLE,
-                  scale: 8,
+                  scale: 10,
                   fillColor: '#000000',
                   fillOpacity: 0.9,
                   strokeWeight: 2,
                   strokeColor: '#FFFFFF'
                 },
-                animation: window.google.maps.Animation.DROP
+                animation: window.google.maps.Animation.DROP,
+                // Make marker bounce on mouseover
+                optimized: false // Enable CSS animations
               });
+              
+              // Add CSS animation for pulsing effect
+              if (marker.getIcon) {
+                const markerElement = marker.getIcon();
+                if (markerElement) {
+                  markerElement.className = 'pulsing-marker';
+                }
+              }
 
               // Add click listener
               marker.addListener('click', () => {
@@ -383,7 +394,8 @@ const ManhattanMap = ({ onShopSelect, initialSelectedShops = [] }) => {
                         detail: {
                           storeName: place.name,
                           storeUrl: place.website || `https://www.google.com/search?q=${encodeURIComponent(place.name)}`,
-                          storeType: place.types?.[0] || 'shopping'
+                          storeType: place.types?.[0] || 'shopping',
+                          regionId: selectedNeighborhood || 'manhattan'
                         }
                       });
                       window.dispatchEvent(openStoreEvent);
@@ -451,22 +463,33 @@ const ManhattanMap = ({ onShopSelect, initialSelectedShops = [] }) => {
       const shopType = shopTypes.find(type => type.id === shop.type);
       const isSelected = selectedShops.includes(shop.name);
 
-      // Use a simpler marker configuration to prevent deprecation warnings
+      // Create a more visually distinctive marker for better interaction
       const marker = new window.google.maps.Marker({
         position: shop.position,
         map: map,
         title: shop.name,
-        // Custom SVG circle as icon to avoid deprecated features
+        // Enhanced SVG icon with pulsing animation effect
         icon: {
           url: `data:image/svg+xml;charset=UTF-8,
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-              <circle cx="8" cy="8" r="7" fill="${shopType ? shopType.color : '#000000'}"
-              stroke="${isSelected ? '#000000' : '#FFFFFF'}" stroke-width="2"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+              <circle cx="10" cy="10" r="8" fill="${shopType ? shopType.color : '#000000'}"
+              stroke="${isSelected ? '#000000' : '#FFFFFF'}" stroke-width="2.5"/>
+              <circle cx="10" cy="10" r="4" fill="#FFFFFF" opacity="0.6"/>
             </svg>`,
-          scaledSize: new window.google.maps.Size(24, 24),
-          anchor: new window.google.maps.Point(12, 12)
+          scaledSize: new window.google.maps.Size(30, 30),
+          anchor: new window.google.maps.Point(15, 15)
         },
-        animation: isSelected ? window.google.maps.Animation.BOUNCE : null
+        animation: isSelected ? window.google.maps.Animation.BOUNCE : null,
+        optimized: false, // Required for CSS animations
+        zIndex: isSelected ? 1000 : 500 // Bring selected markers to the front
+      });
+      
+      // Add hover effects
+      marker.addListener('mouseover', () => {
+        if (!isSelected) {
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+          setTimeout(() => marker.setAnimation(null), 700);
+        }
       });
 
       // Stop the bouncing animation after a short period
@@ -588,7 +611,8 @@ const ManhattanMap = ({ onShopSelect, initialSelectedShops = [] }) => {
                 detail: {
                   storeName: shop.name,
                   storeUrl,
-                  storeType: shopType ? shopType.name : 'General'
+                  storeType: shopType ? shopType.name : 'General',
+                  regionId: selectedNeighborhood || 'manhattan'
                 }
               });
               window.dispatchEvent(openStoreEvent);

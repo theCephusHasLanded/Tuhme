@@ -36,7 +36,8 @@ const StoreToWhatsAppModal = ({
   onClose, 
   storeInfo = null,
   uploadedImages = [],
-  onImagesChange
+  onImagesChange,
+  onAirtableOrder
 }) => {
   // User information (load from localStorage if available)
   const getSavedUserInfo = (field) => {
@@ -299,7 +300,26 @@ ${notes || 'No additional notes provided.'}
                   }
                 }}
               >
-                Request Through TUHME
+                Request Through WhatsApp
+              </Button>
+              
+              <Button
+                variant="contained"
+                color="secondary"
+                fullWidth
+                onClick={onAirtableOrder}
+                sx={{ 
+                  py: 1.5,
+                  borderRadius: 2,
+                  mt: 2,
+                  bgcolor: 'black',
+                  color: 'white',
+                  '&:hover': {
+                    bgcolor: '#333'
+                  }
+                }}
+              >
+                Create Express Order
               </Button>
               
               <Button
@@ -309,7 +329,8 @@ ${notes || 'No additional notes provided.'}
                 onClick={handleVisitStore}
                 sx={{ 
                   py: 1.5,
-                  borderRadius: 2
+                  borderRadius: 2,
+                  mt: 2
                 }}
               >
                 Visit Store Website Directly

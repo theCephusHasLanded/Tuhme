@@ -40,88 +40,113 @@ import './styles/index.css';
 const muiTheme = createTheme({
   palette: {
     primary: {
-      main: theme.colors.jamaicanGreen,
-      light: theme.colors.vintageTeal,
-      dark: theme.colors.carbonBlack,
+      main: theme.colors.pureBlack,
+      light: theme.colors.charcoal,
+      dark: theme.colors.pureBlack,
     },
     secondary: {
-      main: theme.colors.palmCoral,
-      light: theme.colors.islandSkyBlue,
-      dark: theme.colors.reggaeRed,
+      main: theme.colors.pureWhite,
+      light: theme.colors.offWhite,
+      dark: theme.colors.accentGray,
     },
     background: {
-      default: theme.colors.galleryWhite,
-      paper: theme.colors.galleryWhite,
-      dark: theme.colors.carbonBlack,
+      default: theme.colors.pureWhite,
+      paper: theme.colors.pureWhite,
+      dark: theme.colors.pureBlack,
     },
     text: {
-      primary: theme.colors.carbonBlack,
-      secondary: theme.colors.carbonBlack + '99', // 60% opacity
+      primary: theme.colors.pureBlack,
+      secondary: theme.colors.charcoal,
     },
     error: {
-      main: theme.colors.reggaeRed,
+      main: theme.colors.error,
     },
     warning: {
-      main: theme.colors.golfGold,
+      main: theme.colors.warning,
     },
     success: {
-      main: theme.colors.jamaicanGreen,
+      main: theme.colors.success,
     },
     info: {
-      main: theme.colors.islandSkyBlue,
+      main: theme.colors.info,
     },
   },
   typography: {
     fontFamily: theme.typography.primaryFont,
     h1: {
-      fontWeight: theme.typography.bold,
+      fontWeight: theme.typography.extrabold,
       letterSpacing: theme.typography.tighter,
+      fontSize: theme.typography.display,
     },
     h2: {
-      fontWeight: theme.typography.semibold,
+      fontWeight: theme.typography.bold,
       letterSpacing: theme.typography.tight,
+      fontSize: theme.typography.xxl,
     },
     h3: {
       fontWeight: theme.typography.semibold,
+      fontSize: theme.typography.xl,
     },
     h4: {
-      fontWeight: theme.typography.medium,
+      fontWeight: theme.typography.semibold,
+      fontSize: theme.typography.lg,
     },
     button: {
-      fontWeight: theme.typography.medium,
+      fontWeight: theme.typography.semibold,
       letterSpacing: theme.typography.wide,
+      textTransform: 'none',
     },
     body1: {
       fontSize: theme.typography.sm,
       lineHeight: theme.typography.normal,
+      fontWeight: theme.typography.regular,
+    },
+    body2: {
+      fontSize: theme.typography.xs,
+      lineHeight: theme.typography.normal,
+      fontWeight: theme.typography.regular,
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 50,
+          borderRadius: theme.borderRadius.button,
           textTransform: 'none',
           padding: `${theme.spacing.sm} ${theme.spacing.lg}`,
           transition: `all ${theme.animation.normal} ${theme.animation.easeInOut}`,
+          fontWeight: theme.typography.semibold,
         },
         containedPrimary: {
-          boxShadow: theme.shadows.md,
+          backgroundColor: theme.colors.pureBlack,
+          color: theme.colors.pureWhite,
+          boxShadow: theme.shadows.sm,
           '&:hover': {
-            boxShadow: theme.shadows.lg,
+            backgroundColor: theme.colors.charcoal,
+            boxShadow: theme.shadows.md,
             transform: 'translateY(-2px)',
           },
         },
         outlinedPrimary: {
-          borderWidth: '2px',
+          borderColor: theme.colors.pureBlack,
+          borderWidth: '1px',
+          color: theme.colors.pureBlack,
+          '&:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+            borderColor: theme.colors.pureBlack,
+          },
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: theme.borderRadius.lg,
-          boxShadow: theme.shadows.md,
+          borderRadius: theme.borderRadius.card,
+          boxShadow: theme.shadows.card,
+          transition: `all ${theme.animation.normal} ${theme.animation.easeInOut}`,
+          '&:hover': {
+            boxShadow: theme.shadows.floating,
+          },
         },
       },
     },
@@ -129,6 +154,8 @@ const muiTheme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: theme.shadows.sm,
+          backgroundColor: theme.colors.pureWhite,
+          color: theme.colors.pureBlack,
         },
       },
     },
@@ -136,7 +163,18 @@ const muiTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: theme.borderRadius.md,
+            borderRadius: theme.borderRadius.input,
+            '& fieldset': {
+              borderColor: theme.colors.lightGray,
+              transition: `all ${theme.animation.fast} ${theme.animation.easeInOut}`,
+            },
+            '&:hover fieldset': {
+              borderColor: theme.colors.accentGray,
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: theme.colors.pureBlack,
+              borderWidth: 1,
+            },
           },
         },
       },
@@ -144,13 +182,21 @@ const muiTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: theme.borderRadius.lg,
+          borderRadius: theme.borderRadius.card,
+          boxShadow: theme.shadows.floating,
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: theme.borderRadius.pill,
         },
       },
     },
   },
   shape: {
-    borderRadius: parseInt(theme.borderRadius.md.replace('rem', '')) * 16, // Convert from rem to px
+    borderRadius: 8, // Default border radius in pixels
   },
 });
 
@@ -206,7 +252,7 @@ function App() {
   // Custom event handler for store website interaction
   useEffect(() => {
     const handleStoreWebsite = (event) => {
-      const { storeName, storeUrl, storeType } = event.detail;
+      const { storeName, storeUrl, storeType, regionId = 'manhattan' } = event.detail;
       
       // Create an iframe or popup for the store website
       const storeWindow = window.open(

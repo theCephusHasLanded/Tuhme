@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Button } from '@mui/material';
 import ManhattanMap from './ManhattanMap';
 import StoreToWhatsAppModal from './StoreToWhatsAppModal';
+import AirtableOrderModal from './AirtableOrderModal';
 
 /**
  * MapWithWhatsApp Component
@@ -13,6 +14,7 @@ const MapWithWhatsApp = (props) => {
   // State
   const [selectedShops, setSelectedShops] = useState([]);
   const [storeModalOpen, setStoreModalOpen] = useState(false);
+  const [airtableModalOpen, setAirtableModalOpen] = useState(false);
   const [currentStoreInfo, setCurrentStoreInfo] = useState(null);
   const [uploadedImages, setUploadedImages] = useState([]);
   
@@ -51,14 +53,28 @@ const MapWithWhatsApp = (props) => {
     setCurrentStoreInfo({
       storeName: typeof storeName === 'string' ? storeName : storeName || 'Selected Store',
       storeUrl: storeUrl || '',
-      storeType: storeType || 'Shopping'
+      storeType: storeType || 'Shopping',
+      regionId: 'manhattan' // Add default regionId to prevent undefined errors
     });
     setStoreModalOpen(true);
   };
   
-  // Handle modal close
-  const handleModalClose = () => {
+  // Handle WhatsApp modal close
+  const handleWhatsAppModalClose = () => {
     setStoreModalOpen(false);
+  };
+  
+  // Handle Airtable modal open and close
+  const handleAirtableModalOpen = () => {
+    setAirtableModalOpen(true);
+    // If WhatsApp modal is open, close it
+    if (storeModalOpen) {
+      setStoreModalOpen(false);
+    }
+  };
+  
+  const handleAirtableModalClose = () => {
+    setAirtableModalOpen(false);
   };
   
   // Handle image uploads
@@ -78,13 +94,21 @@ const MapWithWhatsApp = (props) => {
       {/* Store to WhatsApp Modal */}
       <StoreToWhatsAppModal
         open={storeModalOpen}
-        onClose={handleModalClose}
+        onClose={handleWhatsAppModalClose}
         storeInfo={currentStoreInfo}
         uploadedImages={uploadedImages}
         onImagesChange={handleImagesChange}
+        onAirtableOrder={handleAirtableModalOpen}
       />
       
-      {/* Bottom Banner */}
+      {/* Airtable Order Modal */}
+      <AirtableOrderModal
+        open={airtableModalOpen}
+        onClose={handleAirtableModalClose}
+        storeInfo={currentStoreInfo}
+      />
+      
+      {/* Enhanced Top Banner */}
       <Paper
         elevation={3}
         sx={{
@@ -92,17 +116,31 @@ const MapWithWhatsApp = (props) => {
           top: 0,
           left: 0,
           right: 0,
-          py: 0.5,
+          py: 1,
           px: 2,
           zIndex: 1,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'rgba(46, 139, 87, 0.9)',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
           color: 'white',
+          borderBottom: '2px solid rgba(255,255,255,0.1)'
         }}
       >
-        <Typography variant="body2" sx={{ fontSize: '0.8rem' }}>
+        <Typography 
+          variant="body2" 
+          sx={{ 
+            fontSize: { xs: '0.8rem', md: '0.9rem' },
+            fontWeight: 500,
+            letterSpacing: '0.5px',
+            textAlign: 'center',
+            animation: 'fadeIn 1.5s ease-in-out',
+            '@keyframes fadeIn': {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 }
+            }
+          }}
+        >
           Find a luxury store & let TUHME bring items to you for try-on
         </Typography>
       </Paper>

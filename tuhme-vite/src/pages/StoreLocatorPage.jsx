@@ -147,7 +147,8 @@ const StoreLocatorPage = ({ cartItems = [] }) => {
       detail: {
         storeName: store.name,
         storeUrl: `https://www.google.com/search?q=${encodeURIComponent(store.name + ' New York')}`,
-        storeType: selectedCategory
+        storeType: selectedCategory,
+        regionId: 'manhattan'
       }
     });
     window.dispatchEvent(openStoreEvent);
