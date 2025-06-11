@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "tuhme",
+  "buildCommand": "cd tuhme-app && npm run build",
+  "outputDirectory": "tuhme-app/dist",
+  "installCommand": "cd tuhme-app && npm install",
+  "devCommand": "cd tuhme-app && npm run dev",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
