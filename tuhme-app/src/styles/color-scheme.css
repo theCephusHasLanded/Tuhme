@@ -1,0 +1,326 @@
+/* TUHME Color Scheme - Based on #ff6e57 */
+
+:root {
+  /* Primary Brand Color - Coral Red */
+  --color-primary: #ff6e57;
+  --color-primary-50: #fff5f3;
+  --color-primary-100: #ffe7e3;
+  --color-primary-200: #ffd4cc;
+  --color-primary-300: #ffb3a8;
+  --color-primary-400: #ff8a74;
+  --color-primary-500: #ff6e57; /* Base color */
+  --color-primary-600: #ed4a2f;
+  --color-primary-700: #c8341f;
+  --color-primary-800: #a52c1c;
+  --color-primary-900: #89291c;
+  --color-primary-950: #4b120a;
+
+  /* Complementary Colors - Teal/Cyan (opposite on color wheel) */
+  --color-secondary: #57d4ff;
+  --color-secondary-50: #f0fbff;
+  --color-secondary-100: #e0f6fe;
+  --color-secondary-200: #baedfb;
+  --color-secondary-300: #7ddef7;
+  --color-secondary-400: #38ccf0;
+  --color-secondary-500: #0fb9e0;
+  --color-secondary-600: #0294be;
+  --color-secondary-700: #057699;
+  --color-secondary-800: #0a647e;
+  --color-secondary-900: #0e5368;
+  --color-secondary-950: #053544;
+
+  /* Analogous Colors - Orange and Pink */
+  --color-accent-warm: #ff8c42; /* Orange - warmer neighbor */
+  --color-accent-cool: #ff4757; /* Pink-red - cooler neighbor */
+
+  /* Triadic Colors - Purple and Green */
+  --color-triadic-purple: #8c57ff;
+  --color-triadic-green: #57ff6e;
+
+  /* Neutrals - Sophisticated grays with warm undertones */
+  --color-neutral-50: #fafaf9;
+  --color-neutral-100: #f5f5f4;
+  --color-neutral-200: #e7e5e4;
+  --color-neutral-300: #d6d3d1;
+  --color-neutral-400: #a8a29e;
+  --color-neutral-500: #78716c;
+  --color-neutral-600: #57534e;
+  --color-neutral-700: #44403c;
+  --color-neutral-800: #292524;
+  --color-neutral-900: #1c1917;
+  --color-neutral-950: #0c0a09;
+
+  /* Luxury Colors - Deep, rich tones */
+  --color-luxury-gold: #d4af37;
+  --color-luxury-gold-light: #f4e09a;
+  --color-luxury-gold-dark: #b8941f;
+  
+  --color-luxury-charcoal: #36454f;
+  --color-luxury-charcoal-light: #556b7d;
+  --color-luxury-charcoal-dark: #1e2328;
+
+  --color-luxury-cream: #f8f6f0;
+  --color-luxury-cream-dark: #f0ede4;
+  
+  --color-luxury-navy: #1a2332;
+  --color-luxury-navy-light: #2d3e52;
+
+  /* Semantic Colors */
+  --color-success: #22c55e;
+  --color-success-light: #86efac;
+  --color-success-dark: #16a34a;
+
+  --color-warning: #f59e0b;
+  --color-warning-light: #fcd34d;
+  --color-warning-dark: #d97706;
+
+  --color-error: #ef4444;
+  --color-error-light: #fca5a5;
+  --color-error-dark: #dc2626;
+
+  --color-info: var(--color-secondary-500);
+  --color-info-light: var(--color-secondary-300);
+  --color-info-dark: var(--color-secondary-700);
+
+  /* Text Colors */
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-700);
+  --text-tertiary: var(--color-neutral-500);
+  --text-inverse: var(--color-neutral-50);
+  --text-accent: var(--color-primary-600);
+  --text-luxury: var(--color-luxury-charcoal);
+
+  /* Background Colors */
+  --bg-primary: var(--color-neutral-50);
+  --bg-secondary: var(--color-neutral-100);
+  --bg-tertiary: var(--color-neutral-200);
+  --bg-accent: var(--color-primary-50);
+  --bg-luxury: var(--color-luxury-cream);
+  --bg-dark: var(--color-neutral-900);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --bg-overlay-light: rgba(255, 255, 255, 0.9);
+  --bg-glass: rgba(255, 255, 255, 0.1);
+  --bg-glass-dark: rgba(0, 0, 0, 0.2);
+
+  /* Border Colors */
+  --border-primary: var(--color-neutral-200);
+  --border-secondary: var(--color-neutral-300);
+  --border-accent: var(--color-primary-200);
+  --border-luxury: var(--color-luxury-gold);
+
+  /* Shadow Colors */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-primary: 0 10px 15px -3px rgba(255, 110, 87, 0.3), 0 4px 6px -2px rgba(255, 110, 87, 0.15);
+  --shadow-luxury: 0 10px 15px -3px rgba(212, 175, 55, 0.2), 0 4px 6px -2px rgba(212, 175, 55, 0.1);
+
+  /* Gradient Colors */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-primary-600) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-secondary-400) 0%, var(--color-secondary-600) 100%);
+  --gradient-luxury: linear-gradient(135deg, var(--color-luxury-gold-light) 0%, var(--color-luxury-gold-dark) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--color-accent-warm) 0%, var(--color-primary-500) 100%);
+  --gradient-cool: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-accent-cool) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-accent-warm) 50%, var(--color-luxury-gold) 100%);
+  --gradient-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.8) 0%, rgba(255, 140, 66, 0.6) 50%, rgba(212, 175, 55, 0.4) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+  /* Interactive States */
+  --color-hover-primary: var(--color-primary-400);
+  --color-hover-secondary: var(--color-secondary-400);
+  --color-active-primary: var(--color-primary-700);
+  --color-active-secondary: var(--color-secondary-700);
+  --color-focus: var(--color-primary-500);
+  --color-disabled: var(--color-neutral-300);
+  --color-disabled-text: var(--color-neutral-400);
+
+  /* Component-Specific Colors */
+  --button-primary-bg: var(--gradient-primary);
+  --button-primary-text: var(--color-neutral-50);
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-primary-600);
+  --button-secondary-border: var(--color-primary-500);
+
+  --card-bg: var(--color-neutral-50);
+  --card-border: var(--color-neutral-200);
+  --card-shadow: var(--shadow-md);
+  --card-luxury-bg: var(--color-luxury-cream);
+  --card-luxury-border: var(--color-luxury-gold);
+  --card-luxury-shadow: var(--shadow-luxury);
+
+  --modal-bg: var(--color-neutral-50);
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --modal-border: var(--color-neutral-200);
+
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-text: var(--color-neutral-800);
+  --nav-active: var(--color-primary-500);
+
+  --hero-overlay: var(--gradient-overlay);
+  --hero-text: var(--color-neutral-50);
+  --hero-accent: var(--color-luxury-gold-light);
+}
+
+/* Dark Mode Variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Text Colors - Dark Mode */
+    --text-primary: var(--color-neutral-50);
+    --text-secondary: var(--color-neutral-300);
+    --text-tertiary: var(--color-neutral-400);
+    --text-inverse: var(--color-neutral-900);
+    --text-accent: var(--color-primary-400);
+    --text-luxury: var(--color-luxury-gold-light);
+
+    /* Background Colors - Dark Mode */
+    --bg-primary: var(--color-neutral-900);
+    --bg-secondary: var(--color-neutral-800);
+    --bg-tertiary: var(--color-neutral-750);
+    --bg-accent: var(--color-primary-950);
+    --bg-luxury: var(--color-luxury-charcoal-dark);
+    --bg-dark: var(--color-neutral-950);
+    --bg-overlay: rgba(0, 0, 0, 0.6);
+    --bg-overlay-light: rgba(0, 0, 0, 0.9);
+    --bg-glass: rgba(255, 255, 255, 0.05);
+    --bg-glass-dark: rgba(0, 0, 0, 0.4);
+
+    /* Border Colors - Dark Mode */
+    --border-primary: var(--color-neutral-700);
+    --border-secondary: var(--color-neutral-600);
+    --border-accent: var(--color-primary-800);
+    --border-luxury: var(--color-luxury-gold-dark);
+
+    /* Component Colors - Dark Mode */
+    --card-bg: var(--color-neutral-800);
+    --card-border: var(--color-neutral-700);
+    --card-shadow: var(--shadow-xl);
+    --card-luxury-bg: var(--color-luxury-charcoal);
+    --card-luxury-border: var(--color-luxury-gold-dark);
+
+    --modal-bg: var(--color-neutral-800);
+    --modal-overlay: rgba(0, 0, 0, 0.8);
+    --modal-border: var(--color-neutral-700);
+
+    --nav-bg: rgba(26, 25, 23, 0.95);
+    --nav-text: var(--color-neutral-200);
+    --nav-active: var(--color-primary-400);
+
+    --hero-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.7) 0%, rgba(255, 140, 66, 0.5) 50%, rgba(0, 0, 0, 0.6) 100%);
+    --hero-text: var(--color-neutral-50);
+    --hero-accent: var(--color-luxury-gold-light);
+
+    /* Button Colors - Dark Mode */
+    --button-primary-bg: var(--gradient-primary);
+    --button-primary-text: var(--color-neutral-50);
+    --button-secondary-bg: transparent;
+    --button-secondary-text: var(--color-primary-400);
+    --button-secondary-border: var(--color-primary-400);
+
+    /* Interactive States - Dark Mode */
+    --color-hover-primary: var(--color-primary-300);
+    --color-hover-secondary: var(--color-secondary-300);
+    --color-active-primary: var(--color-primary-600);
+    --color-active-secondary: var(--color-secondary-600);
+    --color-focus: var(--color-primary-400);
+    --color-disabled: var(--color-neutral-600);
+    --color-disabled-text: var(--color-neutral-500);
+  }
+}
+
+/* Light Mode Variables (Explicit) */
+[data-theme="light"] {
+  /* Text Colors - Light Mode */
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-700);
+  --text-tertiary: var(--color-neutral-500);
+  --text-inverse: var(--color-neutral-50);
+  --text-accent: var(--color-primary-600);
+  --text-luxury: var(--color-luxury-charcoal);
+
+  /* Background Colors - Light Mode */
+  --bg-primary: var(--color-neutral-50);
+  --bg-secondary: var(--color-neutral-100);
+  --bg-tertiary: var(--color-neutral-200);
+  --bg-accent: var(--color-primary-50);
+  --bg-luxury: var(--color-luxury-cream);
+  --bg-dark: var(--color-neutral-900);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --bg-overlay-light: rgba(255, 255, 255, 0.9);
+  --bg-glass: rgba(255, 255, 255, 0.1);
+  --bg-glass-dark: rgba(0, 0, 0, 0.2);
+
+  /* Border Colors - Light Mode */
+  --border-primary: var(--color-neutral-200);
+  --border-secondary: var(--color-neutral-300);
+  --border-accent: var(--color-primary-200);
+  --border-luxury: var(--color-luxury-gold);
+
+  /* Component Colors - Light Mode */
+  --card-bg: var(--color-neutral-50);
+  --card-border: var(--color-neutral-200);
+  --card-shadow: var(--shadow-md);
+  --card-luxury-bg: var(--color-luxury-cream);
+  --card-luxury-border: var(--color-luxury-gold);
+
+  --modal-bg: var(--color-neutral-50);
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --modal-border: var(--color-neutral-200);
+
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-text: var(--color-neutral-800);
+  --nav-active: var(--color-primary-500);
+
+  --hero-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.8) 0%, rgba(255, 140, 66, 0.6) 50%, rgba(212, 175, 55, 0.4) 100%);
+  --hero-text: var(--color-neutral-50);
+  --hero-accent: var(--color-luxury-gold-light);
+
+  /* Button Colors - Light Mode */
+  --button-primary-bg: var(--gradient-primary);
+  --button-primary-text: var(--color-neutral-50);
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-primary-600);
+  --button-secondary-border: var(--color-primary-500);
+
+  /* Interactive States - Light Mode */
+  --color-hover-primary: var(--color-primary-400);
+  --color-hover-secondary: var(--color-secondary-400);
+  --color-active-primary: var(--color-primary-700);
+  --color-active-secondary: var(--color-secondary-700);
+  --color-focus: var(--color-primary-500);
+  --color-disabled: var(--color-neutral-300);
+  --color-disabled-text: var(--color-neutral-400);
+}
+
+/* Color Utility Classes */
+.text-primary { color: var(--color-primary-500) !important; }
+.text-secondary { color: var(--color-secondary-500) !important; }
+.text-luxury { color: var(--color-luxury-gold) !important; }
+.text-accent-warm { color: var(--color-accent-warm) !important; }
+.text-accent-cool { color: var(--color-accent-cool) !important; }
+
+.bg-primary { background-color: var(--color-primary-500) !important; }
+.bg-secondary { background-color: var(--color-secondary-500) !important; }
+.bg-luxury { background-color: var(--color-luxury-cream) !important; }
+.bg-gradient-primary { background: var(--gradient-primary) !important; }
+.bg-gradient-luxury { background: var(--gradient-luxury) !important; }
+
+.border-primary { border-color: var(--color-primary-500) !important; }
+.border-luxury { border-color: var(--color-luxury-gold) !important; }
+
+/* Animation and Transition Support */
+.color-transition {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.gradient-animation {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

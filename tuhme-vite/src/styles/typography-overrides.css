@@ -1,0 +1,125 @@
+/* Typography Overrides - Force unified font system throughout the app */
+
+/* Override all serif fonts and ensure unified typography */
+* {
+  font-family: var(--font-primary) !important;
+}
+
+/* Brand and Logo Elements */
+.tuhme-logo,
+.brand-name,
+.logo,
+.brand {
+  font-family: var(--font-display) !important;
+  font-size: var(--text-6xl) !important;
+  font-weight: var(--weight-black) !important;
+  letter-spacing: var(--tracking-wider) !important;
+  text-transform: uppercase !important;
+}
+
+/* Component Titles and Headers */
+h1, h2, h3, h4, h5, h6,
+.widget-title,
+.component-title,
+.section-title,
+.modal-title,
+.card-title,
+.hero-title,
+.benefits-title,
+.pricing-title,
+.cta-title {
+  font-family: var(--font-display) !important;
+  font-weight: var(--weight-bold) !important;
+}
+
+/* Body text and descriptions */
+p, span, div, 
+.widget-description,
+.component-description,
+.section-description,
+.card-description,
+.benefits-description,
+.pricing-description {
+  font-family: var(--font-primary) !important;
+}
+
+/* Navigation elements */
+nav, .nav,
+.navbar,
+.navigation,
+.nav-link,
+.menu-item {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--weight-medium) !important;
+}
+
+/* Button elements */
+button, .button, .btn,
+.cta-button,
+.primary-button,
+.secondary-button {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--weight-semibold) !important;
+}
+
+/* Input and form elements */
+input, textarea, select,
+.form-control,
+.input-field {
+  font-family: var(--font-primary) !important;
+}
+
+/* Code and monospace elements */
+code, pre, .code,
+.mono,
+.monospace {
+  font-family: var(--font-mono) !important;
+}
+
+/* Override any remaining serif fonts */
+.serif,
+[style*="serif"],
+[class*="serif"] {
+  font-family: var(--font-primary) !important;
+}
+
+/* Specific overrides for common component patterns */
+.widget h2,
+.widget h3,
+.component h2,
+.component h3,
+.section h2,
+.section h3 {
+  font-family: var(--font-display) !important;
+  font-weight: var(--weight-bold) !important;
+}
+
+/* Apple-style component widgets */
+.call-to-action-widget,
+.benefits-widget,
+.pricing-widget,
+.membership-widget {
+  font-family: var(--font-primary) !important;
+}
+
+.call-to-action-widget h2,
+.benefits-widget h2,
+.pricing-widget h2,
+.membership-widget h2 {
+  font-family: var(--font-display) !important;
+  font-weight: var(--weight-bold) !important;
+}
+
+/* Modal content */
+.modal-content,
+.modal-header,
+.modal-body,
+.modal-footer {
+  font-family: var(--font-primary) !important;
+}
+
+.modal-header h2,
+.modal-header h3 {
+  font-family: var(--font-display) !important;
+  font-weight: var(--weight-bold) !important;
+}

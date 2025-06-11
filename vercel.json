@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/vite/(.*)", "destination": "/vite/index.html" }
-  ]
-}
