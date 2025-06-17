@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Footer from './Footer';
 import TuhmeIcon from './TuhmeIcon';
 import SaviAssistant from './SaviAssistant';
+import '../styles/validation-modal.css';
 
 const ExpressOrderFlow = ({ onBack }) => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -19,6 +20,8 @@ const ExpressOrderFlow = ({ onBack }) => {
     },
     membershipStatus: 'guest' // guest, member, premium
   });
+  const [showValidationModal, setShowValidationModal] = useState(false);
+  const [validationErrors, setValidationErrors] = useState([]);
 
   const steps = ['Package', 'Preferences', 'Contact', 'Review'];
   
@@ -53,16 +56,26 @@ const ExpressOrderFlow = ({ onBack }) => {
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
-      // Scroll to top when moving to next step
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Ensure we scroll to the very top of the express order app
+      const expressOrderApp = document.querySelector('.express-order-app');
+      if (expressOrderApp) {
+        expressOrderApp.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
-      // Scroll to top when moving to previous step
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Ensure we scroll to the very top of the express order app
+      const expressOrderApp = document.querySelector('.express-order-app');
+      if (expressOrderApp) {
+        expressOrderApp.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 
@@ -204,7 +217,58 @@ const ExpressOrderFlow = ({ onBack }) => {
     return (basePrice * itemCount).toFixed(2);
   };
 
+  const validateOrder = () => {
+    const errors = [];
+    
+    // Required fields validation
+    if (!orderData.packageSize) {
+      errors.push({ field: 'package', message: 'Please select a package size' });
+    }
+    
+    if (orderData.items.length === 0) {
+      errors.push({ field: 'items', message: 'Please upload at least one item screenshot' });
+    }
+    
+    if (!orderData.preferences.trim()) {
+      errors.push({ field: 'preferences', message: 'Please provide your preferences (size, color, style notes, etc.)' });
+    }
+    
+    if (!orderData.deliveryTime) {
+      errors.push({ field: 'deliveryTime', message: 'Please select a preferred delivery time' });
+    }
+    
+    // Contact information validation
+    if (!orderData.contactInfo.name.trim()) {
+      errors.push({ field: 'name', message: 'Please provide your full name' });
+    }
+    
+    if (!orderData.contactInfo.phone.trim()) {
+      errors.push({ field: 'phone', message: 'Please provide your phone number' });
+    }
+    
+    if (!orderData.contactInfo.email.trim()) {
+      errors.push({ field: 'email', message: 'Please provide your email address' });
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(orderData.contactInfo.email)) {
+      errors.push({ field: 'email', message: 'Please provide a valid email address' });
+    }
+    
+    if (!orderData.contactInfo.address.trim()) {
+      errors.push({ field: 'address', message: 'Please provide your delivery address' });
+    }
+    
+    return errors;
+  };
+
   const submitOrder = () => {
+    // Validate the order first
+    const errors = validateOrder();
+    
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      setShowValidationModal(true);
+      return;
+    }
+    
     const selectedPackage = packageOptions.find(pkg => pkg.id === orderData.packageSize);
     
     let message = "🛍️ NEW TUHME EXPRESS ORDER\n\n";
@@ -247,6 +311,23 @@ const ExpressOrderFlow = ({ onBack }) => {
 
     const whatsappURL = `https://wa.me/+16465889916?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
+  };
+
+  const handleValidationModalClose = () => {
+    setShowValidationModal(false);
+    setValidationErrors([]);
+  };
+
+  const goToStepWithError = (field) => {
+    // Navigate to the step that contains the error field
+    if (field === 'package' || field === 'items') {
+      setCurrentStep(0);
+    } else if (field === 'preferences' || field === 'deliveryTime') {
+      setCurrentStep(1);
+    } else if (field === 'name' || field === 'phone' || field === 'email' || field === 'address') {
+      setCurrentStep(2);
+    }
+    handleValidationModalClose();
   };
 
   return (
@@ -666,6 +747,54 @@ const ExpressOrderFlow = ({ onBack }) => {
       
       <Footer />
       <SaviAssistant />
+
+      {/* Validation Modal */}
+      {showValidationModal && (
+        <div className="validation-modal-backdrop" onClick={handleValidationModalClose}>
+          <div className="validation-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="validation-modal-header">
+              <div className="validation-icon">
+                <TuhmeIcon type="alert" size={32} />
+              </div>
+              <h3>Please Complete Required Information</h3>
+              <button className="validation-close" onClick={handleValidationModalClose}>
+                ×
+              </button>
+            </div>
+            
+            <div className="validation-modal-body">
+              <p className="validation-intro">
+                We need some additional information to process your order:
+              </p>
+              
+              <div className="validation-errors">
+                {validationErrors.map((error, index) => (
+                  <div key={index} className="validation-error-item">
+                    <div className="error-icon">
+                      <TuhmeIcon type="alert" size={16} />
+                    </div>
+                    <div className="error-content">
+                      <span className="error-message">{error.message}</span>
+                      <button 
+                        className="fix-error-btn"
+                        onClick={() => goToStepWithError(error.field)}
+                      >
+                        Fix This
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="validation-modal-footer">
+              <button className="validation-dismiss-btn" onClick={handleValidationModalClose}>
+                I'll Complete These Details
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

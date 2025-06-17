@@ -97,7 +97,7 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
         </div>
 
         <button 
-          className="mobile-menu-toggle"
+          className={`mobile-menu-toggle ${isMenuOpen ? 'open' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
         >

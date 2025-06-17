@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TuhmeIcon from './TuhmeIcon';
 import tuhmeLogo from '../assets/tuhme.png';
+import '../styles/savi-optimized.css';
 
-const SaviAssistant = ({ onClose, isOpen = true }) => {
-  const [isVisible, setIsVisible] = useState(isOpen);
+const SaviAssistant = ({ isOpen = false }) => {
+  const [isExpanded, setIsExpanded] = useState(isOpen);
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [position, setPosition] = useState({ x: window.innerWidth - 320, y: window.innerHeight - 500 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [status, setStatus] = useState('online'); // online, generating, complete
+  const [showQuickActions, setShowQuickActions] = useState(false);
   const messagesEndRef = useRef(null);
-  const assistantRef = useRef(null);
 
   const saviKnowledge = {
     greeting: "Hey there! 👋 I'm SAVI, your personal shopping companion at TUHME. Think of me as your fashion-savvy friend who's here to make luxury shopping effortless for you. What can I help you discover today?",
@@ -43,80 +41,49 @@ const SaviAssistant = ({ onClose, isOpen = true }) => {
     },
     
     quickActions: [
-      { text: "How does TUHME work?", key: "how does tuhme work" },
-      { text: "What are your prices?", key: "pricing" },
-      { text: "Which stores do you cover?", key: "stores" },
-      { text: "Tell me about TUHME Now", key: "membership" },
-      { text: "How do I start ordering?", key: "whatsapp" }
+      { text: "💡 How it works", key: "how does tuhme work", icon: "💡" },
+      { text: "💰 Pricing", key: "pricing", icon: "💰" },
+      { text: "🏪 Stores", key: "stores", icon: "🏪" },
+      { text: "👑 TUHME Now", key: "membership", icon: "👑" },
+      { text: "📱 Start ordering", key: "whatsapp", icon: "📱" }
     ]
   };
 
   useEffect(() => {
-    if (messages.length === 0) {
+    if (messages.length === 0 && isExpanded) {
       setMessages([{
         type: 'savi',
         text: saviKnowledge.greeting,
         timestamp: new Date()
       }]);
     }
-  }, [messages.length, saviKnowledge.greeting]);
+  }, [messages.length, saviKnowledge.greeting, isExpanded]);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const maxX = window.innerWidth - 320;
-      const maxY = window.innerHeight - 500;
-      setPosition(prev => ({
-        x: Math.min(prev.x, maxX),
-        y: Math.min(prev.y, maxY)
-      }));
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleMouseDown = (e) => {
-    if (e.target.closest('.savi-header')) {
-      setIsDragging(true);
-      const rect = assistantRef.current.getBoundingClientRect();
-      setDragOffset({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      });
+  const getStatusColor = () => {
+    switch (status) {
+      case 'online': return '#22c55e';
+      case 'generating': return '#f59e0b';
+      case 'complete': return '#3b82f6';
+      default: return '#6b7280';
     }
   };
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (isDragging) {
-        const newX = Math.max(0, Math.min(window.innerWidth - 320, e.clientX - dragOffset.x));
-        const newY = Math.max(0, Math.min(window.innerHeight - 500, e.clientY - dragOffset.y));
-        setPosition({ x: newX, y: newY });
-      }
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
-
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+  const getStatusText = () => {
+    switch (status) {
+      case 'online': return 'Online';
+      case 'generating': return 'Typing...';
+      case 'complete': return 'Ready';
+      default: return 'Offline';
     }
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isDragging, dragOffset]);
+  };
 
   const findBestMatch = (userInput) => {
     const input = userInput.toLowerCase();
@@ -156,6 +123,8 @@ const SaviAssistant = ({ onClose, isOpen = true }) => {
     setMessages(prev => [...prev, userMessage]);
     setCurrentMessage('');
     setIsTyping(true);
+    setStatus('generating');
+    setShowQuickActions(false);
 
     // Simulate thinking time
     setTimeout(() => {
@@ -168,19 +137,32 @@ const SaviAssistant = ({ onClose, isOpen = true }) => {
       
       setMessages(prev => [...prev, saviMessage]);
       setIsTyping(false);
+      setStatus('complete');
+      
+      // Reset to online after a moment
+      setTimeout(() => setStatus('online'), 1500);
     }, 1000 + Math.random() * 1000);
   };
 
   const handleQuickAction = (actionKey) => {
-    const response = saviKnowledge.faq[actionKey];
-    if (response) {
-      const saviMessage = {
-        type: 'savi',
-        text: response,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, saviMessage]);
-    }
+    setStatus('generating');
+    setIsTyping(true);
+    setShowQuickActions(false);
+    
+    setTimeout(() => {
+      const response = saviKnowledge.faq[actionKey];
+      if (response) {
+        const saviMessage = {
+          type: 'savi',
+          text: response,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, saviMessage]);
+      }
+      setIsTyping(false);
+      setStatus('complete');
+      setTimeout(() => setStatus('online'), 1500);
+    }, 800);
   };
 
   const handleKeyPress = (e) => {
@@ -190,62 +172,72 @@ const SaviAssistant = ({ onClose, isOpen = true }) => {
     }
   };
 
-  useEffect(() => {
-    setIsVisible(isOpen);
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setIsVisible(false);
-    if (onClose) onClose();
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+    if (!isExpanded) {
+      setStatus('online');
+      setShowQuickActions(true);
+    }
   };
 
+
   return (
-    <>
-      {/* Assistant Chat Window */}
-      {isVisible && (
-        <>
-          {/* Backdrop */}
+    <div className="savi-container">
+      {/* Floating Toggle Button */}
+      <div 
+        className={`savi-toggle-button ${isExpanded ? 'expanded' : ''}`}
+        onClick={toggleExpanded}
+      >
+        <div className="toggle-avatar">
+          <img src={tuhmeLogo} alt="SAVI" />
           <div 
-            className="savi-backdrop"
-            onClick={handleClose}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.1)',
-              zIndex: 10000
-            }}
+            className="status-indicator"
+            style={{ backgroundColor: getStatusColor() }}
           />
-          
-          <div 
-            ref={assistantRef}
-            className="savi-assistant"
-            style={{
-              position: 'fixed',
-              left: `${position.x}px`,
-              top: `${position.y}px`,
-              zIndex: 10001
-            }}
-            onMouseDown={handleMouseDown}
-          >
+        </div>
+        {!isExpanded && (
+          <div className="toggle-text">
+            <span>SAVI</span>
+            <small>{getStatusText()}</small>
+          </div>
+        )}
+      </div>
+
+      {/* Expanded Chat Interface */}
+      {isExpanded && (
+        <div className="savi-chat-expanded">
           <div className="savi-header">
             <div className="savi-info">
-              <div className="savi-avatar-small">
+              <div className="savi-avatar">
                 <img src={tuhmeLogo} alt="SAVI" />
+                <div 
+                  className="status-dot"
+                  style={{ backgroundColor: getStatusColor() }}
+                />
               </div>
               <div className="savi-details">
                 <h4>SAVI Assistant</h4>
-                <span className="savi-status">Online • Ready to help</span>
+                <span className="savi-status" style={{ color: getStatusColor() }}>
+                  {getStatusText()}
+                </span>
               </div>
             </div>
-            <button 
-              className="savi-close"
-              onClick={handleClose}
-            >
-              ×
-            </button>
+            <div className="header-actions">
+              <button 
+                className="quick-actions-toggle"
+                onClick={() => setShowQuickActions(!showQuickActions)}
+                title="Quick suggestions"
+              >
+                💡
+              </button>
+              <button 
+                className="savi-minimize"
+                onClick={() => setIsExpanded(false)}
+                title="Minimize"
+              >
+                ─
+              </button>
+            </div>
           </div>
 
           <div className="savi-chat">
@@ -283,18 +275,27 @@ const SaviAssistant = ({ onClose, isOpen = true }) => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick Actions */}
-            <div className="savi-quick-actions">
-              {saviKnowledge.quickActions.map((action, index) => (
-                <button
-                  key={index}
-                  className="quick-action-btn"
-                  onClick={() => handleQuickAction(action.key)}
-                >
-                  {action.text}
-                </button>
-              ))}
-            </div>
+            {/* Selective Quick Actions */}
+            {showQuickActions && (
+              <div className="savi-quick-actions">
+                <div className="quick-actions-header">
+                  <span>Quick suggestions</span>
+                  <button onClick={() => setShowQuickActions(false)}>×</button>
+                </div>
+                <div className="quick-actions-grid">
+                  {saviKnowledge.quickActions.map((action, index) => (
+                    <button
+                      key={index}
+                      className="quick-action-btn"
+                      onClick={() => handleQuickAction(action.key)}
+                    >
+                      <span className="action-icon">{action.icon}</span>
+                      <span className="action-text">{action.text.replace(action.icon, '').trim()}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Input Area */}
             <div className="savi-input">
@@ -302,24 +303,28 @@ const SaviAssistant = ({ onClose, isOpen = true }) => {
                 <textarea
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyPress}
                   placeholder="Ask SAVI anything about TUHME..."
                   rows="1"
+                  disabled={isTyping}
                 />
                 <button 
                   className="send-button"
                   onClick={handleSendMessage}
-                  disabled={!currentMessage.trim()}
+                  disabled={!currentMessage.trim() || isTyping}
                 >
-                  <TuhmeIcon type="delivery" size={16} />
+                  {isTyping ? (
+                    <div className="sending-spinner" />
+                  ) : (
+                    <span>→</span>
+                  )}
                 </button>
               </div>
             </div>
           </div>
-          </div>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
