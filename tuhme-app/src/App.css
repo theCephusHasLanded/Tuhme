@@ -1,5 +1,5 @@
 /* Import Premium Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* CSS Custom Properties for Luxury Theme System */
 :root {
@@ -25,9 +25,10 @@
   --blur-strong: blur(24px);
   
   /* Typography Scale */
-  --font-family-primary: 'Playfair Display', Georgia, serif;
-  --font-family-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-family-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   --font-family-accent: 'Cormorant Garamond', Georgia, serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
   
   /* Fluid Typography */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -87,14 +88,14 @@
   --z-toast: 1080;
 }
 
-/* Dark Theme Variables */
+/* Dark Theme Variables with Enhanced Contrast */
 [data-theme="dark"] {
   --primary-bg: #0a0a0a;
   --secondary-bg: #111111;
   --tertiary-bg: #1a1a1a;
-  --primary-text: #f5f5f5;
-  --secondary-text: #e0e0e0;
-  --tertiary-text: #b0b0b0;
+  --primary-text: #ffffff;
+  --secondary-text: #f0f0f0;
+  --tertiary-text: #d0d0d0;
   --accent-primary: #f4d03f;
   --accent-secondary: #d4af37;
   --accent-tertiary: #2a2a1a;
@@ -154,6 +155,12 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+  letter-spacing: -0.01em;
 }
 
 /* Theme Transition */
@@ -560,23 +567,39 @@ body {
 .pricing-card.featured {
   border-color: var(--accent-primary);
   transform: scale(1.05);
-  box-shadow: var(--shadow-luxury);
+  box-shadow: 
+    var(--shadow-luxury),
+    0 0 0 3px rgba(212, 175, 55, 0.4),
+    0 0 40px rgba(212, 175, 55, 0.5),
+    0 0 80px rgba(212, 175, 55, 0.3),
+    0 0 120px rgba(212, 175, 55, 0.1);
+  background: linear-gradient(135deg, var(--tertiary-bg) 0%, rgba(212, 175, 55, 0.08) 100%);
+  position: relative;
+  animation: featuredPulse 3s ease-in-out infinite alternate;
+  border-width: 2px;
+}
+
+@keyframes featuredPulse {
+  from {
+    box-shadow: 
+      var(--shadow-luxury),
+      0 0 0 3px rgba(212, 175, 55, 0.4),
+      0 0 40px rgba(212, 175, 55, 0.5),
+      0 0 80px rgba(212, 175, 55, 0.3),
+      0 0 120px rgba(212, 175, 55, 0.1);
+  }
+  to {
+    box-shadow: 
+      var(--shadow-luxury),
+      0 0 0 3px rgba(212, 175, 55, 0.6),
+      0 0 50px rgba(212, 175, 55, 0.7),
+      0 0 100px rgba(212, 175, 55, 0.4),
+      0 0 150px rgba(212, 175, 55, 0.2);
+  }
 }
 
 .pricing-card.featured::before {
-  content: 'Most Popular';
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent-primary);
-  color: var(--primary-bg);
-  padding: var(--space-2) var(--space-6);
-  border-radius: 0 0 12px 12px;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  display: none;
 }
 
 .pricing-card:hover {
@@ -909,7 +932,7 @@ body {
 .membership-error {
   background: rgba(255, 107, 107, 0.1);
   border: 1px solid rgba(255, 107, 107, 0.3);
-  color: #ff6b6b;
+  color: #f59e0b;
   padding: var(--space-3);
   border-radius: 6px;
   margin-bottom: var(--space-6);
@@ -964,19 +987,34 @@ body {
 .plan-card.featured {
   border-color: var(--accent-primary);
   transform: scale(1.02);
+  box-shadow: 
+    var(--shadow-medium),
+    0 0 0 2px rgba(212, 175, 55, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.5),
+    0 0 60px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, var(--tertiary-bg) 0%, rgba(212, 175, 55, 0.05) 100%);
+  animation: planPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes planPulse {
+  from {
+    box-shadow: 
+      var(--shadow-medium),
+      0 0 0 2px rgba(212, 175, 55, 0.4),
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.3);
+  }
+  to {
+    box-shadow: 
+      var(--shadow-medium),
+      0 0 0 2px rgba(212, 175, 55, 0.6),
+      0 0 40px rgba(212, 175, 55, 0.7),
+      0 0 80px rgba(212, 175, 55, 0.4);
+  }
 }
 
 .plan-badge {
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent-primary);
-  color: var(--primary-bg);
-  padding: var(--space-1) var(--space-4);
-  border-radius: 0 0 8px 8px;
-  font-size: var(--text-xs);
-  font-weight: 600;
+  display: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -2877,7 +2915,7 @@ body {
 }
 
 .error-message {
-  color: #ff6b6b;
+  color: #f59e0b;
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
@@ -7010,7 +7048,7 @@ body {
 
 .store-card-horizontal .status-indicator.closed {
   background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
+  color: #f59e0b;
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 

@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { getBrandSVG } from './BrandSVGs';
 import storeService from '../services/storeService';
 
-const StoreLogoTrain = ({ speed = 50, direction = 'left' }) => {
+const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
   const [stores, setStores] = useState([]);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     // Get all stores and duplicate for seamless loop
@@ -31,7 +32,12 @@ const StoreLogoTrain = ({ speed = 50, direction = 'left' }) => {
           <p className="train-subtitle">Curated selection of NYC's finest boutiques and brands</p>
         </div>
         
-        <div className="train-track" style={animationStyle}>
+        <div 
+          className={`train-track ${isPaused ? 'paused' : ''}`} 
+          style={animationStyle}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="train-cars">
             {stores.map((store, index) => (
               <div 
@@ -160,6 +166,10 @@ const StoreLogoTrain = ({ speed = 50, direction = 'left' }) => {
           gap: 2rem;
           animation: var(--scroll-direction) var(--scroll-speed) linear infinite;
           will-change: transform;
+        }
+
+        .train-track.paused .train-cars {
+          animation-play-state: paused;
         }
 
         @keyframes scroll-left {

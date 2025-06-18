@@ -19,11 +19,11 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
 
       let photoData;
       if (category === 'curated') {
-        photoData = await unsplashService.getCuratedFashionCollection();
+        photoData = await unsplashService.getCuratedNYCCollection();
       } else if (category === 'hero') {
         photoData = await unsplashService.getHeroBannerPhotos();
       } else {
-        photoData = await unsplashService.getFashionPhotos({
+        photoData = await unsplashService.getNYCPhotos({
           page,
           perPage: 12
         });
@@ -53,13 +53,13 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
   const lastPhotoElementRef = useCallback(node => {
     if (isLoading) return;
     if (observerRef.current) observerRef.current.disconnect();
-    
+
     observerRef.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore) {
         loadPhotos(currentPage + 1, false);
       }
     });
-    
+
     if (node) observerRef.current.observe(node);
   }, [isLoading, hasMore, currentPage, loadPhotos]);
 
@@ -78,11 +78,11 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
     try {
       await unsplashService.downloadPhoto(photo.id);
       unsplashService.trackPhotoInteraction(photo.id, 'download');
-      
+
       // Create download link
       const link = document.createElement('a');
       link.href = photo.urls.full;
-      link.download = `tuhme-fashion-${photo.id}.jpg`;
+      link.download = `tuhme-aerial-nyc-${photo.id}.jpg`;
       link.target = '_blank';
       document.body.appendChild(link);
       link.click();
@@ -117,7 +117,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
               <div className="photo-overlay">
                 <div className="photo-info">
                   <p className="photo-description">
-                    {photo.description || photo.alt_description || 'Fashion inspiration'}
+                    {photo.description || photo.alt_description || 'Aerial NYC view'}
                   </p>
                   <div className="photo-meta">
                     <span className="photo-likes">
@@ -135,7 +135,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                   </div>
                 </div>
                 <div className="photo-actions">
-                  <button 
+                  <button
                     className="action-btn"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -146,7 +146,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                       <path d="M8 1v10M4 7l4 4 4-4M2 14h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                   </button>
-                  <button 
+                  <button
                     className="action-btn"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -225,7 +225,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                 className="carousel-image"
               />
               <div className="carousel-info">
-                <h4>{photo.description || 'Fashion Inspiration'}</h4>
+                <h4>{photo.description || 'Aerial NYC View'}</h4>
                 <p>by {photo.user.name}</p>
               </div>
             </div>
@@ -245,7 +245,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
           </svg>
           <h3>Unable to load gallery</h3>
           <p>{error}</p>
-          <button 
+          <button
             className="retry-btn"
             onClick={() => loadPhotos(1, true)}
           >
@@ -260,13 +260,13 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
     <section className="fashion-gallery">
       <div className="gallery-header">
         <div className="header-content">
-          <h2>Fashion Inspiration</h2>
-          <p>Curated high-fashion photography to inspire your next shopping adventure</p>
+          <h2>Aerial NYC Gallery</h2>
+          <p>Stunning aerial views of New York City and Brooklyn DUMBO to inspire your urban adventure</p>
         </div>
-        
+
         <div className="gallery-controls">
           <div className="view-mode-selector">
-            <button 
+            <button
               className={`view-btn ${viewMode === 'masonry' ? 'active' : ''}`}
               onClick={() => setViewMode('masonry')}
               title="Masonry Grid"
@@ -278,7 +278,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                 <rect x="12" y="9" width="6" height="9" fill="currentColor"/>
               </svg>
             </button>
-            <button 
+            <button
               className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
               onClick={() => setViewMode('grid')}
               title="Regular Grid"
@@ -290,7 +290,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                 <rect x="12" y="12" width="6" height="6" fill="currentColor"/>
               </svg>
             </button>
-            <button 
+            <button
               className={`view-btn ${viewMode === 'carousel' ? 'active' : ''}`}
               onClick={() => setViewMode('carousel')}
               title="Carousel"
@@ -324,7 +324,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
         {!hasMore && photos.length > 0 && (
           <div className="gallery-end">
             <p>You've reached the end of our curated collection</p>
-            <button 
+            <button
               className="refresh-btn"
               onClick={() => loadPhotos(1, true)}
             >
@@ -348,27 +348,27 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
             <div className="modal-image-container">
               <img
                 src={selectedPhoto.urls.regular}
-                alt={selectedPhoto.alt_description || 'Fashion photography'}
+                alt={selectedPhoto.alt_description || 'Aerial NYC photography'}
                 className="modal-image"
               />
             </div>
 
             <div className="modal-info">
               <div className="photo-details">
-                <h3>{selectedPhoto.description || 'Fashion Inspiration'}</h3>
+                <h3>{selectedPhoto.description || 'Aerial NYC View'}</h3>
                 {selectedPhoto.alt_description && (
                   <p className="photo-alt">{selectedPhoto.alt_description}</p>
                 )}
-                
+
                 <div className="photographer-info">
-                  <img 
+                  <img
                     src={selectedPhoto.user.profile_image.medium}
                     alt={selectedPhoto.user.name}
                     className="photographer-avatar"
                   />
                   <div>
                     <p className="photographer-name">Photo by {selectedPhoto.user.name}</p>
-                    <a 
+                    <a
                       href={selectedPhoto.user.links.html}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -381,7 +381,7 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
               </div>
 
               <div className="modal-actions">
-                <button 
+                <button
                   className="modal-action-btn primary"
                   onClick={() => handleDownload(selectedPhoto)}
                 >
@@ -390,8 +390,8 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                   </svg>
                   Download
                 </button>
-                
-                <button 
+
+                <button
                   className="modal-action-btn secondary"
                   onClick={() => window.open(selectedPhoto.links.html, '_blank')}
                 >
@@ -402,11 +402,11 @@ const FashionGallery = ({ category = 'fashion', maxPhotos = 20 }) => {
                   View on Unsplash
                 </button>
 
-                <button 
+                <button
                   className="modal-action-btn secondary"
                   onClick={() => {
                     const whatsappMessage = encodeURIComponent(
-                      `I love this fashion inspiration! Can you help me find similar items? ${selectedPhoto.links.html}`
+                      `I love this aerial NYC view! Can you help me explore shopping in this area? ${selectedPhoto.links.html}`
                     );
                     const whatsappLink = `https://wa.me/16465889916?text=${whatsappMessage}`;
                     window.open(whatsappLink, '_blank');

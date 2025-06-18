@@ -13,6 +13,8 @@ import './styles/benefits-widget.css';
 import './styles/content-widgets.css';
 import './styles/get-in-touch-modal.css';
 import './styles/mobile-responsive.css';
+import './styles/enhanced-contrast.css';
+import './styles/enhanced-typography.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ModalProvider } from './contexts/ModalContext';
 import Navigation from './components/Navigation';

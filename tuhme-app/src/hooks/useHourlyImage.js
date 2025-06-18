@@ -9,7 +9,7 @@ const useHourlyImage = (options = {}) => {
   const [lastUpdated, setLastUpdated] = useState(null);
 
   const {
-    category = 'luxury fashion',
+    category = 'aerial nyc',
     cacheSize = 24, // Cache 24 images (one per hour for a day)
     fallbackImage = null,
     onImageChange = null,
@@ -40,37 +40,37 @@ const useHourlyImage = (options = {}) => {
       if (!import.meta.env.VITE_UNSPLASH_ACCESS_KEY || import.meta.env.VITE_UNSPLASH_ACCESS_KEY === 'your_unsplash_access_key_here') {
         console.warn('Unsplash API key not configured, using fallback images');
         
-        // Use curated fallback images for demonstration
+        // Use curated aerial NYC fallback images for demonstration
         const fallbackImages = [
           {
             id: 'fallback-1',
             urls: {
-              regular: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800',
+              regular: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800',
             },
             optimized: {
-              hero: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
+              hero: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
             },
-            alt_description: 'Luxury fashion model'
+            alt_description: 'Aerial view of New York City'
           },
           {
             id: 'fallback-2',
             urls: {
-              regular: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800',
+              regular: 'https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800',
             },
             optimized: {
-              hero: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
+              hero: 'https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
             },
-            alt_description: 'High-end fashion photography'
+            alt_description: 'Brooklyn Bridge aerial photography'
           },
           {
             id: 'fallback-3',
             urls: {
-              regular: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800',
+              regular: 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800',
             },
             optimized: {
-              hero: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
+              hero: 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
             },
-            alt_description: 'Luxury retail store'
+            alt_description: 'Manhattan skyline from above'
           }
         ];
 
@@ -83,20 +83,20 @@ const useHourlyImage = (options = {}) => {
           onImageChange(fallbackImages[initialIndex]);
         }
 
-        console.log('Using fallback luxury fashion images');
+        console.log('Using fallback aerial NYC images');
         return;
       }
 
-      // Use different search terms for variety
+      // Use different aerial NYC search terms for variety
       const searchTerms = [
-        'luxury fashion model',
-        'high-end fashion photography',
-        'designer clothing portrait',
-        'fashion boutique elegant',
-        'luxury accessories lifestyle',
-        'designer fashion editorial',
-        'high fashion photography',
-        'luxury retail fashion'
+        'aerial view new york city',
+        'brooklyn dumbo aerial',
+        'manhattan skyline drone',
+        'brooklyn bridge aerial view',
+        'new york city rooftop view',
+        'manhattan from above',
+        'brooklyn aerial photography',
+        'nyc aerial cityscape'
       ];
 
       const randomTerm = searchTerms[Math.floor(Math.random() * searchTerms.length)];
@@ -141,16 +141,16 @@ const useHourlyImage = (options = {}) => {
       if (fallbackImage) {
         setCurrentImage({ urls: { regular: fallbackImage } });
       } else {
-        // Use default fallback
+        // Use default aerial NYC fallback
         const defaultFallback = {
           id: 'default-fallback',
           urls: {
-            regular: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
+            regular: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
           },
           optimized: {
-            hero: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
+            hero: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800'
           },
-          alt_description: 'Luxury fashion'
+          alt_description: 'Aerial view of New York City'
         };
         setCurrentImage(defaultFallback);
       }

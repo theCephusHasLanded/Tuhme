@@ -11,23 +11,23 @@ class UnsplashService {
     // Initialize cache
     this.cache = new Map();
     
-    // Fashion-related search terms
-    this.fashionKeywords = [
-      'luxury fashion',
-      'designer clothing',
-      'high-end retail',
-      'fashion boutique',
-      'designer accessories',
-      'luxury handbags',
-      'designer shoes',
-      'fashion model',
-      'runway fashion',
-      'couture',
-      'fashion week',
-      'luxury store',
-      'fashion photography',
-      'elegant style',
-      'premium fashion'
+    // Aerial NYC and Brooklyn DUMBO search terms
+    this.nycKeywords = [
+      'aerial view new york city',
+      'brooklyn dumbo aerial',
+      'manhattan skyline drone',
+      'brooklyn bridge aerial view',
+      'dumbo brooklyn aerial',
+      'new york city aerial photography',
+      'brooklyn heights aerial',
+      'manhattan bridge aerial',
+      'nyc aerial panorama',
+      'brooklyn waterfront aerial',
+      'east river aerial view',
+      'brooklyn park aerial',
+      'dumbo neighborhood aerial',
+      'brooklyn aerial cityscape',
+      'manhattan aerial view'
     ];
 
     // Configure default headers for fetch API
@@ -133,10 +133,10 @@ class UnsplashService {
     }
   }
 
-  async getFashionPhotos(options = {}) {
+  async getNYCPhotos(options = {}) {
     try {
-      const randomKeyword = this.fashionKeywords[
-        Math.floor(Math.random() * this.fashionKeywords.length)
+      const randomKeyword = this.nycKeywords[
+        Math.floor(Math.random() * this.nycKeywords.length)
       ];
       
       return await this.searchPhotos(randomKeyword, {
@@ -145,18 +145,18 @@ class UnsplashService {
         ...options
       });
     } catch (error) {
-      console.error('Error getting fashion photos:', error);
+      console.error('Error getting NYC photos:', error);
       throw error;
     }
   }
 
-  async getCuratedFashionCollection() {
+  async getCuratedNYCCollection() {
     try {
       const collections = await Promise.all([
-        this.searchPhotos('luxury fashion', { per_page: 6, orientation: 'portrait' }),
-        this.searchPhotos('designer clothing', { per_page: 6, orientation: 'portrait' }),
-        this.searchPhotos('fashion boutique', { per_page: 6, orientation: 'portrait' }),
-        this.searchPhotos('designer accessories', { per_page: 6, orientation: 'portrait' })
+        this.searchPhotos('aerial view new york city', { per_page: 6, orientation: 'portrait' }),
+        this.searchPhotos('brooklyn dumbo aerial', { per_page: 6, orientation: 'portrait' }),
+        this.searchPhotos('manhattan skyline drone', { per_page: 6, orientation: 'portrait' }),
+        this.searchPhotos('brooklyn bridge aerial view', { per_page: 6, orientation: 'portrait' })
       ]);
 
       const allPhotos = collections.flatMap(collection => collection.results);
@@ -171,7 +171,7 @@ class UnsplashService {
         total_pages: Math.ceil(shuffledPhotos.length / 20)
       };
     } catch (error) {
-      console.error('Error getting curated fashion collection:', error);
+      console.error('Error getting curated NYC collection:', error);
       throw error;
     }
   }
@@ -317,7 +317,7 @@ class UnsplashService {
       src: options.defaultSize ? photo.optimized[options.defaultSize] : photo.urls.regular,
       srcSet: this.generateSrcSet(photo),
       sizes: this.generateSizes(options.breakpoints),
-      alt: photo.alt_description || photo.description || 'Fashion photography',
+      alt: photo.alt_description || photo.description || 'Aerial NYC photography',
       loading: options.loading || 'lazy',
       blurDataURL: this.generateBlurDataURL(photo),
       width: photo.width,
@@ -342,10 +342,10 @@ class UnsplashService {
     return null;
   }
 
-  // Fashion-specific collections
+  // Aerial NYC-specific collections
   async getHeroBannerPhotos() {
     try {
-      return await this.searchPhotos('luxury fashion model', {
+      return await this.searchPhotos('aerial view new york city', {
         per_page: 5,
         orientation: 'landscape'
       });
@@ -355,19 +355,19 @@ class UnsplashService {
     }
   }
 
-  async getProductCategoryPhotos(category) {
+  async getCategoryPhotos(category) {
     const categoryKeywords = {
-      'dresses': 'designer dresses fashion',
-      'accessories': 'luxury accessories fashion',
-      'shoes': 'designer shoes fashion',
-      'bags': 'luxury handbags fashion',
-      'jewelry': 'luxury jewelry fashion',
-      'suits': 'designer suits fashion',
-      'casual': 'casual luxury fashion',
-      'evening': 'evening wear fashion'
+      'manhattan': 'manhattan aerial view skyline',
+      'brooklyn': 'brooklyn dumbo aerial view',
+      'dumbo': 'dumbo brooklyn aerial photography',
+      'bridge': 'brooklyn bridge aerial view',
+      'waterfront': 'brooklyn waterfront aerial',
+      'heights': 'brooklyn heights aerial view',
+      'park': 'brooklyn park aerial view',
+      'skyline': 'nyc aerial panorama'
     };
 
-    const keyword = categoryKeywords[category] || 'luxury fashion';
+    const keyword = categoryKeywords[category] || 'aerial view new york city';
     
     try {
       return await this.searchPhotos(keyword, {
@@ -382,7 +382,7 @@ class UnsplashService {
 
   async getStoreAmbientPhotos() {
     try {
-      return await this.searchPhotos('luxury retail store interior', {
+      return await this.searchPhotos('brooklyn dumbo aerial view', {
         per_page: 10,
         orientation: 'landscape'
       });

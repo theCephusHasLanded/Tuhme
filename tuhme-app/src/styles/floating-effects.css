@@ -181,10 +181,30 @@
 }
 
 .pricing-card.featured {
-  border-color: rgba(255, 110, 87, 0.4);
+  border-color: rgba(212, 175, 55, 0.6);
   box-shadow: 
-    0 0 30px rgba(255, 110, 87, 0.2),
-    0 0 60px rgba(255, 110, 87, 0.1);
+    0 0 0 2px rgba(212, 175, 55, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.5),
+    0 0 60px rgba(212, 175, 55, 0.3),
+    0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: floatingPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatingPulse {
+  from {
+    box-shadow: 
+      0 0 0 2px rgba(212, 175, 55, 0.4),
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.3),
+      0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+  to {
+    box-shadow: 
+      0 0 0 2px rgba(212, 175, 55, 0.6),
+      0 0 40px rgba(212, 175, 55, 0.7),
+      0 0 80px rgba(212, 175, 55, 0.4),
+      0 25px 50px rgba(0, 0, 0, 0.15);
+  }
 }
 
 /* Service Highlights with Glass Effect */

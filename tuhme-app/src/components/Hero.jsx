@@ -7,7 +7,7 @@ const Hero = ({ onStartExpressOrder }) => {
     currentImage, 
     getOptimizedImageUrl 
   } = useHourlyImage({
-    category: 'luxury fashion',
+    category: 'aerial nyc',
     onImageChange: (image) => {
       console.log('Hero background changed:', image.alt_description);
     }

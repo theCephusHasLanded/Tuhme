@@ -97,16 +97,9 @@ const ExpressOrderFlow = ({ onBack }) => {
     }
   };
 
-  // Membership-aware functions
+  // Set reasonable upload limit
   const getMaxItems = () => {
-    switch (orderData.membershipStatus) {
-      case 'premium':
-        return 50;
-      case 'member':
-        return 25;
-      default:
-        return 10;
-    }
+    return 8;
   };
 
   const getUploadLimitClass = () => {
@@ -137,7 +130,7 @@ const ExpressOrderFlow = ({ onBack }) => {
       }
       
       if (orderData.items.length + validFiles.length >= getMaxItems()) {
-        errors.push('Upload limit reached');
+        errors.push('Maximum items reached');
         return;
       }
       
@@ -153,7 +146,7 @@ const ExpressOrderFlow = ({ onBack }) => {
       const newItemDetails = [...orderData.itemDetails];
       
       validFiles.forEach(() => {
-        newItemDetails.push({ size: '', color: '', notes: '', priority: 'normal' });
+        newItemDetails.push({ size: '', color: '', notes: '', itemLink: '', priority: 'normal' });
       });
       
       setOrderData(prev => ({
@@ -179,14 +172,16 @@ const ExpressOrderFlow = ({ onBack }) => {
     const size = prompt('What size are you looking for?', orderData.itemDetails[index]?.size || '');
     const color = prompt('Preferred color?', orderData.itemDetails[index]?.color || '');
     const notes = prompt('Any special notes?', orderData.itemDetails[index]?.notes || '');
+    const itemLink = prompt('Link to this item (if shopping online)?', orderData.itemDetails[index]?.itemLink || '');
     
-    if (size !== null || color !== null || notes !== null) {
+    if (size !== null || color !== null || notes !== null || itemLink !== null) {
       const newItemDetails = [...orderData.itemDetails];
       newItemDetails[index] = {
         ...newItemDetails[index],
         size: size || newItemDetails[index]?.size || '',
         color: color || newItemDetails[index]?.color || '',
-        notes: notes || newItemDetails[index]?.notes || ''
+        notes: notes || newItemDetails[index]?.notes || '',
+        itemLink: itemLink || newItemDetails[index]?.itemLink || ''
       };
       
       setOrderData(prev => ({
@@ -204,17 +199,14 @@ const ExpressOrderFlow = ({ onBack }) => {
     const selectedPackage = packageOptions.find(pkg => pkg.id === orderData.packageSize);
     if (!selectedPackage) return '0.00';
     
-    let basePrice = parseFloat(selectedPackage.price.replace('$', '').replace('/item', ''));
+    // Service fee for sourcing and delivery
+    const serviceFee = 25.00;
     
-    // Apply membership discounts
-    if (orderData.membershipStatus === 'premium') {
-      basePrice *= 0.5; // 50% off for premium members
-    } else if (orderData.membershipStatus === 'member') {
-      basePrice *= 0.75; // 25% off for members
-    }
+    // Rush delivery fee if selected
+    const rushFee = orderData.deliveryTime === 'asap' ? 20.00 : 0;
     
-    const itemCount = orderData.items.length || 5;
-    return (basePrice * itemCount).toFixed(2);
+    const total = serviceFee + rushFee;
+    return total.toFixed(2);
   };
 
   const validateOrder = () => {
@@ -280,11 +272,12 @@ const ExpressOrderFlow = ({ onBack }) => {
     if (orderData.itemDetails.length > 0) {
       message += "🏷️ ITEM DETAILS:\n";
       orderData.itemDetails.forEach((detail, index) => {
-        if (detail.size || detail.color || detail.notes) {
+        if (detail.size || detail.color || detail.notes || detail.itemLink) {
           message += `Item ${index + 1}: `;
           if (detail.size) message += `Size: ${detail.size} `;
           if (detail.color) message += `Color: ${detail.color} `;
-          if (detail.notes) message += `Notes: ${detail.notes}`;
+          if (detail.notes) message += `Notes: ${detail.notes} `;
+          if (detail.itemLink) message += `Link: ${detail.itemLink}`;
           message += "\n";
         }
       });
@@ -301,11 +294,9 @@ const ExpressOrderFlow = ({ onBack }) => {
     message += `Phone: ${orderData.contactInfo.phone}\n`;
     message += `Email: ${orderData.contactInfo.email}\n\n`;
     message += `📍 Delivery Address:\n${orderData.contactInfo.address}\n\n`;
-    message += `💰 Estimated Total: $${calculateTotal()}\n`;
-    
-    if (orderData.membershipStatus !== 'guest') {
-      message += `👑 Membership: ${orderData.membershipStatus.toUpperCase()} (discounts applied)\n`;
-    }
+    message += `💰 Temporary Holding Fee: $${calculateTotal()}\n`;
+    message += `💳 Final payment for items will be processed in-person with Square card reader\n`;
+    message += `📄 Transparent pricing: Service fee + item costs (no hidden fees)\n`;
     
     message += "\nI'll send the screenshots in follow-up messages. Please confirm availability and estimated delivery time. Thank you! 🙏";
 
@@ -393,10 +384,7 @@ const ExpressOrderFlow = ({ onBack }) => {
                     <div className="upload-limits">
                       <div className={`limit-indicator ${getUploadLimitClass()}`}>
                         <TuhmeIcon type="shopping" size={16} />
-                        <span>{orderData.items.length} of {getMaxItems()} items</span>
-                        {orderData.membershipStatus === 'guest' && (
-                          <span className="upgrade-hint">Upgrade for unlimited uploads</span>
-                        )}
+                        <span>{orderData.items.length} items uploaded</span>
                       </div>
                     </div>
                   </div>
@@ -426,13 +414,13 @@ const ExpressOrderFlow = ({ onBack }) => {
                       <div className="upload-text">
                         <p className="upload-primary">
                           {orderData.items.length >= getMaxItems() 
-                            ? 'Upload limit reached' 
+                            ? 'Maximum items reached' 
                             : 'Drop screenshots here or click to upload'
                           }
                         </p>
                         <p className="upload-secondary">
                           {orderData.items.length >= getMaxItems()
-                            ? 'Remove items or upgrade membership for more uploads'
+                            ? 'Please remove items to upload more'
                             : 'Support for JPG, PNG, HEIC, MP4 files (max 10MB each)'
                           }
                         </p>
@@ -486,6 +474,13 @@ const ExpressOrderFlow = ({ onBack }) => {
                                     Notes: {orderData.itemDetails[index].notes}
                                   </div>
                                 )}
+                                {orderData.itemDetails[index].itemLink && (
+                                  <div className="metadata-tag link-tag">
+                                    <a href={orderData.itemDetails[index].itemLink} target="_blank" rel="noopener noreferrer">
+                                      View Item Link
+                                    </a>
+                                  </div>
+                                )}
                               </div>
                             )}
                           </div>
@@ -493,20 +488,6 @@ const ExpressOrderFlow = ({ onBack }) => {
                       </div>
                     )}
 
-                    {orderData.membershipStatus === 'guest' && orderData.items.length > 0 && (
-                      <div className="membership-upgrade-prompt">
-                        <div className="upgrade-content">
-                          <TuhmeIcon type="event" size={20} />
-                          <div className="upgrade-text">
-                            <h4>Want to upload more items?</h4>
-                            <p>Premium members get unlimited uploads, priority service, and 50% off all orders!</p>
-                          </div>
-                          <button className="upgrade-btn" onClick={() => openMembershipModal()}>
-                            Upgrade to Premium
-                          </button>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
@@ -710,11 +691,12 @@ const ExpressOrderFlow = ({ onBack }) => {
                   <div className="summary-card total-card">
                     <div className="summary-header">
                       <TuhmeIcon type="payment" size={24} />
-                      <h3>Estimated Total</h3>
+                      <h3>Temporary Holding Fee</h3>
                     </div>
                     <div className="summary-content">
                       <p className="total-amount">${calculateTotal()}</p>
-                      <p className="total-note">Final amount depends on items you choose to keep</p>
+                      <p className="total-note">Service fee only. Final payment for items processed in-person with Square</p>
+                      <p className="transparent-pricing">Transparent pricing - no hidden fees</p>
                     </div>
                   </div>
                 </div>
