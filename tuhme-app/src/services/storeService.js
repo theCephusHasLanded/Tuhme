@@ -1338,7 +1338,10 @@ class StoreService {
 
   // Store retrieval methods
   getAllStores() {
-    return this.allStores;
+    return this.allStores.map(store => ({
+      ...store,
+      isOpen: this.isStoreOpen(store.id)
+    }));
   }
 
   getManhattanStores() {

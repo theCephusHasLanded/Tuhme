@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getBrandSVG } from './BrandSVGs';
 import storeService from '../services/storeService';
 
-const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
+const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
   const [stores, setStores] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -11,10 +11,10 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
     const allStores = storeService.getAllStores();
     const featuredStores = allStores.filter(store => store.featured);
     const regularStores = allStores.filter(store => !store.featured);
-    
+
     // Mix featured and regular stores for variety
     const mixedStores = [...featuredStores, ...regularStores].slice(0, 20);
-    
+
     // Duplicate for seamless scrolling
     setStores([...mixedStores, ...mixedStores, ...mixedStores]);
   }, []);
@@ -31,26 +31,26 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
           <h3 className="train-title">Our Luxury Partners</h3>
           <p className="train-subtitle">Curated selection of NYC's finest boutiques and brands</p>
         </div>
-        
-        <div 
-          className={`train-track ${isPaused ? 'paused' : ''}`} 
+
+        <div
+          className={`train-track ${isPaused ? 'paused' : ''}`}
           style={animationStyle}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className="train-cars">
             {stores.map((store, index) => (
-              <div 
-                key={`${store.id}-${index}`} 
+              <div
+                key={`${store.id}-${index}`}
                 className={`train-car ${store.featured ? 'featured' : ''}`}
                 title={`${store.name} - ${store.neighborhood}`}
               >
                 <div className="car-content">
                   <div className="brand-logo">
-                    <div 
+                    <div
                       className="brand-svg"
-                      dangerouslySetInnerHTML={{ 
-                        __html: getBrandSVG(store.id) 
+                      dangerouslySetInnerHTML={{
+                        __html: getBrandSVG(store.id)
                       }}
                     />
                   </div>
@@ -58,16 +58,21 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
                     <span className="store-name">{store.name}</span>
                     <span className="store-category">{store.category}</span>
                     <span className="store-neighborhood">{store.neighborhood}</span>
+                    <div className="store-status">
+                      <span className={`status-indicator ${store.isOpen ? 'open' : 'closed'}`}>
+                        {store.isOpen ? 'Open' : 'Closed'}
+                      </span>
+                    </div>
                   </div>
                 </div>
-                
+
                 <div className="car-glow"></div>
                 <div className="car-reflection"></div>
               </div>
             ))}
           </div>
         </div>
-        
+
         <div className="train-stats">
           <div className="stat">
             <span className="stat-number">{storeService.getAllStores().length}</span>
@@ -91,12 +96,13 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
       <style jsx>{`
         .store-logo-train {
           padding: 4rem 0;
-          background: linear-gradient(135deg, 
-            var(--bg-luxury) 0%, 
-            var(--bg-primary) 50%, 
+          background: linear-gradient(135deg,
+            var(--bg-luxury) 0%,
+            var(--bg-primary) 50%,
             var(--bg-luxury) 100%);
           position: relative;
           overflow: hidden;
+          z-index: 10;
         }
 
         .store-logo-train::before {
@@ -183,8 +189,8 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
         }
 
         .train-car {
-          min-width: 280px;
-          height: 120px;
+          min-width: 300px;
+          height: 140px;
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(15px);
           border: 1px solid rgba(255, 110, 87, 0.15);
@@ -194,12 +200,13 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
           overflow: hidden;
           transition: all 0.3s ease;
           cursor: pointer;
+          z-index: 1;
         }
 
         .train-car:hover {
           transform: translateY(-8px);
           border-color: rgba(255, 110, 87, 0.3);
-          box-shadow: 
+          box-shadow:
             0 15px 35px rgba(0, 0, 0, 0.1),
             0 0 25px rgba(255, 110, 87, 0.15);
         }
@@ -211,7 +218,7 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
 
         .train-car.featured:hover {
           border-color: rgba(212, 175, 55, 0.5);
-          box-shadow: 
+          box-shadow:
             0 15px 35px rgba(0, 0, 0, 0.1),
             0 0 25px rgba(212, 175, 55, 0.15);
         }
@@ -270,14 +277,63 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
           letter-spacing: var(--tracking-normal);
         }
 
+        .store-status {
+          margin-top: 0.5rem;
+          display: flex;
+          justify-content: center;
+        }
+
+        .status-indicator {
+          font-family: var(--font-primary);
+          font-size: var(--text-xs);
+          font-weight: var(--weight-semibold);
+          padding: 0.25rem 0.75rem;
+          border-radius: 12px;
+          text-transform: uppercase;
+          letter-spacing: var(--tracking-wider);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+        }
+
+        .status-indicator::before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          display: inline-block;
+        }
+
+        .status-indicator.open {
+          background: rgba(34, 197, 94, 0.15);
+          color: #22c55e;
+          border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-indicator.open::before {
+          background: #22c55e;
+          box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+        }
+
+        .status-indicator.closed {
+          background: rgba(239, 68, 68, 0.15);
+          color: #ef4444;
+          border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .status-indicator.closed::before {
+          background: #ef4444;
+          box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+        }
+
         .car-glow {
           position: absolute;
           top: -2px;
           left: -2px;
           right: -2px;
           bottom: -2px;
-          background: linear-gradient(45deg, 
-            rgba(255, 110, 87, 0.2) 0%, 
+          background: linear-gradient(45deg,
+            rgba(255, 110, 87, 0.2) 0%,
             rgba(255, 140, 66, 0.1) 25%,
             rgba(87, 212, 255, 0.1) 50%,
             rgba(255, 110, 87, 0.2) 75%,
@@ -352,8 +408,8 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
           }
 
           .train-car {
-            min-width: 240px;
-            height: 100px;
+            min-width: 260px;
+            height: 120px;
             padding: 1rem;
           }
 
@@ -376,7 +432,7 @@ const StoreLogoTrain = ({ speed = 35, direction = 'left' }) => {
           .train-cars {
             animation: none;
           }
-          
+
           .car-glow {
             animation: none;
           }
