@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getBrandSVG } from './BrandSVGs';
 import storeService from '../services/storeService';
 
-const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
+const StoreLogoTrain = ({ speed = 5, direction = 'left' }) => {
   const [stores, setStores] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -191,9 +191,10 @@ const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
         .train-car {
           min-width: 300px;
           height: 140px;
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(15px);
-          border: 1px solid rgba(255, 110, 87, 0.15);
+          background: rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(20px) saturate(150%);
+          -webkit-backdrop-filter: blur(20px) saturate(150%);
+          border: 1px solid rgba(255, 110, 87, 0.25);
           border-radius: 16px;
           padding: 1.5rem;
           position: relative;
@@ -201,6 +202,9 @@ const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
           transition: all 0.3s ease;
           cursor: pointer;
           z-index: 1;
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .train-car:hover {
@@ -257,9 +261,10 @@ const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
         .store-name {
           font-family: var(--font-display);
           font-size: var(--text-sm);
-          font-weight: var(--weight-semibold);
+          font-weight: var(--weight-bold);
           color: var(--text-primary);
           letter-spacing: var(--tracking-wide);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .store-category {
@@ -268,13 +273,17 @@ const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
           color: var(--text-secondary);
           text-transform: uppercase;
           letter-spacing: var(--tracking-wider);
+          font-weight: var(--weight-semibold);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .store-neighborhood {
           font-family: var(--font-mono);
           font-size: var(--text-xs);
-          color: var(--text-tertiary);
+          color: var(--text-secondary);
           letter-spacing: var(--tracking-normal);
+          font-weight: var(--weight-medium);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .store-status {
@@ -441,11 +450,29 @@ const StoreLogoTrain = ({ speed = 10, direction = 'left' }) => {
         /* Dark mode adjustments */
         @media (prefers-color-scheme: dark) {
           .train-car {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 110, 87, 0.3);
+            box-shadow: 
+              0 8px 32px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
           }
 
           .brand-svg {
             color: var(--text-primary);
+          }
+
+          .store-name {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+          }
+
+          .store-category {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+          }
+
+          .store-neighborhood {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
           }
         }
       `}</style>
