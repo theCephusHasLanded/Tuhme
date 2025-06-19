@@ -115,10 +115,8 @@ const Hero = ({ onStartExpressOrder }) => {
         
         <div className="hero-main-luxury">
           <h2 className="hero-title-luxury">
-            <span className="title-line">We Pay,</span>
-            <span className="title-line">You Preview,</span>
             <span className="title-line accent-text" style={{ color: currentPalette.accent }}>
-              Keep What You Love
+              We'll Pay For It, And Bring The Store To You
             </span>
           </h2>
           
