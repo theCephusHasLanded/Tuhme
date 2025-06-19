@@ -71,16 +71,34 @@ const Hero = ({ onStartExpressOrder }) => {
   return (
     <header className="hero-luxury" style={backgroundStyle}>
       <div className="luxury-particles">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <div 
             key={i} 
             className="particle" 
             style={{
-              '--delay': `${i * 0.5}s`,
-              '--accent-color': currentPalette.accent
+              '--delay': `${i * 0.3}s`,
+              '--accent-color': currentPalette.accent,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 12}s`
             }}
           />
         ))}
+      </div>
+      
+      <div className="floating-elements">
+        <div 
+          className="floating-ring"
+          style={{ '--accent-color': currentPalette.accent }}
+        ></div>
+        <div 
+          className="floating-diamond"
+          style={{ '--accent-color': currentPalette.accent }}
+        ></div>
+        <div 
+          className="floating-cube"
+          style={{ '--accent-color': currentPalette.accent }}
+        ></div>
       </div>
       
       <div className="hero-content-luxury">
