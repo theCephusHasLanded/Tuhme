@@ -51,7 +51,7 @@ const FloatingSaviBot = ({ onOpenSavi, showSavi }) => {
         title="Ask SAVI for help"
       >
         <div className="bot-icon">
-          <TuhmeIcon type="professional" size={24} />
+          <TuhmeIcon type="professional" size={20} />
         </div>
         <div className="bot-tooltip">
           <span>{showSavi ? 'SAVI is open!' : 'Need help? Ask SAVI!'}</span>

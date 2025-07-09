@@ -2,91 +2,153 @@ import { useState, useEffect } from 'react';
 import { getBrandSVG } from './BrandSVGs';
 import storeService from '../services/storeService';
 
-const StoreLogoTrain = ({ speed = 5, direction = 'left' }) => {
+const StoreLogoTrain = () => {
   const [stores, setStores] = useState([]);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentStoreIndex, setCurrentStoreIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // Get all stores and duplicate for seamless loop
+    // Get all stores
     const allStores = storeService.getAllStores();
     const featuredStores = allStores.filter(store => store.featured);
     const regularStores = allStores.filter(store => !store.featured);
-
-    // Mix featured and regular stores for variety
-    const mixedStores = [...featuredStores, ...regularStores].slice(0, 20);
-
-    // Duplicate for seamless scrolling
-    setStores([...mixedStores, ...mixedStores, ...mixedStores]);
+    
+    // Mix featured and regular stores
+    const mixedStores = [...featuredStores, ...regularStores];
+    setStores(mixedStores);
   }, []);
 
-  const animationStyle = {
-    '--scroll-speed': `${speed}s`,
-    '--scroll-direction': direction === 'left' ? 'scroll-left' : 'scroll-right'
+  const currentStore = stores[currentStoreIndex];
+  const totalStores = stores.length;
+
+  const nextStore = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentStoreIndex(prev => (prev + 1) % totalStores);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
+  const prevStore = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentStoreIndex(prev => (prev - 1 + totalStores) % totalStores);
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  const handleStoreClick = (store) => {
+    // Direct navigation to store website
+    console.log('Store click handler called for:', store.name);
+    console.log('Store website:', store.website);
+    
+    if (store.website) {
+      console.log('Opening store website:', store.website);
+      window.open(store.website, '_blank', 'noopener,noreferrer');
+    } else {
+      console.log('No website available for:', store.name);
+      alert(`Sorry, no website is available for ${store.name}`);
+    }
+  };
+
+  if (!currentStore) {
+    return null;
+  }
+
   return (
-    <section className="store-logo-train">
-      <div className="train-container">
-        <div className="train-header">
-          <h3 className="train-title">Our Luxury Partners</h3>
-          <p className="train-subtitle">Curated selection of NYC's finest boutiques and brands</p>
-        </div>
-
-        <div
-          className={`train-track ${isPaused ? 'paused' : ''}`}
-          style={animationStyle}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="train-cars">
-            {stores.map((store, index) => (
-              <div
-                key={`${store.id}-${index}`}
-                className={`train-car ${store.featured ? 'featured' : ''}`}
-                title={`${store.name} - ${store.neighborhood}`}
-              >
-                <div className="car-content">
-                  <div className="brand-logo">
-                    <div
-                      className="brand-svg"
-                      dangerouslySetInnerHTML={{
-                        __html: getBrandSVG(store.id)
-                      }}
-                    />
-                  </div>
-                  <div className="store-meta">
-                    <span className="store-name">{store.name}</span>
-                    <span className="store-category">{store.category}</span>
-                    <span className="store-neighborhood">{store.neighborhood}</span>
-                    <div className="store-status">
-                      <span className={`status-indicator ${store.isOpen ? 'open' : 'closed'}`}>
-                        {store.isOpen ? 'Open' : 'Closed'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="car-glow"></div>
-                <div className="car-reflection"></div>
-              </div>
-            ))}
+    <section className="luxury-partners-section">
+      <div className="partners-container">
+        <div className="partners-header">
+          <h2 className="partners-title">Our Luxury Partners</h2>
+          <p className="partners-subtitle">
+            Curated selection of NYC's finest boutiques and brands
+          </p>
+          <div className="partners-counter">
+            <span className="counter-text">
+              {currentStoreIndex + 1} of {totalStores} stores
+            </span>
           </div>
         </div>
 
-        <div className="train-stats">
-          <div className="stat">
+        <div className="panoramic-display">
+          <button 
+            className="panoramic-nav panoramic-nav-left"
+            onClick={prevStore}
+            disabled={totalStores <= 1 || isTransitioning}
+            title="Previous store"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          
+          <div className="panoramic-viewport">
+            <div className={`panoramic-store ${currentStore.featured ? 'featured' : ''} ${isTransitioning ? 'transitioning' : ''}`}>
+              <div className="panoramic-content">
+                <div className="panoramic-brand">
+                  <div
+                    className="panoramic-logo"
+                    onClick={() => handleStoreClick(currentStore)}
+                    title={`Visit ${currentStore.name}`}
+                    dangerouslySetInnerHTML={{
+                      __html: getBrandSVG(currentStore.id)
+                    }}
+                  />
+                </div>
+                
+                <div className="panoramic-info">
+                  <h3 className="panoramic-name">{currentStore.name}</h3>
+                  <p className="panoramic-category">{currentStore.category}</p>
+                  <p className="panoramic-neighborhood">{currentStore.neighborhood}</p>
+                  
+                  <div className="panoramic-status">
+                    <span className={`status-badge ${currentStore.isOpen ? 'open' : 'closed'}`}>
+                      <span className="status-dot"></span>
+                      {currentStore.isOpen ? 'Open Now' : 'Closed'}
+                    </span>
+                  </div>
+                  
+                  <div className="panoramic-actions">
+                    <button 
+                      className="panoramic-visit-btn"
+                      onClick={() => handleStoreClick(currentStore)}
+                    >
+                      <span className="btn-icon">🏪</span>
+                      <span className="btn-text">Visit Store</span>
+                      <span className="btn-arrow">→</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="panoramic-glow"></div>
+            </div>
+          </div>
+          
+          <button 
+            className="panoramic-nav panoramic-nav-right"
+            onClick={nextStore}
+            disabled={totalStores <= 1 || isTransitioning}
+            title="Next store"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div className="partners-stats">
+          <div className="stat-item">
             <span className="stat-number">{storeService.getAllStores().length}</span>
             <span className="stat-label">Partner Stores</span>
           </div>
-          <div className="stat">
+          <div className="stat-item">
             <span className="stat-number">{storeService.getFeaturedStores().length}</span>
             <span className="stat-label">Featured Partners</span>
           </div>
-          <div className="stat">
+          <div className="stat-item">
             <span className="stat-number">2</span>
             <span className="stat-label">NYC Boroughs</span>
           </div>
-          <div className="stat">
+          <div className="stat-item">
             <span className="stat-number">{storeService.getAverageRating()}</span>
             <span className="stat-label">Avg Rating</span>
           </div>
@@ -94,385 +156,462 @@ const StoreLogoTrain = ({ speed = 5, direction = 'left' }) => {
       </div>
 
       <style jsx>{`
-        .store-logo-train {
-          padding: 4rem 0;
+        .luxury-partners-section {
+          padding: 6rem 0;
           background: linear-gradient(135deg,
-            var(--bg-luxury) 0%,
-            var(--bg-primary) 50%,
-            var(--bg-luxury) 100%);
+            var(--bg-luxury, #0a0a0a) 0%,
+            var(--bg-primary, #1a1a1a) 50%,
+            var(--bg-luxury, #0a0a0a) 100%);
           position: relative;
           overflow: hidden;
-          z-index: 10;
+          text-align: center;
         }
 
-        .store-logo-train::before {
+        .luxury-partners-section::before {
           content: '';
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff6e57' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-          opacity: 0.5;
-          z-index: -1;
+          background: 
+            radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+          pointer-events: none;
+          z-index: 1;
         }
 
-        .train-container {
-          max-width: 100%;
+        .partners-container {
+          max-width: 1200px;
           margin: 0 auto;
           padding: 0 2rem;
+          position: relative;
+          z-index: 2;
         }
 
-        .train-header {
+        .partners-header {
           text-align: center;
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
         }
 
-        .train-title {
+        .partners-title {
           font-family: var(--font-display);
-          font-size: var(--text-3xl);
-          font-weight: var(--weight-bold);
-          color: var(--text-primary);
-          margin-bottom: 0.5rem;
+          font-size: var(--text-4xl);
+          font-weight: 700;
+          color: var(--text-primary, #ffffff);
+          margin-bottom: 1rem;
           letter-spacing: var(--tracking-tight);
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .train-subtitle {
-          font-family: var(--font-primary);
-          font-size: var(--text-lg);
-          color: var(--text-secondary);
+        .partners-subtitle {
+          font-family: var(--font-display);
+          font-size: var(--text-xl);
+          color: var(--text-secondary, rgba(255, 255, 255, 0.8));
           max-width: 600px;
-          margin: 0 auto;
+          margin: 0 auto 2rem;
           line-height: var(--leading-relaxed);
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .train-track {
-          position: relative;
-          width: 100%;
-          overflow: hidden;
-          padding: 2rem 0;
-          mask-image: linear-gradient(
-            to right,
-            transparent 0%,
-            black 10%,
-            black 90%,
-            transparent 100%
-          );
-          -webkit-mask-image: linear-gradient(
-            to right,
-            transparent 0%,
-            black 10%,
-            black 90%,
-            transparent 100%
-          );
+        .partners-counter {
+          margin-top: 1.5rem;
         }
 
-        .train-cars {
+        .counter-text {
+          font-family: var(--font-display);
+          font-size: var(--text-base);
+          color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 25px;
+          padding: 0.75rem 1.5rem;
+          display: inline-block;
+          font-weight: 500;
+        }
+
+        .panoramic-display {
           display: flex;
-          gap: 2rem;
-          animation: var(--scroll-direction) var(--scroll-speed) linear infinite;
-          will-change: transform;
+          align-items: center;
+          justify-content: center;
+          gap: 3rem;
+          margin: 4rem 0;
+          min-height: 400px;
         }
 
-        .train-track.paused .train-cars {
-          animation-play-state: paused;
+        .panoramic-viewport {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          perspective: 1000px;
+          max-width: 700px;
         }
 
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        @keyframes scroll-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-
-        .train-car {
-          min-width: 300px;
-          height: 140px;
-          background: rgba(255, 255, 255, 0.12);
-          backdrop-filter: blur(20px) saturate(150%);
-          -webkit-backdrop-filter: blur(20px) saturate(150%);
-          border: 1px solid rgba(255, 110, 87, 0.25);
-          border-radius: 16px;
-          padding: 1.5rem;
+        .panoramic-store {
+          width: 100%;
+          height: 350px;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(24px) saturate(180%) brightness(110%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(110%);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 32px;
+          padding: 2.5rem;
           position: relative;
           overflow: hidden;
-          transition: all 0.3s ease;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           cursor: pointer;
           z-index: 1;
           box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            0 15px 60px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          transform: scale(1);
         }
 
-        .train-car:hover {
-          transform: translateY(-8px);
-          border-color: rgba(255, 110, 87, 0.3);
-          box-shadow:
-            0 15px 35px rgba(0, 0, 0, 0.1),
-            0 0 25px rgba(255, 110, 87, 0.15);
+        .panoramic-store:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .train-car.featured {
+        .panoramic-store.transitioning {
+          opacity: 0.7;
+          transform: scale(0.98);
+        }
+
+        .panoramic-store.featured {
           border-color: rgba(212, 175, 55, 0.3);
-          background: rgba(212, 175, 55, 0.05);
+          background: rgba(212, 175, 55, 0.08);
         }
 
-        .train-car.featured:hover {
-          border-color: rgba(212, 175, 55, 0.5);
-          box-shadow:
-            0 15px 35px rgba(0, 0, 0, 0.1),
-            0 0 25px rgba(212, 175, 55, 0.15);
+        .panoramic-store.featured::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+          border-radius: 32px;
+          pointer-events: none;
         }
 
-        .car-content {
+        .panoramic-content {
           display: flex;
-          flex-direction: column;
           height: 100%;
+          gap: 2.5rem;
+          align-items: center;
           z-index: 2;
           position: relative;
         }
 
-        .brand-logo {
+        .panoramic-brand {
           flex: 1;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 1rem;
         }
 
-        .brand-svg {
+        .panoramic-logo {
           width: 100%;
-          max-width: 160px;
+          max-width: 240px;
           height: auto;
-          color: var(--text-primary);
+          color: var(--text-primary, #ffffff);
           opacity: 0.9;
+          filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 1.5rem;
+          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .store-meta {
+        .panoramic-logo:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .panoramic-info {
+          flex: 1;
           display: flex;
           flex-direction: column;
-          gap: 0.25rem;
-          text-align: center;
+          justify-content: center;
+          gap: 1.25rem;
+          text-align: left;
         }
 
-        .store-name {
+        .panoramic-name {
           font-family: var(--font-display);
-          font-size: var(--text-sm);
-          font-weight: var(--weight-bold);
-          color: var(--text-primary);
-          letter-spacing: var(--tracking-wide);
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          font-size: var(--text-3xl);
+          font-weight: 700;
+          color: var(--text-primary, #ffffff);
+          margin: 0;
+          letter-spacing: var(--tracking-tight);
+          text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
         }
 
-        .store-category {
-          font-family: var(--font-primary);
-          font-size: var(--text-xs);
-          color: var(--text-secondary);
+        .panoramic-category {
+          font-family: var(--font-display);
+          font-size: var(--text-lg);
+          color: var(--text-secondary, rgba(255, 255, 255, 0.8));
           text-transform: uppercase;
           letter-spacing: var(--tracking-wider);
-          font-weight: var(--weight-semibold);
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          font-weight: 600;
+          margin: 0;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .store-neighborhood {
-          font-family: var(--font-mono);
-          font-size: var(--text-xs);
-          color: var(--text-secondary);
-          letter-spacing: var(--tracking-normal);
-          font-weight: var(--weight-medium);
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        .panoramic-neighborhood {
+          font-family: var(--font-display);
+          font-size: var(--text-base);
+          color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+          font-weight: 500;
+          margin: 0;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
-        .store-status {
-          margin-top: 0.5rem;
-          display: flex;
-          justify-content: center;
+        .panoramic-status {
+          margin: 0.5rem 0;
         }
 
-        .status-indicator {
-          font-family: var(--font-primary);
-          font-size: var(--text-xs);
-          font-weight: var(--weight-semibold);
-          padding: 0.25rem 0.75rem;
-          border-radius: 12px;
+        .status-badge {
+          font-family: var(--font-display);
+          font-size: var(--text-sm);
+          font-weight: 600;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
           text-transform: uppercase;
           letter-spacing: var(--tracking-wider);
           display: inline-flex;
           align-items: center;
-          gap: 0.25rem;
+          gap: 0.5rem;
         }
 
-        .status-indicator::before {
-          content: '';
-          width: 6px;
-          height: 6px;
+        .status-dot {
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
           display: inline-block;
+          animation: pulse 2s infinite;
         }
 
-        .status-indicator.open {
+        .status-badge.open {
           background: rgba(34, 197, 94, 0.15);
           color: #22c55e;
           border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
-        .status-indicator.open::before {
+        .status-badge.open .status-dot {
           background: #22c55e;
           box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
         }
 
-        .status-indicator.closed {
+        .status-badge.closed {
           background: rgba(239, 68, 68, 0.15);
           color: #ef4444;
           border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
-        .status-indicator.closed::before {
+        .status-badge.closed .status-dot {
           background: #ef4444;
           box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
         }
 
-        .car-glow {
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          right: -2px;
-          bottom: -2px;
-          background: linear-gradient(45deg,
-            rgba(255, 110, 87, 0.2) 0%,
-            rgba(255, 140, 66, 0.1) 25%,
-            rgba(87, 212, 255, 0.1) 50%,
-            rgba(255, 110, 87, 0.2) 75%,
-            rgba(212, 175, 55, 0.1) 100%);
-          background-size: 400% 400%;
-          border-radius: 18px;
-          animation: shimmer 6s linear infinite;
-          opacity: 0;
-          z-index: -1;
-          transition: opacity 0.3s ease;
+        .panoramic-actions {
+          display: flex;
+          gap: 1rem;
         }
 
-        .train-car:hover .car-glow {
-          opacity: 1;
+        .panoramic-visit-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 1rem 2rem;
+          background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+          border: none;
+          border-radius: 16px;
+          color: white;
+          font-family: var(--font-display);
+          font-size: var(--text-base);
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .car-reflection {
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-          transition: left 0.5s ease;
-          z-index: 1;
+        .panoramic-visit-btn:hover {
+          background: linear-gradient(135deg, #e6c547 0%, #c9971b 100%);
         }
 
-        .train-car:hover .car-reflection {
-          left: 100%;
+        .panoramic-visit-btn .btn-arrow {
+          font-size: 1.2rem;
+          transition: transform 0.3s ease;
         }
 
-        @keyframes shimmer {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+        .panoramic-visit-btn:hover .btn-arrow {
+          transform: translateX(4px);
         }
 
-        .train-stats {
+        .panoramic-nav {
+          width: 72px;
+          height: 72px;
+          background: rgba(212, 175, 55, 0.15);
+          backdrop-filter: blur(20px) saturate(180%) brightness(110%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(110%);
+          border: 2px solid rgba(212, 175, 55, 0.3);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          color: rgba(255, 255, 255, 0.9);
+          flex-shrink: 0;
+          z-index: 10;
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .panoramic-nav:hover:not(:disabled) {
+          background: rgba(212, 175, 55, 0.25);
+          border-color: rgba(212, 175, 55, 0.5);
+          color: #ffffff;
+          box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .panoramic-nav:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        .panoramic-nav svg {
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .panoramic-glow {
+          display: none;
+        }
+
+        .partners-stats {
           display: flex;
           justify-content: center;
-          gap: 3rem;
-          margin-top: 3rem;
-          padding-top: 2rem;
-          border-top: 1px solid rgba(255, 110, 87, 0.1);
+          gap: 4rem;
+          margin-top: 4rem;
+          padding-top: 3rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .stat {
+        .stat-item {
           text-align: center;
         }
 
         .stat-number {
           display: block;
           font-family: var(--font-display);
-          font-size: var(--text-2xl);
-          font-weight: var(--weight-bold);
-          color: var(--color-primary-600);
-          margin-bottom: 0.25rem;
+          font-size: var(--text-3xl);
+          font-weight: 700;
+          color: var(--accent-color, #d4af37);
+          margin-bottom: 0.5rem;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .stat-label {
-          font-family: var(--font-primary);
+          font-family: var(--font-display);
           font-size: var(--text-sm);
-          color: var(--text-secondary);
+          color: var(--text-secondary, rgba(255, 255, 255, 0.7));
           text-transform: uppercase;
           letter-spacing: var(--tracking-wider);
+          font-weight: 600;
         }
 
-        /* Responsive Design */
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-          .train-container {
+          .partners-container {
             padding: 0 1rem;
           }
 
-          .train-car {
-            min-width: 260px;
-            height: 120px;
-            padding: 1rem;
+          .panoramic-display {
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
           }
 
-          .train-stats {
+          .panoramic-nav {
+            width: 60px;
+            height: 60px;
+          }
+
+          .panoramic-store {
+            height: 300px;
+            padding: 2rem;
+          }
+
+          .panoramic-content {
+            flex-direction: column;
             gap: 1.5rem;
+            text-align: center;
+          }
+
+          .panoramic-brand {
+            flex: none;
+            height: 120px;
+          }
+
+          .panoramic-logo {
+            max-width: 180px;
+          }
+
+          .panoramic-info {
+            text-align: center;
+          }
+
+          .panoramic-name {
+            font-size: var(--text-2xl);
+          }
+
+          .panoramic-category {
+            font-size: var(--text-base);
+          }
+
+          .panoramic-visit-btn {
+            padding: 0.75rem 1.5rem;
+            font-size: var(--text-sm);
+          }
+
+          .partners-stats {
+            gap: 2rem;
             flex-wrap: wrap;
           }
 
           .stat-number {
-            font-size: var(--text-xl);
-          }
-
-          .stat-label {
-            font-size: var(--text-xs);
+            font-size: var(--text-2xl);
           }
         }
 
-        /* Reduce motion for accessibility */
+        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
-          .train-cars {
+          .panoramic-store,
+          .panoramic-glow,
+          .panoramic-nav,
+          .panoramic-logo,
+          .status-dot {
             animation: none;
-          }
-
-          .car-glow {
-            animation: none;
-          }
-        }
-
-        /* Dark mode adjustments */
-        @media (prefers-color-scheme: dark) {
-          .train-car {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            border: 1px solid rgba(255, 110, 87, 0.3);
-            box-shadow: 
-              0 8px 32px rgba(0, 0, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-          }
-
-          .brand-svg {
-            color: var(--text-primary);
-          }
-
-          .store-name {
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-          }
-
-          .store-category {
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-          }
-
-          .store-neighborhood {
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            transition: none;
           }
         }
       `}</style>

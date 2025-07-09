@@ -24,7 +24,7 @@ const CompactStoreSearch = () => {
     <div className="compact-store-search">
       <div className="search-container">
         <div className="search-header">
-          <h3>Find Any Store</h3>
+          <h3>FIND ANY STORE</h3>
           <p>Search our 53+ partner stores or request any store online</p>
         </div>
         

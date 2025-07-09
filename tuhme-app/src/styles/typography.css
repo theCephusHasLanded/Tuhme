@@ -26,8 +26,8 @@
 
 /* Typography Variables */
 :root {
-  /* Primary Font Stack - Blanc with Inter fallback */
-  --font-primary: 'Blanc', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Primary Font Stack - Using Bauhaus from hero throughout the app */
+  --font-primary: 'Bauhaus', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Display Font Stack - Bauhaus for headers */
   --font-display: 'Bauhaus', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
