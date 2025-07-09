@@ -14,14 +14,16 @@ const HorizontalStoreCarousel = () => {
   }, []);
 
   const handleStoreClick = (store) => {
-    // Generate WhatsApp link for the store
-    const whatsappLink = storeService.generateStoreWhatsAppLink(
-      store.id,
-      `Hi! I'd like to shop at ${store.name} through Tuhme. Can you help me place an order?`
-    );
+    // Direct navigation to store website
+    console.log('Store click handler called for:', store.name);
+    console.log('Store website:', store.website);
     
-    if (whatsappLink) {
-      window.open(whatsappLink, '_blank');
+    if (store.website) {
+      console.log('Opening store website:', store.website);
+      window.open(store.website, '_blank', 'noopener,noreferrer');
+    } else {
+      console.log('No website available for:', store.name);
+      alert(`Sorry, no website is available for ${store.name}`);
     }
   };
 
@@ -122,47 +124,10 @@ const HorizontalStoreCarousel = () => {
                     )}
                   </div>
 
-                  <div className="store-actions">
-                    <button className="action-btn primary" onClick={(e) => {
-                      e.stopPropagation();
-                      handleStoreClick(store);
-                    }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M2 6h12l-1 6H3L2 6zM2 6L1 2H0M6 10v2M10 10v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                      </svg>
-                      Shop Now
-                    </button>
-
-                    <button 
-                      className="action-btn secondary"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(store.website, '_blank');
-                      }}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1z" stroke="currentColor" strokeWidth="1.5"/>
-                        <path d="M1 8h14M8 1s3 3 3 7-3 7-3 7M8 1s-3 3-3 7 3 7 3 7" stroke="currentColor" strokeWidth="1.5"/>
-                      </svg>
-                      Visit Site
-                    </button>
-
-                    {store.instagram && (
-                      <button 
-                        className="action-btn secondary"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(`https://instagram.com/${store.instagram.replace('@', '')}`, '_blank');
-                        }}
-                      >
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                          <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.5"/>
-                          <circle cx="12" cy="4" r="0.5" fill="currentColor"/>
-                        </svg>
-                        @{store.instagram.replace('@', '')}
-                      </button>
-                    )}
+                  <div className="store-info-footer">
+                    <div className="store-note">
+                      <span>Available through TUHME</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -243,47 +208,10 @@ const HorizontalStoreCarousel = () => {
                     )}
                   </div>
 
-                  <div className="store-actions">
-                    <button className="action-btn primary" onClick={(e) => {
-                      e.stopPropagation();
-                      handleStoreClick(store);
-                    }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M2 6h12l-1 6H3L2 6zM2 6L1 2H0M6 10v2M10 10v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                      </svg>
-                      Shop Now
-                    </button>
-
-                    <button 
-                      className="action-btn secondary"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(store.website, '_blank');
-                      }}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1z" stroke="currentColor" strokeWidth="1.5"/>
-                        <path d="M1 8h14M8 1s3 3 3 7-3 7-3 7M8 1s-3 3-3 7 3 7 3 7" stroke="currentColor" strokeWidth="1.5"/>
-                      </svg>
-                      Visit Site
-                    </button>
-
-                    {store.instagram && (
-                      <button 
-                        className="action-btn secondary"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(`https://instagram.com/${store.instagram.replace('@', '')}`, '_blank');
-                        }}
-                      >
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                          <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.5"/>
-                          <circle cx="12" cy="4" r="0.5" fill="currentColor"/>
-                        </svg>
-                        @{store.instagram.replace('@', '')}
-                      </button>
-                    )}
+                  <div className="store-info-footer">
+                    <div className="store-note">
+                      <span>Available through TUHME</span>
+                    </div>
                   </div>
                 </div>
               </div>

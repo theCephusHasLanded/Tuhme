@@ -1,5 +1,5 @@
 
-const TuhmeIcon = ({ type, size = 32, className = '', color = 'currentColor' }) => {
+const TuhmeIcon = ({ type, size = 32, className = '', color = 'rgba(255, 255, 255, 0.9)' }) => {
   const getIconPath = (iconType) => {
     const baseStyle = {
       stroke: color,
@@ -13,34 +13,30 @@ const TuhmeIcon = ({ type, size = 32, className = '', color = 'currentColor' }) 
       case 'shopping':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <path d="M10 12h12l-1 8H11l-1-8z" fill={color} fillOpacity="0.1" />
-            <path d="M12 8v2m8-2v2" />
+            <path d="M6 8h20l-2 12H8L6 8z" fill={color} fillOpacity="0.2" stroke={color} strokeWidth="2" />
+            <path d="M10 6v2m12-2v2" stroke={color} strokeWidth="2" />
           </g>
         );
       
       case 'home':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <path d="M9 16l7-6 7 6v8a1 1 0 01-1 1h-4v-6h-4v6H9a1 1 0 01-1-1v-8z" fill={color} fillOpacity="0.1" />
+            <path d="M4 16l12-10 12 10v12a2 2 0 01-2 2h-6v-8h-8v8H6a2 2 0 01-2-2V16z" fill={color} fillOpacity="0.2" stroke={color} strokeWidth="2" />
           </g>
         );
       
       case 'payment':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <rect x="8" y="12" width="16" height="8" rx="2" fill={color} fillOpacity="0.1" />
-            <path d="M8 15h16" />
+            <rect x="4" y="8" width="24" height="16" rx="3" fill={color} fillOpacity="0.2" stroke={color} strokeWidth="2" />
+            <path d="M4 14h24" stroke={color} strokeWidth="2" />
           </g>
         );
       
       case 'delivery':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <path d="M7 17l5-5 5 5M12 12v9" />
+            <path d="M6 20l6-6 6 6M12 14v12" stroke={color} strokeWidth="2" />
           </g>
         );
       
@@ -56,18 +52,16 @@ const TuhmeIcon = ({ type, size = 32, className = '', color = 'currentColor' }) 
       case 'secure':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <path d="M12 14v-2a4 4 0 118 0v2" />
-            <rect x="10" y="14" width="12" height="6" rx="2" fill={color} fillOpacity="0.1" />
+            <path d="M8 16v-4a8 8 0 1116 0v4" stroke={color} strokeWidth="2" />
+            <rect x="6" y="16" width="20" height="10" rx="3" fill={color} fillOpacity="0.2" stroke={color} strokeWidth="2" />
           </g>
         );
       
       case 'professional':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <circle cx="16" cy="12" r="3" fill={color} fillOpacity="0.1" />
-            <path d="M12 22v-2a4 4 0 118 0v2" />
+            <circle cx="16" cy="10" r="5" fill={color} fillOpacity="0.2" stroke={color} strokeWidth="2" />
+            <path d="M8 26v-4a8 8 0 1116 0v4" stroke={color} strokeWidth="2" />
           </g>
         );
       
@@ -133,16 +127,30 @@ const TuhmeIcon = ({ type, size = 32, className = '', color = 'currentColor' }) 
       case 'event':
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <path d="M16 8l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6l2-6z" fill={color} fillOpacity="0.1" />
+            <path d="M16 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9l3-9z" fill={color} fillOpacity="0.2" stroke={color} strokeWidth="2" />
+          </g>
+        );
+      
+      case 'search':
+        return (
+          <g style={baseStyle}>
+            <circle cx="14" cy="14" r="8" stroke={color} strokeWidth="2" />
+            <path d="m24 24l-4-4" stroke={color} strokeWidth="2" />
+          </g>
+        );
+      
+      case 'globe':
+        return (
+          <g style={baseStyle}>
+            <circle cx="16" cy="16" r="12" stroke={color} strokeWidth="2" />
+            <path d="M4 16h24M16 4a16 16 0 008 12 16 16 0 00-8 12 16 16 0 00-8-12 16 16 0 008-12z" stroke={color} strokeWidth="2" />
           </g>
         );
       
       default:
         return (
           <g style={baseStyle}>
-            <circle cx="16" cy="16" r="12" strokeWidth="1.5" />
-            <circle cx="16" cy="16" r="2" fill={color} />
+            <circle cx="16" cy="16" r="4" fill={color} />
           </g>
         );
     }
@@ -155,10 +163,12 @@ const TuhmeIcon = ({ type, size = 32, className = '', color = 'currentColor' }) 
       viewBox="0 0 32 32"
       className={`tuhme-icon ${className}`}
       style={{ 
-        display: 'inline-block', 
-        verticalAlign: 'middle',
+        display: 'block', 
+        margin: '0 auto',
         flexShrink: 0,
-        marginRight: '0.5rem'
+        maxWidth: '100%',
+        maxHeight: '100%',
+        filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))'
       }}
     >
       {getIconPath(type)}

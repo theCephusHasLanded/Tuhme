@@ -21,7 +21,7 @@ const StoreDirectory = () => {
     const initializeStores = async () => {
       try {
         setIsLoading(true);
-        
+
         // Load stores
         const allStores = storeService.getAllStores();
         setStores(allStores);
@@ -51,7 +51,7 @@ const StoreDirectory = () => {
 
     // Category filter
     if (selectedCategory !== 'all') {
-      filtered = filtered.filter(store => 
+      filtered = filtered.filter(store =>
         store.category.toLowerCase().includes(selectedCategory.toLowerCase())
       );
     }
@@ -59,15 +59,15 @@ const StoreDirectory = () => {
     // Location filter
     if (selectedLocation !== 'all') {
       if (selectedLocation === 'manhattan') {
-        filtered = filtered.filter(store => 
+        filtered = filtered.filter(store =>
           storeService.getManhattanStores().some(ms => ms.id === store.id)
         );
       } else if (selectedLocation === 'brooklyn') {
-        filtered = filtered.filter(store => 
+        filtered = filtered.filter(store =>
           storeService.getBrooklynStores().some(bs => bs.id === store.id)
         );
       } else {
-        filtered = filtered.filter(store => 
+        filtered = filtered.filter(store =>
           store.neighborhood.toLowerCase().includes(selectedLocation.toLowerCase())
         );
       }
@@ -93,14 +93,16 @@ const StoreDirectory = () => {
   }, [stores]);
 
   const handleStoreClick = (store) => {
-    // Generate WhatsApp link for the store
-    const whatsappLink = storeService.generateStoreWhatsAppLink(
-      store.id,
-      `Hi! I'd like to shop at ${store.name} through Tuhme. Can you help me place an order?`
-    );
+    // Direct navigation to store website
+    console.log('Store click handler called for:', store.name);
+    console.log('Store website:', store.website);
     
-    if (whatsappLink) {
-      window.open(whatsappLink, '_blank');
+    if (store.website) {
+      console.log('Opening store website:', store.website);
+      window.open(store.website, '_blank', 'noopener,noreferrer');
+    } else {
+      console.log('No website available for:', store.name);
+      alert(`Sorry, no website is available for ${store.name}`);
     }
   };
 
@@ -108,7 +110,7 @@ const StoreDirectory = () => {
     const isOpen = storeService.isStoreOpen(store.id);
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const todayHours = store.hours[today];
-    
+
     return {
       isOpen,
       todayHours,
@@ -143,8 +145,8 @@ const StoreDirectory = () => {
       {ambientPhotos.length > 0 && (
         <div className="ambient-background">
           {ambientPhotos.slice(0, 3).map((photo, index) => (
-            <div 
-              key={photo.id} 
+            <div
+              key={photo.id}
               className={`ambient-photo ambient-photo-${index + 1}`}
               style={{
                 backgroundImage: `url(${photo.optimized.large})`,
@@ -157,12 +159,12 @@ const StoreDirectory = () => {
 
       <div className="container">
         {/* Store Logo Train */}
-        <StoreLogoTrain speed={60} direction="left" />
-        
+        <StoreLogoTrain />
+
         <div className="luxury-section-header">
           <h2 className="luxury-title">Exclusive Store Partners</h2>
           <p className="luxury-subtitle">
-            Discover Manhattan and Brooklyn's most prestigious boutiques and department stores. 
+            Discover Manhattan and Brooklyn's most prestigious boutiques and department stores.
             Our curated network of luxury retailers awaits your personal shopping experience.
           </p>
         </div>
@@ -182,7 +184,7 @@ const StoreDirectory = () => {
                 className="search-input"
               />
               {searchQuery && (
-                <button 
+                <button
                   className="clear-search"
                   onClick={() => setSearchQuery('')}
                 >
@@ -197,8 +199,8 @@ const StoreDirectory = () => {
           <div className="filter-section">
             <div className="filter-group">
               <label>Category</label>
-              <select 
-                value={selectedCategory} 
+              <select
+                value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="filter-select"
               >
@@ -211,8 +213,8 @@ const StoreDirectory = () => {
 
             <div className="filter-group">
               <label>Location</label>
-              <select 
-                value={selectedLocation} 
+              <select
+                value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
                 className="filter-select"
               >
@@ -229,8 +231,8 @@ const StoreDirectory = () => {
 
             <div className="filter-group">
               <label>Price Range</label>
-              <select 
-                value={selectedPriceRange} 
+              <select
+                value={selectedPriceRange}
                 onChange={(e) => setSelectedPriceRange(e.target.value)}
                 className="filter-select"
               >
@@ -242,7 +244,7 @@ const StoreDirectory = () => {
             </div>
 
             <div className="view-toggle">
-              <button 
+              <button
                 className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
                 onClick={() => setViewMode('grid')}
                 aria-label="Grid view"
@@ -254,7 +256,7 @@ const StoreDirectory = () => {
                   <rect x="12" y="12" width="6" height="6" fill="currentColor"/>
                 </svg>
               </button>
-              <button 
+              <button
                 className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
                 onClick={() => setViewMode('list')}
                 aria-label="List view"
@@ -280,11 +282,11 @@ const StoreDirectory = () => {
           {filteredStores.length > 0 ? (
             filteredStores.map((store) => {
               const hoursInfo = getStoreHours(store);
-              
+
               return (
                 <div key={store.id} className="store-card" onClick={() => handleStoreClick(store)}>
                   <div className="store-visual">
-                    <div 
+                    <div
                       className="store-svg"
                       dangerouslySetInnerHTML={{ __html: getBrandSVG(store.id) }}
                     />
@@ -356,7 +358,7 @@ const StoreDirectory = () => {
                         Shop Now
                       </button>
 
-                      <button 
+                      <button
                         className="action-btn secondary"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -371,7 +373,7 @@ const StoreDirectory = () => {
                       </button>
 
                       {store.instagram && (
-                        <button 
+                        <button
                           className="action-btn secondary"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -402,7 +404,7 @@ const StoreDirectory = () => {
               <h3>No stores found</h3>
               <p>Try adjusting your search criteria, browse all stores, or search for any store online.</p>
               <div className="no-results-actions">
-                <button 
+                <button
                   className="reset-filters-btn"
                   onClick={() => {
                     setSearchQuery('');
@@ -413,7 +415,7 @@ const StoreDirectory = () => {
                 >
                   Reset Filters
                 </button>
-                <button 
+                <button
                   className="search-any-store-btn"
                   onClick={() => setShowSearchModal(true)}
                 >
@@ -448,11 +450,11 @@ const StoreDirectory = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Store Search Modal */}
-      <StoreSearchModal 
-        isOpen={showSearchModal} 
-        onClose={() => setShowSearchModal(false)} 
+      <StoreSearchModal
+        isOpen={showSearchModal}
+        onClose={() => setShowSearchModal(false)}
       />
     </section>
   );

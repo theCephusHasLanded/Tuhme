@@ -45,24 +45,16 @@ const FloatingSaviBot = ({ onOpenSavi, showSavi }) => {
 
   return (
     <div className={`floating-savi-bot ${isAnimating ? 'pulse' : ''}`}>
-      <button 
-        className="savi-bot-button"
+      <div 
+        className="savi-bot-icon"
         onClick={handleClick}
         title="Ask SAVI for help"
       >
-        <div className="bot-icon">
-          <TuhmeIcon type="professional" size={20} />
-        </div>
+        <TuhmeIcon type="professional" size={32} />
         <div className="bot-tooltip">
           <span>{showSavi ? 'SAVI is open!' : 'Need help? Ask SAVI!'}</span>
           <div className="tooltip-arrow"></div>
         </div>
-      </button>
-      
-      <div className="bot-trail">
-        <div className="trail-dot"></div>
-        <div className="trail-dot"></div>
-        <div className="trail-dot"></div>
       </div>
     </div>
   );
