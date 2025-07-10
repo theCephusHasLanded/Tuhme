@@ -122,31 +122,13 @@ const GetInTouchModal = ({ isOpen, onClose }) => {
               <div className="contact-methods">
                 <div className="contact-method">
                   <div className="method-icon">
-                    <TuhmeIcon type="delivery" size={24} />
-                  </div>
-                  <div className="method-content">
-                    <h4>WhatsApp</h4>
-                    <p>Fastest response for orders and quick questions</p>
-                    <a 
-                      href="https://wa.me/16465889916" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="contact-link"
-                    >
-                      Message us now
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="method-icon">
                     <TuhmeIcon type="secure" size={24} />
                   </div>
                   <div className="method-content">
-                    <h4>Email</h4>
-                    <p>For partnerships, press inquiries, and detailed questions</p>
-                    <a href="mailto:hello@tuhme.com" className="contact-link">
-                      hello@tuhme.com
+                    <h4>Email Support</h4>
+                    <p>For orders, partnerships, press inquiries, and all questions</p>
+                    <a href="mailto:support@tuhme.com" className="contact-link">
+                      support@tuhme.com
                     </a>
                   </div>
                 </div>
@@ -189,12 +171,10 @@ const GetInTouchModal = ({ isOpen, onClose }) => {
                     How It Works
                   </button>
                   <a 
-                    href="https://wa.me/16465889916?text=Hi!%20I%20have%20a%20question%20about%20Tuhme"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:support@tuhme.com?subject=Question%20about%20TUHME"
                     className="action-button primary"
                   >
-                    <TuhmeIcon type="delivery" size={16} />
+                    <TuhmeIcon type="secure" size={16} />
                     Ask a Question
                   </a>
                 </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { createOrder } from '../services/orderService';
 
 const OrderSummary = ({ onPrev, orderData }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,9 +51,6 @@ const OrderSummary = ({ onPrev, orderData }) => {
     setIsSubmitting(true);
     
     try {
-      // Create order in Firebase
-      const savedOrder = await createOrder(orderData);
-      
       // Generate WhatsApp message
       const whatsappMessage = generateWhatsAppMessage();
       const whatsappUrl = `https://wa.me/16465889916?text=${whatsappMessage}`;

@@ -14,6 +14,7 @@ html {
 body {
   overflow-x: hidden;
   min-width: 320px;
+  touch-action: manipulation;
 }
 
 /* Container Responsive Fix */
@@ -23,6 +24,23 @@ body {
   padding-left: var(--space-4);
   padding-right: var(--space-4);
   margin: 0 auto;
+}
+
+/* Touch-friendly scrolling */
+* {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.main-website {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Enhanced Liquid Glass Components with Better Contrast */
@@ -97,6 +115,132 @@ body {
     flex-direction: column;
     gap: var(--space-3);
     align-items: stretch;
+  }
+}
+
+/* Store Train Mobile Enhancements */
+@media (max-width: 768px) {
+  .focal-partners-section {
+    overflow-x: hidden;
+    padding: var(--space-2xl) 0;
+  }
+  
+  .partners-container {
+    padding: 0 var(--space-sm);
+    overflow-x: hidden;
+  }
+  
+  .train-display {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .train-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    touch-action: pan-x;
+  }
+  
+  /* Mobile swipe indicators */
+  .train-viewport::before {
+    content: 'Swipe to explore stores';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--text-xs);
+    color: var(--tertiary-text);
+    z-index: 30;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  
+  /* Hide navigation arrows on very small screens */
+  @media (max-width: 480px) {
+    .train-nav {
+      display: none;
+    }
+    
+    .train-display {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .train-viewport {
+      margin: 0;
+    }
+  }
+}
+
+/* Progress Track Mobile Fix */
+@media (max-width: 768px) {
+  .progress-track {
+    padding: 0 var(--space-sm);
+    max-height: none;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: var(--space-xs);
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .progress-dot {
+    flex-shrink: 0;
+    min-width: 12px;
+  }
+}
+
+/* App-wide Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Ensure all sections are mobile-friendly */
+  section {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Button touch targets */
+  button, .btn, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Form inputs */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 44px;
+  }
+  
+  /* Cards and components spacing */
+  .card, .widget, .component {
+    margin-bottom: var(--space-md);
+  }
+  
+  /* Text readability */
+  p, .text {
+    line-height: 1.6;
+    font-size: var(--text-base);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+  
+  /* Even smaller screens */
+  .focal-partners-section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .partners-container {
+    padding: 0 var(--space-xs);
   }
   
   .hero-button {
@@ -459,16 +603,81 @@ body {
     gap: var(--space-6);
   }
   
-  .step {
-    text-align: center;
+  .step-card {
+    min-height: 200px;
+    padding: var(--space-6);
   }
   
-  .step-number {
-    margin: 0 auto var(--space-3);
+  .step-background-number {
+    width: 40px;
+    height: 40px;
+    top: 12px;
+    left: 12px;
+    font-size: var(--text-base);
+  }
+  
+  .step-corner-icon {
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 12px;
+  }
+  
+  .step-content {
+    margin-top: 52px;
+    padding: var(--space-3);
+  }
+  
+  .step-content h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-3);
+  }
+  
+  .step-description {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+  }
+  
+  .step-details {
+    font-size: var(--text-xs);
+    padding-top: var(--space-2);
   }
   
   .step-connector {
     display: none;
+  }
+}
+
+/* Mobile - Small screens */
+@media (max-width: 480px) {
+  .step-card {
+    min-height: 180px;
+    padding: var(--space-4);
+  }
+  
+  .step-background-number {
+    width: 36px;
+    height: 36px;
+    top: 8px;
+    left: 8px;
+    font-size: var(--text-sm);
+  }
+  
+  .step-corner-icon {
+    width: 28px;
+    height: 28px;
+    top: 8px;
+    right: 8px;
+  }
+  
+  .step-content {
+    margin-top: 44px;
+    padding: var(--space-2);
+  }
+  
+  .step-content h3 {
+    font-size: var(--text-base);
+    line-height: 1.2;
   }
 }
 

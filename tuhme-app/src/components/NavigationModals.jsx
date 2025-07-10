@@ -10,7 +10,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
     <div className="modal-overlay" onClick={closeModal}>
       <div className="modal-content mission-modal" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={closeModal}>×</button>
-        
+
         <div className="modal-header">
           <TuhmeIcon type="professional" size={40} />
           <h2>Our Mission</h2>
@@ -20,24 +20,24 @@ const NavigationModals = ({ activeModal, closeModal }) => {
           <div className="mission-statement">
             <h3>Revolutionizing Luxury Shopping</h3>
             <p>
-              At TUHME, we believe luxury shopping should be effortless, personal, and accessible. 
-              Our mission is to bridge the gap between high-end fashion and modern convenience, 
-              delivering curated luxury experiences directly to your doorstep.
+              At TUHME, we believe luxury shopping should be effortless, personal, and accessible.
+              Our mission is to bridge the gap between high-end fashion and modern convenience,
+              delivering curated personal shopping experiences directly to your doorstep.
             </p>
-            
+
             <div className="mission-pillars">
               <div className="pillar">
                 <TuhmeIcon type="delivery" size={24} />
                 <h4>Instant Access</h4>
                 <p>Same-day delivery of luxury items from premium retailers</p>
               </div>
-              
+
               <div className="pillar">
                 <TuhmeIcon type="professional" size={24} />
                 <h4>Personal Curation</h4>
                 <p>Expert stylists who understand your unique taste and preferences</p>
               </div>
-              
+
               <div className="pillar">
                 <TuhmeIcon type="secure" size={24} />
                 <h4>Trust & Quality</h4>
@@ -48,12 +48,12 @@ const NavigationModals = ({ activeModal, closeModal }) => {
             <div className="mission-vision">
               <h4>Our Vision</h4>
               <p>
-                To become the world's premier luxury concierge service, making high-end fashion 
+                To become the world's premier luxury concierge service, making high-end fashion
                 accessible to discerning customers who value quality, style, and convenience.
               </p>
             </div>
           </div>
-          
+
           <div className="modal-actions">
             <button className="modal-action-btn secondary" onClick={closeModal}>
               Close
@@ -74,7 +74,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
     <div className="modal-overlay" onClick={closeModal}>
       <div className="modal-content partner-modal" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={closeModal}>×</button>
-        
+
         <div className="modal-header">
           <TuhmeIcon type="shopping" size={40} />
           <h2>Partner With Us</h2>
@@ -84,8 +84,8 @@ const NavigationModals = ({ activeModal, closeModal }) => {
           <div className="partner-content">
             <h3>Join the TUHME Network</h3>
             <p>
-              We're looking for luxury retailers, boutiques, and fashion brands to join our 
-              exclusive network. Partner with us to reach discerning customers who value 
+              We're looking for luxury retailers, boutiques, and fashion brands to join our
+              exclusive network. Partner with us to reach discerning customers who value
               quality and convenience.
             </p>
 
@@ -95,13 +95,13 @@ const NavigationModals = ({ activeModal, closeModal }) => {
                 <h4>Increased Reach</h4>
                 <p>Access to our premium customer base</p>
               </div>
-              
+
               <div className="benefit">
                 <TuhmeIcon type="time" size={24} />
                 <h4>Same-Day Sales</h4>
                 <p>Convert browsers to buyers with instant delivery</p>
               </div>
-              
+
               <div className="benefit">
                 <TuhmeIcon type="professional" size={24} />
                 <h4>White-Glove Service</h4>
@@ -128,7 +128,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
               <p className="cta-subtitle">Let's discuss how we can grow together</p>
             </div>
           </div>
-          
+
           <div className="modal-actions">
             <button className="modal-action-btn secondary" onClick={closeModal}>
               Close
@@ -149,7 +149,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
     <div className="modal-overlay" onClick={closeModal}>
       <div className="modal-content luxury-modal" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={closeModal}>×</button>
-        
+
         <div className="modal-header">
           <TuhmeIcon type="professional" size={40} />
           <h2>Luxury Items & Concierge</h2>
@@ -157,9 +157,9 @@ const NavigationModals = ({ activeModal, closeModal }) => {
 
         <div className="modal-body">
           <div className="luxury-content">
-            <h3>Curated Luxury Collection</h3>
+            <h3>Personal Shopping Collection</h3>
             <p>
-              Discover an exclusive selection of luxury items from the world's most prestigious brands. 
+              Discover an exclusive selection of luxury items from the world's most prestigious brands.
               Our concierge service ensures you get exactly what you're looking for.
             </p>
 
@@ -169,19 +169,19 @@ const NavigationModals = ({ activeModal, closeModal }) => {
                 <h4>Designer Fashion</h4>
                 <p>Gucci, Prada, Louis Vuitton, Fendi</p>
               </div>
-              
+
               <div className="category">
                 <TuhmeIcon type="professional" size={24} />
                 <h4>Jewelry & Watches</h4>
                 <p>Tiffany & Co., Cartier, Rolex</p>
               </div>
-              
+
               <div className="category">
                 <TuhmeIcon type="delivery" size={24} />
                 <h4>Accessories</h4>
                 <p>Handbags, Shoes, Sunglasses</p>
               </div>
-              
+
               <div className="category">
                 <TuhmeIcon type="secure" size={24} />
                 <h4>Limited Editions</h4>
@@ -211,7 +211,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
               </p>
             </div>
           </div>
-          
+
           <div className="modal-actions">
             <button className="modal-action-btn secondary" onClick={closeModal}>
               Close
@@ -232,7 +232,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
     <div className="modal-overlay" onClick={closeModal}>
       <div className="modal-content tuhme-now-modal" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={closeModal}>×</button>
-        
+
         <div className="modal-header">
           <TuhmeIcon type="delivery" size={40} />
           <h2>TUHME Now</h2>
@@ -242,7 +242,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
           <div className="tuhme-now-content">
             <h3>Ultra-Fast Luxury Delivery</h3>
             <p>
-              Need something now? TUHME Now is our premium same-day delivery service 
+              Need something now? TUHME Now is our premium same-day delivery service
               for urgent luxury shopping needs.
             </p>
 
@@ -252,13 +252,13 @@ const NavigationModals = ({ activeModal, closeModal }) => {
                 <h4>2-Hour Delivery</h4>
                 <p>Get your luxury items in as fast as 2 hours</p>
               </div>
-              
+
               <div className="feature">
                 <TuhmeIcon type="delivery" size={24} />
                 <h4>Real-Time Tracking</h4>
                 <p>Follow your order from store to door</p>
               </div>
-              
+
               <div className="feature">
                 <TuhmeIcon type="professional" size={24} />
                 <h4>White Glove Service</h4>
@@ -307,7 +307,7 @@ const NavigationModals = ({ activeModal, closeModal }) => {
               </button>
             </div>
           </div>
-          
+
           <div className="modal-actions">
             <button className="modal-action-btn secondary" onClick={closeModal}>
               Close

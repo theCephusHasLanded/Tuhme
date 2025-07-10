@@ -43,6 +43,15 @@
   background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
 }
 
+.savi-toggle-button.has-notification {
+  animation: notification-pulse 2s ease-in-out infinite;
+}
+
+@keyframes notification-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .toggle-avatar {
   position: relative;
   width: 40px;
@@ -559,5 +568,164 @@
   
   .quick-actions-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Proactive Notification Styles */
+.savi-proactive-notification {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 320px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: slideInNotification 0.4s ease-out;
+  z-index: 999;
+}
+
+.savi-proactive-notification.animated-bounce {
+  animation: slideInNotification 0.4s ease-out, bounceAttention 2s ease-in-out 0.5s;
+}
+
+@keyframes slideInNotification {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounceAttention {
+  0%, 100% { transform: scale(1); }
+  10%, 20% { transform: scale(1.02); }
+  30%, 40% { transform: scale(1); }
+  50%, 60% { transform: scale(1.02); }
+  70%, 80% { transform: scale(1); }
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notification-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.notification-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.notification-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.notification-btn.primary {
+  background: linear-gradient(135deg, var(--savi-accent, #d4af37) 0%, rgba(212, 175, 55, 0.8) 100%);
+  color: #000;
+  flex: 1;
+}
+
+.notification-btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.notification-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.notification-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.notification-pointer {
+  position: absolute;
+  bottom: -8px;
+  right: 24px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(212, 175, 55, 0.3);
+}
+
+.notification-pointer::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid rgba(0, 0, 0, 0.95);
+}
+
+.status-indicator.pulsing {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Mobile responsive for notifications */
+@media (max-width: 768px) {
+  .savi-proactive-notification {
+    width: 280px;
+    bottom: 70px;
+    right: -10px;
+  }
+  
+  .notification-text {
+    font-size: 13px;
+  }
+  
+  .notification-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .savi-proactive-notification {
+    width: calc(100vw - 40px);
+    max-width: 260px;
+    bottom: 60px;
+    right: -5px;
+  }
+  
+  .notification-pointer {
+    right: 16px;
   }
 }

@@ -24,7 +24,8 @@ const MembershipModal = () => {
         'Exclusive store access',
         '24/7 concierge support',
         'Member-only pricing',
-        'No delivery fees'
+        'No delivery fees',
+        'Secure Stripe billing'
       ]
     },
     annual: {
@@ -37,7 +38,8 @@ const MembershipModal = () => {
         'Save $100 vs monthly',
         'Priority customer support',
         'Exclusive annual events',
-        'Early access to features'
+        'Early access to features',
+        'Annual Stripe subscription'
       ]
     }
   };
@@ -113,7 +115,7 @@ const MembershipModal = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          customerId: customer.firebaseId,
+          customerId: customer.id,
           planType: selectedPlan
         })
       });
@@ -156,10 +158,10 @@ const MembershipModal = () => {
 
   return (
     <div className="modal-overlay" onClick={() => closeModal('membership')}>
-      <div className="modal-content modal-large" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content modal-large liquid-glass-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>Join Tuhme Premium</h2>
-          <button className="modal-close" onClick={() => closeModal('membership')}>
+          <h2 className="liquid-glass-text">Join Tuhme Premium</h2>
+          <button className="modal-close liquid-glass-button" onClick={() => closeModal('membership')}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>

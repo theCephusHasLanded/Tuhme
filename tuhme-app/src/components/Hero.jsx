@@ -1,6 +1,7 @@
 
 import TuhmeIcon from './TuhmeIcon';
 import { useState, useEffect } from 'react';
+import colorSchemeManager from '../utils/colorSchemeManager';
 
 const Hero = ({ onStartExpressOrder }) => {
   const [currentHour, setCurrentHour] = useState(new Date().getHours());
@@ -19,9 +20,9 @@ const Hero = ({ onStartExpressOrder }) => {
     { primary: '#14141a', secondary: '#25252a', accent: '#bde0ff', name: 'Crystal Blue' },
     { primary: '#1a140f', secondary: '#2a251a', accent: '#ffd23f', name: 'Saffron Luxury' },
     { primary: '#141a1a', secondary: '#252a2a', accent: '#a663cc', name: 'Amethyst Elite' },
-    { primary: '#1a1914', secondary: '#2a2925', accent: '#ff6b35', name: 'Amber Prestige' },
+    { primary: '#1a1914', secondary: '#2a2925', accent: '#d4af37', name: 'Amber Prestige' },
     { primary: '#0f141a', secondary: '#1a252a', accent: '#4ecdc4', name: 'Turquoise Calm' },
-    { primary: '#1a0f0f', secondary: '#2a1a1a', accent: '#ff9a8b', name: 'Coral Sunset' },
+    { primary: '#1a0f0f', secondary: '#2a1a1a', accent: '#e6c2a6', name: 'Coral Sunset' },
     { primary: '#14141a', secondary: '#25252a', accent: '#f8f32b', name: 'Citrine Bright' },
     { primary: '#1a1a14', secondary: '#2a2a25', accent: '#95e1d3', name: 'Mint Elegance' },
     { primary: '#191014', secondary: '#2a1a25', accent: '#f38ba8', name: 'Peony Blush' },
@@ -29,7 +30,7 @@ const Hero = ({ onStartExpressOrder }) => {
     { primary: '#1a1414', secondary: '#2a2525', accent: '#ffd43b', name: 'Topaz Glow' },
     { primary: '#0f1a1a', secondary: '#1a2a2a', accent: '#b197fc', name: 'Lavender Dusk' },
     { primary: '#1a190f', secondary: '#2a291a', accent: '#69db7c', name: 'Jade Prosperity' },
-    { primary: '#1a0f19', secondary: '#2a1a29', accent: '#ffa8a8', name: 'Blush Elegance' },
+    { primary: '#1a0f19', secondary: '#2a1a29', accent: '#f1faee', name: 'Blush Elegance' },
     { primary: '#0f1a0f', secondary: '#1a2a1a', accent: '#82c91e', name: 'Peridot Fresh' },
     { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#d4af37', name: 'Classic Gold' }
   ];
@@ -38,11 +39,17 @@ const Hero = ({ onStartExpressOrder }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentHour(new Date().getHours());
+      const newHour = new Date().getHours();
+      setCurrentHour(newHour);
+      // Sync global color scheme with hero palette changes
+      colorSchemeManager.syncWithHero(currentPalette);
     }, 60000); // Check every minute
 
+    // Initial sync
+    colorSchemeManager.syncWithHero(currentPalette);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [currentPalette]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -58,23 +65,23 @@ const Hero = ({ onStartExpressOrder }) => {
 
   const backgroundStyle = {
     background: `
-      radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
-        ${currentPalette.accent}15 0%, 
-        ${currentPalette.primary}95 50%, 
+      radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%,
+        ${currentPalette.accent}15 0%,
+        ${currentPalette.primary}95 50%,
         ${currentPalette.secondary}98 100%),
-      linear-gradient(135deg, 
-        ${currentPalette.primary} 0%, 
+      linear-gradient(135deg,
+        ${currentPalette.primary} 0%,
         ${currentPalette.secondary} 100%)
     `,
   };
 
   return (
-    <header className="hero-luxury" style={backgroundStyle}>
+    <header className="hero-luxury" style={backgroundStyle} data-palette={currentPalette.name.toLowerCase().replace(' ', '-')}>
       <div className="luxury-particles">
         {[...Array(20)].map((_, i) => (
-          <div 
-            key={i} 
-            className="particle" 
+          <div
+            key={i}
+            className="particle"
             style={{
               '--delay': `${i * 0.3}s`,
               '--accent-color': currentPalette.accent,
@@ -85,22 +92,22 @@ const Hero = ({ onStartExpressOrder }) => {
           />
         ))}
       </div>
-      
+
       <div className="floating-elements">
-        <div 
+        <div
           className="floating-ring"
           style={{ '--accent-color': currentPalette.accent }}
         ></div>
-        <div 
+        <div
           className="floating-diamond"
           style={{ '--accent-color': currentPalette.accent }}
         ></div>
-        <div 
+        <div
           className="floating-cube"
           style={{ '--accent-color': currentPalette.accent }}
         ></div>
       </div>
-      
+
       <div className="hero-content-luxury">
         <div className="palette-indicator">
           <span className="palette-name">{currentPalette.name}</span>
@@ -110,20 +117,19 @@ const Hero = ({ onStartExpressOrder }) => {
         <div className="brand-section-luxury">
           <h1 className="brand-name-luxury">TUHME</h1>
           <div className="brand-line" style={{ background: currentPalette.accent }}></div>
-          <p className="brand-essence">Curated Luxury • Delivered</p>
+          <p className="brand-essence">Curated Personal Shopping • Delivered</p>
         </div>
-        
+
         <div className="hero-main-luxury">
           <h2 className="hero-title-luxury">
             <span className="title-line accent-text" style={{ color: currentPalette.accent }}>
               We'll Pay For It, And Bring The Store To You
             </span>
           </h2>
-          
+
           <div className="hero-description-luxury">
             <p className="description-text">
-              Experience luxury shopping reimagined. Our personal shoppers curate from Manhattan's finest boutiques, 
-              bringing selections directly to your home for private viewing.
+              Shop from any luxury store in Manhattan & Brooklyn without leaving home. We handle the shopping, you handle the styling. Try on items in comfort, pay for only what you keep.
             </p>
             <div className="luxury-promise">
               <div className="promise-item">
@@ -140,22 +146,21 @@ const Hero = ({ onStartExpressOrder }) => {
               </div>
             </div>
           </div>
-          
+
           <div className="cta-section-luxury">
-            <button 
-              className="primary-cta-luxury"
+            <button
+              className="primary-cta-luxury liquid-glass-button primary liquid-animate-shimmer"
               onClick={onStartExpressOrder}
-              style={{ 
+              style={{
                 '--accent-color': currentPalette.accent,
-                '--primary-color': currentPalette.primary 
+                '--primary-color': currentPalette.primary
               }}
             >
               <span className="cta-text">Begin Your Experience</span>
-              <div className="cta-glow" style={{ background: currentPalette.accent }}></div>
             </button>
-            
-            <button 
-              className="secondary-cta-luxury"
+
+            <button
+              className="secondary-cta-luxury liquid-glass-button"
               onClick={() => {
                 const element = document.getElementById('how-it-works');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -170,31 +175,9 @@ const Hero = ({ onStartExpressOrder }) => {
             <div className="availability-dot" style={{ background: currentPalette.accent }}></div>
             <span>Available in Manhattan & Brooklyn</span>
           </div>
-          
-          <div className="track-order-section">
-            <p className="track-order-label">Already have an order?</p>
-            <div className="track-order-form">
-              <input 
-                type="tel" 
-                placeholder="Enter your phone number"
-                className="phone-input"
-                id="track-phone"
-              />
-              <button 
-                className="track-button"
-                onClick={() => {
-                  const phone = document.getElementById('track-phone').value;
-                  if (phone.trim()) {
-                    window.dispatchEvent(new CustomEvent('trackOrder', { detail: { phone } }));
-                  }
-                }}
-              >
-                Track Order
-              </button>
-            </div>
-          </div>
+
         </div>
-        
+
 
         <div className="trust-indicators">
           <div className="indicator">

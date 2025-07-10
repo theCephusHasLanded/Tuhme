@@ -28,20 +28,11 @@ const ContactWidget = ({ variant = "default" }) => {
 
             <div className="contact-quick-links">
               <a 
-                href="https://wa.me/16465889916" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="quick-link whatsapp"
-              >
-                <TuhmeIcon type="delivery" size={18} />
-                <span>WhatsApp</span>
-              </a>
-              <a 
-                href="mailto:hello@tuhme.com"
+                href="mailto:support@tuhme.com"
                 className="quick-link email"
               >
                 <TuhmeIcon type="secure" size={18} />
-                <span>Email</span>
+                <span>Email Support</span>
               </a>
             </div>
           </div>

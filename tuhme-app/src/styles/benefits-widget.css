@@ -1,7 +1,7 @@
 /* Benefits Widget - Apple-inspired Design */
 .benefits-widget {
-  margin: 60px 0;
-  padding: 0 20px;
+  margin: var(--space-xl) 0;
+  padding: 0 var(--space-md);
 }
 
 .benefits-container {
@@ -180,7 +180,7 @@
 
 /* Variant Styles */
 .benefits-widget.compact {
-  margin: 40px 0;
+  margin: var(--space-lg) 0;
 }
 
 .benefits-widget.compact .benefits-container {
@@ -215,8 +215,8 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .benefits-widget {
-    margin: 40px 0;
-    padding: 0 16px;
+    margin: var(--space-lg) 0;
+    padding: 0 var(--space-sm);
   }
   
   .benefits-container {

@@ -15,7 +15,7 @@ const PricingWidget = ({ variant = "default" }) => {
         'Same-day delivery available',
         'Pay only for what you keep',
         'Professional shopping service',
-        'Secure Square payment'
+        'Secure payment via Square'
       ],
       popular: false,
       icon: 'shopping'
@@ -32,7 +32,7 @@ const PricingWidget = ({ variant = "default" }) => {
         'Same-day delivery available',
         'Pay only for what you keep',
         'Professional shopping service',
-        'Secure Square payment',
+        'Secure payment via Square',
         'Mix & match opportunities'
       ],
       popular: true,
@@ -50,7 +50,7 @@ const PricingWidget = ({ variant = "default" }) => {
         'Same-day delivery available',
         'Pay only for what you keep',
         'Professional shopping service',
-        'Secure Square payment',
+        'Secure payment via Square',
         'Complete styling session',
         'Maximum savings per item'
       ],
@@ -73,6 +73,9 @@ const PricingWidget = ({ variant = "default" }) => {
           <h2 className="pricing-title">Simple, Transparent Pricing</h2>
           <p className="pricing-subtitle">
             Choose the package that fits your shopping needs. Our shopper waits 15 minutes while you try everything on.
+          </p>
+          <p className="pricing-subtitle subscription-note">
+            Premium memberships available with secure Stripe-powered billing
           </p>
         </div>
 

@@ -41,9 +41,9 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
   const closeModal = () => setActiveModal(null);
 
   return (
-    <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navigation liquid-glass-nav ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="nav-logo" onClick={() => handleNavClick('home')}>
+        <div className="nav-logo liquid-glass-icon" onClick={() => handleNavClick('home')}>
           <img src={tuhmeLogo} alt="TUHME" className="nav-logo-image" />
         </div>
 
@@ -51,7 +51,7 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
           {navItems.map(item => (
             <button
               key={item.id}
-              className={`nav-item ${currentSection === item.id ? 'active' : ''}`}
+              className={`nav-item liquid-glass-nav-item ${currentSection === item.id ? 'active' : ''}`}
               onClick={() => handleNavClick(item)}
             >
               <span className="nav-item-text">{item.label}</span>
@@ -62,15 +62,19 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
 
         <div className="nav-actions">
           <button 
-            className="savi-button"
+            className="savi-button liquid-glass-icon accent liquid-animate-glow"
             onClick={onOpenSavi}
             title="Ask SAVI (AI Assistant)"
           >
-            <span className="savi-icon">S</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" opacity="0.3"/>
+              <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              <circle cx="12" cy="12" r="3" fill="currentColor" fillOpacity="0.1"/>
+            </svg>
           </button>
 
           <button 
-            className="feedback-button"
+            className="feedback-button liquid-glass-icon"
             onClick={onOpenFeedback}
             title="Send Feedback"
           >
@@ -80,19 +84,17 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
           <ThemeToggle />
           
           <button 
-            className="membership-button"
+            className="membership-button liquid-glass-button primary"
             onClick={() => openModal('membership')}
           >
             <span className="button-text">Join Premium</span>
-            <div className="button-shine"></div>
           </button>
           
           <button 
-            className="express-button"
+            className="express-button liquid-glass-button primary liquid-animate-shimmer"
             onClick={() => onNavigate('express-order')}
           >
             <span className="button-text">Start Express Order</span>
-            <div className="button-shine"></div>
           </button>
         </div>
 

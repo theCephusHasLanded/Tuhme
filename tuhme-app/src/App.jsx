@@ -32,7 +32,6 @@ import ServiceOverview from './components/ServiceOverview';
 import HowItWorks from './components/HowItWorks';
 import PricingWidget from './components/PricingWidget';
 import ProcessWidget from './components/ProcessWidget';
-import FAQWidget from './components/FAQWidget';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ExpressOrderFlow from './components/ExpressOrderFlow';
@@ -44,7 +43,6 @@ import Matrix3DInterface from './components/Matrix3DInterface';
 import SaviAssistant from './components/SaviAssistant';
 import FloatingSaviBot from './components/FloatingSaviBot';
 import FeedbackModal from './components/FeedbackModal';
-import InteractiveInfoSection from './components/InteractiveInfoSection';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -166,11 +164,6 @@ function App() {
             <section id="pricing" className="luxury-section">
               <PricingWidget />
               <ProcessWidget />
-              <FAQWidget />
-            </section>
-
-            <section id="delivery-info">
-              <InteractiveInfoSection />
             </section>
 
             <section id="gallery">

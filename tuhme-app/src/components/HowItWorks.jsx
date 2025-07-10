@@ -6,7 +6,7 @@ import HorizontalStoreCarousel from './HorizontalStoreCarousel';
 
 const HowItWorks = () => {
   const getIconComponent = (iconType) => {
-    return <TuhmeIcon type={iconType} size={32} />;
+    return <TuhmeIcon type={iconType} size={28} />;
   };
 
   const steps = [
@@ -72,35 +72,45 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="steps-container">
-          {steps.map((step, index) => (
-            <div key={step.number} className="step-card">
-              <div className="step-background-number">{step.number}</div>
-              <div className="step-corner-icon">{getIconComponent(step.icon)}</div>
-              
-              <div className="step-content">
-                <h3>{step.title}</h3>
-                <p className="step-description">{step.description}</p>
-                <span className="step-details">{step.details}</span>
-              </div>
+        <div className="how-it-works-layout">
+          <div className="left-content">
+            {/* Store Search and Carousel */}
+            <CompactStoreSearch />
+            <HorizontalStoreCarousel />
+            
+            <CallToActionWidget />
+            
+            <BenefitsWidget showBackground={true} />
+          </div>
 
-              {index < steps.length - 1 && (
-                <div className="step-connector">
-                  <div className="connector-line"></div>
-                  <div className="connector-arrow">→</div>
-                </div>
-              )}
+          <div className="right-content">
+            <div className="steps-header">
+              <h3 className="steps-title">The Process</h3>
+              <p className="steps-subtitle">Your journey from discovery to delivery</p>
             </div>
-          ))}
+            <div className="steps-container">
+              {steps.map((step, index) => (
+                <div key={step.number} className="step-card">
+                  <div className="step-background-number">{step.number}</div>
+                  <div className="step-corner-icon">{getIconComponent(step.icon)}</div>
+                  
+                  <div className="step-content">
+                    <h3>{step.title}</h3>
+                    <p className="step-description">{step.description}</p>
+                    <span className="step-details">{step.details}</span>
+                  </div>
+
+                  {index < steps.length - 1 && (
+                    <div className="step-connector">
+                      <div className="connector-line"></div>
+                      <div className="connector-arrow">→</div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-
-        {/* Store Search and Carousel */}
-        <CompactStoreSearch />
-        <HorizontalStoreCarousel />
-
-        <CallToActionWidget />
-
-        <BenefitsWidget showBackground={true} />
       </div>
     </section>
   );
