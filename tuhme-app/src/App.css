@@ -193,7 +193,7 @@ body {
 }
 
 .main-website section:not(#home) {
-  margin-top: -20px;
+  margin-top: var(--space-lg);
 }
 
 /* Luxury Section Styles */
