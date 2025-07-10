@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import colorSchemeManager from './utils/colorSchemeManager';
 import './styles/typography.css';
 import './styles/color-scheme.css';
 import './styles/color-overrides.css';
@@ -17,6 +18,13 @@ import './styles/enhanced-contrast.css';
 import './styles/enhanced-typography.css';
 import './styles/enhanced-accessibility.css';
 import './styles/luxury-hero.css';
+import './styles/compact-footer.css';
+import './styles/liquid-glass-system.css';
+import './styles/liquid-glass-integration.css';
+import './styles/global-color-scheme.css';
+import './styles/how-it-works-enhanced.css';
+import './styles/illusive-color-override.css';
+import './styles/interactive-info.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ModalProvider } from './contexts/ModalContext';
 import Navigation from './components/Navigation';
@@ -36,6 +44,7 @@ import Matrix3DInterface from './components/Matrix3DInterface';
 import SaviAssistant from './components/SaviAssistant';
 import FloatingSaviBot from './components/FloatingSaviBot';
 import FeedbackModal from './components/FeedbackModal';
+import InteractiveInfoSection from './components/InteractiveInfoSection';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -158,11 +167,9 @@ function App() {
               <PricingTiers />
             </section>
 
-
             <section id="delivery-info">
-              <DeliveryInfo />
+              <InteractiveInfoSection />
             </section>
-
 
             <section id="gallery">
               <CustomerTestimonials />
