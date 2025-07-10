@@ -4,7 +4,6 @@ import './styles/typography.css';
 import './styles/color-scheme.css';
 import './styles/color-overrides.css';
 import './styles/floating-effects.css';
-import './styles/typography-overrides.css';
 import './App.css';
 import './luxury-components.css';
 import './enhanced-upload.css';
@@ -31,8 +30,9 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import ServiceOverview from './components/ServiceOverview';
 import HowItWorks from './components/HowItWorks';
-import PricingTiers from './components/PricingTiers';
-import DeliveryInfo from './components/DeliveryInfo';
+import PricingWidget from './components/PricingWidget';
+import ProcessWidget from './components/ProcessWidget';
+import FAQWidget from './components/FAQWidget';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ExpressOrderFlow from './components/ExpressOrderFlow';
@@ -163,8 +163,10 @@ function App() {
               <HowItWorks />
             </section>
 
-            <section id="pricing">
-              <PricingTiers />
+            <section id="pricing" className="luxury-section">
+              <PricingWidget />
+              <ProcessWidget />
+              <FAQWidget />
             </section>
 
             <section id="delivery-info">

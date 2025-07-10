@@ -1,6 +1,6 @@
 /* Interactive Info Section Styles */
 .interactive-info-section {
-  padding: var(--space-16) 0;
+  padding: var(--space-xl) 0;
   background: linear-gradient(135deg, 
     var(--primary-bg) 0%, 
     var(--secondary-bg) 50%, 
@@ -26,19 +26,19 @@
 .info-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-md);
   position: relative;
   z-index: 2;
 }
 
 /* Category Styles */
 .info-category {
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-xl);
 }
 
 .category-header {
   text-align: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-lg);
 }
 
 .category-header h2 {

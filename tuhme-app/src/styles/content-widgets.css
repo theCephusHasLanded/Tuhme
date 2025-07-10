@@ -5,8 +5,16 @@
 .process-widget,
 .faq-widget,
 .delivery-widget {
-  margin: 80px 0;
-  padding: 0 20px;
+  margin: var(--space-lg) 0;
+  padding: 0 var(--space-md);
+}
+
+.delivery-info {
+  margin: var(--space-xl) 0;
+}
+
+.delivery-info .faq-widget {
+  margin-top: var(--space-lg);
 }
 
 .pricing-container,
@@ -21,14 +29,14 @@
   -webkit-backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
-  padding: 60px 48px;
+  padding: var(--space-xl) var(--space-lg);
   overflow: hidden;
 }
 
 /* Pricing Widget */
 .pricing-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: var(--space-xl);
 }
 
 .pricing-title {
