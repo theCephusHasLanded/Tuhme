@@ -2,12 +2,12 @@ import Stripe from 'stripe';
 
 class StripeService {
   constructor() {
-    this.stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY, {
+    this.stripe = new Stripe(import.meta.env.VITE_STRIPE_SECRET_KEY || 'sk_test_dummy_key', {
       apiVersion: '2024-12-18.acacia',
       typescript: false
     });
     
-    this.webhookSecret = import.meta.env.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET;
+    this.webhookSecret = import.meta.env.VITE_STRIPE_WEBHOOK_SECRET || 'whsec_dummy_secret';
     
     // Membership plans configuration
     this.membershipPlans = {

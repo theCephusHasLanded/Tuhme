@@ -460,7 +460,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
           />
         </div>
         {!isExpanded && (
-          <div className="toggle-text" style={{ color: '#ffffff' }}>
+          <div className="toggle-text" style={{ color: 'var(--primary-bg)' }}>
             <span>SAVI</span>
             <small style={{ color: currentPalette.accent }}>{getStatusText()}</small>
           </div>
@@ -484,7 +484,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
                 />
               </div>
               <div className="savi-details">
-                <h4 style={{ color: '#ffffff' }}>SAVI Assistant</h4>
+                <h4 style={{ color: 'var(--primary-bg)' }}>SAVI Assistant</h4>
                 <span className="savi-status" style={{ color: currentPalette.accent }}>
                   {getStatusText()}
                 </span>

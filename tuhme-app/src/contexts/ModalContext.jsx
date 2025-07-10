@@ -17,7 +17,9 @@ export const ModalProvider = ({ children }) => {
     cookies: false,
     aiAgent: false,
     newsletter: false,
-    membership: false
+    membership: false,
+    flyerGenerator: false,
+    dailySalesFlyer: false
   });
 
   const [cookieConsent, setCookieConsent] = useState(() => {
@@ -46,7 +48,9 @@ export const ModalProvider = ({ children }) => {
       cookies: false,
       aiAgent: false,
       newsletter: false,
-      membership: false
+      membership: false,
+      flyerGenerator: false,
+      dailySalesFlyer: false
     });
     document.body.style.overflow = 'unset';
   };

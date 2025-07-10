@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useModal } from '../contexts/ModalContext';
-import ThemeToggle from './ThemeToggle';
 import NavigationModals from './NavigationModals';
 import tuhmeLogo from '../assets/tuhme.png';
 
@@ -62,39 +61,71 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
 
         <div className="nav-actions">
           <button 
-            className="savi-button liquid-glass-icon accent liquid-animate-glow"
+            className="nav-icon-button flyer-button"
+            onClick={() => {
+              localStorage.removeItem('tuhme-daily-flyer-shown');
+              openModal('dailySalesFlyer');
+            }}
+            title="Daily Sales Flyer"
+          >
+            <div className="icon-container">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
+                <path d="M8 10l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="9" cy="9" r="1" fill="currentColor" opacity="0.6"/>
+                <circle cx="15" cy="9" r="1" fill="currentColor" opacity="0.6"/>
+                <circle cx="12" cy="15" r="1" fill="currentColor" opacity="0.6"/>
+              </svg>
+              <div className="icon-glow"></div>
+            </div>
+          </button>
+
+          <button 
+            className="nav-icon-button savi-button liquid-animate-glow"
             onClick={onOpenSavi}
             title="Ask SAVI (AI Assistant)"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" opacity="0.3"/>
-              <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <circle cx="12" cy="12" r="3" fill="currentColor" fillOpacity="0.1"/>
-            </svg>
+            <div className="icon-container">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
+                <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
+                <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.8"/>
+                <path d="M12 6v2M12 16v2M6 12h2M16 12h2" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
+              </svg>
+              <div className="icon-glow"></div>
+            </div>
           </button>
 
           <button 
-            className="feedback-button liquid-glass-icon"
+            className="nav-icon-button feedback-button"
             onClick={onOpenFeedback}
             title="Send Feedback"
           >
-            <span className="feedback-icon">💬</span>
+            <div className="icon-container">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
+                <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.5-.8 2.8-2 3.5v1.5h-4v-1.5c-1.2-.7-2-2-2-3.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                <circle cx="10" cy="10" r="0.5" fill="currentColor" opacity="0.7"/>
+                <circle cx="14" cy="10" r="0.5" fill="currentColor" opacity="0.7"/>
+              </svg>
+              <div className="icon-glow"></div>
+            </div>
           </button>
-
-          <ThemeToggle />
           
           <button 
-            className="membership-button liquid-glass-button primary"
+            className="nav-text-button membership-button"
             onClick={() => openModal('membership')}
           >
             <span className="button-text">Join Premium</span>
+            <div className="button-glow"></div>
           </button>
           
           <button 
-            className="express-button liquid-glass-button primary liquid-animate-shimmer"
+            className="nav-text-button express-button primary-accent"
             onClick={() => onNavigate('express-order')}
           >
             <span className="button-text">Start Express Order</span>
+            <div className="button-glow"></div>
           </button>
         </div>
 

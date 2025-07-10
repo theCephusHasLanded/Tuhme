@@ -1,5 +1,5 @@
 
-const TuhmeIcon = ({ type, size = 32, className = '', color = 'rgba(255, 255, 255, 0.9)' }) => {
+const TuhmeIcon = ({ type, size = 32, className = '', color = 'var(--primary-text)' }) => {
   const getIconPath = (iconType) => {
     const baseStyle = {
       stroke: color,

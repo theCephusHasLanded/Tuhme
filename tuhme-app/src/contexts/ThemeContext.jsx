@@ -11,32 +11,28 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('tuhme-theme');
-    if (saved) return JSON.parse(saved);
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  // Force perpetual dark mode
+  const [isDarkMode] = useState(true);
+  const [isTransitioning] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('tuhme-theme', JSON.stringify(isDarkMode));
-    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
+    // Always set to dark mode
+    document.documentElement.setAttribute('data-theme', 'dark');
+    // Remove any stored theme preference
+    localStorage.removeItem('tuhme-theme');
+  }, []);
 
+  // Disabled toggle function
   const toggleTheme = () => {
-    setIsTransitioning(true);
-    setIsDarkMode(!isDarkMode);
-    
-    // Remove transition class after animation completes
-    setTimeout(() => setIsTransitioning(false), 500);
+    // No-op - theme switching disabled
+    console.log('Theme switching disabled - app is in perpetual dark mode');
   };
 
   const value = {
-    isDarkMode,
+    isDarkMode: true,
     toggleTheme,
-    isTransitioning,
-    theme: isDarkMode ? 'dark' : 'light'
+    isTransitioning: false,
+    theme: 'dark'
   };
 
   return (

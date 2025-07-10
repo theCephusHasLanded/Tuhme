@@ -100,6 +100,267 @@ const ServiceOverview = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .service-overview {
+          padding: var(--space-3xl) 0;
+          background: var(--primary-bg);
+          margin: var(--space-2xl) 0;
+        }
+
+        .container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 var(--space-lg);
+        }
+
+        .service-intro {
+          text-align: center;
+          margin-bottom: var(--space-3xl);
+          padding: var(--space-2xl) 0;
+        }
+
+        .luxury-title {
+          font-family: var(--font-family-primary);
+          font-size: var(--text-4xl);
+          font-weight: 700;
+          color: var(--primary-text);
+          margin: 0 0 var(--space-xl) 0;
+          letter-spacing: -0.02em;
+          line-height: 1.1;
+        }
+
+        .luxury-subtitle {
+          font-family: var(--font-family-secondary);
+          font-size: var(--text-lg);
+          color: var(--tertiary-text);
+          max-width: 800px;
+          margin: 0 auto;
+          line-height: 1.7;
+          padding: 0 var(--space-lg);
+        }
+
+        .service-features {
+          margin-bottom: var(--space-3xl);
+          padding: var(--space-2xl) 0;
+        }
+
+        .feature-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: var(--space-2xl);
+          margin-bottom: var(--space-3xl);
+        }
+
+        .feature-card {
+          background: var(--tertiary-bg);
+          border: 1px solid var(--border-light);
+          border-radius: 16px;
+          padding: var(--space-2xl);
+          transition: all var(--transition-normal);
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-lg);
+        }
+
+        .feature-card:hover {
+          border-color: var(--border-medium);
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-strong);
+        }
+
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          background: var(--accent-primary)15;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: var(--space-md);
+          color: var(--accent-primary);
+        }
+
+        .feature-card h3 {
+          font-family: var(--font-family-primary);
+          font-size: var(--text-xl);
+          font-weight: 700;
+          color: var(--primary-text);
+          margin: 0 0 var(--space-md) 0;
+          line-height: 1.3;
+        }
+
+        .feature-card p {
+          font-family: var(--font-family-secondary);
+          font-size: var(--text-base);
+          color: var(--secondary-text);
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        .lifestyle-section {
+          background: var(--secondary-bg);
+          border: 1px solid var(--border-light);
+          border-radius: 20px;
+          padding: var(--space-3xl);
+          margin-top: var(--space-3xl);
+        }
+
+        .lifestyle-content h3 {
+          font-family: var(--font-family-primary);
+          font-size: var(--text-3xl);
+          font-weight: 700;
+          color: var(--primary-text);
+          text-align: center;
+          margin: 0 0 var(--space-2xl) 0;
+          line-height: 1.2;
+        }
+
+        .lifestyle-scenarios {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: var(--space-2xl);
+        }
+
+        .scenario {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--space-lg);
+          padding: var(--space-xl);
+          background: var(--tertiary-bg);
+          border: 1px solid var(--border-light);
+          border-radius: 12px;
+          transition: all var(--transition-normal);
+        }
+
+        .scenario:hover {
+          border-color: var(--border-medium);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-medium);
+        }
+
+        .scenario-icon {
+          width: 48px;
+          height: 48px;
+          background: var(--accent-primary)20;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          color: var(--accent-primary);
+        }
+
+        .scenario-text {
+          flex: 1;
+        }
+
+        .scenario-text h4 {
+          font-family: var(--font-family-primary);
+          font-size: var(--text-lg);
+          font-weight: 600;
+          color: var(--primary-text);
+          margin: 0 0 var(--space-sm) 0;
+          line-height: 1.3;
+        }
+
+        .scenario-text p {
+          font-family: var(--font-family-secondary);
+          font-size: var(--text-sm);
+          color: var(--secondary-text);
+          line-height: 1.5;
+          margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .service-overview {
+            padding: var(--space-2xl) 0;
+            margin: var(--space-xl) 0;
+          }
+
+          .container {
+            padding: 0 var(--space-md);
+          }
+
+          .service-intro {
+            padding: var(--space-xl) 0;
+            margin-bottom: var(--space-2xl);
+          }
+
+          .luxury-title {
+            font-size: var(--text-3xl);
+          }
+
+          .luxury-subtitle {
+            font-size: var(--text-base);
+            padding: 0 var(--space-sm);
+          }
+
+          .feature-grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+          }
+
+          .feature-card {
+            padding: var(--space-xl);
+          }
+
+          .lifestyle-section {
+            padding: var(--space-2xl);
+          }
+
+          .lifestyle-content h3 {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-xl);
+          }
+
+          .lifestyle-scenarios {
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+          }
+
+          .scenario {
+            padding: var(--space-lg);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .service-overview {
+            padding: var(--space-xl) 0;
+          }
+
+          .container {
+            padding: 0 var(--space-sm);
+          }
+
+          .feature-card {
+            padding: var(--space-lg);
+            gap: var(--space-md);
+          }
+
+          .feature-icon {
+            width: 48px;
+            height: 48px;
+          }
+
+          .lifestyle-section {
+            padding: var(--space-xl);
+          }
+
+          .scenario {
+            flex-direction: column;
+            text-align: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+          }
+
+          .scenario-icon {
+            margin: 0 auto;
+          }
+        }
+      `}</style>
     </section>
   );
 };

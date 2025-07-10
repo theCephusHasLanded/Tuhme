@@ -1,4 +1,5 @@
-import { Client, LocalAuth, MessageMedia } from 'whatsapp-web.js';
+import pkg from 'whatsapp-web.js';
+const { Client, LocalAuth, MessageMedia } = pkg;
 import qrcode from 'qrcode-terminal';
 import path from 'path';
 
@@ -14,7 +15,7 @@ class WhatsAppService {
       this.client = new Client({
         authStrategy: new LocalAuth({
           clientId: "tuhme-client",
-          dataPath: process.env.WHATSAPP_SESSION_PATH || './whatsapp-session'
+          dataPath: import.meta.env.VITE_WHATSAPP_SESSION_PATH || './whatsapp-session'
         }),
         puppeteer: {
           headless: true,
@@ -153,7 +154,7 @@ Send us screenshots of items you want, and we'll handle the rest!
 
 Questions? Just reply to this message.
 
-Welcome to luxury shopping made simple! 💎`;
+Welcome to local shopping made simple! 💎`;
 
     return await this.sendMessage(phoneNumber, message);
   }
@@ -217,7 +218,7 @@ ${expiryData.autoRenewal ?
   'Your membership will auto-renew. No action needed!' : 
   'To continue enjoying premium benefits, please renew your membership.'}
 
-Renew now: ${process.env.VITE_APP_URL}/membership
+Renew now: ${import.meta.env.VITE_APP_URL || window.location.origin}/membership
 
 Don't lose access to:
 • Priority shopping
@@ -280,7 +281,7 @@ Transform your shopping experience:
 3. Try on at home (15 minutes)
 4. Pay for what you keep
 
-Join now: ${process.env.VITE_APP_URL}/membership
+Join now: ${import.meta.env.VITE_APP_URL || window.location.origin}/membership
 
 Questions? Just reply! ✨`;
 
@@ -293,7 +294,7 @@ Questions? Just reply! ✨`;
 
 To check your order status, please provide your order number or check your dashboard:
 
-🌐 Dashboard: ${process.env.VITE_APP_URL}/dashboard
+🌐 Dashboard: ${import.meta.env.VITE_APP_URL || window.location.origin}/dashboard
 
 Or reply with your order number (e.g., "TH001234").
 

@@ -162,10 +162,10 @@ const StoreDirectory = () => {
         <StoreLogoTrain />
 
         <div className="luxury-section-header">
-          <h2 className="luxury-title">Exclusive Store Partners</h2>
+          <h2 className="luxury-title">Local Store Partners</h2>
           <p className="luxury-subtitle">
-            Discover Manhattan and Brooklyn's most prestigious boutiques and department stores.
-            Our curated network of luxury retailers awaits your personal shopping experience.
+            Discover Manhattan and Brooklyn's finest local boutiques and neighborhood stores.
+            Our curated network of community retailers awaits your personal shopping experience.
           </p>
         </div>
 

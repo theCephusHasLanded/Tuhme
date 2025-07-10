@@ -397,7 +397,7 @@ const MembershipModal = () => {
                     Processing...
                   </>
                 ) : (
-                  'Complete Membership'
+                  'Claim Membership'
                 )}
               </button>
             )}

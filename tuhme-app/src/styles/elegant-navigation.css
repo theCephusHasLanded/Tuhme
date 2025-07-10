@@ -1,0 +1,206 @@
+/* Elegant Navigation - SAVI-Style Icons */
+
+/* Icon Buttons */
+.nav-icon-button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-icon-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 25px -8px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.nav-icon-button:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.nav-icon-button:hover .icon-glow {
+  opacity: 1;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* SAVI Button Special Animation */
+.savi-button.liquid-animate-glow .icon-glow {
+  animation: saviGlow 3s ease-in-out infinite;
+}
+
+@keyframes saviGlow {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+}
+
+/* Text Buttons */
+.nav-text-button {
+  position: relative;
+  padding: 12px 24px;
+  border: none;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.nav-text-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 25px -8px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.nav-text-button.primary-accent {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.nav-text-button.primary-accent:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.button-text {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.nav-text-button:hover .button-text {
+  color: #d4af37;
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.nav-text-button:hover .button-glow {
+  left: 100%;
+}
+
+/* Navigation Actions Container */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .nav-actions {
+    gap: 8px;
+  }
+  
+  .nav-icon-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-text-button {
+    padding: 10px 16px;
+  }
+  
+  .button-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-text-button .button-text {
+    display: none;
+  }
+  
+  .nav-text-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 12px;
+  }
+  
+  .nav-text-button::before {
+    content: '★';
+    color: #d4af37;
+    font-size: 16px;
+  }
+  
+  .nav-text-button.primary-accent::before {
+    content: '⚡';
+  }
+}

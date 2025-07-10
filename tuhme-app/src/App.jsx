@@ -24,6 +24,8 @@ import './styles/global-color-scheme.css';
 import './styles/how-it-works-enhanced.css';
 import './styles/illusive-color-override.css';
 import './styles/interactive-info.css';
+import './styles/elegant-navigation.css';
+import './styles/hero-matched-modals.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ModalProvider } from './contexts/ModalContext';
 import Navigation from './components/Navigation';
@@ -43,6 +45,9 @@ import Matrix3DInterface from './components/Matrix3DInterface';
 import SaviAssistant from './components/SaviAssistant';
 import FloatingSaviBot from './components/FloatingSaviBot';
 import FeedbackModal from './components/FeedbackModal';
+import FlyerGeneratorModal from './components/FlyerGeneratorModal';
+import DailySalesFlyer from './components/DailySalesFlyer';
+import DailySalesFlyerManager from './components/DailySalesFlyerManager';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -178,6 +183,9 @@ function App() {
           <Footer />
           <ModalsSystem />
           <MembershipModal />
+          <FlyerGeneratorModal />
+          <DailySalesFlyer />
+          <DailySalesFlyerManager />
           {showSavi && (
             <SaviAssistant 
               isOpen={showSavi}

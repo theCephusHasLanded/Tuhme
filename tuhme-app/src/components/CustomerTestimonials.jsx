@@ -11,7 +11,7 @@ const CustomerTestimonials = () => {
       location: "Tribeca",
       avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
       rating: 5,
-      text: "The convenience is unmatched. Same-day delivery from multiple boutiques, and their stylists really understand luxury fashion.",
+      text: "The convenience is unmatched. Same-day delivery from multiple boutiques, and their stylists really understand local fashion.",
       service: "Personal Shopping"
     },
     {
@@ -20,7 +20,7 @@ const CustomerTestimonials = () => {
       location: "SoHo",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
       rating: 5,
-      text: "I discovered brands I never knew existed. TUHME's curation is impeccable - they bring the entire luxury ecosystem to your doorstep.",
+      text: "I discovered brands I never knew existed. TUHME's curation is impeccable - they bring the entire local shopping ecosystem to your doorstep.",
       service: "Brand Discovery"
     },
     {
@@ -47,7 +47,7 @@ const CustomerTestimonials = () => {
       location: "Financial District",
       avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
       rating: 5,
-      text: "Finally, a service that understands luxury menswear. From Tom Ford suits to casual Brunello Cucinelli - they get it right.",
+      text: "Finally, a service that understands quality menswear. From designer suits to casual local brands - they get it right.",
       service: "Menswear Specialist"
     },
     {
@@ -89,7 +89,7 @@ const CustomerTestimonials = () => {
         <div className="testimonials-header">
           <h2 className="testimonials-title">What Our Clients Say</h2>
           <p className="testimonials-subtitle">
-            Join thousands of satisfied customers who've discovered luxury shopping reimagined
+            Join thousands of satisfied customers who've discovered local shopping reimagined
           </p>
         </div>
 
@@ -157,8 +157,8 @@ const CustomerTestimonials = () => {
             <span className="stat-label">Customer Satisfaction</span>
           </div>
           <div className="stat">
-            <span className="stat-number">$2.3M+</span>
-            <span className="stat-label">In Luxury Goods Delivered</span>
+            <span className="stat-number">500+</span>
+            <span className="stat-label">Local Stores Supported</span>
           </div>
           <div className="stat">
             <span className="stat-number">24hr</span>

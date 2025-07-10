@@ -1,5 +1,6 @@
 class StoreService {
   constructor() {
+    this.salesMonitoringEnabled = true;
     this.manhattanStores = [
       // Luxury Department Stores
       {
@@ -1720,6 +1721,31 @@ class StoreService {
     const businessPhone = import.meta.env.VITE_WHATSAPP_BUSINESS_PHONE || '+16465889916';
     
     return `https://wa.me/${businessPhone.replace(/[^\d]/g, '')}?text=${encodedMessage}`;
+  }
+
+  // Support for sales monitoring integration
+  getStoresForSalesMonitoring() {
+    return this.allStores.map(store => ({
+      id: store.id,
+      name: store.name,
+      category: store.category,
+      website: store.website,
+      salesApiEndpoint: this.getSalesApiEndpoint(store.id)
+    }));
+  }
+
+  getSalesApiEndpoint(storeId) {
+    // Mock API endpoints for sales data
+    const salesEndpoints = {
+      'nordstrom-nyc': 'https://api.nordstrom.com/sales',
+      'bergdorf-goodman': 'https://api.bergdorfgoodman.com/promotions',
+      'saks-fifth-avenue': 'https://api.saks.com/sales',
+      'zara-soho': 'https://api.zara.com/promotions',
+      'nike-soho': 'https://api.nike.com/clearance',
+      'sephora-soho': 'https://api.sephora.com/sales'
+    };
+    
+    return salesEndpoints[storeId] || null;
   }
 
   // Export store data

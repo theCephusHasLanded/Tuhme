@@ -261,7 +261,7 @@ const ShopperDashboard = ({ shopperPhone = '16465889916', shopperName = 'TUHME S
           margin-top: 1rem;
           padding: 0.5rem 1rem;
           background: var(--accent-primary);
-          color: white;
+          color: var(--primary-bg);
           border: none;
           border-radius: 4px;
           cursor: pointer;
@@ -313,7 +313,7 @@ const ShopperDashboard = ({ shopperPhone = '16465889916', shopperName = 'TUHME S
         .status-badge {
           padding: 0.25rem 0.75rem;
           border-radius: 20px;
-          color: white;
+          color: var(--primary-bg);
           font-size: 0.8rem;
           font-weight: 600;
         }
@@ -346,7 +346,7 @@ const ShopperDashboard = ({ shopperPhone = '16465889916', shopperName = 'TUHME S
 
         .update-status-btn {
           background: var(--accent-primary);
-          color: white;
+          color: var(--primary-bg);
           border: none;
           padding: 0.75rem 1.5rem;
           border-radius: 6px;
@@ -443,7 +443,7 @@ const ShopperDashboard = ({ shopperPhone = '16465889916', shopperName = 'TUHME S
           padding: 0.75rem 1rem;
           border: none;
           border-radius: 6px;
-          color: white;
+          color: var(--primary-bg);
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
