@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import colorSchemeManager from './utils/colorSchemeManager';
+import './styles/theme-system.css';
+import './styles/theme-overrides.css';
 import './styles/typography.css';
 import './styles/color-scheme.css';
 import './styles/color-overrides.css';
@@ -27,6 +29,7 @@ import './styles/interactive-info.css';
 import './styles/elegant-navigation.css';
 import './styles/hero-matched-modals.css';
 import { ThemeProvider } from './contexts/ThemeContext';
+import ThemeSystemProvider from './contexts/ThemeSystemContext';
 import { ModalProvider } from './contexts/ModalContext';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -48,6 +51,7 @@ import FeedbackModal from './components/FeedbackModal';
 import FlyerGeneratorModal from './components/FlyerGeneratorModal';
 import DailySalesFlyer from './components/DailySalesFlyer';
 import DailySalesFlyerManager from './components/DailySalesFlyerManager';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -100,51 +104,62 @@ function App() {
 
   if (showMatrix) {
     return (
-      <ThemeProvider>
-        <ModalProvider>
-          <div className="app">
-            <Matrix3DInterface isActive={showMatrix} onClose={() => setShowMatrix(false)} />
-            <ModalsSystem />
-          </div>
-        </ModalProvider>
-      </ThemeProvider>
+      <ThemeSystemProvider>
+        <ThemeProvider>
+          <ModalProvider>
+            <div className="app">
+              <ThemeToggle />
+              <Matrix3DInterface isActive={showMatrix} onClose={() => setShowMatrix(false)} />
+              <ModalsSystem />
+            </div>
+          </ModalProvider>
+        </ThemeProvider>
+      </ThemeSystemProvider>
     );
   }
 
   if (showDashboard) {
     return (
-      <ThemeProvider>
-        <ModalProvider>
-          <div className="app">
-            <UserDashboard userPhone={userPhone} onBack={backToWebsite} />
-            <ModalsSystem />
-          </div>
-        </ModalProvider>
-      </ThemeProvider>
+      <ThemeSystemProvider>
+        <ThemeProvider>
+          <ModalProvider>
+            <div className="app">
+              <ThemeToggle />
+              <UserDashboard userPhone={userPhone} onBack={backToWebsite} />
+              <ModalsSystem />
+            </div>
+          </ModalProvider>
+        </ThemeProvider>
+      </ThemeSystemProvider>
     );
   }
 
   if (showExpressFlow) {
     return (
-      <ThemeProvider>
-        <ModalProvider>
-          <div className="app">
-            <ExpressOrderFlow 
-              onBack={backToWebsite} 
-              onNavigate={handleNavigation}
-              currentSection={currentSection}
-            />
-            <ModalsSystem />
-          </div>
-        </ModalProvider>
-      </ThemeProvider>
+      <ThemeSystemProvider>
+        <ThemeProvider>
+          <ModalProvider>
+            <div className="app">
+              <ThemeToggle />
+              <ExpressOrderFlow 
+                onBack={backToWebsite} 
+                onNavigate={handleNavigation}
+                currentSection={currentSection}
+              />
+              <ModalsSystem />
+            </div>
+          </ModalProvider>
+        </ThemeProvider>
+      </ThemeSystemProvider>
     );
   }
 
   return (
-    <ThemeProvider>
-      <ModalProvider>
+    <ThemeSystemProvider>
+      <ThemeProvider>
+        <ModalProvider>
         <div className="app">
+          <ThemeToggle />
           <Navigation 
             onNavigate={handleNavigation} 
             currentSection={currentSection} 
@@ -207,6 +222,7 @@ function App() {
         </div>
       </ModalProvider>
     </ThemeProvider>
+  </ThemeSystemProvider>
   );
 }
 

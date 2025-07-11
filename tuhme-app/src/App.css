@@ -1111,7 +1111,17 @@ body {
   cursor: pointer;
   transition: all var(--transition-normal);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+  box-shadow: 
+    var(--shadow-large),
+    0 0 0 2px rgba(212, 175, 55, 0.15);
+  z-index: 3;
 }
 
 .plan-card.selected {
@@ -1129,6 +1139,12 @@ body {
     0 0 60px rgba(212, 175, 55, 0.3);
   background: linear-gradient(135deg, var(--tertiary-bg) 0%, rgba(212, 175, 55, 0.05) 100%);
   animation: planPulse 3s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+.plan-card.featured:hover {
+  transform: translateY(-4px) scale(1.02);
+  z-index: 4;
 }
 
 @keyframes planPulse {
@@ -1149,9 +1165,25 @@ body {
 }
 
 .plan-badge {
-  display: none;
+  display: block;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--accent-primary);
+  color: var(--primary-bg);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 6px;
+  font-size: var(--text-xs);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.plan-card:hover .plan-badge {
+  background: var(--accent-secondary);
+  transform: scale(1.05);
 }
 
 .plan-header {
