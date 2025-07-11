@@ -74,6 +74,38 @@ const DailySalesFlyer = () => {
     }
   };
 
+  const getStoreImage = (storeName, category) => {
+    const storeImageMap = {
+      'Nike': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop&crop=center',
+      'Adidas': 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5e?w=800&h=600&fit=crop&crop=center',
+      'Zara': 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop&crop=center',
+      'H&M': 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&crop=center',
+      'Uniqlo': 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&h=600&fit=crop&crop=center',
+      'Sephora': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=600&fit=crop&crop=center',
+      'Ulta': 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=600&fit=crop&crop=center',
+      'Target': 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop&crop=center',
+      'Walmart': 'https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=800&h=600&fit=crop&crop=center',
+      'Macy\'s': 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop&crop=center',
+      'Nordstrom': 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&crop=center',
+      'Bloomingdale\'s': 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=600&fit=crop&crop=center',
+      'Best Buy': 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800&h=600&fit=crop&crop=center',
+      'Apple Store': 'https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=800&h=600&fit=crop&crop=center',
+      'Amazon': 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=800&h=600&fit=crop&crop=center'
+    };
+    
+    // Category-based fallbacks
+    const categoryImages = {
+      'Fashion': 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&crop=center',
+      'Beauty': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=600&fit=crop&crop=center',
+      'Electronics': 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800&h=600&fit=crop&crop=center',
+      'Home': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center',
+      'Sports': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop&crop=center',
+      'Lifestyle': 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop&crop=center'
+    };
+    
+    return storeImageMap[storeName] || categoryImages[category] || 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop&crop=center';
+  };
+
   const generateWhatsAppLink = () => {
     const storeNames = salesData?.activeSales.slice(0, 3).map(sale => sale.storeName).join(', ') || 'featured stores';
     const message = encodeURIComponent(
@@ -156,11 +188,14 @@ const DailySalesFlyer = () => {
 
           {/* Sales Content */}
           <div className="flyer-main">
-            <h2 className="flyer-title">
-              <span className="flyer-title-line" style={{ color: currentPalette.accent }}>
-                Today's Exclusive Store Sales
-              </span>
-            </h2>
+            <div className="flyer-title-section">
+              <h2 className="flyer-title promotional-title">
+                <span className="title-main">TODAY'S HOTTEST</span>
+                <span className="title-accent" style={{ color: currentPalette.accent }}>STORE SALES</span>
+                <span className="title-sub">Limited Time Offers</span>
+              </h2>
+              <div className="title-decoration" style={{ background: currentPalette.accent }}></div>
+            </div>
 
             {loading ? (
               <div className="flyer-loading">
@@ -191,30 +226,47 @@ const DailySalesFlyer = () => {
                 </div>
 
                 <div className="flyer-sales-grid">
-                  {salesData.activeSales.slice(0, 6).map((sale, index) => (
-                    <div 
-                      key={sale.storeId} 
-                      className="flyer-sale-card"
-                      style={{
-                        animationDelay: `${index * 0.1}s`,
-                        borderColor: sale.urgency === 'high' ? currentPalette.accent : 'rgba(255,255,255,0.1)'
-                      }}
-                    >
-                      <div className="sale-header">
-                        <h3 className="sale-store-name">{sale.storeName}</h3>
-                        {sale.urgency === 'high' && (
-                          <span className="urgency-badge" style={{ background: currentPalette.accent }}>
-                            URGENT
-                          </span>
-                        )}
+                  {salesData.activeSales.slice(0, 6).map((sale, index) => {
+                    const storeImage = getStoreImage(sale.storeName, sale.category);
+                    return (
+                      <div 
+                        key={sale.storeId} 
+                        className="flyer-sale-card promotional-card"
+                        style={{
+                          animationDelay: `${index * 0.1}s`,
+                          borderColor: sale.urgency === 'high' ? currentPalette.accent : 'rgba(255,255,255,0.1)'
+                        }}
+                      >
+                        <div className="sale-image-container">
+                          <img 
+                            src={storeImage} 
+                            alt={`${sale.storeName} sale`}
+                            className="sale-store-image"
+                            loading="lazy"
+                          />
+                          <div className="sale-overlay">
+                            {sale.urgency === 'high' && (
+                              <span className="urgency-badge flash-badge" style={{ background: currentPalette.accent }}>
+                                LIMITED TIME
+                              </span>
+                            )}
+                            <div className="sale-discount-badge" style={{ 
+                              background: `linear-gradient(135deg, ${currentPalette.accent} 0%, ${currentPalette.accent}CC 100%)`,
+                              color: currentPalette.primary
+                            }}>
+                              {sale.discount}
+                              <span className="discount-text">OFF</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="sale-content">
+                          <h3 className="sale-store-name">{sale.storeName}</h3>
+                          <div className="sale-category">{sale.category}</div>
+                          <div className="sale-type">{sale.saleType}</div>
+                        </div>
                       </div>
-                      <div className="sale-discount" style={{ color: currentPalette.accent }}>
-                        {sale.discount} off
-                      </div>
-                      <div className="sale-category">{sale.category}</div>
-                      <div className="sale-type">{sale.saleType}</div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 <div className="flyer-process">
