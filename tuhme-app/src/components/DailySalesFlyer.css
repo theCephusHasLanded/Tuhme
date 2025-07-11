@@ -743,3 +743,13 @@
     font-size: 14px;
   }
 }
+
+/* Sale Neighborhood */
+.sale-neighborhood {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
