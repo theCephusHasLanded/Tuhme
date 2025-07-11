@@ -6893,14 +6893,15 @@ body {
   padding: var(--space-md);
   margin: var(--space-sm) auto;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
-  max-width: 800px;
+  max-width: min(800px, calc(100vw - var(--space-8)));
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .compact-store-search::before {
@@ -6915,7 +6916,7 @@ body {
 }
 
 .search-container {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   text-align: center;
   width: 100%;
@@ -6923,6 +6924,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .search-header {
@@ -6967,8 +6969,9 @@ body {
   transition: all var(--transition-normal);
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: min(600px, calc(100vw - var(--space-12)));
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .search-input-group:focus-within {
