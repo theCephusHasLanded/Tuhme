@@ -404,7 +404,7 @@ const DailySalesFlyer = () => {
             <div className="flyer-footer">
               <div className="footer-item">
                 <span className="footer-icon" style={{ color: currentPalette.accent }}>📱</span>
-                <span>(646) 588-9916</span>
+                <span>Contact us via WhatsApp</span>
               </div>
               <div className="footer-item">
                 <span className="footer-icon" style={{ color: currentPalette.accent }}>📍</span>

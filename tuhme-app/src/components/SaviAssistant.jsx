@@ -198,7 +198,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
       "express": "Express service is available for fashion emergencies! Rush orders can be delivered in 2-4 hours for an additional fee. Perfect for last-minute events.",
       
       // Contact & WhatsApp
-      "whatsapp": "Just text us at +1 (646) 588-9916! I love how personal it feels - just send me those screenshots of whatever caught your eye, tell me your size, and any little details that matter to you. I'm usually back to you within minutes because honestly, when you find something perfect, you shouldn't have to wait! 📱✨",
+      "whatsapp": "Just text us via WhatsApp! I love how personal it feels - just send me those screenshots of whatever caught your eye, tell me your size, and any little details that matter to you. I'm usually back to you within minutes because honestly, when you find something perfect, you shouldn't have to wait! 📱✨",
       
       "returns": "If you don't love something, just don't pay for it! Our shopper takes it right back to the store. No hassle, no questions asked.",
       

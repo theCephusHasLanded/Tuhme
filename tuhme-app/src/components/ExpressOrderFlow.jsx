@@ -579,7 +579,7 @@ const ExpressOrderFlow = ({ onBack }) => {
                         className="liquid-input"
                         value={orderData.contactInfo.phone}
                         onChange={(e) => handleInputChange('contactInfo.phone', e.target.value)}
-                        placeholder="(555) 123-4567"
+                        placeholder="Enter your phone number"
                       />
                       <div className="input-border"></div>
                     </div>

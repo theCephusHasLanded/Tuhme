@@ -142,7 +142,7 @@ const PickupDeliveryForm = ({ onNext, onPrev, onDataUpdate, data, serviceType })
               <label>Phone Number *</label>
               <input
                 type="tel"
-                placeholder="+1 (555) 123-4567"
+                placeholder="Enter your phone number"
                 value={formData.pickup.phone}
                 onChange={(e) => handleInputChange('pickup', 'phone', e.target.value)}
                 className={errors.pickupPhone ? 'error' : ''}
@@ -226,7 +226,7 @@ const PickupDeliveryForm = ({ onNext, onPrev, onDataUpdate, data, serviceType })
             <label>Phone Number *</label>
             <input
               type="tel"
-              placeholder="+1 (555) 123-4567"
+              placeholder="Enter your phone number"
               value={formData.delivery.phone}
               onChange={(e) => handleInputChange('delivery', 'phone', e.target.value)}
               className={errors.deliveryPhone ? 'error' : ''}

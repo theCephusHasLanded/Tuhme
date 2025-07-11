@@ -107,7 +107,7 @@ const DeliveryForm = ({ onNext, onPrev, onDataUpdate, data }) => {
           <label>Phone Number *</label>
           <input
             type="tel"
-            placeholder="+1 (555) 123-4567"
+            placeholder="Enter your phone number"
             value={deliveryData.phone}
             onChange={(e) => handleInputChange('phone', e.target.value)}
           />

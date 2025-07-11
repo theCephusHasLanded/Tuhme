@@ -99,7 +99,7 @@ const Footer = () => {
       },
       contact: {
         title: 'Contact Us',
-        content: 'Email: support@tuhme.com\nWhatsApp: +1 (646) 588-9916\nService Hours: Monday-Sunday 9AM-9PM\nService Area: Manhattan & Brooklyn, NYC\n\nFor partnerships: partnerships@tuhme.com\nFor careers: careers@tuhme.com'
+        content: 'Email: support@tuhme.com\nWhatsApp: Contact us via WhatsApp\nService Hours: Monday-Sunday 9AM-9PM\nService Area: Manhattan & Brooklyn, NYC\n\nFor partnerships: partnerships@tuhme.com\nFor careers: careers@tuhme.com'
       },
       refund: {
         title: 'Refund Policy',

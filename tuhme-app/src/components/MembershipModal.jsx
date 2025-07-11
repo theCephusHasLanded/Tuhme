@@ -234,7 +234,7 @@ const MembershipModal = () => {
                     name="phone"
                     value={customerData.phone}
                     onChange={handleInputChange}
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="Enter your phone number"
                     required
                   />
                   <small>We'll use WhatsApp to communicate about your orders</small>

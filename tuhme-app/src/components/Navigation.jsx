@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useModal } from '../contexts/ModalContext';
 import NavigationModals from './NavigationModals';
+import ThemeToggle from './ThemeToggle';
 import tuhmeLogo from '../assets/tuhme.png';
 
 const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) => {
@@ -108,6 +109,16 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
                 <circle cx="10" cy="10" r="0.5" fill="currentColor" opacity="0.7"/>
                 <circle cx="14" cy="10" r="0.5" fill="currentColor" opacity="0.7"/>
               </svg>
+              <div className="icon-glow"></div>
+            </div>
+          </button>
+
+          <button 
+            className="nav-icon-button theme-button"
+            title="Toggle theme"
+          >
+            <div className="icon-container">
+              <ThemeToggle />
               <div className="icon-glow"></div>
             </div>
           </button>

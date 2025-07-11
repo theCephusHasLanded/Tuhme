@@ -51,7 +51,6 @@ import FeedbackModal from './components/FeedbackModal';
 import FlyerGeneratorModal from './components/FlyerGeneratorModal';
 import DailySalesFlyer from './components/DailySalesFlyer';
 import DailySalesFlyerManager from './components/DailySalesFlyerManager';
-import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -108,7 +107,6 @@ function App() {
         <ThemeProvider>
           <ModalProvider>
             <div className="app">
-              <ThemeToggle />
               <Matrix3DInterface isActive={showMatrix} onClose={() => setShowMatrix(false)} />
               <ModalsSystem />
             </div>
@@ -124,7 +122,6 @@ function App() {
         <ThemeProvider>
           <ModalProvider>
             <div className="app">
-              <ThemeToggle />
               <UserDashboard userPhone={userPhone} onBack={backToWebsite} />
               <ModalsSystem />
             </div>
@@ -140,7 +137,6 @@ function App() {
         <ThemeProvider>
           <ModalProvider>
             <div className="app">
-              <ThemeToggle />
               <ExpressOrderFlow 
                 onBack={backToWebsite} 
                 onNavigate={handleNavigation}
@@ -159,7 +155,6 @@ function App() {
       <ThemeProvider>
         <ModalProvider>
         <div className="app">
-          <ThemeToggle />
           <Navigation 
             onNavigate={handleNavigation} 
             currentSection={currentSection} 
