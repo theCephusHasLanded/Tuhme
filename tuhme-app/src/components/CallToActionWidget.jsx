@@ -214,8 +214,8 @@ const CallToActionWidget = ({
           justify-content: center;
           gap: var(--space-sm);
           padding: var(--space-md) var(--space-xl);
-          background: transparent;
-          color: var(--primary-text);
+          background: rgba(255, 255, 255, 0.9);
+          color: #000000 !important;
           border: 2px solid var(--border-medium);
           border-radius: 8px;
           font-family: var(--font-family-secondary);
@@ -227,7 +227,8 @@ const CallToActionWidget = ({
 
         .cta-secondary-button:hover {
           border-color: var(--accent-primary);
-          color: var(--accent-primary);
+          color: #000000 !important;
+          background: rgba(255, 255, 255, 1);
           transform: translateY(-1px);
         }
 

@@ -141,12 +141,11 @@ const CustomerTestimonials = () => {
           <button className="testimonial-nav next" onClick={nextTestimonial}>›</button>
         </div>
 
-        <div className="testimonials-dots">
+        <div className="testimonials-progress">
           {testimonials.map((_, index) => (
-            <button
+            <div
               key={index}
-              className={`dot ${index === currentTestimonial ? 'active' : ''}`}
-              onClick={() => setCurrentTestimonial(index)}
+              className={`progress-line ${index === currentTestimonial ? 'active' : ''}`}
             />
           ))}
         </div>

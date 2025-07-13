@@ -102,10 +102,10 @@
   --shadow-medium: rgba(0, 0, 0, 0.08);
   --shadow-heavy: rgba(0, 0, 0, 0.15);
   
-  /* Button Colors - Light Mode */
-  --btn-primary-bg: linear-gradient(135deg, #333333 0%, #000000 100%);
-  --btn-primary-text: #ffffff;
-  --btn-primary-hover: linear-gradient(135deg, #000000 0%, #333333 100%);
+  /* Button Colors - Light Mode - Proper Light Buttons */
+  --btn-primary-bg: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --btn-primary-text: #000000;
+  --btn-primary-hover: linear-gradient(135deg, #e9ecef 0%, #ffffff 100%);
   
   --btn-secondary-bg: transparent;
   --btn-secondary-text: var(--text-primary);
@@ -125,6 +125,48 @@
 /* Universal Theme Application */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Universal Button Contrast Rules */
+button, .btn, [class*="button"], [class*="btn"] {
+  color: var(--btn-primary-text) !important;
+}
+
+/* Dark Mode Button Text */
+[data-theme="dark"] button,
+[data-theme="dark"] .btn,
+[data-theme="dark"] [class*="button"],
+[data-theme="dark"] [class*="btn"] {
+  color: #ffffff !important;
+}
+
+/* Light Mode Button Text */
+[data-theme="light"] button,
+[data-theme="light"] .btn,
+[data-theme="light"] [class*="button"],
+[data-theme="light"] [class*="btn"] {
+  color: #000000 !important;
+}
+
+/* Force contrast for specific dark backgrounds */
+button[style*="background: #000"],
+button[style*="background:#000"],
+.btn[style*="background: #000"],
+.btn[style*="background:#000"],
+[class*="dark"],
+[class*="black"],
+.primary-cta-luxury {
+  color: #ffffff !important;
+}
+
+/* Force contrast for specific light backgrounds */
+button[style*="background: #fff"],
+button[style*="background:#fff"],
+.btn[style*="background: #fff"],
+.btn[style*="background:#fff"],
+[class*="light"],
+[class*="white"] {
+  color: #000000 !important;
 }
 
 /* Base Typography */

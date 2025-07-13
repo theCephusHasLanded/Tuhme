@@ -325,3 +325,77 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ===== GLOBAL BUTTON CONTRAST SYSTEM ===== */
+/* Ensures all buttons have proper text contrast regardless of background */
+
+/* Default Button Text Colors Based on Theme */
+[data-theme="dark"] button,
+[data-theme="dark"] .btn,
+[data-theme="dark"] [class*="button"],
+[data-theme="dark"] [class*="btn"],
+[data-theme="dark"] [class*="cta"] {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] button,
+[data-theme="light"] .btn,
+[data-theme="light"] [class*="button"],
+[data-theme="light"] [class*="btn"],
+[data-theme="light"] [class*="cta"] {
+  color: #000000 !important;
+}
+
+/* Override for buttons with specific dark backgrounds */
+button[style*="background: rgb(0"],
+button[style*="background: #000"],
+button[style*="background: black"],
+.btn[style*="background: rgb(0"],
+.btn[style*="background: #000"],
+.btn[style*="background: black"],
+[class*="black"],
+[class*="dark"],
+.primary-cta-luxury,
+.notification-btn.primary {
+  color: #ffffff !important;
+}
+
+/* Override for buttons with specific light backgrounds */
+button[style*="background: rgb(255"],
+button[style*="background: #fff"],
+button[style*="background: white"],
+.btn[style*="background: rgb(255"],
+.btn[style*="background: #fff"],
+.btn[style*="background: white"],
+[class*="white"],
+[class*="light"] {
+  color: #000000 !important;
+}
+
+/* Button spans and children inherit parent contrast */
+button span,
+button *,
+.btn span,
+.btn *,
+[class*="button"] span,
+[class*="button"] *,
+[class*="btn"] span,
+[class*="btn"] *,
+[class*="cta"] span,
+[class*="cta"] * {
+  color: inherit !important;
+}
+
+/* Special handling for gradient buttons */
+button[style*="gradient"],
+.btn[style*="gradient"],
+[class*="gradient"] {
+  color: #ffffff !important;
+}
+
+/* Light mode gradient buttons */
+[data-theme="light"] button[style*="gradient"],
+[data-theme="light"] .btn[style*="gradient"],
+[data-theme="light"] [class*="gradient"] {
+  color: #000000 !important;
+}

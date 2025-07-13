@@ -26,7 +26,21 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* Light Mode Navbar Icon Inversion */
+/* Navbar Background - Always Black except Light Mode */
+.navigation {
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Light Mode Navbar - White Background with Black Icons */
+[data-global-palette="pearl-morning"] .navigation,
+[data-global-palette="emerald-mist"] .navigation,
+[data-global-palette="crystal-blue"] .navigation,
+[data-global-palette="mint-elegance"] .navigation,
+[data-global-palette="blush-elegance"] .navigation {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
 [data-global-palette="pearl-morning"] .nav-icon-button,
 [data-global-palette="emerald-mist"] .nav-icon-button,
 [data-global-palette="crystal-blue"] .nav-icon-button,
