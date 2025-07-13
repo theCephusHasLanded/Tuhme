@@ -119,7 +119,7 @@ const Footer = () => {
               <div className="footer-logo liquid-glass-icon">
                 <img src={tuhmeLogo} alt="TUHME" className="footer-logo-image" />
               </div>
-              <p className="footer-tagline">
+              <p className="footer-tagline glowing-tagline">
                 We'll Pay For It, And Bring The Store To You
               </p>
             </div>

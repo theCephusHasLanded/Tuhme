@@ -1,19 +1,19 @@
 /* TUHME Color Scheme - Based on #ff6e57 */
 
 :root {
-  /* Primary Brand Color - Coral Red */
-  --color-primary: #ff6e57;
-  --color-primary-50: #fff5f3;
-  --color-primary-100: #ffe7e3;
-  --color-primary-200: #ffd4cc;
-  --color-primary-300: #ffb3a8;
-  --color-primary-400: #ff8a74;
-  --color-primary-500: #ff6e57; /* Base color */
-  --color-primary-600: #ed4a2f;
-  --color-primary-700: #c8341f;
-  --color-primary-800: #a52c1c;
-  --color-primary-900: #89291c;
-  --color-primary-950: #4b120a;
+  /* Primary Brand Color - Monochrome Black */
+  --color-primary: #000000;
+  --color-primary-50: #f8f8f8;
+  --color-primary-100: #f0f0f0;
+  --color-primary-200: #e8e8e8;
+  --color-primary-300: #d1d1d1;
+  --color-primary-400: #b4b4b4;
+  --color-primary-500: #000000; /* Base color */
+  --color-primary-600: #333333;
+  --color-primary-700: #4a4a4a;
+  --color-primary-800: #666666;
+  --color-primary-900: #808080;
+  --color-primary-950: #999999;
 
   /* Complementary Colors - Teal/Cyan (opposite on color wheel) */
   --color-secondary: #57d4ff;
@@ -30,7 +30,7 @@
   --color-secondary-950: #053544;
 
   /* Analogous Colors - Orange and Pink */
-  --color-accent-warm: #ff8c42; /* Orange - warmer neighbor */
+  --color-accent-warm: var(--color-neutral-800); /* Orange - warmer neighbor */
   --color-accent-cool: #ff4757; /* Pink-red - cooler neighbor */
 
   /* Triadic Colors - Purple and Green */
@@ -51,7 +51,7 @@
   --color-neutral-950: #0c0a09;
 
   /* Luxury Colors - Deep, rich tones */
-  --color-luxury-gold: #d4af37;
+  --color-luxury-gold: var(--accent-primary);
   --color-luxury-gold-light: #f4e09a;
   --color-luxury-gold-dark: #b8941f;
   
@@ -70,7 +70,7 @@
   --color-success-light: #86efac;
   --color-success-dark: #16a34a;
 
-  --color-warning: #f59e0b;
+  --color-warning: var(--color-neutral-500);
   --color-warning-light: #fcd34d;
   --color-warning-dark: #d97706;
 
@@ -115,7 +115,7 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-primary: 0 10px 15px -3px rgba(255, 110, 87, 0.3), 0 4px 6px -2px rgba(255, 110, 87, 0.15);
-  --shadow-luxury: 0 10px 15px -3px rgba(212, 175, 55, 0.2), 0 4px 6px -2px rgba(212, 175, 55, 0.1);
+  --shadow-luxury: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
 
   /* Gradient Colors */
   --gradient-primary: linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-primary-600) 100%);
@@ -124,7 +124,7 @@
   --gradient-warm: linear-gradient(135deg, var(--color-accent-warm) 0%, var(--color-primary-500) 100%);
   --gradient-cool: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-accent-cool) 100%);
   --gradient-hero: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-accent-warm) 50%, var(--color-luxury-gold) 100%);
-  --gradient-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.8) 0%, rgba(255, 140, 66, 0.6) 50%, rgba(212, 175, 55, 0.4) 100%);
+  --gradient-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.8) 0%, rgba(128, 128, 128, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 
   /* Interactive States */
@@ -207,7 +207,7 @@
     --nav-text: var(--color-neutral-200);
     --nav-active: var(--color-primary-400);
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.7) 0%, rgba(255, 140, 66, 0.5) 50%, rgba(0, 0, 0, 0.6) 100%);
+    --hero-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.7) 0%, rgba(128, 128, 128, 0.5) 50%, rgba(0, 0, 0, 0.6) 100%);
     --hero-text: var(--color-neutral-50);
     --hero-accent: var(--color-luxury-gold-light);
 
@@ -272,7 +272,7 @@
   --nav-text: var(--color-neutral-800);
   --nav-active: var(--color-primary-500);
 
-  --hero-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.8) 0%, rgba(255, 140, 66, 0.6) 50%, rgba(212, 175, 55, 0.4) 100%);
+  --hero-overlay: linear-gradient(135deg, rgba(255, 110, 87, 0.8) 0%, rgba(128, 128, 128, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%);
   --hero-text: var(--color-neutral-50);
   --hero-accent: var(--color-luxury-gold-light);
 
@@ -286,6 +286,7 @@
   /* Interactive States - Light Mode */
   --color-hover-primary: var(--color-primary-400);
   --color-hover-secondary: var(--color-secondary-400);
+.text-accent-warm { color: var(--color-accent-warm) !important; }
   --color-active-primary: var(--color-primary-700);
   --color-active-secondary: var(--color-secondary-700);
   --color-focus: var(--color-primary-500);

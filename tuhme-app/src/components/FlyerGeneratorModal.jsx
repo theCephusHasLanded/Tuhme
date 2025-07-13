@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useModal } from '../contexts/ModalContext';
 import salesMonitoringService from '../services/salesMonitoringService';
 import flyerPromptGenerator from '../utils/flyerPromptGenerator';
-import storeService from '../services/storeService';
+// Store service removed - flyer generation simplified
 import './FlyerGeneratorModal.css';
 
 const FlyerGeneratorModal = () => {
@@ -27,22 +27,21 @@ const FlyerGeneratorModal = () => {
   const initializeFlyerData = async () => {
     setLoading(true);
     try {
-      // Fetch latest sales data
-      await salesMonitoringService.fetchAllStoreSales();
+      // Simplified flyer data initialization without store service
+      const mockData = {
+        activeSales: [],
+        totalSales: 0,
+        lastUpdated: new Date().toISOString()
+      };
+      setFlyerData(mockData);
       
-      // Get flyer data
-      const data = salesMonitoringService.generateDailyFlyerData();
-      setFlyerData(data);
-      
-      // Get sales statistics
-      const stats = salesMonitoringService.getSalesStats();
-      setSalesStats(stats);
-      
-      // Auto-select stores with active sales
-      const storesWithSales = data.activeSales.map(sale => 
-        storeService.getStoreById(sale.storeId)
-      ).filter(Boolean);
-      setSelectedStores(storesWithSales);
+      // Mock sales statistics
+      const mockStats = {
+        totalStores: 0,
+        storesOnSale: 0,
+        averageDiscount: 0
+      };
+      setSalesStats(mockStats);
       
     } catch (error) {
       console.error('Error initializing flyer data:', error);
@@ -52,21 +51,8 @@ const FlyerGeneratorModal = () => {
   };
 
   const getFilteredStores = () => {
-    const allStores = storeService.getAllStores();
-    
-    if (filterCategory === 'all') {
-      return allStores;
-    }
-    
-    if (filterCategory === 'on-sale') {
-      return allStores.filter(store => 
-        flyerData?.activeSales.some(sale => sale.storeId === store.id)
-      );
-    }
-    
-    return allStores.filter(store => 
-      store.category.toLowerCase() === filterCategory.toLowerCase()
-    );
+    // Simplified store filtering without store service
+    return [];
   };
 
   const handleStoreToggle = (store) => {

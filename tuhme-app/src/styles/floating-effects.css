@@ -159,7 +159,7 @@
     rgba(255, 140, 66, 0.2) 25%,
     rgba(87, 212, 255, 0.2) 50%,
     rgba(255, 110, 87, 0.3) 75%,
-    rgba(212, 175, 55, 0.2) 100%);
+    rgba(0, 0, 0, 0.1) 100%);
   background-size: 400% 400%;
   border-radius: 22px;
   animation: shimmer 6s linear infinite;
@@ -181,11 +181,11 @@
 }
 
 .pricing-card.featured {
-  border-color: rgba(212, 175, 55, 0.6);
+  border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 
-    0 0 0 2px rgba(212, 175, 55, 0.4),
-    0 0 30px rgba(212, 175, 55, 0.5),
-    0 0 60px rgba(212, 175, 55, 0.3),
+    0 0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(0, 0, 0, 0.1),
+    0 0 60px rgba(0, 0, 0, 0.1),
     0 25px 50px rgba(0, 0, 0, 0.15);
   animation: floatingPulse 3s ease-in-out infinite alternate;
 }
@@ -193,16 +193,16 @@
 @keyframes floatingPulse {
   from {
     box-shadow: 
-      0 0 0 2px rgba(212, 175, 55, 0.4),
-      0 0 30px rgba(212, 175, 55, 0.5),
-      0 0 60px rgba(212, 175, 55, 0.3),
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 30px rgba(0, 0, 0, 0.1),
+      0 0 60px rgba(0, 0, 0, 0.1),
       0 25px 50px rgba(0, 0, 0, 0.15);
   }
   to {
     box-shadow: 
-      0 0 0 2px rgba(212, 175, 55, 0.6),
-      0 0 40px rgba(212, 175, 55, 0.7),
-      0 0 80px rgba(212, 175, 55, 0.4),
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 40px rgba(0, 0, 0, 0.1),
+      0 0 80px rgba(0, 0, 0, 0.1),
       0 25px 50px rgba(0, 0, 0, 0.15);
   }
 }

@@ -94,21 +94,21 @@
 .pricing-card:hover {
   transform: translateY(-8px);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.15),
-    0 8px 16px rgba(212, 175, 55, 0.2);
+    0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-card.featured {
-  border-color: rgba(212, 175, 55, 0.6);
-  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.15),
-    0 8px 16px rgba(212, 175, 55, 0.2),
-    0 0 0 2px rgba(212, 175, 55, 0.4),
-    0 0 30px rgba(212, 175, 55, 0.5),
-    0 0 60px rgba(212, 175, 55, 0.3);
+    0 8px 16px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(0, 0, 0, 0.1),
+    0 0 60px rgba(0, 0, 0, 0.1);
   animation: contentPulse 3s ease-in-out infinite alternate;
 }
 
@@ -116,18 +116,18 @@
   from {
     box-shadow: 
       0 20px 40px rgba(0, 0, 0, 0.15),
-      0 8px 16px rgba(212, 175, 55, 0.2),
-      0 0 0 2px rgba(212, 175, 55, 0.4),
-      0 0 30px rgba(212, 175, 55, 0.5),
-      0 0 60px rgba(212, 175, 55, 0.3);
+      0 8px 16px rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 30px rgba(0, 0, 0, 0.1),
+      0 0 60px rgba(0, 0, 0, 0.1);
   }
   to {
     box-shadow: 
       0 20px 40px rgba(0, 0, 0, 0.15),
-      0 8px 16px rgba(212, 175, 55, 0.2),
-      0 0 0 2px rgba(212, 175, 55, 0.6),
-      0 0 40px rgba(212, 175, 55, 0.7),
-      0 0 80px rgba(212, 175, 55, 0.4);
+      0 8px 16px rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 40px rgba(0, 0, 0, 0.1),
+      0 0 80px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -152,8 +152,8 @@
 .tier-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -165,7 +165,7 @@
 
 .pricing-card:hover .tier-icon {
   transform: scale(1.05);
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .tier-name {
@@ -234,8 +234,8 @@
 .feature-check {
   width: 20px;
   height: 20px;
-  background: rgba(212, 175, 55, 0.15);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -270,12 +270,12 @@
 .pricing-button.primary {
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: white;
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-button.secondary {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   color: var(--primary-text);
 }
 
@@ -284,7 +284,7 @@
 }
 
 .pricing-button.primary:hover {
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-button.secondary:hover {
@@ -328,15 +328,15 @@
 .process-card:hover {
   transform: translateY(-6px);
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(212, 175, 55, 0.2);
+  border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .process-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -372,8 +372,8 @@
   right: 20px;
   width: 28px;
   height: 28px;
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -441,8 +441,8 @@
 .question-icon {
   width: 32px;
   height: 32px;
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -453,7 +453,7 @@
 
 .faq-item.expanded .question-icon {
   transform: rotate(180deg);
-  background: rgba(212, 175, 55, 0.2);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .faq-answer {
@@ -534,15 +534,15 @@
 
 .delivery-option:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(212, 175, 55, 0.2);
+  border-color: rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 
 .option-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -591,7 +591,7 @@
 
 .area-card:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(212, 175, 55, 0.2);
+  border-color: rgba(0, 0, 0, 0.1);
   transform: translateY(-4px);
 }
 
@@ -605,8 +605,8 @@
 .area-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -637,16 +637,16 @@
 .neighborhood-tag {
   font-size: 0.8rem;
   color: var(--secondary-text);
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 6px 12px;
   transition: all 0.2s ease;
 }
 
 .neighborhood-tag:hover {
-  background: rgba(212, 175, 55, 0.12);
-  border-color: rgba(212, 175, 55, 0.25);
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Background Effects */

@@ -1,8 +1,7 @@
 import TuhmeIcon from './TuhmeIcon';
 import CallToActionWidget from './CallToActionWidget';
 import BenefitsWidget from './BenefitsWidget';
-import CompactStoreSearch from './CompactStoreSearch';
-import HorizontalStoreCarousel from './HorizontalStoreCarousel';
+import EnhancedStoreFinder from './EnhancedStoreFinder';
 
 const HowItWorks = () => {
   const getIconComponent = (iconType) => {
@@ -74,9 +73,7 @@ const HowItWorks = () => {
 
         <div className="how-it-works-layout">
           <div className="left-content">
-            {/* Store Search and Carousel */}
-            <CompactStoreSearch />
-            <HorizontalStoreCarousel />
+            <EnhancedStoreFinder />
             
             <CallToActionWidget />
             

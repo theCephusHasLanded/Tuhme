@@ -27,7 +27,7 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: var(--accent-color, #d4af37);
+  background: var(--accent-color, var(--accent-primary));
   border-radius: 50%;
   opacity: 0;
   animation: particleFloat3D 12s ease-in-out infinite var(--delay, 0s);
@@ -88,6 +88,110 @@
   50% { 
     transform: translateY(-10px) rotateX(2deg); 
   }
+}
+
+/* HERO TEXT OVERRIDE - ALWAYS WHITE REGARDLESS OF COLOR SCHEME */
+.hero-luxury,
+.hero-luxury *,
+.hero-content-luxury,
+.hero-content-luxury * {
+  color: #ffffff !important;
+}
+
+.hero-luxury .title-line,
+.hero-luxury .brand-name-luxury,
+.hero-luxury .brand-essence,
+.hero-luxury .description-text,
+.hero-luxury .promise-item,
+.hero-luxury .availability-indicator,
+.hero-luxury .trust-number,
+.hero-luxury .trust-label,
+.hero-luxury .palette-name,
+.hero-luxury .time-indicator,
+.hero-luxury .hero-glowing-tagline {
+  color: #ffffff !important;
+}
+
+/* Enhanced Hero Glowing Tagline - Always White with Strong Glow */
+.hero-luxury .hero-glowing-tagline,
+.hero-luxury .title-line.hero-glowing-tagline {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 255, 255, 0.8),
+    0 0 50px rgba(255, 255, 255, 0.7),
+    0 0 60px rgba(255, 255, 255, 0.6),
+    0 2px 10px rgba(0, 0, 0, 0.4) !important;
+  animation: heroGlowIntense 3s ease-in-out infinite alternate !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+@keyframes heroGlowIntense {
+  0% {
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 30px rgba(255, 255, 255, 0.9),
+      0 0 40px rgba(255, 255, 255, 0.8),
+      0 0 50px rgba(255, 255, 255, 0.7),
+      0 0 60px rgba(255, 255, 255, 0.6),
+      0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    text-shadow: 
+      0 0 30px rgba(255, 255, 255, 1),
+      0 0 40px rgba(255, 255, 255, 1),
+      0 0 50px rgba(255, 255, 255, 0.9),
+      0 0 60px rgba(255, 255, 255, 0.8),
+      0 0 70px rgba(255, 255, 255, 0.7),
+      0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.hero-luxury .hero-glowing-tagline:hover {
+  text-shadow: 
+    0 0 35px rgba(255, 255, 255, 1),
+    0 0 45px rgba(255, 255, 255, 1),
+    0 0 55px rgba(255, 255, 255, 0.9),
+    0 0 65px rgba(255, 255, 255, 0.8),
+    0 0 75px rgba(255, 255, 255, 0.7),
+    0 2px 10px rgba(0, 0, 0, 0.6) !important;
+  transform: scale(1.02) !important;
+}
+
+/* Hero Buttons - All Black with White Text */
+.hero-luxury .primary-cta-luxury,
+.hero-luxury .secondary-cta-luxury,
+.hero-luxury button {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.hero-luxury .primary-cta-luxury:hover,
+.hero-luxury .secondary-cta-luxury:hover,
+.hero-luxury button:hover {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
+}
+
+/* Hero Icons - All White */
+.hero-luxury svg,
+.hero-luxury .icon,
+.hero-luxury [class*="icon"],
+.hero-luxury .promise-icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Button Text in Hero */
+.hero-luxury .cta-text,
+.hero-luxury button span,
+.hero-luxury button * {
+  color: #ffffff !important;
 }
 
 /* Palette Indicator */
@@ -205,12 +309,18 @@
   display: block;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 300;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  animation: titleFade 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 25px rgba(255, 255, 255, 0.7),
+    0 0 35px rgba(255, 255, 255, 0.5),
+    0 0 45px rgba(255, 255, 255, 0.4),
+    0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: titleFade 0.8s ease-out forwards, glowPulseHero 3s ease-in-out infinite alternate 1s;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
 }
 
 .title-line:nth-child(1) { animation-delay: 0.2s; }
@@ -218,14 +328,39 @@
 .title-line:nth-child(3) { animation-delay: 0.6s; }
 
 .accent-text {
-  font-weight: 400;
-  text-shadow: 0 0 30px currentColor;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.6),
+    0 0 50px rgba(255, 255, 255, 0.5),
+    0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes titleFade {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes glowPulseHero {
+  0% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5),
+      0 0 45px rgba(255, 255, 255, 0.4),
+      0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 25px rgba(255, 255, 255, 1),
+      0 0 35px rgba(255, 255, 255, 0.9),
+      0 0 45px rgba(255, 255, 255, 0.7),
+      0 0 55px rgba(255, 255, 255, 0.6),
+      0 2px 10px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -298,7 +433,7 @@
   transform-style: preserve-3d;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 
-    0 4px 12px rgba(212, 175, 55, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.1),
     0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 280px;
 }
@@ -326,7 +461,7 @@
 .primary-cta-luxury:hover {
   transform: translateY(-2px);
   box-shadow: 
-    0 8px 24px rgba(212, 175, 55, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.1),
     0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -355,7 +490,7 @@
 .secondary-cta-luxury {
   padding: 12px 24px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   color: var(--secondary-text);
   font-family: var(--font-family-secondary);
@@ -371,7 +506,7 @@
 
 .secondary-cta-luxury:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(0, 0, 0, 0.1);
   color: var(--primary-text);
   transform: translateY(-1px);
 }

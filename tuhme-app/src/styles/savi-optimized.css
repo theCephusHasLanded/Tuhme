@@ -578,12 +578,12 @@
   right: 0;
   width: 320px;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 16px;
   box-shadow: 
     0 12px 32px rgba(0, 0, 0, 0.4),
-    0 4px 16px rgba(212, 175, 55, 0.2);
+    0 4px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   animation: slideInNotification 0.4s ease-out;
@@ -646,14 +646,14 @@
 }
 
 .notification-btn.primary {
-  background: linear-gradient(135deg, var(--savi-accent, #d4af37) 0%, rgba(212, 175, 55, 0.8) 100%);
+  background: linear-gradient(135deg, var(--savi-accent, var(--accent-primary)) 0%, rgba(0, 0, 0, 0.1) 100%);
   color: #000;
   flex: 1;
 }
 
 .notification-btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .notification-btn.secondary {
@@ -680,7 +680,7 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid rgba(212, 175, 55, 0.3);
+  border-top: 8px solid rgba(0, 0, 0, 0.1);
 }
 
 .notification-pointer::after {

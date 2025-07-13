@@ -26,7 +26,7 @@
   border-radius: 24px;
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 215, 0, 0.1);
+    0 0 0 1px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
   width: 100%;
   max-height: 90vh;
@@ -97,13 +97,13 @@
   display: flex;
   justify-content: space-around;
   padding: 24px 40px;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #333333 0%, #000000 100%);
   border-bottom: 1px solid #E5E5E5;
 }
 
 .stat-item {
   text-align: center;
-  color: #000000;
+  color: #ffffff;
 }
 
 .stat-number {
@@ -112,12 +112,12 @@
   font-weight: 700;
   line-height: 1;
   margin-bottom: 4px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .stat-label {
   font-size: 14px;
-  color: #333333;
+  color: #cccccc;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -176,7 +176,7 @@
 
 .category-filter:hover,
 .category-filter:focus {
-  border-color: #FFD700;
+  border-color: #000000;
   outline: none;
 }
 
@@ -222,9 +222,9 @@
 }
 
 .bulk-btn:hover {
-  border-color: #FFD700;
-  background: #FFD700;
-  color: #000000;
+  border-color: #000000;
+  background: #000000;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
@@ -268,15 +268,15 @@
 }
 
 .store-card:hover {
-  border-color: #FFD700;
+  border-color: #000000;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.1);
 }
 
 .store-card.selected {
-  border-color: #FFD700;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-  color: #000000;
+  border-color: #000000;
+  background: linear-gradient(135deg, #333333 0%, #000000 100%);
+  color: #ffffff;
 }
 
 .store-card.on-sale {
@@ -285,7 +285,19 @@
 }
 
 .store-card.selected.on-sale {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #333333 0%, #000000 100%);
+}
+
+.store-card.selected .store-name {
+  color: #ffffff;
+}
+
+.store-card.selected .store-category {
+  color: #cccccc;
+}
+
+.store-card.selected .store-location {
+  color: #dddddd;
 }
 
 .store-checkbox {
@@ -438,8 +450,8 @@
 }
 
 .prompt-type-option input:checked + .prompt-type-card {
-  border-color: #FFD700;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
+  border-color: #000000;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
 }
 
 .prompt-type-card h4 {
@@ -528,9 +540,9 @@
 
 .copy-btn:hover,
 .claude-btn:hover {
-  border-color: #FFD700;
-  background: #FFD700;
-  color: #000000;
+  border-color: #000000;
+  background: #000000;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
@@ -561,7 +573,7 @@
 }
 
 .prompt-textarea:focus {
-  border-color: #FFD700;
+  border-color: #000000;
 }
 
 /* Mobile Responsive */

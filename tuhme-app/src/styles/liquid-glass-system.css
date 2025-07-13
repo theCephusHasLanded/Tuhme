@@ -33,7 +33,7 @@
 
 /* Dynamic color scheme variables */
 [data-palette="midnight-gold"] {
-  --liquid-accent-color: #d4af37;
+  --liquid-accent-color: var(--accent-primary);
   --liquid-accent-rgb: 212, 175, 55;
   --liquid-primary-bg: #0a0a0a;
   --liquid-secondary-bg: #1a1a1a;

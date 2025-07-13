@@ -1,4 +1,4 @@
-import storeService from './storeService';
+// Store service functionality removed - sales monitoring simplified
 
 class SalesMonitoringService {
   constructor() {

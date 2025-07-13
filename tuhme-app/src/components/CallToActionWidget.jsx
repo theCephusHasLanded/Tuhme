@@ -85,7 +85,7 @@ const CallToActionWidget = ({
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx="true">{`
         .cta-widget {
           margin: var(--space-3xl) 0;
           padding: var(--space-2xl) 0;
@@ -142,7 +142,7 @@ const CallToActionWidget = ({
           justify-content: center;
           padding: var(--space-lg) var(--space-2xl);
           background: var(--accent-primary);
-          color: #000000; /* Black text */
+          color: #ffffff; /* White text for dark buttons */
           text-decoration: none;
           border-radius: 12px;
           font-family: var(--font-family-secondary);
@@ -174,7 +174,7 @@ const CallToActionWidget = ({
         }
 
         .button-text {
-          color: #000000 !important; /* Force black text */
+          color: #ffffff !important; /* White text for dark buttons */
           font-weight: 700;
           text-shadow: 
             0 0 10px rgba(255, 255, 255, 0.3),

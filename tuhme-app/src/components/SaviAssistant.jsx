@@ -20,7 +20,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
 
   // Luxury color palettes that match Hero component
   const luxuryPalettes = [
-    { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#d4af37', name: 'Midnight Gold' },
+    { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#ffffff', name: 'Midnight Mono' },
     { primary: '#1a0f1a', secondary: '#2a1a2a', accent: '#e6c2a6', name: 'Champagne Dusk' },
     { primary: '#0f1419', secondary: '#1a2129', accent: '#8b9dc3', name: 'Sapphire Night' },
     { primary: '#191414', secondary: '#2a2125', accent: '#dda15e', name: 'Cognac Dream' },
@@ -43,7 +43,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
     { primary: '#1a190f', secondary: '#2a291a', accent: '#69db7c', name: 'Jade Prosperity' },
     { primary: '#1a0f19', secondary: '#2a1a29', accent: '#ffa8a8', name: 'Blush Elegance' },
     { primary: '#0f1a0f', secondary: '#1a2a1a', accent: '#82c91e', name: 'Peridot Fresh' },
-    { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#d4af37', name: 'Classic Gold' }
+    { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#ffffff', name: 'Classic Mono' }
   ];
 
   const currentPalette = luxuryPalettes[currentHour % luxuryPalettes.length];

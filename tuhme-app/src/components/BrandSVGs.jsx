@@ -2,7 +2,7 @@
 const generateAvatarIcon = (storeName) => {
   const firstLetter = storeName.charAt(0).toUpperCase();
   const colors = [
-    '#d4af37', '#b8860b', '#8b9dc3', '#dda15e', '#a8dadc',
+    '#000000', '#333333', '#8b9dc3', '#dda15e', '#a8dadc',
     '#f1faee', '#ffb3ba', '#c7f9cc', '#bde0ff', '#ffd23f',
     '#a663cc', '#ff6b35', '#4ecdc4', '#ff9a8b', '#f8f32b',
     '#95e1d3', '#f38ba8', '#74c0fc', '#ffd43b', '#b197fc'

@@ -101,7 +101,7 @@ const ServiceOverview = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx="true">{`
         .service-overview {
           padding: var(--space-3xl) 0;
           background: var(--primary-bg);

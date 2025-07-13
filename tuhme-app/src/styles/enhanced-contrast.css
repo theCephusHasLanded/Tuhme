@@ -207,8 +207,8 @@ input, textarea, select {
 .specialty-tag,
 .category-tag {
   color: var(--accent-primary);
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .price-range,

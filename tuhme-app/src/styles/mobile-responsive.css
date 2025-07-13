@@ -118,61 +118,7 @@ body, html {
   }
 }
 
-/* Store Train Mobile Enhancements */
-@media (max-width: 768px) {
-  .focal-partners-section {
-    overflow-x: hidden;
-    padding: var(--space-2xl) 0;
-  }
-  
-  .partners-container {
-    padding: 0 var(--space-sm);
-    overflow-x: hidden;
-  }
-  
-  .train-display {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .train-viewport {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    touch-action: pan-x;
-  }
-  
-  /* Mobile swipe indicators */
-  .train-viewport::before {
-    content: 'Swipe to explore stores';
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: var(--text-xs);
-    color: var(--tertiary-text);
-    z-index: 30;
-    opacity: 0.7;
-    pointer-events: none;
-  }
-  
-  /* Hide navigation arrows on very small screens */
-  @media (max-width: 480px) {
-    .train-nav {
-      display: none;
-    }
-    
-    .train-display {
-      flex-direction: column;
-      gap: var(--space-sm);
-    }
-    
-    .train-viewport {
-      margin: 0;
-    }
-  }
-}
+
 
 /* Progress Track Mobile Fix */
 @media (max-width: 768px) {
@@ -195,9 +141,9 @@ body, html {
 /* Compact Store Search Mobile Fix */
 @media (max-width: 768px) {
   .compact-store-search {
-    margin: var(--space-sm) var(--space-3);
+    margin: var(--space-sm) var(--space-sm);
     padding: var(--space-sm);
-    max-width: calc(100vw - var(--space-6));
+    max-width: calc(100vw - var(--space-lg));
     box-sizing: border-box;
   }
   
@@ -212,6 +158,7 @@ body, html {
     flex-direction: column;
     gap: var(--space-2);
     align-items: stretch;
+    padding: var(--space-2);
   }
   
   .search-input {
@@ -224,6 +171,11 @@ body, html {
     position: static;
     align-self: center;
     margin-bottom: var(--space-1);
+  }
+  
+  .clear-button {
+    right: var(--space-2);
+    padding: var(--space-2);
   }
   
   .search-button {
@@ -247,9 +199,9 @@ body, html {
 
 @media (max-width: 480px) {
   .compact-store-search {
-    margin: var(--space-xs) var(--space-2);
+    margin: var(--space-xs) var(--space-sm);
     padding: var(--space-xs);
-    max-width: calc(100vw - var(--space-4));
+    max-width: calc(100vw - var(--space-lg));
   }
   
   .search-header h3 {
@@ -273,6 +225,55 @@ body, html {
   
   .feature-item {
     min-width: auto;
+  }
+  
+  /* Mobile Search Results */
+  .search-results {
+    max-height: 300px;
+    margin-top: var(--space-1);
+  }
+  
+  .search-result-item {
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+  
+  .store-logo-small {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .store-logo-small svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .store-details {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  
+  .popular-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-1);
+  }
+  
+  .popular-store {
+    padding: var(--space-2);
+  }
+  
+  .popular-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .popular-logo svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .popular-name {
+    font-size: 10px;
   }
 }
 
@@ -361,7 +362,7 @@ body, html {
 .horizontal-store-carousel {
   margin: var(--space-8) 0;
   overflow: visible; /* Changed from hidden to visible */
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.02) 0%, rgba(212, 175, 55, 0.01) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
   border-radius: 12px;
   padding: var(--space-6) var(--space-4); /* Added horizontal padding */
 }
@@ -826,7 +827,7 @@ body, html {
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 0 0 1px rgba(212, 175, 55, 0.1) !important;
+    0 0 0 1px rgba(0, 0, 0, 0.1) !important;
 }
 
 [data-theme="dark"] .modal-content.glass-component,

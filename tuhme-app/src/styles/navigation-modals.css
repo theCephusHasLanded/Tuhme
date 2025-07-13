@@ -31,7 +31,7 @@
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   max-width: 600px;
   width: 100%;
@@ -47,7 +47,7 @@
 /* Dark Theme Modal Support */
 [data-theme="dark"] .modal-content {
   background: rgba(26, 26, 26, 0.92);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
@@ -84,7 +84,7 @@
 }
 
 .modal-close:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   color: var(--accent-primary);
   transform: scale(1.1);
 }
@@ -92,7 +92,7 @@
 .modal-header {
   text-align: center;
   padding: 40px 40px 20px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .modal-header h2 {
@@ -134,16 +134,16 @@
 .pillar {
   text-align: center;
   padding: 20px;
-  background: rgba(212, 175, 55, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   transition: all 0.3s ease;
 }
 
 .pillar:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .pillar h4 {
@@ -159,10 +159,10 @@
 }
 
 .mission-vision {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
   padding: 25px;
   border-radius: 15px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mission-vision h4 {
@@ -187,15 +187,15 @@
 .benefit {
   text-align: center;
   padding: 20px;
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .benefit:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 16px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .benefit h4 {
@@ -210,7 +210,7 @@
 }
 
 .partner-types {
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   padding: 25px;
   border-radius: 15px;
   margin: 30px 0;
@@ -249,12 +249,12 @@
   align-items: center;
   gap: 10px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .luxury-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .cta-subtitle {
@@ -274,16 +274,16 @@
 .category {
   text-align: center;
   padding: 25px 20px;
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .category:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .category h4 {
@@ -298,11 +298,11 @@
 }
 
 .concierge-services {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
   padding: 30px;
   border-radius: 15px;
   margin: 30px 0;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .concierge-services h4 {
@@ -387,9 +387,9 @@
 .step {
   text-align: center;
   padding: 20px;
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
@@ -413,11 +413,11 @@
 }
 
 .now-pricing {
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   padding: 25px;
   border-radius: 15px;
   margin: 30px 0;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .now-pricing h4 {
@@ -469,7 +469,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -477,9 +477,9 @@
 .savi-button:hover {
   transform: scale(1.1) translateY(-1px);
   box-shadow: 
-    0 8px 20px rgba(212, 175, 55, 0.4),
-    0 0 0 2px rgba(212, 175, 55, 0.2),
-    0 0 20px rgba(212, 175, 55, 0.6);
+    0 8px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .savi-button:hover::before {
@@ -632,7 +632,7 @@
   display: flex;
   gap: var(--space-3);
   padding: var(--space-6);
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   justify-content: flex-end;
@@ -673,7 +673,7 @@
 .modal-action-btn.primary:hover {
   background: var(--accent-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 480px) {

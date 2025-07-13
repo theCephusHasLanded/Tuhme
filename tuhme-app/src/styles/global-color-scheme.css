@@ -5,17 +5,17 @@
   /* Default palette (will be overridden by JavaScript) */
   --global-primary: #0a0a0a;
   --global-secondary: #1a1a1a;
-  --global-accent: #d4af37;
-  --global-accent-rgb: 212, 175, 55;
-  --palette-name: 'midnight-gold';
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
+  --palette-name: 'midnight-mono';
 }
 
 /* Hourly Luxury Palettes - matches Hero component exactly */
-[data-global-palette="midnight-gold"] {
+[data-global-palette="midnight-mono"] {
   --global-primary: #0a0a0a;
   --global-secondary: #1a1a1a;
-  --global-accent: #d4af37;
-  --global-accent-rgb: 212, 175, 55;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
 }
 
 [data-global-palette="champagne-dusk"] {
@@ -88,11 +88,11 @@
   --global-accent-rgb: 166, 99, 204;
 }
 
-[data-global-palette="amber-prestige"] {
+[data-global-palette="mono-prestige"] {
   --global-primary: #1a1914;
   --global-secondary: #2a2925;
-  --global-accent: #d4af37;
-  --global-accent-rgb: 212, 175, 55;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
 }
 
 [data-global-palette="turquoise-calm"] {
@@ -172,11 +172,11 @@
   --global-accent-rgb: 130, 201, 30;
 }
 
-[data-global-palette="classic-gold"] {
+[data-global-palette="classic-mono"] {
   --global-primary: #1a1a1a;
   --global-secondary: #2a2a2a;
-  --global-accent: #d4af37;
-  --global-accent-rgb: 212, 175, 55;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
 }
 
 /* Update liquid glass system to use global colors */
@@ -238,4 +238,148 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(var(--global-accent-rgb), 0.2);
+}
+
+/* Glowing Tagline - Adaptive Glow Effects */
+.glowing-tagline {
+  font-weight: 700 !important;
+  position: relative;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+  animation: glowPulse 3s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(255, 255, 255, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5),
+      0 0 45px rgba(255, 255, 255, 0.4),
+      0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Hover effect for glowing tagline */
+.glowing-tagline:hover {
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.6),
+    0 0 50px rgba(255, 255, 255, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+
+/* Adaptive glow for light color schemes */
+[data-global-palette="pearl-morning"] .glowing-tagline,
+[data-global-palette="emerald-mist"] .glowing-tagline,
+[data-global-palette="crystal-blue"] .glowing-tagline,
+[data-global-palette="mint-elegance"] .glowing-tagline,
+[data-global-palette="blush-elegance"] .glowing-tagline {
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+[data-global-palette="pearl-morning"] .glowing-tagline:hover,
+[data-global-palette="emerald-mist"] .glowing-tagline:hover,
+[data-global-palette="crystal-blue"] .glowing-tagline:hover,
+[data-global-palette="mint-elegance"] .glowing-tagline:hover,
+[data-global-palette="blush-elegance"] .glowing-tagline:hover {
+  text-shadow: 
+    0 0 20px rgba(0, 0, 0, 1),
+    0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Light color schemes need black glow animations */
+@keyframes glowPulseDark {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(0, 0, 0, 0.9),
+      0 0 25px rgba(0, 0, 0, 0.7),
+      0 0 35px rgba(0, 0, 0, 0.5),
+      0 0 45px rgba(0, 0, 0, 0.4),
+      0 1px 3px rgba(255, 255, 255, 0.3);
+  }
+}
+
+[data-global-palette="pearl-morning"] .glowing-tagline,
+[data-global-palette="emerald-mist"] .glowing-tagline,
+[data-global-palette="crystal-blue"] .glowing-tagline,
+[data-global-palette="mint-elegance"] .glowing-tagline,
+[data-global-palette="blush-elegance"] .glowing-tagline {
+  animation: glowPulseDark 3s ease-in-out infinite alternate;
+}
+
+/* Hero-specific glowing text - always white regardless of color scheme */
+.hero-glowing-tagline {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  position: relative;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 25px rgba(255, 255, 255, 0.7),
+    0 0 35px rgba(255, 255, 255, 0.5),
+    0 0 45px rgba(255, 255, 255, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  animation: heroGlowPulse 3s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+@keyframes heroGlowPulse {
+  0% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5),
+      0 0 45px rgba(255, 255, 255, 0.4),
+      0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 30px rgba(255, 255, 255, 0.8),
+      0 0 40px rgba(255, 255, 255, 0.6),
+      0 0 50px rgba(255, 255, 255, 0.5),
+      0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Hero hover effect */
+.hero-glowing-tagline:hover {
+  text-shadow: 
+    0 0 25px rgba(255, 255, 255, 1),
+    0 0 35px rgba(255, 255, 255, 0.9),
+    0 0 45px rgba(255, 255, 255, 0.7),
+    0 0 55px rgba(255, 255, 255, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
 }

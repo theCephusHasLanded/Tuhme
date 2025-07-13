@@ -12,7 +12,7 @@
   padding: var(--space-2) var(--space-4);
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   font-size: var(--text-sm);
   font-weight: 500;
@@ -25,8 +25,8 @@
 }
 
 .limit-indicator.limit-warning {
-  color: #ffa500;
-  border-color: rgba(255, 165, 0, 0.3);
+  color: #000000;
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 .limit-indicator.limit-reached {
@@ -48,7 +48,7 @@
 .upload-progress-bar {
   width: 100%;
   height: 6px;
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   overflow: hidden;
   position: relative;
@@ -90,7 +90,7 @@
 .uploaded-item-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -128,7 +128,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   color: var(--accent-primary);
   gap: var(--space-2);
 }
@@ -165,7 +165,7 @@
   align-items: center;
   gap: var(--space-1);
   padding: var(--space-1) var(--space-2);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.05);
   border-radius: 6px;
   font-size: var(--text-xs);
@@ -179,7 +179,7 @@
 }
 
 .add-details-btn:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-color: var(--accent-primary);
 }
 
@@ -199,8 +199,8 @@
 
 .item-metadata {
   padding: var(--space-2) var(--space-3);
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
-  background: rgba(212, 175, 55, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .metadata-tag {
@@ -217,8 +217,8 @@
 .membership-upgrade-prompt {
   margin-top: var(--space-6);
   padding: var(--space-5);
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 16px;
   text-align: center;
 }
@@ -253,12 +253,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .upgrade-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Minimal Navigation Styles */
@@ -268,7 +268,7 @@
   justify-content: space-between;
   margin-bottom: var(--space-6);
   padding-bottom: var(--space-4);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .minimal-back-button {
@@ -288,7 +288,7 @@
 }
 
 .minimal-back-button:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   color: var(--accent-primary);
   transform: translateX(-2px);
 }
@@ -303,16 +303,16 @@
 .step-indicator {
   font-size: var(--text-sm);
   color: var(--secondary-text);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   padding: var(--space-1) var(--space-3);
   border-radius: 20px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .minimal-progress-bar {
   width: 100%;
   height: 3px;
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   margin-bottom: var(--space-8);
   overflow: hidden;
@@ -332,7 +332,7 @@
   align-items: center;
   margin-top: var(--space-8);
   padding: var(--space-6) 0;
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   gap: var(--space-4);
 }
 
@@ -357,20 +357,20 @@
 
 .liquid-prev-button {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   color: var(--secondary-text);
 }
 
 .liquid-prev-button:hover {
   background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(0, 0, 0, 0.4);
   transform: translateX(-2px);
   color: var(--primary-text);
 }
 
 .liquid-next-button {
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   color: white;
   margin-left: auto;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.6);
@@ -379,7 +379,7 @@
 
 .liquid-next-button:hover {
   transform: translateX(2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.4);
   text-shadow: 0 0 12px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8);
 }
 

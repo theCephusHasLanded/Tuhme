@@ -231,7 +231,7 @@ const ShopperDashboard = ({ shopperPhone = '16465889916', shopperName = 'TUHME S
         </div>
       )}
 
-      <style jsx>{`
+      <style jsx="true">{`
         .shopper-dashboard {
           max-width: 1200px;
           margin: 0 auto;

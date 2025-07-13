@@ -11,7 +11,7 @@
 
 .get-in-touch-modal .modal-header {
   padding: 40px 40px 20px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .get-in-touch-modal .modal-header h2 {
@@ -53,13 +53,13 @@
 
 .tab-button:hover {
   color: var(--primary-text);
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .tab-button.active {
   color: var(--accent-primary);
   border-bottom-color: var(--accent-primary);
-  background: rgba(212, 175, 55, 0.08);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* Modal Body */
@@ -93,15 +93,15 @@
 
 .contact-method:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(212, 175, 55, 0.2);
+  border-color: rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 
 .method-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -149,8 +149,8 @@
 
 /* Quick Actions */
 .quick-actions {
-  background: rgba(212, 175, 55, 0.03);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 32px 28px;
 }
@@ -174,7 +174,7 @@
   gap: 8px;
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   color: var(--secondary-text);
   text-decoration: none;
@@ -186,20 +186,20 @@
 
 .action-button:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(0, 0, 0, 0.1);
   color: var(--primary-text);
   transform: translateY(-1px);
 }
 
 .action-button.primary {
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(0, 0, 0, 0.1);
   color: white;
 }
 
 .action-button.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Tab */
@@ -257,7 +257,7 @@
 .select-container select:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .input-border,
@@ -335,12 +335,12 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .submit-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .submit-button:disabled {
@@ -420,7 +420,7 @@
 
 .success-button.secondary {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   color: var(--secondary-text);
 }
 
@@ -429,7 +429,7 @@
 }
 
 .success-button.primary:hover {
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .success-button.secondary:hover {
@@ -594,12 +594,12 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .contact-primary-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
 }
 
 .contact-primary-button .button-shine {
@@ -629,7 +629,7 @@
   gap: 8px;
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   color: var(--secondary-text);
   text-decoration: none;
@@ -640,7 +640,7 @@
 
 .quick-link:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(0, 0, 0, 0.1);
   color: var(--primary-text);
   transform: translateY(-2px);
 }

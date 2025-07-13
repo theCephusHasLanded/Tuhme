@@ -5,7 +5,7 @@ class ColorSchemeManager {
   constructor() {
     this.currentHour = new Date().getHours();
     this.luxuryPalettes = [
-      { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#d4af37', name: 'midnight-gold', rgb: '212, 175, 55' },
+      { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#ffffff', name: 'midnight-mono', rgb: '255, 255, 255' },
       { primary: '#1a0f1a', secondary: '#2a1a2a', accent: '#e6c2a6', name: 'champagne-dusk', rgb: '230, 194, 166' },
       { primary: '#0f1419', secondary: '#1a2129', accent: '#8b9dc3', name: 'sapphire-night', rgb: '139, 157, 195' },
       { primary: '#191414', secondary: '#2a2125', accent: '#dda15e', name: 'cognac-dream', rgb: '221, 161, 94' },
@@ -16,7 +16,7 @@ class ColorSchemeManager {
       { primary: '#14141a', secondary: '#25252a', accent: '#bde0ff', name: 'crystal-blue', rgb: '189, 224, 255' },
       { primary: '#1a140f', secondary: '#2a251a', accent: '#ffd23f', name: 'saffron-luxury', rgb: '255, 210, 63' },
       { primary: '#141a1a', secondary: '#252a2a', accent: '#a663cc', name: 'amethyst-elite', rgb: '166, 99, 204' },
-      { primary: '#1a1914', secondary: '#2a2925', accent: '#d4af37', name: 'amber-prestige', rgb: '212, 175, 55' },
+      { primary: '#1a1914', secondary: '#2a2925', accent: '#ffffff', name: 'mono-prestige', rgb: '255, 255, 255' },
       { primary: '#0f141a', secondary: '#1a252a', accent: '#4ecdc4', name: 'turquoise-calm', rgb: '78, 205, 196' },
       { primary: '#1a0f0f', secondary: '#2a1a1a', accent: '#e6c2a6', name: 'coral-sunset', rgb: '230, 194, 166' },
       { primary: '#14141a', secondary: '#25252a', accent: '#f8f32b', name: 'citrine-bright', rgb: '248, 243, 43' },
@@ -28,7 +28,7 @@ class ColorSchemeManager {
       { primary: '#1a190f', secondary: '#2a291a', accent: '#69db7c', name: 'jade-prosperity', rgb: '105, 219, 124' },
       { primary: '#1a0f19', secondary: '#2a1a29', accent: '#f1faee', name: 'blush-elegance', rgb: '241, 250, 238' },
       { primary: '#0f1a0f', secondary: '#1a2a1a', accent: '#82c91e', name: 'peridot-fresh', rgb: '130, 201, 30' },
-      { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#d4af37', name: 'classic-gold', rgb: '212, 175, 55' }
+      { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#ffffff', name: 'classic-mono', rgb: '255, 255, 255' }
     ];
     
     this.currentPalette = this.luxuryPalettes[this.currentHour % this.luxuryPalettes.length];

@@ -121,10 +121,10 @@
     rgba(26, 26, 26, 0.95) 0%, 
     rgba(42, 42, 42, 0.95) 100%) !important;
   backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(212, 175, 55, 0.1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(212, 175, 55, 0.05) !important;
+    0 0 0 1px rgba(0, 0, 0, 0.1) !important;
   position: relative !important;
   z-index: 1001 !important;
   overflow: visible !important;
@@ -150,7 +150,7 @@
 }
 
 .progress-step.active .step-number {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #f4d03f 100%) !important;
   color: #000000 !important;
 }
 
@@ -181,25 +181,25 @@
 
 .plan-card:hover {
   transform: translateY(-4px) !important;
-  border-color: rgba(212, 175, 55, 0.4) !important;
-  background: rgba(212, 175, 55, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: rgba(0, 0, 0, 0.1) !important;
   box-shadow: 
-    0 16px 32px rgba(212, 175, 55, 0.2),
-    0 0 0 2px rgba(212, 175, 55, 0.15) !important;
+    0 16px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(0, 0, 0, 0.1) !important;
   z-index: 10 !important;
 }
 
 .plan-card.selected {
-  border-color: rgba(212, 175, 55, 0.4) !important;
-  background: rgba(212, 175, 55, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: rgba(0, 0, 0, 0.1) !important;
   z-index: 5 !important;
 }
 
 .plan-card.featured {
-  border-color: rgba(212, 175, 55, 0.3) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
   background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.1) 0%, 
-    rgba(212, 175, 55, 0.05) 100%) !important;
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.1) 100%) !important;
   transform: scale(1.02) !important;
   z-index: 2 !important;
   animation: planPulse 3s ease-in-out infinite alternate !important;
@@ -207,13 +207,13 @@
 
 .plan-card.featured:hover {
   transform: translateY(-4px) scale(1.02) !important;
-  border-color: rgba(212, 175, 55, 0.5) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
   background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.15) 0%, 
-    rgba(212, 175, 55, 0.08) 100%) !important;
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.1) 100%) !important;
   box-shadow: 
-    0 20px 40px rgba(212, 175, 55, 0.3),
-    0 0 0 2px rgba(212, 175, 55, 0.25) !important;
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(0, 0, 0, 0.1) !important;
   z-index: 15 !important;
 }
 
@@ -223,7 +223,7 @@
   position: absolute !important;
   top: 16px !important;
   right: 16px !important;
-  background: #d4af37 !important;
+  background: var(--accent-primary) !important;
   color: #000000 !important;
   padding: 4px 8px !important;
   border-radius: 6px !important;
@@ -251,16 +251,16 @@
   from {
     box-shadow: 
       0 8px 25px rgba(0, 0, 0, 0.15),
-      0 0 0 2px rgba(212, 175, 55, 0.4),
-      0 0 30px rgba(212, 175, 55, 0.5),
-      0 0 60px rgba(212, 175, 55, 0.3);
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 30px rgba(0, 0, 0, 0.1),
+      0 0 60px rgba(0, 0, 0, 0.1);
   }
   to {
     box-shadow: 
       0 8px 25px rgba(0, 0, 0, 0.15),
-      0 0 0 2px rgba(212, 175, 55, 0.6),
-      0 0 40px rgba(212, 175, 55, 0.7),
-      0 0 80px rgba(212, 175, 55, 0.4);
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 40px rgba(0, 0, 0, 0.1),
+      0 0 80px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -274,19 +274,19 @@
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: rgba(212, 175, 55, 0.4) !important;
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Button styling */
 .btn-primary {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%) !important;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #f4d03f 100%) !important;
   color: #000000 !important;
   border: none !important;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%) !important;
+  background: linear-gradient(135deg, #f4d03f 0%, var(--accent-primary) 100%) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -297,8 +297,8 @@
 }
 
 .btn-secondary:hover {
-  border-color: rgba(212, 175, 55, 0.4) !important;
-  color: #d4af37 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: var(--accent-primary) !important;
 }
 
 /* Summary card */
@@ -332,13 +332,13 @@
 
 .modal-close:hover {
   background: rgba(255, 255, 255, 0.1) !important;
-  color: #d4af37 !important;
-  border-color: rgba(212, 175, 55, 0.3) !important;
+  color: var(--accent-primary) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Spinner */
 .spinner {
-  border-top-color: #d4af37 !important;
+  border-top-color: var(--accent-primary) !important;
 }
 
 /* Mobile responsive */

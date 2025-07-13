@@ -13,7 +13,7 @@ const DailySalesFlyer = () => {
 
   // Use same luxury palettes as Hero
   const luxuryPalettes = [
-    { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#d4af37', name: 'Midnight Gold' },
+    { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#ffffff', name: 'Midnight Mono' },
     { primary: '#1a0f1a', secondary: '#2a1a2a', accent: '#e6c2a6', name: 'Champagne Dusk' },
     { primary: '#0f1419', secondary: '#1a2129', accent: '#8b9dc3', name: 'Sapphire Night' },
     { primary: '#191414', secondary: '#2a2125', accent: '#dda15e', name: 'Cognac Dream' },
@@ -24,7 +24,7 @@ const DailySalesFlyer = () => {
     { primary: '#14141a', secondary: '#25252a', accent: '#bde0ff', name: 'Crystal Blue' },
     { primary: '#1a140f', secondary: '#2a251a', accent: '#ffd23f', name: 'Saffron Luxury' },
     { primary: '#141a1a', secondary: '#252a2a', accent: '#a663cc', name: 'Amethyst Elite' },
-    { primary: '#1a1914', secondary: '#2a2925', accent: '#d4af37', name: 'Amber Prestige' },
+    { primary: '#1a1914', secondary: '#2a2925', accent: '#ffffff', name: 'Mono Prestige' },
     { primary: '#0f141a', secondary: '#1a252a', accent: '#4ecdc4', name: 'Turquoise Calm' },
     { primary: '#1a0f0f', secondary: '#2a1a1a', accent: '#e6c2a6', name: 'Coral Sunset' },
     { primary: '#14141a', secondary: '#25252a', accent: '#f8f32b', name: 'Citrine Bright' },
@@ -36,7 +36,7 @@ const DailySalesFlyer = () => {
     { primary: '#1a190f', secondary: '#2a291a', accent: '#69db7c', name: 'Jade Prosperity' },
     { primary: '#1a0f19', secondary: '#2a1a29', accent: '#f1faee', name: 'Blush Elegance' },
     { primary: '#0f1a0f', secondary: '#1a2a1a', accent: '#82c91e', name: 'Peridot Fresh' },
-    { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#d4af37', name: 'Classic Gold' }
+    { primary: '#1a1a1a', secondary: '#2a2a2a', accent: '#ffffff', name: 'Classic Mono' }
   ];
 
   const currentPalette = luxuryPalettes[currentHour % luxuryPalettes.length];

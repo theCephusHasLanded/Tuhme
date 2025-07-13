@@ -113,15 +113,7 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
             </div>
           </button>
 
-          <button 
-            className="nav-icon-button theme-button"
-            title="Toggle theme"
-          >
-            <div className="icon-container">
-              <ThemeToggle />
-              <div className="icon-glow"></div>
-            </div>
-          </button>
+          <ThemeToggle className="nav-icon-button theme-button" />
           
           <button 
             className="nav-text-button membership-button"
