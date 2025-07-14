@@ -8,6 +8,7 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { openModal } = useModal();
 
   const navItems = [
@@ -25,8 +26,19 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.luxury-dropdown-container')) {
+        setIsDropdownOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   const handleNavClick = (item) => {
@@ -60,76 +72,113 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
           ))}
         </div>
 
-        <div className="nav-actions">
+        <div className="nav-actions luxury-nav-redesign">
+          {/* SAVI AI Assistant */}
           <button 
-            className="nav-icon-button flyer-button"
-            onClick={() => {
-              localStorage.removeItem('tuhme-daily-flyer-shown');
-              openModal('dailySalesFlyer');
-            }}
-            title="Daily Sales Flyer"
-          >
-            <div className="icon-container">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
-                <path d="M8 10l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="9" cy="9" r="1" fill="currentColor" opacity="0.6"/>
-                <circle cx="15" cy="9" r="1" fill="currentColor" opacity="0.6"/>
-                <circle cx="12" cy="15" r="1" fill="currentColor" opacity="0.6"/>
-              </svg>
-              <div className="icon-glow"></div>
-            </div>
-          </button>
-
-          <button 
-            className="nav-icon-button savi-button liquid-animate-glow"
+            className="luxury-nav-btn savi-button"
             onClick={onOpenSavi}
             title="Ask SAVI (AI Assistant)"
           >
-            <div className="icon-container">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
-                <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
-                <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.8"/>
-                <path d="M12 6v2M12 16v2M6 12h2M16 12h2" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
-              </svg>
-              <div className="icon-glow"></div>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1" opacity="0.6"/>
+              <circle cx="12" cy="12" r="1" fill="currentColor"/>
+            </svg>
           </button>
 
+          {/* Store Finder */}
           <button 
-            className="nav-icon-button feedback-button"
-            onClick={onOpenFeedback}
-            title="Send Feedback"
+            className="luxury-nav-btn store-button"
+            onClick={() => openModal('storeFinder')}
+            title="Find Stores"
           >
-            <div className="icon-container">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
-                <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.5-.8 2.8-2 3.5v1.5h-4v-1.5c-1.2-.7-2-2-2-3.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-                <circle cx="10" cy="10" r="0.5" fill="currentColor" opacity="0.7"/>
-                <circle cx="14" cy="10" r="0.5" fill="currentColor" opacity="0.7"/>
-              </svg>
-              <div className="icon-glow"></div>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="1.5"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.5"/>
+            </svg>
           </button>
 
-          <ThemeToggle className="nav-icon-button theme-button" />
+          {/* Theme Toggle */}
+          <ThemeToggle className="luxury-nav-btn theme-button" />
           
-          <button 
-            className="nav-text-button membership-button"
-            onClick={() => openModal('membership')}
-          >
-            <span className="button-text">Join Premium</span>
-            <div className="button-glow"></div>
-          </button>
-          
-          <button 
-            className="nav-text-button express-button primary-accent"
-            onClick={() => onNavigate('express-order')}
-          >
-            <span className="button-text">Start Express Order</span>
-            <div className="button-glow"></div>
-          </button>
+          {/* Menu Dropdown */}
+          <div className="luxury-dropdown-container">
+            <button 
+              className="luxury-nav-btn dropdown-toggle"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              title="Menu"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                <circle cx="19" cy="12" r="1" fill="currentColor"/>
+                <circle cx="5" cy="12" r="1" fill="currentColor"/>
+              </svg>
+            </button>
+            
+            {isDropdownOpen && (
+              <div className="luxury-dropdown-menu">
+                <button 
+                  className="dropdown-item"
+                  onClick={() => {
+                    localStorage.removeItem('tuhme-daily-flyer-shown');
+                    openModal('dailySalesFlyer');
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M8 8h8M8 12h5M8 16h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <span>Daily Sales Flyer</span>
+                </button>
+                
+                <button 
+                  className="dropdown-item"
+                  onClick={() => {
+                    openModal('membership');
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" stroke="currentColor" strokeWidth="1.5" fill="currentColor" opacity="0.2"/>
+                  </svg>
+                  <span>Premium Membership</span>
+                </button>
+                
+                <button 
+                  className="dropdown-item"
+                  onClick={() => {
+                    onOpenFeedback();
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="1.5"/>
+                    <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                    <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                  </svg>
+                  <span>Contact & Support</span>
+                </button>
+                
+                <div className="dropdown-divider"></div>
+                
+                <button 
+                  className="dropdown-item express-item"
+                  onClick={() => {
+                    onNavigate('express-order');
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+                    <polygon points="10,8 16,12 10,16" fill="currentColor"/>
+                  </svg>
+                  <span>Start Express Order</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         <button 

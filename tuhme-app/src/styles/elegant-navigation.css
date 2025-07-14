@@ -1,340 +1,504 @@
-/* Elegant Navigation - SAVI-Style Icons */
-
-/* Navigation Container - Sticky */
+/* ===== LUXURY NAVIGATION SYSTEM ===== */
 .navigation {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 1000 !important;
-  transition: all 0.3s ease !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 24px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
 }
 
-/* Icon Buttons */
-.nav-icon-button {
+.navigation.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode adaptations */
+[data-theme="light"] .navigation {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .navigation.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   position: relative;
+}
+
+/* ===== LUXURY NAV BUTTONS REDESIGN ===== */
+.luxury-nav-redesign {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.luxury-nav-btn {
   width: 44px;
   height: 44px;
   border: none;
-  background: transparent;
-  border-radius: 50%;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Navbar Background - Always Black except Light Mode */
-.navigation {
-  background: rgba(0, 0, 0, 0.9) !important;
-  backdrop-filter: blur(20px) !important;
+.luxury-nav-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+  color: currentColor;
+  stroke: currentColor;
+  fill: currentColor;
+  display: block;
+  flex-shrink: 0;
 }
 
-/* Light Mode Navbar - White Background with Black Icons */
-[data-global-palette="pearl-morning"] .navigation,
-[data-global-palette="emerald-mist"] .navigation,
-[data-global-palette="crystal-blue"] .navigation,
-[data-global-palette="mint-elegance"] .navigation,
-[data-global-palette="blush-elegance"] .navigation {
+.luxury-nav-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.luxury-nav-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.luxury-nav-btn:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+/* Light mode luxury nav buttons */
+[data-theme="light"] .luxury-nav-btn {
   background: rgba(255, 255, 255, 0.9) !important;
+  color: #1a1a1a !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-[data-global-palette="pearl-morning"] .nav-icon-button,
-[data-global-palette="emerald-mist"] .nav-icon-button,
-[data-global-palette="crystal-blue"] .nav-icon-button,
-[data-global-palette="mint-elegance"] .nav-icon-button,
-[data-global-palette="blush-elegance"] .nav-icon-button {
-  color: rgba(0, 0, 0, 0.85) !important;
+[data-theme="light"] .luxury-nav-btn:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
 }
 
-[data-global-palette="pearl-morning"] .nav-icon-button:hover,
-[data-global-palette="emerald-mist"] .nav-icon-button:hover,
-[data-global-palette="crystal-blue"] .nav-icon-button:hover,
-[data-global-palette="mint-elegance"] .nav-icon-button:hover,
-[data-global-palette="blush-elegance"] .nav-icon-button:hover {
-  color: rgba(0, 0, 0, 1) !important;
-  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4)) !important;
+/* Light mode SVG icons */
+[data-theme="light"] .luxury-nav-btn svg {
+  color: #1a1a1a !important;
+  stroke: #1a1a1a !important;
+  fill: #1a1a1a !important;
 }
 
-/* Light Mode SVG Icons - Black on White Navbar */
-[data-global-palette="pearl-morning"] .nav-icon-button svg,
-[data-global-palette="emerald-mist"] .nav-icon-button svg,
-[data-global-palette="crystal-blue"] .nav-icon-button svg,
-[data-global-palette="mint-elegance"] .nav-icon-button svg,
-[data-global-palette="blush-elegance"] .nav-icon-button svg {
-  color: rgba(0, 0, 0, 0.85) !important;
-  fill: rgba(0, 0, 0, 0.85) !important;
+[data-theme="light"] .dropdown-toggle {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #1a1a1a !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Black Buttons in Light Mode - Need White Icons */
-[data-global-palette="pearl-morning"] button[style*="background: #000"],
-[data-global-palette="emerald-mist"] button[style*="background: #000"],
-[data-global-palette="crystal-blue"] button[style*="background: #000"],
-[data-global-palette="mint-elegance"] button[style*="background: #000"],
-[data-global-palette="blush-elegance"] button[style*="background: #000"],
-[data-global-palette="pearl-morning"] .btn[style*="background: #000"],
-[data-global-palette="emerald-mist"] .btn[style*="background: #000"],
-[data-global-palette="crystal-blue"] .btn[style*="background: #000"],
-[data-global-palette="mint-elegance"] .btn[style*="background: #000"],
-[data-global-palette="blush-elegance"] .btn[style*="background: #000"] {
+[data-theme="light"] .dropdown-toggle svg {
+  color: #1a1a1a !important;
+  stroke: #1a1a1a !important;
+  fill: #1a1a1a !important;
+}
+
+/* Dark mode SVG icons */
+.luxury-nav-btn svg {
   color: #ffffff !important;
-}
-
-[data-global-palette="pearl-morning"] button[style*="background: #000"] svg,
-[data-global-palette="emerald-mist"] button[style*="background: #000"] svg,
-[data-global-palette="crystal-blue"] button[style*="background: #000"] svg,
-[data-global-palette="mint-elegance"] button[style*="background: #000"] svg,
-[data-global-palette="blush-elegance"] button[style*="background: #000"] svg {
-  color: #ffffff !important;
+  stroke: #ffffff !important;
   fill: #ffffff !important;
 }
 
-.nav-icon-button:hover {
-  color: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+.dropdown-toggle svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
 }
 
-.nav-icon-button:active {
-  transform: scale(1.05);
-  transition: all 0.1s ease;
+/* Additional visibility fixes for all SVG elements */
+.luxury-nav-btn svg path {
+  stroke: currentColor !important;
+  opacity: 1 !important;
 }
 
-.icon-container {
+.luxury-nav-btn svg circle {
+  stroke: currentColor !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Force white icons in dark mode with higher specificity */
+:root:not([data-theme="light"]) .luxury-nav-btn svg,
+:root:not([data-theme="light"]) .luxury-nav-btn svg path,
+:root:not([data-theme="light"]) .luxury-nav-btn svg circle {
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ===== DROPDOWN SYSTEM ===== */
+.luxury-dropdown-container {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 2;
 }
 
-.icon-glow {
+.dropdown-toggle {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.luxury-dropdown-menu {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  animation: dropdownFadeIn 0.2s ease-out;
 }
 
-.nav-icon-button:hover .icon-glow {
-  opacity: 1;
-  animation: iconGlow 2s ease-in-out infinite;
-}
-
-@keyframes iconGlow {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.8;
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
   }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.3);
-    opacity: 0.4;
-  }
-}
-
-/* SAVI Button Special Animation */
-.savi-button.liquid-animate-glow .icon-glow {
-  animation: saviGlow 3s ease-in-out infinite;
-}
-
-.savi-button.liquid-animate-glow {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-@keyframes saviGlow {
-  0%, 100% { 
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% { 
+  to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.4);
+    transform: translateY(0);
   }
 }
 
-/* Text Buttons */
-.nav-text-button {
-  position: relative;
-  padding: 10px 20px;
-  border: none;
-  background: transparent;
-  border-radius: 22px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  height: 44px;
+[data-theme="light"] .luxury-dropdown-menu {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.nav-text-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
-}
-
-.nav-text-button.primary-accent {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.nav-text-button.primary-accent:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.2);
-}
-
-.button-text {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.02em;
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease;
-}
-
-.nav-text-button:hover .button-text {
-  color: rgba(255, 255, 255, 1);
-}
-
-.button-glow {
-  position: absolute;
-  top: 0;
-  left: -100%;
+  gap: 12px;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.6s ease;
-  pointer-events: none;
-}
-
-.nav-text-button:hover .button-glow {
-  left: 100%;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  position: relative;
-  width: 44px;
-  height: 44px;
+  padding: 12px 16px;
   border: none;
+  border-radius: 12px;
   background: transparent;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.2s ease;
 }
 
-.theme-toggle:hover {
-  color: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
 }
 
-.theme-toggle:active {
-  transform: scale(1.05);
-  transition: all 0.1s ease;
+[data-theme="light"] .dropdown-item {
+  color: #1a1a1a;
 }
 
-/* Navigation Actions Container */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+[data-theme="light"] .dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
-/* Main content adjustment for fixed navigation */
-.main-website {
-  padding-top: 80px !important;
+.dropdown-item svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+  flex-shrink: 0;
 }
 
-/* Mobile Responsive */
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 8px 12px;
+}
+
+[data-theme="light"] .dropdown-divider {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.express-item {
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(127, 0, 255, 0.2));
+  border: 1px solid rgba(255, 0, 127, 0.3);
+  margin-top: 4px;
+}
+
+.express-item:hover {
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.3), rgba(127, 0, 255, 0.3));
+  transform: translateX(4px) scale(1.02);
+}
+
+[data-theme="light"] .express-item {
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.1), rgba(127, 0, 255, 0.1));
+  border-color: rgba(255, 0, 127, 0.2);
+}
+
+[data-theme="light"] .express-item:hover {
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.15), rgba(127, 0, 255, 0.15));
+}
+
+/* Special button variants */
+.savi-button {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: rgba(0, 255, 255, 0.4) !important;
+}
+
+.savi-button:hover {
+  background: rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.3) !important;
+}
+
+.store-button {
+  background: rgba(76, 175, 80, 0.2) !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+}
+
+.store-button:hover {
+  background: rgba(76, 175, 80, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3) !important;
+}
+
+[data-theme="light"] .savi-button {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border-color: rgba(0, 255, 255, 0.3) !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme="light"] .savi-button svg {
+  color: #1a1a1a !important;
+  stroke: #1a1a1a !important;
+  fill: #1a1a1a !important;
+}
+
+[data-theme="light"] .store-button {
+  background: rgba(76, 175, 80, 0.1) !important;
+  border-color: rgba(76, 175, 80, 0.3) !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme="light"] .store-button svg {
+  color: #1a1a1a !important;
+  stroke: #1a1a1a !important;
+  fill: #1a1a1a !important;
+}
+
+/* Ensure SVG visibility in all cases */
+.savi-button svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.store-button svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
 @media (max-width: 768px) {
-  .main-website {
-    padding-top: 70px !important;
+  .luxury-nav-redesign {
+    gap: 6px;
+    padding: 0 8px;
   }
   
-  .nav-actions {
-    gap: 12px;
-  }
-  
-  .nav-icon-button {
+  .luxury-nav-btn {
     width: 40px;
     height: 40px;
   }
   
-  .theme-toggle {
-    width: 40px;
-    height: 40px;
+  .luxury-nav-btn svg {
+    width: 20px;
+    height: 20px;
   }
   
-  .nav-text-button {
-    padding: 8px 16px;
-    height: 40px;
+  .luxury-dropdown-menu {
+    min-width: 200px;
+    right: -8px;
   }
   
-  .button-text {
-    font-size: 12px;
+  .dropdown-item {
+    padding: 10px 12px;
+    font-size: 13px;
   }
 }
 
-@media (max-width: 480px) {
-  .nav-text-button .button-text {
+/* ===== DESKTOP OPTIMIZATIONS ===== */
+@media (min-width: 1024px) {
+  .luxury-nav-redesign {
+    gap: 12px;
+    padding: 0 24px;
+  }
+  
+  .luxury-nav-btn {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .luxury-nav-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .luxury-dropdown-menu {
+    min-width: 260px;
+  }
+  
+  .dropdown-item {
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+}
+
+/* ===== CRITICAL SVG ICON FIXES ===== */
+/* Override any global CSS that might hide SVGs */
+.luxury-nav-btn svg {
+  display: block !important;
+  width: 24px !important;
+  height: 24px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  stroke: currentColor !important;
+  fill: currentColor !important;
+  color: currentColor !important;
+}
+
+/* Force specific elements to be visible */
+.luxury-nav-btn svg * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ===== SVG ICON FIXES ===== */
+/* Force SVG visibility and proper styling */
+.luxury-nav-btn svg,
+.luxury-nav-btn svg path,
+.luxury-nav-btn svg circle,
+.luxury-nav-btn svg polygon,
+.luxury-nav-btn svg rect {
+  color: inherit !important;
+  stroke: inherit !important;
+  fill: inherit !important;
+}
+
+/* Dropdown SVG fixes */
+.dropdown-item svg,
+.dropdown-item svg path,
+.dropdown-item svg circle,
+.dropdown-item svg polygon,
+.dropdown-item svg rect {
+  color: inherit !important;
+  stroke: inherit !important;
+  fill: inherit !important;
+}
+
+/* Override any conflicting fill/stroke rules */
+.luxury-nav-btn svg[fill="none"] {
+  fill: none !important;
+}
+
+.luxury-nav-btn svg circle[fill="currentColor"],
+.luxury-nav-btn svg polygon[fill="currentColor"] {
+  fill: currentColor !important;
+}
+
+/* Ensure proper SVG positioning */
+.luxury-nav-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.luxury-nav-btn svg {
+  pointer-events: none;
+  z-index: 1;
+  position: relative;
+}
+
+/* Legacy support for existing navigation elements */
+.nav-logo-image {
+  height: 40px;
+  width: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-logo-image:hover {
+  transform: scale(1.05);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
     display: none;
-  }
-  
-  .nav-text-button {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border-radius: 50%;
-    position: relative;
-  }
-  
-  .theme-toggle {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .nav-text-button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 18px;
-    height: 18px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  .nav-text-button.membership-button::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.9)' stroke-width='1.5'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
-  }
-  
-  .nav-text-button.primary-accent::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.9)' stroke-width='1.5'%3E%3Cpath d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/%3E%3C/svg%3E");
   }
 }

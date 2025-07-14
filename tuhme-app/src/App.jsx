@@ -28,6 +28,7 @@ import './styles/illusive-color-override.css';
 import './styles/interactive-info.css';
 import './styles/elegant-navigation.css';
 import './styles/hero-matched-modals.css';
+import './styles/luxury-fixes.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeSystemProvider from './contexts/ThemeSystemContext';
 import { ModalProvider } from './contexts/ModalContext';

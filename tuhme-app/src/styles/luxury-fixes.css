@@ -1,0 +1,537 @@
+/* ===== LUXURY TUHME UI/UX FIXES ===== */
+/* Comprehensive fixes for critical UI issues */
+
+/* ===== GRADIENT TEXT FIXES - GLOWING IN DARK, BLACK IN LIGHT ===== */
+/* HERO SECTION - PERPETUALLY DARK IN ALL MODES */
+/* Override ALL light mode styles for hero - hero never changes */
+.hero-luxury,
+.hero-luxury *,
+.hero-content-luxury,
+.hero-content-luxury *,
+[data-theme="light"] .hero-luxury,
+[data-theme="light"] .hero-luxury *,
+[data-theme="light"] .hero-content-luxury,
+[data-theme="light"] .hero-content-luxury * {
+  color: #ffffff !important;
+  text-shadow: inherit !important;
+  background-color: transparent !important;
+}
+
+/* Hero title with intense glow - never changes */
+.hero-luxury .hero-glowing-tagline,
+.hero-luxury .title-line.hero-glowing-tagline,
+[data-theme="light"] .hero-luxury .hero-glowing-tagline,
+[data-theme="light"] .hero-luxury .title-line.hero-glowing-tagline {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 255, 255, 0.8) !important;
+  animation: heroGlowIntense 3s ease-in-out infinite alternate !important;
+}
+
+/* Hero buttons - always black background, white text */
+.hero-luxury button,
+.hero-luxury .primary-cta-luxury,
+.hero-luxury .secondary-cta-luxury,
+[data-theme="light"] .hero-luxury button,
+[data-theme="light"] .hero-luxury .primary-cta-luxury,
+[data-theme="light"] .hero-luxury .secondary-cta-luxury {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+/* Hero button text - always white */
+.hero-luxury button *,
+.hero-luxury .cta-text,
+[data-theme="light"] .hero-luxury button *,
+[data-theme="light"] .hero-luxury .cta-text {
+  color: #ffffff !important;
+}
+
+/* All hero text elements - force white in all modes */
+.hero-luxury .brand-name-luxury,
+.hero-luxury .brand-essence,
+.hero-luxury .title-line,
+.hero-luxury .description-text,
+.hero-luxury .promise-item,
+.hero-luxury .availability-indicator,
+.hero-luxury .trust-number,
+.hero-luxury .trust-label,
+.hero-luxury .palette-name,
+.hero-luxury .time-indicator,
+[data-theme="light"] .hero-luxury .brand-name-luxury,
+[data-theme="light"] .hero-luxury .brand-essence,
+[data-theme="light"] .hero-luxury .title-line,
+[data-theme="light"] .hero-luxury .description-text,
+[data-theme="light"] .hero-luxury .promise-item,
+[data-theme="light"] .hero-luxury .availability-indicator,
+[data-theme="light"] .hero-luxury .trust-number,
+[data-theme="light"] .hero-luxury .trust-label,
+[data-theme="light"] .hero-luxury .palette-name,
+[data-theme="light"] .hero-luxury .time-indicator {
+  color: #ffffff !important;
+  text-shadow: inherit !important;
+}
+
+/* Section titles - glow in dark, black in light */
+.luxury-title,
+.steps-title,
+h2.luxury-title,
+h3.steps-title,
+.section-title,
+.pricing-title,
+.how-it-works .luxury-title {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(255, 255, 255, 0.6),
+    0 0 35px rgba(255, 255, 255, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .luxury-title,
+[data-theme="light"] .steps-title,
+[data-theme="light"] h2.luxury-title,
+[data-theme="light"] h3.steps-title,
+[data-theme="light"] .section-title,
+[data-theme="light"] .pricing-title,
+[data-theme="light"] .how-it-works .luxury-title {
+  color: #000000 !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* Special gradient headers - EXCLUDE HERO */
+.brand-essence:not(.hero-luxury *),
+.luxury-subtitle:not(.hero-luxury *),
+.steps-subtitle:not(.hero-luxury *),
+.description-text:not(.hero-luxury *) {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="light"] .brand-essence:not(.hero-luxury *),
+[data-theme="light"] .luxury-subtitle:not(.hero-luxury *),
+[data-theme="light"] .steps-subtitle:not(.hero-luxury *),
+[data-theme="light"] .description-text:not(.hero-luxury *) {
+  color: #1a1a1a !important;
+  text-shadow: none !important;
+}
+
+/* Service Overview section fixes */
+[data-theme="light"] .service-overview .section-title,
+[data-theme="light"] .service-overview .service-card h3,
+[data-theme="light"] .service-overview .luxury-title {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* How It Works specific fixes */
+[data-theme="light"] .how-it-works .step-card h3,
+[data-theme="light"] .how-it-works .step-description,
+[data-theme="light"] .how-it-works .step-details {
+  color: #1a1a1a !important;
+}
+
+/* Store finder text fixes */
+[data-theme="light"] .store-finder h3,
+[data-theme="light"] .store-card h4,
+[data-theme="light"] .store-card p {
+  color: #1a1a1a !important;
+}
+
+/* CTA Widget text fixes */
+[data-theme="light"] .cta-widget h3,
+[data-theme="light"] .cta-widget p,
+[data-theme="light"] .benefits-widget h3,
+[data-theme="light"] .benefits-widget .benefit-item {
+  color: #1a1a1a !important;
+}
+
+/* ===== PRICING SCROLL FIX - COMPLETE OVERHAUL ===== */
+.pricing-widget {
+  scroll-padding-top: 120px !important;
+  margin-top: 0 !important;
+  position: relative !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.pricing-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.pricing-train {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  overflow: visible !important;
+  padding: 2rem 1rem !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  gap: 2rem !important;
+}
+
+/* Removed horizontal scrollbar styles - now vertical layout */
+
+.pricing-car {
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  min-width: 300px !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+/* Featured card adjustments */
+.pricing-car.featured {
+  position: relative !important;
+  overflow: visible !important;
+  margin-top: 0 !important;
+  transform: translateY(-8px) !important;
+}
+
+/* Ensure all cards are properly visible */
+.pricing-car:first-child {
+  margin-top: 0 !important;
+}
+
+.pricing-car:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ===== STAR ICON CUTOFF FIX ===== */
+.featured-badge {
+  position: absolute !important;
+  top: -8px !important;
+  right: 12px !important;
+  z-index: 100 !important;
+  overflow: visible !important;
+  background: #ff6b6b !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4) !important;
+}
+
+.featured-badge svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ===== GRAY OUTLINE BUG FIX ===== */
+[data-theme="light"] .availability-indicator,
+[data-theme="light"] .trust-indicators,
+[data-theme="light"] .cta-features {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove unwanted borders in light mode */
+[data-theme="light"] .hero-description-luxury,
+[data-theme="light"] .luxury-promise,
+[data-theme="light"] .promise-item {
+  border: none !important;
+  outline: none !important;
+}
+
+/* ===== HIDDEN TEXT VISIBILITY FIX ===== */
+/* Exclude hero elements from light mode changes */
+[data-theme="light"] .description-text:not(.hero-luxury *),
+[data-theme="light"] .promise-item:not(.hero-luxury *),
+[data-theme="light"] .trust-label:not(.hero-luxury *),
+[data-theme="light"] .availability-indicator:not(.hero-luxury *) {
+  color: #2d2d2d !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Specific fix for "start your..." text - EXCLUDE HERO */
+[data-theme="light"] .cta-text:not(.hero-luxury *),
+[data-theme="light"] .hero-title-luxury:not(.hero-luxury *),
+[data-theme="light"] .brand-essence:not(.hero-luxury *),
+[data-theme="light"] .description-text:not(.hero-luxury *) {
+  color: #1a1a1a !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+}
+
+/* ===== MODAL POPUP LUXURY STYLING ===== */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, 
+    rgba(26, 26, 26, 0.95) 0%, 
+    rgba(0, 0, 0, 0.95) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 
+    0 20px 80px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* Light mode modal adaptations */
+[data-theme="light"] .modal-content {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 248, 248, 0.98) 100%) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 20px 80px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(0, 0, 0, 0.05) !important;
+  color: #1a1a1a !important;
+}
+
+/* ===== LAPTOP RESPONSIVENESS (1024px-1440px) ===== */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  
+  /* Navigation scaling */
+  .navigation {
+    padding: 0 32px !important;
+  }
+  
+  .luxury-nav-redesign {
+    gap: 12px !important;
+    padding: 0 24px !important;
+  }
+  
+  .luxury-nav-btn {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  
+  /* Hero section responsiveness */
+  .hero-content-luxury {
+    max-width: 900px !important;
+    padding: 0 40px 4rem 40px !important;
+  }
+  
+  .hero-title-luxury {
+    font-size: clamp(2.5rem, 4vw, 3.2rem) !important;
+  }
+  
+  .brand-name-luxury {
+    font-size: clamp(4rem, 6vw, 5rem) !important;
+  }
+  
+  /* Pricing section responsive */
+  .pricing-container {
+    max-width: 1200px !important;
+    padding: 0 40px !important;
+  }
+  
+  .pricing-train {
+    gap: 24px !important;
+    padding: 32px 20px !important;
+  }
+  
+  .pricing-car {
+    min-width: 350px !important;
+    max-width: 400px !important;
+    padding: 32px !important;
+  }
+  
+  /* Store finder responsive */
+  .stores-grid-responsive {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)) !important;
+    gap: 24px !important;
+  }
+  
+  /* CTA sections responsive */
+  .cta-container {
+    max-width: 1000px !important;
+    padding: 0 40px !important;
+  }
+  
+  /* Modal responsive */
+  .modal-content {
+    max-width: 800px !important;
+    margin: 5vh auto !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  
+  /* Large desktop optimizations */
+  .hero-content-luxury {
+    max-width: 1100px !important;
+  }
+  
+  .pricing-container {
+    max-width: 1400px !important;
+  }
+  
+  .stores-grid-responsive {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)) !important;
+  }
+  
+  .modal-content {
+    max-width: 900px !important;
+  }
+}
+
+/* ===== LUXURY BUTTON SYSTEM ENHANCEMENTS ===== */
+.luxury-btn-primary {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.luxury-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+}
+
+.luxury-btn-secondary {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #1a1a1a !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.luxury-btn-secondary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  background: rgba(255, 255, 255, 1) !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+.luxury-focus-ring:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8) !important;
+  outline-offset: 2px !important;
+}
+
+[data-theme="light"] .luxury-focus-ring:focus {
+  outline-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.luxury-nav-btn,
+.pricing-car,
+.store-card-modern,
+.modal-content {
+  will-change: transform !important;
+  transform: translateZ(0) !important;
+}
+
+/* ===== SMOOTH SCROLL BEHAVIOR ===== */
+html {
+  scroll-behavior: smooth !important;
+}
+
+.pricing-widget,
+.store-finder-container,
+.hero-luxury {
+  scroll-margin-top: 100px !important;
+}
+
+/* ===== ULTIMATE HERO PROTECTION - BLOCK ALL THEME CHANGES ===== */
+/* This ensures hero NEVER changes regardless of theme */
+body[data-theme="light"] .hero-luxury,
+body[data-theme="light"] .hero-luxury *,
+html[data-theme="light"] .hero-luxury,
+html[data-theme="light"] .hero-luxury *,
+:root[data-theme="light"] .hero-luxury,
+:root[data-theme="light"] .hero-luxury *,
+[data-global-palette*="light"] .hero-luxury,
+[data-global-palette*="light"] .hero-luxury * {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  text-shadow: inherit !important;
+}
+
+/* Block any global light mode text color changes from affecting hero */
+[data-theme="light"] .hero-luxury h1,
+[data-theme="light"] .hero-luxury h2,
+[data-theme="light"] .hero-luxury h3,
+[data-theme="light"] .hero-luxury p,
+[data-theme="light"] .hero-luxury span,
+[data-theme="light"] .hero-luxury div,
+[data-theme="light"] .hero-luxury button,
+[data-theme="light"] .hero-luxury .cta-text {
+  color: #ffffff !important;
+  text-shadow: inherit !important;
+}
+
+/* ===== CRITICAL HERO BACKGROUND PROTECTION ===== */
+/* FOUND THE ISSUE: index.css prefers-color-scheme: light sets white background */
+/* This overrides hero's inline styles - need to counteract this */
+
+/* Block the global white background from affecting hero */
+@media (prefers-color-scheme: light) {
+  .hero-luxury {
+    background-color: unset !important;
+    /* Force inline styles to work */
+  }
+}
+
+/* Additional protection for theme system */
+body[data-theme="light"] .hero-luxury,
+html[data-theme="light"] .hero-luxury,
+:root[data-theme="light"] .hero-luxury {
+  background-color: unset !important;
+  /* Ensure no background interference */
+}
+
+/* Highest specificity protection */
+.hero-luxury[style*="background"] {
+  /* This targets the exact element with inline background */
+  /* Should ensure inline styles take precedence */
+  position: relative !important;
+}
+
+/* ===== MOBILE PRICING VERTICAL LAYOUT ===== */
+@media (max-width: 768px) {
+  .pricing-train {
+    padding: 1.5rem 1rem !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+  }
+  
+  .pricing-car {
+    width: 100% !important;
+    max-width: 350px !important;
+    min-width: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-train {
+    padding: 1rem 0.5rem !important;
+    gap: 1.25rem !important;
+  }
+  
+  .pricing-car {
+    width: 100% !important;
+    max-width: 300px !important;
+    min-width: 260px !important;
+  }
+}
+
+/* No scroll indicators needed for vertical layout */

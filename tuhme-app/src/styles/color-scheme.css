@@ -326,10 +326,10 @@
   100% { background-position: 0% 50%; }
 }
 
-/* ===== GLOBAL BUTTON CONTRAST SYSTEM ===== */
-/* Ensures all buttons have proper text contrast regardless of background */
+/* ===== LUXURY BUTTON CONTRAST SYSTEM ===== */
+/* WCAG compliant contrast system for luxury fashion app */
 
-/* Default Button Text Colors Based on Theme */
+/* DARK MODE - All buttons default to white text */
 [data-theme="dark"] button,
 [data-theme="dark"] .btn,
 [data-theme="dark"] [class*="button"],
@@ -338,42 +338,68 @@
   color: #ffffff !important;
 }
 
-/* Light Mode Button Text - Exclude dark/black/primary buttons */
-[data-theme="light"] button:not([class*="black"]):not([class*="dark"]):not([class*="primary"]):not(.cta-primary-button):not(.primary-cta-luxury),
-[data-theme="light"] .btn:not([class*="black"]):not([class*="dark"]):not([class*="primary"]):not(.notification-btn),
-[data-theme="light"] [class*="button"]:not([class*="black"]):not([class*="dark"]):not([class*="primary"]),
-[data-theme="light"] [class*="btn"]:not([class*="black"]):not([class*="dark"]):not([class*="primary"]),
-[data-theme="light"] [class*="cta"]:not([class*="primary"]):not(.cta-primary-button) {
-  color: #000000 !important;
-}
+/* LIGHT MODE - Smart contrast based on button type */
 
-/* Override for buttons with specific dark backgrounds */
-button[style*="background: rgb(0"],
-button[style*="background: #000"],
-button[style*="background: black"],
-.btn[style*="background: rgb(0"],
-.btn[style*="background: #000"],
-.btn[style*="background: black"],
-[class*="black"],
-[class*="dark"],
-.primary-cta-luxury,
-.notification-btn.primary {
+/* Primary/Dark buttons in light mode - ALWAYS white text */
+[data-theme="light"] button[class*="primary"],
+[data-theme="light"] button[class*="black"],
+[data-theme="light"] button[class*="dark"],
+[data-theme="light"] .btn[class*="primary"],
+[data-theme="light"] .btn[class*="black"],
+[data-theme="light"] .btn[class*="dark"],
+[data-theme="light"] .cta-primary-button,
+[data-theme="light"] .primary-cta-luxury,
+[data-theme="light"] .notification-btn.primary,
+[data-theme="light"] .order-btn,
+[data-theme="light"] .shop-with-tuhme-btn,
+[data-theme="light"] .get-in-touch-btn,
+[data-theme="light"] [class*="cta-primary"] {
   color: #ffffff !important;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%) !important;
 }
 
-/* Override for buttons with specific light backgrounds */
-button[style*="background: rgb(255"],
-button[style*="background: #fff"],
-button[style*="background: white"],
-.btn[style*="background: rgb(255"],
-.btn[style*="background: #fff"],
-.btn[style*="background: white"],
-[class*="white"],
-[class*="light"] {
-  color: #000000 !important;
+/* Secondary/Light buttons in light mode - Dark text */
+[data-theme="light"] button[class*="secondary"],
+[data-theme="light"] button[class*="light"],
+[data-theme="light"] button[class*="white"],
+[data-theme="light"] .btn[class*="secondary"],
+[data-theme="light"] .btn[class*="light"],
+[data-theme="light"] .btn[class*="white"],
+[data-theme="light"] .cta-secondary-button {
+  color: #1a1a1a !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Button spans and children inherit parent contrast */
+/* Gray buttons - Enhanced contrast for readability */
+[data-theme="light"] button[class*="gray"],
+[data-theme="light"] button[class*="grey"],
+[data-theme="light"] .btn[class*="gray"],
+[data-theme="light"] .btn[class*="grey"],
+[data-theme="light"] .premium-cta-btn,
+[data-theme="light"] [class*="stripe"],
+[data-theme="light"] [class*="disabled"] {
+  color: #2d2d2d !important;
+  background: rgba(128, 128, 128, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  font-weight: 600 !important;
+}
+
+/* Default light mode buttons - Smart defaults */
+[data-theme="light"] button:not([class*="primary"]):not([class*="secondary"]):not([class*="gray"]):not([class*="grey"]):not([class*="black"]):not([class*="dark"]):not([class*="white"]):not([class*="light"]),
+[data-theme="light"] .btn:not([class*="primary"]):not([class*="secondary"]):not([class*="gray"]):not([class*="grey"]):not([class*="black"]):not([class*="dark"]):not([class*="white"]):not([class*="light"]) {
+  color: #1a1a1a !important;
+}
+
+/* Hover states for enhanced UX */
+[data-theme="light"] button:hover,
+[data-theme="light"] .btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Button content inheritance */
 button span,
 button *,
 .btn span,
