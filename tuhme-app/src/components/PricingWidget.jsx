@@ -368,7 +368,7 @@ const PricingWidget = ({ variant = "default" }) => {
         .featured-badge {
           position: absolute;
           top: -16px;
-          right: var(--space-lg);
+          right: calc(var(--space-lg) + 8px);
           width: 40px;
           height: 40px;
           background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));

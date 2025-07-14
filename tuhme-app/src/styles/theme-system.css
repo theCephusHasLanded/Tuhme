@@ -169,6 +169,39 @@ button[style*="background:#fff"],
   color: #000000 !important;
 }
 
+/* ===== ICON CONTRAST SYSTEM ===== */
+/* Dark Mode - All button icons white by default */
+[data-theme="dark"] button svg,
+[data-theme="dark"] .btn svg,
+[data-theme="dark"] [class*="button"] svg,
+[data-theme="dark"] [class*="btn"] svg,
+[data-theme="dark"] [class*="cta"] svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Light Mode - Button icons white on dark buttons, black on light buttons */
+[data-theme="light"] button svg,
+[data-theme="light"] .btn svg,
+[data-theme="light"] [class*="button"] svg,
+[data-theme="light"] [class*="btn"] svg,
+[data-theme="light"] [class*="cta"] svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Light Mode - White/Light background buttons get black icons */
+[data-theme="light"] button[style*="background: #fff"] svg,
+[data-theme="light"] button[style*="background: white"] svg,
+[data-theme="light"] .btn[style*="background: #fff"] svg,
+[data-theme="light"] .btn[style*="background: white"] svg,
+[data-theme="light"] [class*="white"] svg,
+[data-theme="light"] [class*="light"] svg,
+[data-theme="light"] .cta-secondary-button svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
 /* Base Typography */
 body {
   background-color: var(--bg-primary);

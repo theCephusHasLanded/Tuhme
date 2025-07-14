@@ -399,3 +399,139 @@ button[style*="gradient"],
 [data-theme="light"] [class*="gradient"] {
   color: #000000 !important;
 }
+
+/* ===== LIGHT MODE ICON FIXES ===== */
+/* Black buttons in light mode need white icons */
+[data-global-palette="pearl-morning"] button svg,
+[data-global-palette="emerald-mist"] button svg,
+[data-global-palette="crystal-blue"] button svg,
+[data-global-palette="mint-elegance"] button svg,
+[data-global-palette="blush-elegance"] button svg,
+[data-global-palette="pearl-morning"] .btn svg,
+[data-global-palette="emerald-mist"] .btn svg,
+[data-global-palette="crystal-blue"] .btn svg,
+[data-global-palette="mint-elegance"] .btn svg,
+[data-global-palette="blush-elegance"] .btn svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Black/Dark colored buttons in light mode */
+[data-global-palette="pearl-morning"] [class*="black"] svg,
+[data-global-palette="emerald-mist"] [class*="black"] svg,
+[data-global-palette="crystal-blue"] [class*="black"] svg,
+[data-global-palette="mint-elegance"] [class*="black"] svg,
+[data-global-palette="blush-elegance"] [class*="black"] svg,
+[data-global-palette="pearl-morning"] [class*="dark"] svg,
+[data-global-palette="emerald-mist"] [class*="dark"] svg,
+[data-global-palette="crystal-blue"] [class*="dark"] svg,
+[data-global-palette="mint-elegance"] [class*="dark"] svg,
+[data-global-palette="blush-elegance"] [class*="dark"] svg,
+[data-global-palette="pearl-morning"] [class*="primary"] svg,
+[data-global-palette="emerald-mist"] [class*="primary"] svg,
+[data-global-palette="crystal-blue"] [class*="primary"] svg,
+[data-global-palette="mint-elegance"] [class*="primary"] svg,
+[data-global-palette="blush-elegance"] [class*="primary"] svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Special handling for CTA buttons in light mode */
+[data-global-palette="pearl-morning"] .cta-primary-button svg,
+[data-global-palette="emerald-mist"] .cta-primary-button svg,
+[data-global-palette="crystal-blue"] .cta-primary-button svg,
+[data-global-palette="mint-elegance"] .cta-primary-button svg,
+[data-global-palette="blush-elegance"] .cta-primary-button svg,
+[data-global-palette="pearl-morning"] .primary-cta-luxury svg,
+[data-global-palette="emerald-mist"] .primary-cta-luxury svg,
+[data-global-palette="crystal-blue"] .primary-cta-luxury svg,
+[data-global-palette="mint-elegance"] .primary-cta-luxury svg,
+[data-global-palette="blush-elegance"] .primary-cta-luxury svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* ===== SPECIFIC LIGHT MODE BUTTON TEXT FIXES ===== */
+/* View All Stores Button */
+[data-global-palette="pearl-morning"] .toggle-view-btn,
+[data-global-palette="emerald-mist"] .toggle-view-btn,
+[data-global-palette="crystal-blue"] .toggle-view-btn,
+[data-global-palette="mint-elegance"] .toggle-view-btn,
+[data-global-palette="blush-elegance"] .toggle-view-btn {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Send Screenshots via WhatsApp Button */
+[data-global-palette="pearl-morning"] .cta-primary-button,
+[data-global-palette="emerald-mist"] .cta-primary-button,
+[data-global-palette="crystal-blue"] .cta-primary-button,
+[data-global-palette="mint-elegance"] .cta-primary-button,
+[data-global-palette="blush-elegance"] .cta-primary-button {
+  color: #ffffff !important;
+}
+
+[data-global-palette="pearl-morning"] .cta-primary-button .button-text,
+[data-global-palette="emerald-mist"] .cta-primary-button .button-text,
+[data-global-palette="crystal-blue"] .cta-primary-button .button-text,
+[data-global-palette="mint-elegance"] .cta-primary-button .button-text,
+[data-global-palette="blush-elegance"] .cta-primary-button .button-text {
+  color: #ffffff !important;
+}
+
+/* Transparent Pricing Badge */
+[data-global-palette="pearl-morning"] .pricing-badge,
+[data-global-palette="emerald-mist"] .pricing-badge,
+[data-global-palette="crystal-blue"] .pricing-badge,
+[data-global-palette="mint-elegance"] .pricing-badge,
+[data-global-palette="blush-elegance"] .pricing-badge {
+  color: #ffffff !important;
+}
+
+/* Order Now Buttons - All Three */
+[data-global-palette="pearl-morning"] .order-btn,
+[data-global-palette="emerald-mist"] .order-btn,
+[data-global-palette="crystal-blue"] .order-btn,
+[data-global-palette="mint-elegance"] .order-btn,
+[data-global-palette="blush-elegance"] .order-btn,
+[data-global-palette="pearl-morning"] .primary-action,
+[data-global-palette="emerald-mist"] .primary-action,
+[data-global-palette="crystal-blue"] .primary-action,
+[data-global-palette="mint-elegance"] .primary-action,
+[data-global-palette="blush-elegance"] .primary-action,
+[data-global-palette="pearl-morning"] .shop-with-tuhme-btn,
+[data-global-palette="emerald-mist"] .shop-with-tuhme-btn,
+[data-global-palette="crystal-blue"] .shop-with-tuhme-btn,
+[data-global-palette="mint-elegance"] .shop-with-tuhme-btn,
+[data-global-palette="blush-elegance"] .shop-with-tuhme-btn {
+  color: #ffffff !important;
+}
+
+/* Get in Touch Black Button */
+[data-global-palette="pearl-morning"] .get-in-touch-btn,
+[data-global-palette="emerald-mist"] .get-in-touch-btn,
+[data-global-palette="crystal-blue"] .get-in-touch-btn,
+[data-global-palette="mint-elegance"] .get-in-touch-btn,
+[data-global-palette="blush-elegance"] .get-in-touch-btn,
+[data-global-palette="pearl-morning"] [class*="contact"],
+[data-global-palette="emerald-mist"] [class*="contact"],
+[data-global-palette="crystal-blue"] [class*="contact"],
+[data-global-palette="mint-elegance"] [class*="contact"],
+[data-global-palette="blush-elegance"] [class*="contact"] {
+  color: #ffffff !important;
+}
+
+/* Grey Stripe Integration Buttons - Need Black Text */
+[data-global-palette="pearl-morning"] .premium-cta-btn,
+[data-global-palette="emerald-mist"] .premium-cta-btn,
+[data-global-palette="crystal-blue"] .premium-cta-btn,
+[data-global-palette="mint-elegance"] .premium-cta-btn,
+[data-global-palette="blush-elegance"] .premium-cta-btn,
+[data-global-palette="pearl-morning"] [class*="stripe"],
+[data-global-palette="emerald-mist"] [class*="stripe"],
+[data-global-palette="crystal-blue"] [class*="stripe"],
+[data-global-palette="mint-elegance"] [class*="stripe"],
+[data-global-palette="blush-elegance"] [class*="stripe"] {
+  color: #000000 !important;
+  background: rgba(200, 200, 200, 0.7) !important;
+}

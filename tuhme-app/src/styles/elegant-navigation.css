@@ -58,7 +58,7 @@
   filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4)) !important;
 }
 
-/* Light Mode SVG Icons */
+/* Light Mode SVG Icons - Black on White Navbar */
 [data-global-palette="pearl-morning"] .nav-icon-button svg,
 [data-global-palette="emerald-mist"] .nav-icon-button svg,
 [data-global-palette="crystal-blue"] .nav-icon-button svg,
@@ -66,6 +66,29 @@
 [data-global-palette="blush-elegance"] .nav-icon-button svg {
   color: rgba(0, 0, 0, 0.85) !important;
   fill: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Black Buttons in Light Mode - Need White Icons */
+[data-global-palette="pearl-morning"] button[style*="background: #000"],
+[data-global-palette="emerald-mist"] button[style*="background: #000"],
+[data-global-palette="crystal-blue"] button[style*="background: #000"],
+[data-global-palette="mint-elegance"] button[style*="background: #000"],
+[data-global-palette="blush-elegance"] button[style*="background: #000"],
+[data-global-palette="pearl-morning"] .btn[style*="background: #000"],
+[data-global-palette="emerald-mist"] .btn[style*="background: #000"],
+[data-global-palette="crystal-blue"] .btn[style*="background: #000"],
+[data-global-palette="mint-elegance"] .btn[style*="background: #000"],
+[data-global-palette="blush-elegance"] .btn[style*="background: #000"] {
+  color: #ffffff !important;
+}
+
+[data-global-palette="pearl-morning"] button[style*="background: #000"] svg,
+[data-global-palette="emerald-mist"] button[style*="background: #000"] svg,
+[data-global-palette="crystal-blue"] button[style*="background: #000"] svg,
+[data-global-palette="mint-elegance"] button[style*="background: #000"] svg,
+[data-global-palette="blush-elegance"] button[style*="background: #000"] svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
 .nav-icon-button:hover {
