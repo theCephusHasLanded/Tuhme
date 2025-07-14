@@ -338,11 +338,12 @@
   color: #ffffff !important;
 }
 
-[data-theme="light"] button,
-[data-theme="light"] .btn,
-[data-theme="light"] [class*="button"],
-[data-theme="light"] [class*="btn"],
-[data-theme="light"] [class*="cta"] {
+/* Light Mode Button Text - Exclude dark/black/primary buttons */
+[data-theme="light"] button:not([class*="black"]):not([class*="dark"]):not([class*="primary"]):not(.cta-primary-button):not(.primary-cta-luxury),
+[data-theme="light"] .btn:not([class*="black"]):not([class*="dark"]):not([class*="primary"]):not(.notification-btn),
+[data-theme="light"] [class*="button"]:not([class*="black"]):not([class*="dark"]):not([class*="primary"]),
+[data-theme="light"] [class*="btn"]:not([class*="black"]):not([class*="dark"]):not([class*="primary"]),
+[data-theme="light"] [class*="cta"]:not([class*="primary"]):not(.cta-primary-button) {
   color: #000000 !important;
 }
 
@@ -393,10 +394,10 @@ button[style*="gradient"],
   color: #ffffff !important;
 }
 
-/* Light mode gradient buttons */
-[data-theme="light"] button[style*="gradient"],
-[data-theme="light"] .btn[style*="gradient"],
-[data-theme="light"] [class*="gradient"] {
+/* Light mode gradient buttons - Only for light gradients */
+[data-theme="light"] button[style*="gradient"]:not([class*="dark"]):not([class*="primary"]),
+[data-theme="light"] .btn[style*="gradient"]:not([class*="dark"]):not([class*="primary"]),
+[data-theme="light"] [class*="gradient"]:not([class*="dark"]):not([class*="primary"]):not([class*="black"]) {
   color: #000000 !important;
 }
 
