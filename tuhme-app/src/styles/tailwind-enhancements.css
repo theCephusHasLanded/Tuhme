@@ -1,0 +1,305 @@
+/* TUHME Tailwind Enhancements - Non-destructive Integration */
+/* This file adds Tailwind utilities without breaking existing styles */
+
+@import 'tailwindcss/utilities';
+
+/* Enhanced Button Contrast System for TUHME */
+/* This solves the critical button contrast issues */
+
+/* ===== UNIVERSAL BUTTON CONTRAST FIXES ===== */
+/* Primary buttons - always white text on dark background */
+.btn-luxury-primary,
+[class*="primary"][class*="button"],
+[class*="primary"][class*="btn"],
+.cta-primary-button,
+.primary-cta-luxury,
+.order-btn,
+.shop-with-tuhme-btn,
+.get-in-touch-btn {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-luxury-primary:hover,
+[class*="primary"][class*="button"]:hover,
+[class*="primary"][class*="btn"]:hover,
+.cta-primary-button:hover,
+.primary-cta-luxury:hover,
+.order-btn:hover,
+.shop-with-tuhme-btn:hover,
+.get-in-touch-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+}
+
+/* Secondary buttons - enhanced contrast */
+.btn-luxury-secondary,
+[class*="secondary"][class*="button"],
+[class*="secondary"][class*="btn"],
+.cta-secondary-button {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-luxury-secondary:hover,
+[class*="secondary"][class*="button"]:hover,
+[class*="secondary"][class*="btn"]:hover,
+.cta-secondary-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Gray buttons - enhanced readability */
+[class*="gray"][class*="button"],
+[class*="gray"][class*="btn"],
+[class*="grey"][class*="button"],
+[class*="grey"][class*="btn"],
+.premium-cta-btn,
+[class*="stripe"] {
+  color: #000000 !important;
+  background: rgba(200, 200, 200, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  font-weight: 600 !important;
+}
+
+/* Light mode specific overrides for specific palettes */
+[data-global-palette="pearl-morning"],
+[data-global-palette="emerald-mist"],
+[data-global-palette="crystal-blue"],
+[data-global-palette="mint-elegance"],
+[data-global-palette="blush-elegance"] {
+  /* Primary buttons remain dark with white text */
+  .btn-luxury-primary,
+  [class*="primary"][class*="button"],
+  [class*="primary"][class*="btn"],
+  .cta-primary-button,
+  .primary-cta-luxury,
+  .order-btn,
+  .shop-with-tuhme-btn,
+  .get-in-touch-btn {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%) !important;
+  }
+  
+  /* Secondary buttons adapt to light background */
+  .btn-luxury-secondary,
+  [class*="secondary"][class*="button"],
+  [class*="secondary"][class*="btn"],
+  .cta-secondary-button {
+    color: #000000 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .btn-luxury-secondary:hover,
+  [class*="secondary"][class*="button"]:hover,
+  [class*="secondary"][class*="btn"]:hover,
+  .cta-secondary-button:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+  }
+}
+
+/* ===== ICON VISIBILITY FIXES ===== */
+/* Ensure all SVG icons are visible */
+button svg,
+.btn svg,
+[class*="button"] svg,
+[class*="btn"] svg,
+[class*="cta"] svg {
+  color: inherit !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Navigation icons specific fixes */
+.nav-icon-button svg,
+.luxury-nav-btn svg,
+.theme-button svg,
+.savi-button svg,
+.feedback-button svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Light mode navigation icons */
+[data-global-palette="pearl-morning"] .nav-icon-button svg,
+[data-global-palette="emerald-mist"] .nav-icon-button svg,
+[data-global-palette="crystal-blue"] .nav-icon-button svg,
+[data-global-palette="mint-elegance"] .nav-icon-button svg,
+[data-global-palette="blush-elegance"] .nav-icon-button svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* ===== GLASS MORPHISM ENHANCEMENTS ===== */
+.glass-luxury {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.glass-luxury-dark {
+  background: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== TEXT GLOW EFFECTS ===== */
+.text-glow-white {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4) !important;
+}
+
+.text-glow-gold {
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.8),
+    0 0 20px rgba(212, 175, 55, 0.6),
+    0 0 30px rgba(212, 175, 55, 0.4) !important;
+}
+
+/* ===== MODAL ENHANCEMENTS ===== */
+.modal-luxury {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  overflow-y: auto !important;
+}
+
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 1rem !important;
+  box-shadow: 
+    0 20px 80px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Light mode modal adaptations */
+[data-global-palette="pearl-morning"] .modal-content,
+[data-global-palette="emerald-mist"] .modal-content,
+[data-global-palette="crystal-blue"] .modal-content,
+[data-global-palette="mint-elegance"] .modal-content,
+[data-global-palette="blush-elegance"] .modal-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 248, 0.98) 100%) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 20px 80px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(0, 0, 0, 0.05) !important;
+  color: #1a1a1a !important;
+}
+
+/* ===== CARD SYSTEM ENHANCEMENTS ===== */
+.card-luxury {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0.75rem !important;
+  padding: 1.5rem !important;
+  transition: all 0.3s ease-out !important;
+}
+
+.card-luxury:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+.container-luxury {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+}
+
+@media (min-width: 640px) {
+  .container-luxury {
+    padding: 0 1.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-luxury {
+    padding: 0 2rem !important;
+  }
+}
+
+/* ===== ANIMATION UTILITIES ===== */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out !important;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out !important;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite alternate !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+.focus-luxury:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8) !important;
+  outline-offset: 2px !important;
+}
+
+[data-global-palette="pearl-morning"] .focus-luxury:focus,
+[data-global-palette="emerald-mist"] .focus-luxury:focus,
+[data-global-palette="crystal-blue"] .focus-luxury:focus,
+[data-global-palette="mint-elegance"] .focus-luxury:focus,
+[data-global-palette="blush-elegance"] .focus-luxury:focus {
+  outline-color: rgba(0, 0, 0, 0.8) !important;
+}

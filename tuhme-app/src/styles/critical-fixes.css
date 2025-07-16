@@ -1,0 +1,160 @@
+/* CRITICAL PRODUCTION FIXES - TUHME Button Contrast Issues */
+/* This file ONLY fixes the button contrast problems without breaking existing functionality */
+
+/* ===== CRITICAL BUTTON CONTRAST FIXES ===== */
+
+/* PRIMARY BUTTONS - Black buttons with white text in ALL modes */
+button[class*="primary"],
+.btn[class*="primary"],
+.cta-primary-button,
+.primary-cta-luxury,
+.order-btn,
+.shop-with-tuhme-btn,
+.get-in-touch-btn,
+[class*="black"],
+[class*="dark"] {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* Ensure button children inherit white text */
+button[class*="primary"] *,
+.btn[class*="primary"] *,
+.cta-primary-button *,
+.primary-cta-luxury *,
+.order-btn *,
+.shop-with-tuhme-btn *,
+.get-in-touch-btn *,
+[class*="black"] *,
+[class*="dark"] * {
+  color: #ffffff !important;
+}
+
+/* GRAY BUTTONS - Enhanced contrast for better readability */
+button[class*="gray"],
+button[class*="grey"],
+.btn[class*="gray"],
+.btn[class*="grey"],
+.premium-cta-btn,
+[class*="stripe"] {
+  color: #000000 !important;
+  background: rgba(200, 200, 200, 0.9) !important;
+  font-weight: 600 !important;
+}
+
+/* LIGHT MODE SPECIFIC FIXES for light color palettes */
+[data-global-palette="pearl-morning"] button,
+[data-global-palette="emerald-mist"] button,
+[data-global-palette="crystal-blue"] button, 
+[data-global-palette="mint-elegance"] button,
+[data-global-palette="blush-elegance"] button {
+  /* Primary/dark buttons stay white text */
+}
+
+[data-global-palette="pearl-morning"] button[class*="primary"],
+[data-global-palette="emerald-mist"] button[class*="primary"],
+[data-global-palette="crystal-blue"] button[class*="primary"],
+[data-global-palette="mint-elegance"] button[class*="primary"],
+[data-global-palette="blush-elegance"] button[class*="primary"],
+[data-global-palette="pearl-morning"] .cta-primary-button,
+[data-global-palette="emerald-mist"] .cta-primary-button,
+[data-global-palette="crystal-blue"] .cta-primary-button,
+[data-global-palette="mint-elegance"] .cta-primary-button,
+[data-global-palette="blush-elegance"] .cta-primary-button,
+[data-global-palette="pearl-morning"] .primary-cta-luxury,
+[data-global-palette="emerald-mist"] .primary-cta-luxury,
+[data-global-palette="crystal-blue"] .primary-cta-luxury,
+[data-global-palette="mint-elegance"] .primary-cta-luxury,
+[data-global-palette="blush-elegance"] .primary-cta-luxury {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Secondary buttons in light mode */
+[data-global-palette="pearl-morning"] button[class*="secondary"],
+[data-global-palette="emerald-mist"] button[class*="secondary"],
+[data-global-palette="crystal-blue"] button[class*="secondary"],
+[data-global-palette="mint-elegance"] button[class*="secondary"],
+[data-global-palette="blush-elegance"] button[class*="secondary"],
+[data-global-palette="pearl-morning"] .cta-secondary-button,
+[data-global-palette="emerald-mist"] .cta-secondary-button,
+[data-global-palette="crystal-blue"] .cta-secondary-button,
+[data-global-palette="mint-elegance"] .cta-secondary-button,
+[data-global-palette="blush-elegance"] .cta-secondary-button {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== ICON VISIBILITY FIXES ===== */
+/* All SVG icons inherit button text color */
+button svg,
+.btn svg,
+[class*="button"] svg,
+[class*="cta"] svg {
+  color: inherit !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Navigation icons - white in dark mode */
+.nav-icon-button svg,
+.luxury-nav-btn svg,
+.theme-button svg,
+.savi-button svg,
+.feedback-button svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Navigation icons - black in light palettes */
+[data-global-palette="pearl-morning"] .nav-icon-button svg,
+[data-global-palette="emerald-mist"] .nav-icon-button svg,
+[data-global-palette="crystal-blue"] .nav-icon-button svg,
+[data-global-palette="mint-elegance"] .nav-icon-button svg,
+[data-global-palette="blush-elegance"] .nav-icon-button svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* ===== TEXT VISIBILITY FIXES ===== */
+/* Ensure all button text is visible */
+.button-text,
+.cta-text {
+  color: inherit !important;
+}
+
+/* Pricing badges */
+.pricing-badge {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ===== HOVER EFFECTS ===== */
+button:hover,
+.btn:hover,
+[class*="button"]:hover,
+[class*="cta"]:hover {
+  transform: translateY(-1px) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* ===== ACCESSIBILITY ===== */
+button:focus,
+.btn:focus,
+[class*="button"]:focus,
+[class*="cta"]:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6) !important;
+  outline-offset: 2px !important;
+}
+
+[data-global-palette="pearl-morning"] button:focus,
+[data-global-palette="emerald-mist"] button:focus,
+[data-global-palette="crystal-blue"] button:focus,
+[data-global-palette="mint-elegance"] button:focus,
+[data-global-palette="blush-elegance"] button:focus {
+  outline-color: rgba(0, 0, 0, 0.6) !important;
+}

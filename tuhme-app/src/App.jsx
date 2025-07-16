@@ -29,6 +29,10 @@ import './styles/interactive-info.css';
 import './styles/elegant-navigation.css';
 import './styles/hero-matched-modals.css';
 import './styles/luxury-fixes.css';
+
+// Critical production fixes for button contrast
+import './styles/critical-fixes.css';
+
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeSystemProvider from './contexts/ThemeSystemContext';
 import { ModalProvider } from './contexts/ModalContext';
@@ -48,178 +52,188 @@ import CustomerTestimonials from './components/CustomerTestimonials';
 import Matrix3DInterface from './components/Matrix3DInterface';
 import SaviAssistant from './components/SaviAssistant';
 import FloatingSaviBot from './components/FloatingSaviBot';
+import BenefitsWidget from './components/BenefitsWidget';
+import CallToActionWidget from './components/CallToActionWidget';
+import FAQWidget from './components/FAQWidget';
 import FeedbackModal from './components/FeedbackModal';
-import FlyerGeneratorModal from './components/FlyerGeneratorModal';
-import DailySalesFlyer from './components/DailySalesFlyer';
+import InteractiveInfoSection from './components/InteractiveInfoSection';
 import DailySalesFlyerManager from './components/DailySalesFlyerManager';
+import EnhancedStoreFinder from './components/EnhancedStoreFinder';
+import ThemeToggle from './components/ThemeToggle';
+import GetInTouchModal from './components/GetInTouchModal';
+import FlyerGeneratorModal from './components/FlyerGeneratorModal';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
-  const [showExpressFlow, setShowExpressFlow] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false);
-  const [showMatrix, setShowMatrix] = useState(false);
+  const [currentView, setCurrentView] = useState('main');
   const [showSavi, setShowSavi] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [userPhone, setUserPhone] = useState('');
+  const [showGetInTouch, setShowGetInTouch] = useState(false);
+  const [showFlyerGenerator, setShowFlyerGenerator] = useState(false);
 
   useEffect(() => {
-    const handleTrackOrder = (event) => {
-      setUserPhone(event.detail.phone);
-      setShowDashboard(true);
+    colorSchemeManager.init();
+    return () => {
+      colorSchemeManager.cleanup();
     };
-
-    window.addEventListener('trackOrder', handleTrackOrder);
-    return () => window.removeEventListener('trackOrder', handleTrackOrder);
   }, []);
 
-  const handleNavigation = (sectionId) => {
-    if (sectionId === 'express-order') {
-      setShowExpressFlow(true);
-      setShowDashboard(false);
-      setShowMatrix(false);
+  const handleNavigate = (section) => {
+    setCurrentSection(section);
+    
+    if (section === 'express-order') {
+      setCurrentView('express-order');
+    } else if (section === 'user-dashboard') {
+      setCurrentView('user-dashboard');
+    } else if (section === 'hiring') {
+      setCurrentView('hiring');
     } else {
-      setCurrentSection(sectionId);
-      setShowExpressFlow(false);
-      setShowDashboard(false);
-      setShowMatrix(false);
+      setCurrentView('main');
       
-      // Smooth scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
     }
   };
 
-  const backToWebsite = () => {
-    setShowExpressFlow(false);
-    setShowDashboard(false);
-    setShowMatrix(false);
-    setCurrentSection('home');
+  const handleOpenSavi = () => setShowSavi(true);
+  const handleCloseSavi = () => setShowSavi(false);
+  const handleOpenFeedback = () => setShowFeedback(true);
+  const handleCloseFeedback = () => setShowFeedback(false);
+
+  const renderMainContent = () => (
+    <div className="main-website" style={{ paddingTop: '80px' }}>
+      <Hero id="home" />
+      <ServiceOverview id="service-overview" />
+      <HowItWorks id="how-it-works" />
+      <PricingWidget id="pricing" />
+      <ProcessWidget id="process" />
+      <BenefitsWidget id="benefits" />
+      <CustomerTestimonials id="testimonials" />
+      <CallToActionWidget id="cta" />
+      <InteractiveInfoSection id="info" />
+      <EnhancedStoreFinder id="stores" />
+      <FAQWidget id="faq" />
+      <ContactForm id="contact" />
+      <Footer />
+    </div>
+  );
+
+  const renderExpressOrder = () => (
+    <div className="express-order-container">
+      <Navigation 
+        onNavigate={handleNavigate}
+        currentSection={currentSection}
+        onOpenSavi={handleOpenSavi}
+        onOpenFeedback={handleOpenFeedback}
+      />
+      <ExpressOrderFlow onBack={() => handleNavigate('home')} />
+    </div>
+  );
+
+  const renderUserDashboard = () => (
+    <div className="user-dashboard-container">
+      <Navigation 
+        onNavigate={handleNavigate}
+        currentSection={currentSection}
+        onOpenSavi={handleOpenSavi}
+        onOpenFeedback={handleOpenFeedback}
+      />
+      <UserDashboard onBack={() => handleNavigate('home')} />
+    </div>
+  );
+
+  const renderHiring = () => (
+    <div className="hiring-container">
+      <Navigation 
+        onNavigate={handleNavigate}
+        currentSection={currentSection}
+        onOpenSavi={handleOpenSavi}
+        onOpenFeedback={handleOpenFeedback}
+      />
+      <Matrix3DInterface onBack={() => handleNavigate('home')} />
+    </div>
+  );
+
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case 'express-order':
+        return renderExpressOrder();
+      case 'user-dashboard':
+        return renderUserDashboard();
+      case 'hiring':
+        return renderHiring();
+      default:
+        return (
+          <>
+            <Navigation 
+              onNavigate={handleNavigate}
+              currentSection={currentSection}
+              onOpenSavi={handleOpenSavi}
+              onOpenFeedback={handleOpenFeedback}
+            />
+            {renderMainContent()}
+          </>
+        );
+    }
   };
-
-  const toggleMatrix = () => {
-    setShowMatrix(!showMatrix);
-  };
-
-  if (showMatrix) {
-    return (
-      <ThemeSystemProvider>
-        <ThemeProvider>
-          <ModalProvider>
-            <div className="app">
-              <Matrix3DInterface isActive={showMatrix} onClose={() => setShowMatrix(false)} />
-              <ModalsSystem />
-            </div>
-          </ModalProvider>
-        </ThemeProvider>
-      </ThemeSystemProvider>
-    );
-  }
-
-  if (showDashboard) {
-    return (
-      <ThemeSystemProvider>
-        <ThemeProvider>
-          <ModalProvider>
-            <div className="app">
-              <UserDashboard userPhone={userPhone} onBack={backToWebsite} />
-              <ModalsSystem />
-            </div>
-          </ModalProvider>
-        </ThemeProvider>
-      </ThemeSystemProvider>
-    );
-  }
-
-  if (showExpressFlow) {
-    return (
-      <ThemeSystemProvider>
-        <ThemeProvider>
-          <ModalProvider>
-            <div className="app">
-              <ExpressOrderFlow 
-                onBack={backToWebsite} 
-                onNavigate={handleNavigation}
-                currentSection={currentSection}
-              />
-              <ModalsSystem />
-            </div>
-          </ModalProvider>
-        </ThemeProvider>
-      </ThemeSystemProvider>
-    );
-  }
 
   return (
     <ThemeSystemProvider>
       <ThemeProvider>
         <ModalProvider>
-        <div className="app">
-          <Navigation 
-            onNavigate={handleNavigation} 
-            currentSection={currentSection} 
-            onMatrixToggle={toggleMatrix}
-            onOpenSavi={() => setShowSavi(true)}
-            onOpenFeedback={() => setShowFeedback(true)}
-          />
-          
-          <main className="main-website">
-            <section id="home">
-              <Hero onStartExpressOrder={() => setShowExpressFlow(true)} />
-            </section>
+          <div className="App">
+            {renderCurrentView()}
 
-            <section id="service-overview">
-              <ServiceOverview />
-            </section>
+            <ModalsSystem />
+            <MembershipModal />
+            
+            {showSavi && (
+              <SaviAssistant 
+                isOpen={showSavi}
+                onClose={handleCloseSavi}
+              />
+            )}
+            
+            <FloatingSaviBot onClick={handleOpenSavi} />
+            
+            {showFeedback && (
+              <FeedbackModal 
+                isOpen={showFeedback}
+                onClose={handleCloseFeedback}
+              />
+            )}
 
-            <section id="how-it-works">
-              <HowItWorks />
-            </section>
+            {showGetInTouch && (
+              <GetInTouchModal 
+                isOpen={showGetInTouch}
+                onClose={() => setShowGetInTouch(false)}
+              />
+            )}
 
-            <section id="pricing" className="luxury-section">
-              <PricingWidget />
-              <ProcessWidget />
-            </section>
-
-            <section id="gallery">
-              <CustomerTestimonials />
-            </section>
-
-            <section id="contact">
-              <ContactForm />
-            </section>
-          </main>
-
-          <Footer />
-          <ModalsSystem />
-          <MembershipModal />
-          <FlyerGeneratorModal />
-          <DailySalesFlyer />
-          <DailySalesFlyerManager />
-          {showSavi && (
-            <SaviAssistant 
-              isOpen={showSavi}
-              onClose={() => setShowSavi(false)} 
-            />
-          )}
-          
-          {/* Floating SAVI Bot */}
-          <FloatingSaviBot 
-            onOpenSavi={() => setShowSavi(true)}
-            showSavi={showSavi}
-          />
-          
-          {/* Feedback Modal */}
-          <FeedbackModal 
-            isOpen={showFeedback} 
-            onClose={() => setShowFeedback(false)} 
-          />
-        </div>
-      </ModalProvider>
-    </ThemeProvider>
-  </ThemeSystemProvider>
+            {showFlyerGenerator && (
+              <FlyerGeneratorModal 
+                isOpen={showFlyerGenerator}
+                onClose={() => setShowFlyerGenerator(false)}
+              />
+            )}
+            
+            <DailySalesFlyerManager />
+          </div>
+        </ModalProvider>
+      </ThemeProvider>
+    </ThemeSystemProvider>
   );
 }
 
-export default App
+export default App;

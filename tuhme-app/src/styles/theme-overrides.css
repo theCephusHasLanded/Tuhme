@@ -23,7 +23,12 @@
 }
 
 .nav-logo-image {
-  filter: var(--theme-mode) == 'light' ? brightness(0) : brightness(1);
+  /* CSS doesn't support ternary operators, use media queries or classes instead */
+  filter: brightness(1);
+}
+
+[data-theme="light"] .nav-logo-image {
+  filter: brightness(0);
 }
 
 /* Mobile menu */
