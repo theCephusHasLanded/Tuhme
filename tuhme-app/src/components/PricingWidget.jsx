@@ -1,4 +1,5 @@
 import TuhmeIcon from './TuhmeIcon';
+import { Grid, Container, Card, Group, Text, Box, Badge, Button, Stack } from '@mantine/core';
 
 const PricingWidget = ({ variant = "default" }) => {
 
@@ -67,176 +68,257 @@ const PricingWidget = ({ variant = "default" }) => {
   };
 
   return (
-    <div className={`pricing-widget ${variant}`} id="pricing">
-      <div className="pricing-container">
-        <div className="pricing-header">
-          <span className="pricing-badge">TRANSPARENT PRICING</span>
-          <h2 className="pricing-title">Choose Your Shopping Experience</h2>
-          <p className="pricing-subtitle">
+    <>
+      <Box className={`pricing-widget ${variant}`} id="pricing" py="xl">
+      <Container size="xl" className="pricing-container">
+        <Box className="pricing-header" ta="center" mb="xl">
+          <Badge 
+            size="lg" 
+            radius="sm" 
+            className="pricing-badge"
+            style={{ background: 'rgba(255, 255, 255, 0.1)', color: 'inherit' }}
+          >
+            TRANSPARENT PRICING
+          </Badge>
+          <Text 
+            size="xl" 
+            fw={700} 
+            className="pricing-title" 
+            mt="md"
+            style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}
+          >
+            Choose Your Shopping Experience
+          </Text>
+          <Text 
+            size="md" 
+            c="dimmed" 
+            className="pricing-subtitle" 
+            mt="sm"
+            maw={600}
+            mx="auto"
+          >
             Simple per-item pricing with no hidden fees. Our shopper waits while you try everything on in comfort.
-          </p>
-        </div>
+          </Text>
+        </Box>
 
-        <div className="pricing-train">
+        <Grid justify="center" align="stretch" gutter={{ base: 'md', sm: 'lg', md: 'xl' }}>
           {pricingTiers.map((tier, index) => (
-            <div 
-              key={tier.id} 
-              className={`pricing-car ${tier.popular ? 'featured' : ''}`}
+            <Grid.Col
+              key={tier.id}
+              span={{ base: 12, sm: 6, lg: 4 }}
+              className="pricing-card-col"
             >
-              {tier.popular && (
-                <div className="featured-badge">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
-                  </svg>
-                </div>
-              )}
+              <Card
+                shadow="lg"
+                padding="xl"
+                radius="lg"
+                withBorder={false}
+                className={`pricing-car ${tier.popular ? 'featured' : ''}`}
+                style={{
+                  height: '100%',
+                  background: tier.popular 
+                    ? 'rgba(255, 255, 255, 0.1)' 
+                    : 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(15px)',
+                  border: tier.popular 
+                    ? '2px solid rgba(255, 215, 0, 0.3)' 
+                    : '1px solid rgba(255, 255, 255, 0.1)',
+                  position: 'relative',
+                  transform: tier.popular ? 'scale(1.05)' : 'scale(1)',
+                  zIndex: tier.popular ? 2 : 1
+                }}
+              >
+                {tier.popular && (
+                  <Badge
+                    color="yellow"
+                    size="sm"
+                    radius="xs"
+                    style={{
+                      position: 'absolute',
+                      top: -8,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      background: 'linear-gradient(135deg, #FFD700, #FFA500)'
+                    }}
+                  >
+                    ⭐ POPULAR
+                  </Badge>
+                )}
 
-              <div className="car-content">
-                <div className="car-visual">
-                  <div className="tier-icon">
-                    <TuhmeIcon type={tier.icon} size={40} />
-                  </div>
-                  <h3 className="tier-name">{tier.name}</h3>
-                  <div className="item-range">{tier.itemRange}</div>
-                </div>
+                <Stack align="center" gap="lg" style={{ height: '100%' }}>
+                  <Box ta="center">
+                    <Box className="tier-icon" mb="md">
+                      <TuhmeIcon type={tier.icon} size={40} />
+                    </Box>
+                    <Text size="xl" fw={700} className="tier-name" mb="xs">
+                      {tier.name}
+                    </Text>
+                    <Text size="sm" c="dimmed" className="item-range">
+                      {tier.itemRange}
+                    </Text>
+                  </Box>
 
-                <div className="pricing-display">
-                  <div className="price-section">
-                    <span className="price">{tier.pricePerItem}</span>
-                    <span className="price-unit">per item</span>
-                  </div>
-                  <div className="total-range">
-                    Total: {tier.totalRange}
-                  </div>
-                </div>
+                  <Box ta="center" py="md">
+                    <Text size="xl" fw={700} className="price" style={{ fontSize: '2rem' }}>
+                      {tier.pricePerItem}
+                    </Text>
+                    <Text size="sm" c="dimmed" className="price-unit">
+                      per item
+                    </Text>
+                    <Text size="xs" c="dimmed" mt="xs" className="total-range">
+                      Total: {tier.totalRange}
+                    </Text>
+                  </Box>
 
-                <div className="features-list">
-                  {tier.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="feature-item">
-                      <div className="feature-check">✓</div>
-                      <span className="feature-text">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+                  <Stack gap="xs" style={{ flex: 1, width: '100%' }}>
+                    {tier.features.map((feature, featureIndex) => (
+                      <Group key={featureIndex} gap="xs" align="flex-start" className="feature-item">
+                        <Text c="green" size="sm" style={{ flexShrink: 0 }}>✓</Text>
+                        <Text size="sm" style={{ flex: 1, lineHeight: 1.4 }}>{feature}</Text>
+                      </Group>
+                    ))}
+                  </Stack>
 
-                <a 
-                  href={generateWhatsAppLink(tier)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tier-action-button"
-                >
-                  <span className="button-text">Order Now</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M7 17l10-10M17 7H7v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </a>
-              </div>
-
-              <div className="car-glow"></div>
-            </div>
+                  <Button
+                    component="a"
+                    href={generateWhatsAppLink(tier)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="md"
+                    fullWidth
+                    variant={tier.popular ? "filled" : "outline"}
+                    color={tier.popular ? "yellow" : "gray"}
+                    className="tier-action-button"
+                    rightSection={
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 17l10-10M17 7H7v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    }
+                    style={{
+                      background: tier.popular 
+                        ? 'linear-gradient(135deg, #FFD700, #FFA500)'
+                        : 'rgba(255, 255, 255, 0.1)',
+                      color: tier.popular ? '#000' : 'inherit',
+                      border: tier.popular ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    Order Now
+                  </Button>
+                </Stack>
+              </Card>
+            </Grid.Col>
           ))}
-        </div>
+        </Grid>
 
         {/* Premium Memberships Section */}
-        <div className="premium-memberships-section">
-          <div className="premium-header">
-            <div className="premium-badge">
+        <Box className="premium-memberships-section" mt="xl" pt="xl">
+          <Box className="premium-header" ta="center" mb="xl">
+            <Group justify="center" gap="xs" className="premium-badge" mb="md">
               <TuhmeIcon type="secure" size={16} />
-              <span>PREMIUM MEMBERSHIPS</span>
-            </div>
-            <h3 className="premium-title">Unlock Exclusive Savings & Benefits</h3>
-            <p className="premium-subtitle">
+              <Text size="sm" fw={600}>PREMIUM MEMBERSHIPS</Text>
+            </Group>
+            <Text size="xl" fw={700} className="premium-title" mb="sm">
+              Unlock Exclusive Savings & Benefits
+            </Text>
+            <Text size="md" c="dimmed" className="premium-subtitle" maw={600} mx="auto">
               Join our premium membership for reduced per-item fees, priority scheduling, and exclusive access to luxury drops.
-            </p>
-          </div>
+            </Text>
+          </Box>
 
-          <div className="premium-tiers">
-            <div className="premium-tier">
-              <div className="tier-header">
-                <h4 className="tier-title">VIP Monthly</h4>
-                <div className="tier-price">
-                  <span className="price">$29</span>
-                  <span className="period">/month</span>
-                </div>
-              </div>
-              <div className="tier-benefits">
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>30% off all service fees</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>Priority shopper assignment</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>Extended 20-minute try-on sessions</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>Free same-day delivery (normally $15)</span>
-                </div>
-              </div>
-              <button className="premium-cta-btn monthly-btn" disabled>
-                <TuhmeIcon type="secure" size={16} />
-                <span>Coming Soon - Stripe Integration</span>
-              </button>
-            </div>
+          <Grid justify="center" gutter="lg" className="premium-tiers">
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <Card className="premium-tier" padding="lg" radius="md" style={{ height: '100%', background: 'rgba(255, 255, 255, 0.05)' }}>
+                <Stack gap="md">
+                  <Box className="tier-header" ta="center">
+                    <Text size="lg" fw={700} className="tier-title">VIP Monthly</Text>
+                    <Group justify="center" gap="xs" className="tier-price">
+                      <Text size="xl" fw={700} className="price">$29</Text>
+                      <Text size="sm" c="dimmed" className="period">/month</Text>
+                    </Group>
+                  </Box>
+                  <Stack gap="xs" className="tier-benefits">
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">30% off all service fees</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">Priority shopper assignment</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">Extended 20-minute try-on sessions</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">Free same-day delivery (normally $15)</Text>
+                    </Group>
+                  </Stack>
+                  <Button className="premium-cta-btn monthly-btn" disabled fullWidth leftSection={<TuhmeIcon type="secure" size={16} />}>
+                    Coming Soon - Stripe Integration
+                  </Button>
+                </Stack>
+              </Card>
+            </Grid.Col>
 
-            <div className="premium-tier featured-tier">
-              <div className="tier-badge">MOST POPULAR</div>
-              <div className="tier-header">
-                <h4 className="tier-title">VIP Annual</h4>
-                <div className="tier-price">
-                  <span className="price">$299</span>
-                  <span className="period">/year</span>
-                  <span className="savings">Save $49</span>
-                </div>
-              </div>
-              <div className="tier-benefits">
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>All Monthly VIP benefits</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>50% off all service fees</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>Exclusive access to luxury drops</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>Personal stylist consultations</span>
-                </div>
-                <div className="benefit-item">
-                  <TuhmeIcon type="check" size={16} />
-                  <span>Concierge white-glove service</span>
-                </div>
-              </div>
-              <button className="premium-cta-btn annual-btn" disabled>
-                <TuhmeIcon type="secure" size={16} />
-                <span>Coming Soon - Stripe Integration</span>
-              </button>
-            </div>
-          </div>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <Card className="premium-tier featured-tier" padding="lg" radius="md" style={{ height: '100%', background: 'rgba(255, 255, 255, 0.1)', position: 'relative' }}>
+                <Badge className="tier-badge" style={{ position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)' }}>MOST POPULAR</Badge>
+                <Stack gap="md">
+                  <Box className="tier-header" ta="center">
+                    <Text size="lg" fw={700} className="tier-title">VIP Annual</Text>
+                    <Group justify="center" gap="xs" className="tier-price">
+                      <Text size="xl" fw={700} className="price">$299</Text>
+                      <Text size="sm" c="dimmed" className="period">/year</Text>
+                      <Badge size="xs" className="savings">Save $49</Badge>
+                    </Group>
+                  </Box>
+                  <Stack gap="xs" className="tier-benefits">
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">All Monthly VIP benefits</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">50% off all service fees</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">Exclusive access to luxury drops</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">Personal stylist consultations</Text>
+                    </Group>
+                    <Group gap="xs" className="benefit-item">
+                      <TuhmeIcon type="check" size={16} />
+                      <Text size="sm">Concierge white-glove service</Text>
+                    </Group>
+                  </Stack>
+                  <Button className="premium-cta-btn annual-btn" disabled fullWidth leftSection={<TuhmeIcon type="secure" size={16} />}>
+                    Coming Soon - Stripe Integration
+                  </Button>
+                </Stack>
+              </Card>
+            </Grid.Col>
+          </Grid>
 
-          <div className="premium-footer">
-            <div className="security-note">
+          <Box className="premium-footer" mt="xl" ta="center">
+            <Group justify="center" gap="md" className="security-note" mb="md">
               <TuhmeIcon type="secure" size={20} />
-              <div className="security-text">
-                <strong>Secure payments powered by Stripe</strong>
-                <p>Your payment information is encrypted and never stored on our servers</p>
-              </div>
-            </div>
-            <div className="api-status">
-              <div className="status-indicator"></div>
-              <span>API Integration: Coming Soon</span>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Stack gap="xs" className="security-text">
+                <Text fw={600}>Secure payments powered by Stripe</Text>
+                <Text size="sm" c="dimmed">Your payment information is encrypted and never stored on our servers</Text>
+              </Stack>
+            </Group>
+            <Group justify="center" gap="xs" className="api-status">
+              <Box className="status-indicator" w={8} h={8} style={{ background: '#FFA500', borderRadius: '50%' }}></Box>
+              <Text size="sm">API Integration: Coming Soon</Text>
+            </Group>
+          </Box>
+        </Box>
+      </Container>
+      </Box>
 
       <style jsx="true">{`
         .pricing-widget {
@@ -1149,7 +1231,7 @@ const PricingWidget = ({ variant = "default" }) => {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 };
 

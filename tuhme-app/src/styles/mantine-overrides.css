@@ -1,0 +1,149 @@
+/* MANTINE THEME INTEGRATION - MINIMAL OVERRIDES */
+/* This file ensures Mantine components work seamlessly with the luxury color system */
+
+/* CRITICAL: Force icon visibility across all states */
+.tabler-icon,
+.mantine-ActionIcon-root svg,
+.mantine-Button-root svg,
+[data-tabler],
+.icon {
+  color: inherit !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Ensure ActionIcon containers have proper color */
+.mantine-ActionIcon-root {
+  color: var(--icon-color, inherit) !important;
+}
+
+.mantine-ActionIcon-root svg {
+  color: inherit !important;
+  fill: inherit !important;
+  stroke: inherit !important;
+}
+
+/* Force visibility for navigation icons specifically */
+nav .mantine-ActionIcon-root,
+.navigation .mantine-ActionIcon-root,
+[data-navigation] .mantine-ActionIcon-root {
+  color: var(--icon-color) !important;
+}
+
+nav .mantine-ActionIcon-root svg,
+.navigation .mantine-ActionIcon-root svg,
+[data-navigation] .mantine-ActionIcon-root svg {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* Emergency fallback for icon visibility */
+[data-navigation="true"] svg {
+  color: var(--icon-color, #ffffff) !important;
+  opacity: 1 !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Specifically target Tabler icons */
+[data-navigation="true"] .tabler-icon {
+  color: var(--icon-color, #ffffff) !important;
+  opacity: 1 !important;
+}
+
+/* Luxury animations and micro-interactions */
+.mantine-Button-root {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.mantine-Button-root:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.mantine-Button-root:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.mantine-ActionIcon-root {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+}
+
+.mantine-ActionIcon-root:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mantine-ActionIcon-root:active {
+  transform: scale(0.95);
+}
+
+/* Modal luxury enhancements */
+.mantine-Modal-content {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mantine-Modal-overlay {
+  animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) translateY(0);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Paper component luxury glass effect */
+.mantine-Paper-root {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Tabs styling for luxury feel */
+.mantine-Tabs-tab {
+  transition: all 0.2s ease !important;
+}
+
+.mantine-Tabs-tab:hover {
+  transform: translateY(-1px);
+}
+
+/* Form inputs glass effect */
+.mantine-TextInput-input,
+.mantine-Textarea-input,
+.mantine-Select-input {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Ensure text visibility */
+.mantine-Text-root,
+.mantine-Title-root {
+  color: inherit;
+}
+
+/* Remove any conflicting legacy styles */
+[class*="modal-"],
+[class*="btn-"],
+[class*="cta-"] {
+  all: initial;
+  font-family: inherit;
+}

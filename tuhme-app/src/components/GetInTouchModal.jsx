@@ -1,7 +1,36 @@
 import { useState } from 'react';
+import {
+  Modal,
+  TextInput,
+  Textarea,
+  Select,
+  Button,
+  Group,
+  Stack,
+  Text,
+  Title,
+  Tabs,
+  Paper,
+  ThemeIcon,
+  Alert,
+  useMantineTheme,
+  Anchor
+} from '@mantine/core';
+import { 
+  IconMail, 
+  IconCheck, 
+  IconPhone, 
+  IconMapPin, 
+  IconSend,
+  IconShoppingBag,
+  IconInfoCircle,
+  IconQuestionMark
+} from '@tabler/icons-react';
 import TuhmeIcon from './TuhmeIcon';
 
 const GetInTouchModal = ({ isOpen, onClose }) => {
+  const theme = useMantineTheme();
+  const currentPalette = theme.other?.currentPalette;
   const [activeTab, setActiveTab] = useState('contact'); // contact, form
   const [formData, setFormData] = useState({
     name: '',
@@ -58,243 +87,220 @@ const GetInTouchModal = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  if (!isOpen) return null;
-
   if (isSubmitted) {
     return (
-      <div className="modal-overlay" onClick={handleClose}>
-        <div className="modal-content get-in-touch-modal" onClick={e => e.stopPropagation()}>
-          <button className="modal-close" onClick={handleClose}>×</button>
-          
-          <div className="success-content">
-            <div className="success-icon">
-              <TuhmeIcon type="secure" size={48} />
-            </div>
-            <h2 className="success-title">Thank You!</h2>
-            <p className="success-message">
+      <Modal opened={isOpen} onClose={handleClose} centered size="md">
+        <Paper p="xl" style={{ textAlign: 'center' }}>
+          <Stack align="center" gap="lg">
+            <ThemeIcon size={80} variant="light" color="green">
+              <IconCheck size={40} />
+            </ThemeIcon>
+            <Title order={2}>Thank You!</Title>
+            <Text c="dimmed">
               We've received your message and will get back to you within 24 hours.
-            </p>
-            <div className="success-actions">
-              <button className="success-button primary" onClick={resetForm}>
+            </Text>
+            <Group>
+              <Button variant="outline" onClick={resetForm}>
                 Send Another Message
-              </button>
-              <button className="success-button secondary" onClick={handleClose}>
+              </Button>
+              <Button onClick={handleClose}>
                 Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Button>
+            </Group>
+          </Stack>
+        </Paper>
+      </Modal>
     );
   }
 
   return (
-    <div className="modal-overlay" onClick={handleClose}>
-      <div className="modal-content get-in-touch-modal large" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={handleClose}>×</button>
-        
-        <div className="modal-header">
-          <TuhmeIcon type="professional" size={40} />
-          <h2>Get In Touch</h2>
-          <p>Have questions about our service? Want to partner with us? We'd love to hear from you.</p>
-        </div>
-
-        <div className="modal-tabs">
-          <button 
-            className={`tab-button ${activeTab === 'contact' ? 'active' : ''}`}
-            onClick={() => setActiveTab('contact')}
+    <Modal
+      opened={isOpen}
+      onClose={handleClose}
+      title={
+        <Group align="center" gap="sm">
+          <ThemeIcon
+            size="lg"
+            variant="light"
+            color={currentPalette?.accent || theme.colors.brand[5]}
           >
-            <TuhmeIcon type="delivery" size={16} />
-            Contact Info
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'form' ? 'active' : ''}`}
-            onClick={() => setActiveTab('form')}
-          >
-            <TuhmeIcon type="professional" size={16} />
-            Send Message
-          </button>
-        </div>
+            <IconMail size={20} />
+          </ThemeIcon>
+          <Title order={3} c={currentPalette?.accent || theme.colors.brand[5]}>
+            Get In Touch
+          </Title>
+        </Group>
+      }
+      size="xl"
+      centered
+    >
+      <Stack gap="md">
+        <Text size="sm" c="dimmed">
+          Have questions about our service? Want to partner with us? We'd love to hear from you.
+        </Text>
 
-        <div className="modal-body">
-          {activeTab === 'contact' && (
-            <div className="contact-tab">
-              <div className="contact-methods">
-                <div className="contact-method">
-                  <div className="method-icon">
-                    <TuhmeIcon type="secure" size={24} />
-                  </div>
-                  <div className="method-content">
-                    <h4>Email Support</h4>
-                    <p>For orders, partnerships, press inquiries, and all questions</p>
-                    <a href="mailto:support@tuhme.com" className="contact-link">
+        <Tabs value={activeTab} onChange={setActiveTab}>
+          <Tabs.List>
+            <Tabs.Tab value="contact" leftSection={<IconInfoCircle size={16} />}>
+              Contact Info
+            </Tabs.Tab>
+            <Tabs.Tab value="form" leftSection={<IconSend size={16} />}>
+              Send Message
+            </Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="contact" pt="md">
+            <Stack gap="lg">
+              <Paper withBorder p="md">
+                <Group>
+                  <ThemeIcon size="lg" variant="light" color={currentPalette?.accent || theme.colors.brand[5]}>
+                    <IconMail size={20} />
+                  </ThemeIcon>
+                  <div>
+                    <Text fw={600}>Email Support</Text>
+                    <Text size="sm" c="dimmed">For orders, partnerships, press inquiries, and all questions</Text>
+                    <Anchor href="mailto:support@tuhme.com" c={currentPalette?.accent || theme.colors.brand[5]}>
                       support@tuhme.com
-                    </a>
+                    </Anchor>
                   </div>
-                </div>
+                </Group>
+              </Paper>
 
-                <div className="contact-method">
-                  <div className="method-icon">
-                    <TuhmeIcon type="shopping" size={24} />
+              <Paper withBorder p="md">
+                <Group>
+                  <ThemeIcon size="lg" variant="light" color={currentPalette?.accent || theme.colors.brand[5]}>
+                    <IconMapPin size={20} />
+                  </ThemeIcon>
+                  <div>
+                    <Text fw={600}>Service Area</Text>
+                    <Text size="sm" c="dimmed">Currently serving Manhattan and Brooklyn</Text>
+                    <Text size="xs" c="dimmed">Expanding to more NYC areas soon</Text>
                   </div>
-                  <div className="method-content">
-                    <h4>Service Area</h4>
-                    <p>Currently serving Manhattan and Brooklyn</p>
-                    <span className="service-note">Expanding to more NYC areas soon</span>
-                  </div>
-                </div>
-              </div>
+                </Group>
+              </Paper>
 
-              <div className="quick-actions">
-                <h4>Quick Actions</h4>
-                <div className="action-buttons">
-                  <button 
-                    className="action-button"
+              <Paper withBorder p="md">
+                <Text fw={600} mb="sm">Quick Actions</Text>
+                <Group>
+                  <Button
+                    variant="outline"
+                    leftSection={<IconShoppingBag size={16} />}
                     onClick={() => {
                       handleClose();
-                      const element = document.getElementById('pricing');
-                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
-                    <TuhmeIcon type="shopping" size={16} />
                     View Pricing
-                  </button>
-                  <button 
-                    className="action-button"
+                  </Button>
+                  <Button
+                    variant="outline"
+                    leftSection={<IconInfoCircle size={16} />}
                     onClick={() => {
                       handleClose();
-                      const element = document.getElementById('how-it-works');
-                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
-                    <TuhmeIcon type="professional" size={16} />
                     How It Works
-                  </button>
-                  <a 
+                  </Button>
+                  <Button
+                    component="a"
                     href="mailto:support@tuhme.com?subject=Question%20about%20TUHME"
-                    className="action-button primary"
+                    leftSection={<IconQuestionMark size={16} />}
                   >
-                    <TuhmeIcon type="secure" size={16} />
                     Ask a Question
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
+                  </Button>
+                </Group>
+              </Paper>
+            </Stack>
+          </Tabs.Panel>
 
-          {activeTab === 'form' && (
-            <div className="form-tab">
-              <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="name">Name *</label>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      <div className="input-border"></div>
-                    </div>
-                  </div>
+          <Tabs.Panel value="form" pt="md">
+            <form onSubmit={handleSubmit}>
+              <Stack gap="md">
+                <Group grow>
+                  <TextInput
+                    label="Name"
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    required
+                  />
+                  <TextInput
+                    label="Email"
+                    placeholder="your.email@example.com"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    required
+                  />
+                </Group>
 
-                  <div className="form-group">
-                    <label htmlFor="email">Email *</label>
-                    <div className="input-container">
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      <div className="input-border"></div>
-                    </div>
-                  </div>
-                </div>
+                <Group grow>
+                  <TextInput
+                    label="Phone"
+                    placeholder="Your phone number"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    required
+                  />
+                  <Select
+                    label="Subject"
+                    placeholder="Select a topic"
+                    value={formData.subject}
+                    onChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}
+                    data={[
+                      { value: 'General Question', label: 'General Question' },
+                      { value: 'Order Support', label: 'Order Support' },
+                      { value: 'Partnership', label: 'Partnership Inquiry' },
+                      { value: 'Press', label: 'Press & Media' },
+                      { value: 'Careers', label: 'Careers' },
+                      { value: 'Feedback', label: 'Feedback' }
+                    ]}
+                  />
+                </Group>
 
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone *</label>
-                    <div className="input-container">
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      <div className="input-border"></div>
-                    </div>
-                  </div>
+                <Textarea
+                  label="Message"
+                  placeholder="Tell us how we can help you..."
+                  value={formData.message}
+                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                  minRows={4}
+                  required
+                />
 
-                  <div className="form-group">
-                    <label htmlFor="subject">Subject</label>
-                    <div className="select-container">
-                      <select
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                      >
-                        <option value="">Select a topic</option>
-                        <option value="General Question">General Question</option>
-                        <option value="Order Support">Order Support</option>
-                        <option value="Partnership">Partnership Inquiry</option>
-                        <option value="Press">Press & Media</option>
-                        <option value="Careers">Careers</option>
-                        <option value="Feedback">Feedback</option>
-                      </select>
-                      <div className="select-border"></div>
-                    </div>
-                  </div>
-                </div>
+                <Alert
+                  icon={<IconInfoCircle size={16} />}
+                  title="Privacy Notice"
+                  variant="light"
+                  color="gray"
+                >
+                  <Text size="xs">
+                    This form is protected by reCAPTCHA and the Google{' '}
+                    <Anchor href="#" size="xs">Privacy Policy</Anchor> and{' '}
+                    <Anchor href="#" size="xs">Terms of Service</Anchor> apply.
+                  </Text>
+                </Alert>
 
-                <div className="form-group">
-                  <label htmlFor="message">Message *</label>
-                  <div className="textarea-container">
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows="4"
-                      placeholder="Tell us how we can help you..."
-                      required
-                    />
-                    <div className="textarea-border"></div>
-                  </div>
-                </div>
-
-                <div className="form-footer">
-                  <div className="recaptcha-notice">
-                    <p>This form is protected by reCAPTCHA and the Google 
-                      <a href="#" target="_blank" rel="noopener noreferrer"> Privacy Policy</a> and 
-                      <a href="#" target="_blank" rel="noopener noreferrer"> Terms of Service</a> apply.
-                    </p>
-                  </div>
-
-                  <button 
-                    type="submit" 
-                    className="submit-button"
-                    disabled={!isFormValid() || isSubmitting}
+                <Group justify="space-between" mt="lg">
+                  <Button variant="subtle" onClick={handleClose} disabled={isSubmitting}>
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    loading={isSubmitting}
+                    disabled={!isFormValid()}
+                    leftSection={<IconSend size={16} />}
                   >
-                    <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                    <TuhmeIcon type="delivery" size={16} />
-                    <div className="button-shine"></div>
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </Group>
+              </Stack>
+            </form>
+          </Tabs.Panel>
+        </Tabs>
+      </Stack>
+    </Modal>
   );
 };
 

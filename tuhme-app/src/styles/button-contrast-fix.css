@@ -1,0 +1,103 @@
+/* MINIMAL BUTTON CONTRAST FIX - SURGICAL APPROACH */
+/* Only fixes the specific button contrast issues without breaking anything else */
+
+/* PRIMARY BUTTONS - Force white text on dark backgrounds */
+.cta-primary-button,
+.primary-cta-luxury,
+.order-btn,
+.shop-with-tuhme-btn,
+.get-in-touch-btn,
+button[class*="primary"],
+.btn[class*="primary"] {
+  color: #ffffff !important;
+}
+
+/* PRIMARY BUTTON TEXT CONTENT */
+.cta-primary-button .button-text,
+.cta-primary-button span,
+.primary-cta-luxury .button-text,
+.primary-cta-luxury span,
+.order-btn span,
+.shop-with-tuhme-btn span,
+.get-in-touch-btn span,
+button[class*="primary"] span,
+.btn[class*="primary"] span {
+  color: #ffffff !important;
+}
+
+/* GRAY BUTTONS - Enhanced contrast for readability */
+.premium-cta-btn,
+button[class*="gray"],
+button[class*="grey"],
+.btn[class*="gray"],
+.btn[class*="grey"],
+[class*="stripe"] {
+  color: #000000 !important;
+  background: rgba(180, 180, 180, 0.9) !important;
+  font-weight: 600 !important;
+}
+
+/* PRICING BADGE - Ensure visibility */
+.pricing-badge {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  font-weight: 600 !important;
+}
+
+/* NAVIGATION ICONS - Ensure visibility */
+.nav-icon-button svg,
+.luxury-nav-btn svg,
+.theme-button svg,
+.savi-button svg,
+.feedback-button svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* LIGHT MODE OVERRIDES - For specific light palettes only */
+[data-global-palette="pearl-morning"] .nav-icon-button svg,
+[data-global-palette="emerald-mist"] .nav-icon-button svg,
+[data-global-palette="crystal-blue"] .nav-icon-button svg,
+[data-global-palette="mint-elegance"] .nav-icon-button svg,
+[data-global-palette="blush-elegance"] .nav-icon-button svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* LIGHT MODE PRIMARY BUTTONS - Keep white text even in light palettes */
+[data-global-palette="pearl-morning"] .cta-primary-button,
+[data-global-palette="emerald-mist"] .cta-primary-button,
+[data-global-palette="crystal-blue"] .cta-primary-button,
+[data-global-palette="mint-elegance"] .cta-primary-button,
+[data-global-palette="blush-elegance"] .cta-primary-button,
+[data-global-palette="pearl-morning"] .primary-cta-luxury,
+[data-global-palette="emerald-mist"] .primary-cta-luxury,
+[data-global-palette="crystal-blue"] .primary-cta-luxury,
+[data-global-palette="mint-elegance"] .primary-cta-luxury,
+[data-global-palette="blush-elegance"] .primary-cta-luxury {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* REMOVE EXCESSIVE TEXT SHADOWS that might be causing visual issues */
+.hero-glowing-tagline,
+.title-line,
+.brand-name-luxury {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Fix any cut-off navigation elements */
+.navigation {
+  overflow: visible !important;
+}
+
+.nav-actions {
+  overflow: visible !important;
+}
+
+.luxury-dropdown-menu {
+  z-index: 10000 !important;
+}

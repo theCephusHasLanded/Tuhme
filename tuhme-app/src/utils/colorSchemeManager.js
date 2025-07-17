@@ -4,6 +4,8 @@
 class ColorSchemeManager {
   constructor() {
     this.currentHour = new Date().getHours();
+    this.updateInterval = null;
+    this.handlePaletteChange = null;
     this.luxuryPalettes = [
       { primary: '#0a0a0a', secondary: '#1a1a1a', accent: '#ffffff', name: 'midnight-mono', rgb: '255, 255, 255' },
       { primary: '#1a0f1a', secondary: '#2a1a2a', accent: '#e6c2a6', name: 'champagne-dusk', rgb: '230, 194, 166' },
@@ -50,7 +52,7 @@ class ColorSchemeManager {
 
   setupPeriodicUpdates() {
     // Check every minute for hour changes
-    setInterval(() => {
+    this.updateInterval = setInterval(() => {
       const newHour = new Date().getHours();
       if (newHour !== this.currentHour) {
         this.currentHour = newHour;
@@ -63,13 +65,17 @@ class ColorSchemeManager {
 
   setupEventListeners() {
     // Listen for custom palette change events
-    window.addEventListener('paletteChange', (event) => {
+    this.handlePaletteChange = (event) => {
       if (event.detail && event.detail.palette) {
         this.currentPalette = event.detail.palette;
         this.updateGlobalScheme();
         this.notifySubscribers();
       }
-    });
+    };
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('paletteChange', this.handlePaletteChange);
+    }
   }
 
   updateGlobalScheme() {
@@ -172,6 +178,25 @@ class ColorSchemeManager {
       this.updateGlobalScheme();
       this.notifySubscribers();
     }
+  }
+
+  // Cleanup method for component unmounting
+  cleanup() {
+    // Clear any intervals
+    if (this.updateInterval) {
+      clearInterval(this.updateInterval);
+      this.updateInterval = null;
+    }
+    
+    // Clear subscribers
+    this.subscribers = [];
+    
+    // Remove event listeners
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('paletteChange', this.handlePaletteChange);
+    }
+    
+    console.log('ColorSchemeManager cleaned up');
   }
 }
 

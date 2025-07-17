@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useModal } from '../contexts/ModalContext';
 import tuhmeLogo from '../assets/tuhme.png';
 import TuhmeIcon from './TuhmeIcon';
+import { IconBuilding, IconSparkles, IconMessageCircle, IconScale } from '@tabler/icons-react';
 
 const Footer = () => {
   const { openModal } = useModal();
@@ -11,7 +12,7 @@ const Footer = () => {
   const footerSections = {
     company: {
       title: 'Company',
-      icon: '🏢',
+      icon: <IconBuilding size={16} />,
       items: [
         { label: 'About Tuhme', action: () => setShowInfoModal('about') },
         { label: 'How It Works', action: () => setShowInfoModal('howItWorks') },
@@ -21,7 +22,7 @@ const Footer = () => {
     },
     services: {
       title: 'Services',
-      icon: '✨',
+      icon: <IconSparkles size={16} />,
       items: [
         { label: 'Express Orders', action: () => setShowInfoModal('expressOrders') },
         { label: 'Tuhme Now', action: () => setShowInfoModal('tuhmeNow') },
@@ -31,7 +32,7 @@ const Footer = () => {
     },
     support: {
       title: 'Support',
-      icon: '💬',
+      icon: <IconMessageCircle size={16} />,
       items: [
         { label: 'FAQ', action: () => setShowInfoModal('faq') },
         { label: 'Contact Us', action: () => setShowInfoModal('contact') },
@@ -41,7 +42,7 @@ const Footer = () => {
     },
     legal: {
       title: 'Legal',
-      icon: '⚖️',
+      icon: <IconScale size={16} />,
       items: [
         { label: 'Privacy Policy', action: () => openModal('privacy') },
         { label: 'Terms and Conditions', action: () => openModal('terms') },

@@ -30,18 +30,13 @@ import './styles/elegant-navigation.css';
 import './styles/hero-matched-modals.css';
 import './styles/luxury-fixes.css';
 
-// Mantine integration styles - loaded last to ensure proper theming
-import './styles/mantine-overrides.css';
-
-// Apple-level design fixes - loaded LAST to override all text blur issues
-import './styles/apple-design-fixes.css';
+// MINIMAL button contrast fix - loaded last to override conflicts
+import './styles/button-contrast-fix.css';
 
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeSystemProvider from './contexts/ThemeSystemContext';
 import { ModalProvider } from './contexts/ModalContext';
-import { MantineThemeProvider } from './providers/MantineThemeProvider';
 import Navigation from './components/Navigation';
-import MantineAppShell from './components/MantineAppShell';
 import Hero from './components/Hero';
 import ServiceOverview from './components/ServiceOverview';
 import HowItWorks from './components/HowItWorks';
@@ -117,7 +112,7 @@ function App() {
   const handleCloseFeedback = () => setShowFeedback(false);
 
   const renderMainContent = () => (
-    <div className="main-website">
+    <div className="main-website" style={{ paddingTop: '80px' }}>
       <Hero id="home" />
       <ServiceOverview id="service-overview" />
       <HowItWorks id="how-it-works" />
@@ -135,36 +130,39 @@ function App() {
   );
 
   const renderExpressOrder = () => (
-    <MantineAppShell
-      onNavigate={handleNavigate}
-      currentSection={currentSection}
-      onOpenSavi={handleOpenSavi}
-      onOpenFeedback={handleOpenFeedback}
-    >
+    <div className="express-order-container">
+      <Navigation 
+        onNavigate={handleNavigate}
+        currentSection={currentSection}
+        onOpenSavi={handleOpenSavi}
+        onOpenFeedback={handleOpenFeedback}
+      />
       <ExpressOrderFlow onBack={() => handleNavigate('home')} />
-    </MantineAppShell>
+    </div>
   );
 
   const renderUserDashboard = () => (
-    <MantineAppShell
-      onNavigate={handleNavigate}
-      currentSection={currentSection}
-      onOpenSavi={handleOpenSavi}
-      onOpenFeedback={handleOpenFeedback}
-    >
+    <div className="user-dashboard-container">
+      <Navigation 
+        onNavigate={handleNavigate}
+        currentSection={currentSection}
+        onOpenSavi={handleOpenSavi}
+        onOpenFeedback={handleOpenFeedback}
+      />
       <UserDashboard onBack={() => handleNavigate('home')} />
-    </MantineAppShell>
+    </div>
   );
 
   const renderHiring = () => (
-    <MantineAppShell
-      onNavigate={handleNavigate}
-      currentSection={currentSection}
-      onOpenSavi={handleOpenSavi}
-      onOpenFeedback={handleOpenFeedback}
-    >
+    <div className="hiring-container">
+      <Navigation 
+        onNavigate={handleNavigate}
+        currentSection={currentSection}
+        onOpenSavi={handleOpenSavi}
+        onOpenFeedback={handleOpenFeedback}
+      />
       <Matrix3DInterface onBack={() => handleNavigate('home')} />
-    </MantineAppShell>
+    </div>
   );
 
   const renderCurrentView = () => {
@@ -177,65 +175,64 @@ function App() {
         return renderHiring();
       default:
         return (
-          <MantineAppShell
-            onNavigate={handleNavigate}
-            currentSection={currentSection}
-            onOpenSavi={handleOpenSavi}
-            onOpenFeedback={handleOpenFeedback}
-          >
+          <>
+            <Navigation 
+              onNavigate={handleNavigate}
+              currentSection={currentSection}
+              onOpenSavi={handleOpenSavi}
+              onOpenFeedback={handleOpenFeedback}
+            />
             {renderMainContent()}
-          </MantineAppShell>
+          </>
         );
     }
   };
 
   return (
-    <MantineThemeProvider>
-      <ThemeSystemProvider>
-        <ThemeProvider>
-          <ModalProvider>
-            <div className="App">
-              {renderCurrentView()}
+    <ThemeSystemProvider>
+      <ThemeProvider>
+        <ModalProvider>
+          <div className="App">
+            {renderCurrentView()}
 
-              <ModalsSystem />
-              <MembershipModal />
-              
-              {showSavi && (
-                <SaviAssistant 
-                  isOpen={showSavi}
-                  onClose={handleCloseSavi}
-                />
-              )}
-              
-              <FloatingSaviBot onClick={handleOpenSavi} />
-              
-              {showFeedback && (
-                <FeedbackModal 
-                  isOpen={showFeedback}
-                  onClose={handleCloseFeedback}
-                />
-              )}
+            <ModalsSystem />
+            <MembershipModal />
+            
+            {showSavi && (
+              <SaviAssistant 
+                isOpen={showSavi}
+                onClose={handleCloseSavi}
+              />
+            )}
+            
+            <FloatingSaviBot onClick={handleOpenSavi} />
+            
+            {showFeedback && (
+              <FeedbackModal 
+                isOpen={showFeedback}
+                onClose={handleCloseFeedback}
+              />
+            )}
 
-              {showGetInTouch && (
-                <GetInTouchModal 
-                  isOpen={showGetInTouch}
-                  onClose={() => setShowGetInTouch(false)}
-                />
-              )}
+            {showGetInTouch && (
+              <GetInTouchModal 
+                isOpen={showGetInTouch}
+                onClose={() => setShowGetInTouch(false)}
+              />
+            )}
 
-              {showFlyerGenerator && (
-                <FlyerGeneratorModal 
-                  isOpen={showFlyerGenerator}
-                  onClose={() => setShowFlyerGenerator(false)}
-                />
-              )}
-              
-              <DailySalesFlyerManager />
-            </div>
-          </ModalProvider>
-        </ThemeProvider>
-      </ThemeSystemProvider>
-    </MantineThemeProvider>
+            {showFlyerGenerator && (
+              <FlyerGeneratorModal 
+                isOpen={showFlyerGenerator}
+                onClose={() => setShowFlyerGenerator(false)}
+              />
+            )}
+            
+            <DailySalesFlyerManager />
+          </div>
+        </ModalProvider>
+      </ThemeProvider>
+    </ThemeSystemProvider>
   );
 }
 

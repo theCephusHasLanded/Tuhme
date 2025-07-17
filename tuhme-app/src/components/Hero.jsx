@@ -1,6 +1,7 @@
 
 import TuhmeIcon from './TuhmeIcon';
 import { useState, useEffect } from 'react';
+import { IconDiamond, IconCircleDot } from '@tabler/icons-react';
 import colorSchemeManager from '../utils/colorSchemeManager';
 
 const Hero = ({ onStartExpressOrder }) => {
@@ -133,15 +134,15 @@ const Hero = ({ onStartExpressOrder }) => {
             </p>
             <div className="luxury-promise">
               <div className="promise-item">
-                <span className="promise-icon" style={{ color: currentPalette.accent }}>◆</span>
+                <IconDiamond size={16} style={{ color: currentPalette.accent, flexShrink: 0 }} />
                 <span>Zero upfront payment</span>
               </div>
               <div className="promise-item">
-                <span className="promise-icon" style={{ color: currentPalette.accent }}>◆</span>
+                <IconDiamond size={16} style={{ color: currentPalette.accent, flexShrink: 0 }} />
                 <span>Private 15-minute sessions</span>
               </div>
               <div className="promise-item">
-                <span className="promise-icon" style={{ color: currentPalette.accent }}>◆</span>
+                <IconDiamond size={16} style={{ color: currentPalette.accent, flexShrink: 0 }} />
                 <span>Return what doesn't fit</span>
               </div>
             </div>

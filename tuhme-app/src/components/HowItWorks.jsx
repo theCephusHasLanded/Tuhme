@@ -1,7 +1,7 @@
 import TuhmeIcon from './TuhmeIcon';
 import CallToActionWidget from './CallToActionWidget';
 import BenefitsWidget from './BenefitsWidget';
-import EnhancedStoreFinder from './EnhancedStoreFinder';
+import { IconArrowDown } from '@tabler/icons-react';
 
 const HowItWorks = () => {
   const getIconComponent = (iconType) => {
@@ -73,8 +73,6 @@ const HowItWorks = () => {
 
         <div className="how-it-works-layout">
           <div className="left-content">
-            <EnhancedStoreFinder />
-            
             <CallToActionWidget />
             
             <BenefitsWidget showBackground={true} />
@@ -100,7 +98,9 @@ const HowItWorks = () => {
                   {index < steps.length - 1 && (
                     <div className="step-connector">
                       <div className="connector-line"></div>
-                      <div className="connector-arrow">→</div>
+                      <div className="connector-arrow">
+                        <IconArrowDown size={20} style={{ color: 'var(--global-accent, #ffffff)' }} />
+                      </div>
                     </div>
                   )}
                 </div>

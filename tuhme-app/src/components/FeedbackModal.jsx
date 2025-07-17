@@ -1,7 +1,25 @@
 import { useState } from 'react';
+import {
+  Modal,
+  TextInput,
+  Textarea,
+  Select,
+  Button,
+  Group,
+  Stack,
+  Text,
+  Title,
+  Alert,
+  Paper,
+  ThemeIcon,
+  useMantineTheme
+} from '@mantine/core';
+import { IconMail, IconCheck, IconAlertCircle } from '@tabler/icons-react';
 import TuhmeIcon from './TuhmeIcon';
 
 const FeedbackModal = ({ isOpen, onClose }) => {
+  const theme = useMantineTheme();
+  const currentPalette = theme.other?.currentPalette;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,136 +72,141 @@ Sent from TUHME Feedback Form
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content feedback-modal" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>×</button>
-        
-        <div className="modal-header">
-          <TuhmeIcon type="professional" size={40} />
-          <h2>Send Feedback</h2>
-          <p>We'd love to hear from you! Your feedback helps us improve.</p>
-        </div>
-
-        <div className="modal-body">
-          {submitStatus === 'success' ? (
-            <div className="feedback-success">
-              <TuhmeIcon type="secure" size={48} />
-              <h3>Thank you!</h3>
-              <p>Your feedback has been prepared for sending. Please send the email that opened in your email client.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="feedback-form">
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                  />
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="type">Feedback Type</label>
-                <select
-                  id="type"
-                  name="type"
-                  value={formData.type}
-                  onChange={handleChange}
-                  className="form-select"
-                >
-                  <option value="general">General Feedback</option>
-                  <option value="bug">Bug Report</option>
-                  <option value="feature">Feature Request</option>
-                  <option value="complaint">Complaint</option>
-                  <option value="compliment">Compliment</option>
-                  <option value="partnership">Partnership Inquiry</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="form-input"
-                  placeholder="Brief summary of your feedback"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="form-textarea"
-                  rows="5"
-                  placeholder="Please share your detailed feedback here..."
-                />
-              </div>
-
-              <div className="feedback-contact-info">
-                <h4>Direct Contact</h4>
-                <p>You can also reach us directly at:</p>
-                <a href="mailto:support@tuhme.com" className="contact-email">
-                  <TuhmeIcon type="delivery" size={16} />
-                  support@tuhme.com
-                </a>
-              </div>
-            </form>
-          )}
-        </div>
-
-        <div className="modal-actions">
-          <button 
-            type="button" 
-            className="modal-action-btn secondary" 
-            onClick={onClose}
-            disabled={isSubmitting}
+    <Modal
+      opened={isOpen}
+      onClose={onClose}
+      title={
+        <Group align="center" gap="sm">
+          <ThemeIcon
+            size="lg"
+            variant="light"
+            color={currentPalette?.accent || theme.colors.brand[5]}
           >
-            Cancel
-          </button>
-          {submitStatus !== 'success' && (
-            <button 
-              type="submit" 
-              className="modal-action-btn primary"
-              onClick={handleSubmit}
-              disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-            >
-              {isSubmitting ? 'Preparing...' : 'Send Feedback'}
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
+            <IconMail size={20} />
+          </ThemeIcon>
+          <Title order={3} c={currentPalette?.accent || theme.colors.brand[5]}>
+            Send Feedback
+          </Title>
+        </Group>
+      }
+      size="lg"
+      centered
+    >
+      <Stack gap="md">
+        <Text size="sm" c="dimmed">
+          We'd love to hear from you! Your feedback helps us improve.
+        </Text>
+
+        {submitStatus === 'success' ? (
+          <Paper p="xl" withBorder style={{ textAlign: 'center' }}>
+            <Stack align="center" gap="md">
+              <ThemeIcon size={60} variant="light" color="green">
+                <IconCheck size={30} />
+              </ThemeIcon>
+              <Title order={4}>Thank you!</Title>
+              <Text size="sm" c="dimmed">
+                Your feedback has been prepared for sending. Please send the email that opened in your email client.
+              </Text>
+              <Button variant="subtle" onClick={onClose}>
+                Close
+              </Button>
+            </Stack>
+          </Paper>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <Stack gap="md">
+              <Group grow>
+                <TextInput
+                  label="Name"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
+                <TextInput
+                  label="Email"
+                  placeholder="your.email@example.com"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
+              </Group>
+
+              <Select
+                label="Feedback Type"
+                placeholder="Select feedback type"
+                value={formData.type}
+                onChange={(value) => setFormData({ ...formData, type: value })}
+                data={[
+                  { value: 'general', label: 'General Feedback' },
+                  { value: 'bug', label: 'Bug Report' },
+                  { value: 'feature', label: 'Feature Request' },
+                  { value: 'complaint', label: 'Complaint' },
+                  { value: 'compliment', label: 'Compliment' },
+                  { value: 'partnership', label: 'Partnership Inquiry' }
+                ]}
+              />
+
+              <TextInput
+                label="Subject"
+                placeholder="Brief summary of your feedback"
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                required
+              />
+
+              <Textarea
+                label="Message"
+                placeholder="Please share your detailed feedback here..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                minRows={4}
+                required
+              />
+
+              <Alert
+                icon={<IconMail size={16} />}
+                title="Direct Contact"
+                variant="light"
+                color={currentPalette?.accent || theme.colors.brand[5]}
+              >
+                <Text size="sm">
+                  You can also reach us directly at:{' '}
+                  <Text
+                    component="a"
+                    href="mailto:support@tuhme.com"
+                    c={currentPalette?.accent || theme.colors.brand[5]}
+                    td="underline"
+                  >
+                    support@tuhme.com
+                  </Text>
+                </Text>
+              </Alert>
+
+              <Group justify="space-between" mt="md">
+                <Button
+                  variant="subtle"
+                  onClick={onClose}
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  loading={isSubmitting}
+                  disabled={!formData.name || !formData.email || !formData.message}
+                  leftSection={<IconMail size={16} />}
+                >
+                  {isSubmitting ? 'Preparing...' : 'Send Feedback'}
+                </Button>
+              </Group>
+            </Stack>
+          </form>
+        )}
+      </Stack>
+    </Modal>
   );
 };
 

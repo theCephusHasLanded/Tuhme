@@ -107,7 +107,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
             notificationDelay = 1000;
           } else if (timeSinceLastInteraction > 120000) { // After 2 minutes
             notificationMessage = {
-              text: "🚀 Ready to start your first order?",
+              text: "Ready to start your first order?",
               action: "whatsapp",
               type: "cta"
             };
@@ -138,17 +138,17 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
   }, [isExpanded, userInteractionCount, lastInteractionTime, sessionStartTime]);
 
   const saviKnowledge = {
-    greeting: "Hey there! 👋 I'm SAVI, your personal shopping companion at TUHME. Think of me as your fashion-savvy friend who's here to make luxury shopping effortless for you. I have all the answers to your questions, so ask me anything! What can I help you discover today?",
+    greeting: "Hey there! I'm SAVI, your personal shopping companion at TUHME. Think of me as your fashion-savvy friend who's here to make high-end shopping effortless for you. I have all the answers to your questions, so ask me anything! What can I help you discover today?",
     
     faq: {
       // Core Service Questions
-      "how does tuhme work": "Oh, it's actually super simple! Here's the magic: You see something gorgeous online? Just screenshot it and send it to us on WhatsApp. We'll go grab it from the store and bring it right to your door. You get 15 minutes to try everything on in your own space, then only pay for what you absolutely love. It's like having a personal shopper who brings the entire store to you! ✨",
+      "how does tuhme work": "Oh, it's actually super simple! Here's the magic: You see something gorgeous online? Just screenshot it and send it to us on WhatsApp. We'll go grab it from the store and bring it right to your door. You get 15 minutes to try everything on in your own space, then only pay for what you absolutely love. It's like having a personal shopper who brings the entire store to you!",
       
-      "pricing": "So here's the deal - we keep it transparent and fair! For occasional shopping, it's $9.99 per item for 3-5 pieces, or if you're a bit more adventurous, $7.99 per item for 5-10 pieces. But honestly? Most of our fashion lovers go for TUHME Now at $49.99/month - you get 50% off everything plus unlimited shopping. It pays for itself after just one good haul! 💎",
+      "pricing": "So here's the deal - we keep it transparent and fair! For occasional shopping, it's $9.99 per item for 3-5 pieces, or if you're a bit more adventurous, $7.99 per item for 5-10 pieces. But honestly? Most of our fashion lovers go for TUHME Now at $49.99/month - you get 50% off everything plus unlimited shopping. It pays for itself after just one good haul!",
       
-      "areas": "Right now we're bringing the magic to Manhattan and Brooklyn! If you place your order before noon, we can actually get everything to you the same day (pretty amazing, right?). After 12 PM, we'll have it to you by the next day. We're working on expanding to more neighborhoods because honestly, everyone deserves this level of luxury convenience! 🗽",
+      "areas": "Right now we're bringing the magic to Manhattan and Brooklyn! If you place your order before noon, we can actually get everything to you the same day (pretty amazing, right?). After 12 PM, we'll have it to you by the next day. We're working on expanding to more neighborhoods because honestly, everyone deserves this level of luxury convenience!",
       
-      "stores": "Honestly, we can shop anywhere you can think of! Gucci, Prada, those gorgeous Saks displays, Bloomingdale's - you name it. Even if it's that cute little boutique you discovered on Instagram that we've never been to, we'll figure it out. Our shoppers are basically fashion detectives! 🕵️‍♀️✨",
+      "stores": "Honestly, we can shop anywhere you can think of! Gucci, Prada, those gorgeous Saks displays, Bloomingdale's - you name it. Even if it's that cute little boutique you discovered on Instagram that we've never been to, we'll figure it out. Our shoppers are basically fashion detectives!",
       
       // Fit & Returns (from FAQ)
       "fit": "No problem at all! This is the beauty of TUHME - we return anything you don't want directly to the store. You only pay for what you keep. It's like having a personal fitting room in your own space with zero commitment! 💕",
@@ -166,9 +166,9 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
       "payment methods": "We use Square Reader for secure payments: chip cards, contactless cards, Apple Pay, and Google Pay. Super convenient and completely secure! 💳",
       
       // Store Access (from FAQ)
-      "any store": "Yes! Any local store in Manhattan or Brooklyn, even if they're not on our partner list. Our shoppers are like fashion ninjas - they can get into anywhere! 🥷✨",
+      "any store": "Yes! Any local store in Manhattan or Brooklyn, even if they're not on our partner list. Our shoppers are like fashion ninjas - they can get into anywhere!",
       
-      "can i order from any store": "Yes! Any local store in Manhattan or Brooklyn, even if they're not on our partner list. Our shoppers are like fashion ninjas - they can get into anywhere! 🥷✨",
+      "can i order from any store": "Yes! Any local store in Manhattan or Brooklyn, even if they're not on our partner list. Our shoppers are like fashion ninjas - they can get into anywhere!",
       
       // Delivery Logistics (from delivery FAQ)
       "not home": "No stress! We can coordinate with doormen, schedule for your availability, or offer contactless delivery options. We're super flexible because life happens! 🏠",
@@ -179,9 +179,9 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
       
       "how long do shoppers wait": "Standard 15 minutes for your try-on session, extended to 20 minutes for TUHME Now subscribers. It's your time to fall in love with what we brought! ⏰",
       
-      "weather": "We deliver in all weather conditions with appropriate protection for your items. Rain or shine, your fashion comes first! ☔️✨",
+      "weather": "We deliver in all weather conditions with appropriate protection for your items. Rain or shine, your fashion comes first!",
       
-      "bad weather": "We deliver in all weather conditions with appropriate protection for your items. Rain or shine, your fashion comes first! ☔️✨",
+      "bad weather": "We deliver in all weather conditions with appropriate protection for your items. Rain or shine, your fashion comes first!",
       
       "reschedule": "Yes! Contact us via WhatsApp to reschedule up to 2 hours before your delivery window. We totally get that plans change! 📅",
       
@@ -191,7 +191,7 @@ const SaviAssistant = ({ isOpen = false, onClose }) => {
       "try on time": "You get a full 15 minutes of pure fashion fun in your own space - no rushed fitting rooms, no harsh lighting, just you and your mirror! TUHME Now members get even more time (20 minutes) because sometimes you need that extra moment to fall in love, you know? 😍",
       
       // Membership
-      "membership": "TUHME Now is like having a fashion fairy godmother! For $49.99/month, you get unlimited shopping trips (seriously!), half-price on everything, priority treatment, extra try-on time, and first access to all our cool new features. It's basically designed for people who understand that great style shouldn't have limits! ✨👑",
+      "membership": "TUHME Now is like having a fashion fairy godmother! For $49.99/month, you get unlimited shopping trips (seriously!), half-price on everything, priority treatment, extra try-on time, and first access to all our cool new features. It's basically designed for people who understand that great style shouldn't have limits!",
       
       "cancel": "No worries! You can cancel your TUHME Now subscription anytime before your next billing date. You can also pause it for up to 3 months if you need a break.",
       

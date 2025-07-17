@@ -284,50 +284,211 @@ const CallToActionWidget = ({
           background: var(--accent-secondary);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* Enhanced Responsive Design - Mobile First Approach */
+        @media (max-width: 480px) {
           .cta-widget {
-            padding: var(--space-xl) 0;
+            padding: 1rem 0;
+            margin: 2rem 0;
           }
 
           .cta-container {
-            padding: 0 var(--space-md);
+            padding: 0 1rem;
           }
 
           .cta-title {
-            font-size: var(--text-2xl);
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
           }
 
           .cta-subtitle {
-            font-size: var(--text-base);
+            font-size: clamp(0.875rem, 3vw, 1rem);
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
           }
 
           .cta-actions {
             flex-direction: column;
-            gap: var(--space-md);
+            gap: 0.75rem;
+            width: 100%;
           }
 
           .cta-primary-button {
-            padding: var(--space-md) var(--space-xl);
-            font-size: var(--text-sm);
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-size: 0.875rem;
+            min-height: 48px;
+            border-radius: 8px;
+          }
+
+          .cta-secondary-button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.8125rem;
+            min-height: 44px;
+          }
+
+          .button-content {
+            gap: 0.5rem;
+            justify-content: center;
           }
 
           .cta-features {
             flex-direction: column;
-            gap: var(--space-md);
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+          }
+
+          .feature-item {
+            justify-content: center;
+            font-size: 0.8125rem;
           }
         }
 
-        @media (max-width: 480px) {
-          .cta-primary-button {
-            padding: var(--space-sm) var(--space-lg);
-            font-size: var(--text-xs);
-            width: 100%;
-            max-width: 300px;
+        @media (min-width: 481px) and (max-width: 768px) {
+          .cta-widget {
+            padding: 1.5rem 0;
+            margin: 2.5rem 0;
           }
 
-          .button-content {
-            gap: var(--space-xs);
+          .cta-container {
+            padding: 0 1.5rem;
+          }
+
+          .cta-title {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            line-height: 1.25;
+          }
+
+          .cta-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+          }
+
+          .cta-actions {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+          }
+
+          .cta-primary-button {
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            padding: 1rem 1.5rem;
+            font-size: 0.9375rem;
+          }
+
+          .cta-secondary-button {
+            flex: 0 0 auto;
+            padding: 0.875rem 1.25rem;
+            font-size: 0.875rem;
+          }
+
+          .cta-features {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+          }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .cta-widget {
+            padding: 2rem 0;
+            margin: 3rem 0;
+          }
+
+          .cta-container {
+            padding: 0 2rem;
+          }
+
+          .cta-title {
+            font-size: clamp(2rem, 2.5vw, 2.25rem);
+          }
+
+          .cta-subtitle {
+            font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+          }
+
+          .cta-actions {
+            gap: 1.25rem;
+          }
+
+          .cta-primary-button {
+            padding: 1.125rem 2rem;
+            font-size: 1rem;
+          }
+        }
+
+        /* High-resolution displays */
+        @media (min-width: 1025px) {
+          .cta-widget {
+            padding: 2.5rem 0;
+            margin: 4rem 0;
+          }
+
+          .cta-container {
+            max-width: 1200px;
+            padding: 0 2rem;
+          }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+          .cta-primary-button,
+          .cta-secondary-button {
+            min-height: 48px;
+            font-size: 1rem;
+          }
+
+          .cta-primary-button:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+          }
+
+          .cta-secondary-button:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+          }
+        }
+
+        /* Landscape orientation fixes for mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+          .cta-widget {
+            padding: 1rem 0;
+          }
+
+          .cta-actions {
+            flex-direction: row;
+            gap: 1rem;
+          }
+
+          .cta-primary-button,
+          .cta-secondary-button {
+            flex: 1;
+          }
+
+          .cta-features {
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+          }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+          .cta-primary-button,
+          .cta-secondary-button {
+            transition: none;
+          }
+
+          .button-shine {
+            display: none;
+          }
+
+          .gradient-orb {
+            animation: none;
           }
         }
       `}</style>
