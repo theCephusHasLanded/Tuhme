@@ -74,6 +74,9 @@ const Hero = ({ onStartExpressOrder }) => {
         ${currentPalette.primary} 0%,
         ${currentPalette.secondary} 100%)
     `,
+    backdropFilter: 'none',
+    WebkitBackdropFilter: 'none',
+    filter: 'none'
   };
 
   return (
@@ -94,25 +97,60 @@ const Hero = ({ onStartExpressOrder }) => {
         ))}
       </div>
 
-      <div className="floating-elements">
+      <div className="floating-elements" style={{ 
+        backdropFilter: 'none', 
+        WebkitBackdropFilter: 'none', 
+        filter: 'none' 
+      }}>
         <div
           className="floating-ring"
-          style={{ '--accent-color': currentPalette.accent }}
+          style={{ 
+            '--accent-color': currentPalette.accent,
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
+            filter: 'none'
+          }}
         ></div>
         <div
           className="floating-diamond"
-          style={{ '--accent-color': currentPalette.accent }}
+          style={{ 
+            '--accent-color': currentPalette.accent,
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
+            filter: 'none'
+          }}
         ></div>
         <div
           className="floating-cube"
-          style={{ '--accent-color': currentPalette.accent }}
+          style={{ 
+            '--accent-color': currentPalette.accent,
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
+            filter: 'none'
+          }}
         ></div>
       </div>
 
-      <div className="hero-content-luxury">
-        <div className="palette-indicator">
-          <span className="palette-name">{currentPalette.name}</span>
-          <div className="time-indicator">{String(currentHour).padStart(2, '0')}:00</div>
+      <div className="hero-content-luxury" style={{ 
+        backdropFilter: 'none', 
+        WebkitBackdropFilter: 'none', 
+        filter: 'none' 
+      }}>
+        <div className="palette-indicator" style={{ 
+          backdropFilter: 'none', 
+          WebkitBackdropFilter: 'none', 
+          filter: 'none' 
+        }}>
+          <span className="palette-name" style={{ 
+            color: 'inherit', 
+            textShadow: 'none', 
+            filter: 'none' 
+          }}>{currentPalette.name}</span>
+          <div className="time-indicator" style={{ 
+            color: 'inherit', 
+            textShadow: 'none', 
+            filter: 'none' 
+          }}>{String(currentHour).padStart(2, '0')}:00</div>
         </div>
 
         <div className="brand-section-luxury">

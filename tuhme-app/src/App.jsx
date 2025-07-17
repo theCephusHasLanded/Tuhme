@@ -39,8 +39,8 @@ import './styles/apple-design-fixes.css';
 // Labubu modal styling
 import './styles/labubu-modal.css';
 
-// Old money typography system - LOADED LAST for maximum priority
-import './styles/old-money-typography.css';
+// TikTok-inspired UI system - modern social media aesthetic
+import './styles/tiktok-ui-system.css';
 
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeSystemProvider from './contexts/ThemeSystemContext';
@@ -76,6 +76,8 @@ import FlyerGeneratorModal from './components/FlyerGeneratorModal';
 import LabubuExclusiveModal from './components/LabubuExclusiveModal';
 import useFirstTimeUser from './hooks/useFirstTimeUser';
 import './utils/labubuTestHelper'; // Load test helper for development
+import TikTokEngagementPanel from './components/TikTokEngagementPanel';
+import TikTokBottomNav from './components/TikTokBottomNav';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -95,6 +97,15 @@ function App() {
   } = useFirstTimeUser();
   
   const [labubuModalOpened, setLabubuModalOpened] = useState(false);
+  
+  // TikTok-style interaction state
+  const [engagementStats, setEngagementStats] = useState({
+    likes: 2847,
+    comments: 156,
+    shares: 89,
+    isLiked: false,
+    isSaved: false
+  });
 
   useEffect(() => {
     colorSchemeManager.init();
@@ -139,6 +150,40 @@ function App() {
     handleNavigate('express-order');
     setLabubuModalOpened(false);
     markLabubuModalShown();
+  };
+
+  // TikTok-style interaction handlers
+  const handleLike = (liked) => {
+    setEngagementStats(prev => ({
+      ...prev,
+      likes: liked ? prev.likes + 1 : prev.likes - 1,
+      isLiked: liked
+    }));
+  };
+
+  const handleComment = () => {
+    setShowFeedback(true);
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'TUHME - Luxury Personal Shopping',
+        text: 'Shop from any luxury store in Manhattan & Brooklyn without leaving home',
+        url: window.location.href
+      });
+    }
+  };
+
+  const handleSave = (saved) => {
+    setEngagementStats(prev => ({
+      ...prev,
+      isSaved: saved
+    }));
+  };
+
+  const handleStartShopping = () => {
+    handleNavigate('express-order');
   };
 
   const handleNavigate = (section) => {
@@ -289,6 +334,32 @@ function App() {
               )}
               
               <DailySalesFlyerManager />
+
+              {/* TikTok-style Engagement Panel */}
+              {currentView === 'main' && (
+                <TikTokEngagementPanel
+                  onLike={handleLike}
+                  onComment={handleComment}
+                  onShare={handleShare}
+                  onSave={handleSave}
+                  onStartShopping={handleStartShopping}
+                  likeCount={engagementStats.likes}
+                  commentCount={engagementStats.comments}
+                  shareCount={engagementStats.shares}
+                  isLiked={engagementStats.isLiked}
+                  isSaved={engagementStats.isSaved}
+                />
+              )}
+
+              {/* TikTok-style Bottom Navigation */}
+              <TikTokBottomNav
+                activeTab={currentSection}
+                onNavigate={handleNavigate}
+                onOpenExpressOrder={() => handleNavigate('express-order')}
+                onOpenProfile={() => handleNavigate('user-dashboard')}
+                onOpenMessages={handleOpenFeedback}
+                onOpenDiscover={() => handleNavigate('stores')}
+              />
 
               {/* Labubu Exclusive Modal for first-time users */}
               <LabubuExclusiveModal 
