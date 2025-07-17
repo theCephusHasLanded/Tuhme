@@ -36,6 +36,9 @@ import './styles/mantine-overrides.css';
 // Apple-level design fixes - loaded LAST to override all text blur issues
 import './styles/apple-design-fixes.css';
 
+// Labubu modal styling
+import './styles/labubu-modal.css';
+
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeSystemProvider from './contexts/ThemeSystemContext';
 import { ModalProvider } from './contexts/ModalContext';
@@ -67,6 +70,9 @@ import EnhancedStoreFinder from './components/EnhancedStoreFinder';
 import ThemeToggle from './components/ThemeToggle';
 import GetInTouchModal from './components/GetInTouchModal';
 import FlyerGeneratorModal from './components/FlyerGeneratorModal';
+import LabubuExclusiveModal from './components/LabubuExclusiveModal';
+import useFirstTimeUser from './hooks/useFirstTimeUser';
+import './utils/labubuTestHelper'; // Load test helper for development
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -75,6 +81,17 @@ function App() {
   const [showFeedback, setShowFeedback] = useState(false);
   const [showGetInTouch, setShowGetInTouch] = useState(false);
   const [showFlyerGenerator, setShowFlyerGenerator] = useState(false);
+  
+  // First-time user detection for Labubu modal
+  const { 
+    isFirstTime, 
+    showLabubuModal, 
+    isLoading,
+    markLabubuModalShown,
+    trackModalInteraction 
+  } = useFirstTimeUser();
+  
+  const [labubuModalOpened, setLabubuModalOpened] = useState(false);
 
   useEffect(() => {
     colorSchemeManager.init();
@@ -82,6 +99,44 @@ function App() {
       colorSchemeManager.cleanup();
     };
   }, []);
+
+  // Handle Labubu modal display with delay
+  useEffect(() => {
+    if (!isLoading && showLabubuModal && !labubuModalOpened) {
+      const timer = setTimeout(() => {
+        setLabubuModalOpened(true);
+        trackModalInteraction('modal_displayed', { 
+          is_first_time: isFirstTime,
+          delay_seconds: 3 
+        });
+      }, 3000); // 3-second delay as specified
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading, showLabubuModal, labubuModalOpened, isFirstTime, trackModalInteraction]);
+
+  // Handle Labubu modal close
+  const handleLabubuModalClose = () => {
+    setLabubuModalOpened(false);
+    markLabubuModalShown();
+    trackModalInteraction('modal_closed', { 
+      interaction_type: 'close_button',
+      is_first_time: isFirstTime 
+    });
+  };
+
+  // Handle Labubu CTA click
+  const handleLabubuCTAClick = () => {
+    trackModalInteraction('cta_clicked', { 
+      is_first_time: isFirstTime,
+      conversion_action: 'get_exclusive_access'
+    });
+    
+    // Navigate to express order or special Labubu section
+    handleNavigate('express-order');
+    setLabubuModalOpened(false);
+    markLabubuModalShown();
+  };
 
   const handleNavigate = (section) => {
     setCurrentSection(section);
@@ -231,6 +286,13 @@ function App() {
               )}
               
               <DailySalesFlyerManager />
+
+              {/* Labubu Exclusive Modal for first-time users */}
+              <LabubuExclusiveModal 
+                opened={labubuModalOpened}
+                onClose={handleLabubuModalClose}
+                onCTAClick={handleLabubuCTAClick}
+              />
             </div>
           </ModalProvider>
         </ThemeProvider>
