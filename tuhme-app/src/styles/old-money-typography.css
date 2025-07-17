@@ -1,0 +1,542 @@
+/* OLD MONEY AESTHETIC - PREMIUM TYPOGRAPHY SYSTEM */
+/* Inspired by luxury heritage brands like Hermès, Cartier, and Ralph Lauren */
+
+/* Import premium serif fonts for old money aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+/* ROOT TYPOGRAPHY VARIABLES - OLD MONEY AESTHETIC */
+:root {
+  /* Primary Font Stack - Luxury Heritage */
+  --font-primary: 'Playfair Display', 'Times New Roman', serif;
+  --font-secondary: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Crimson Text', 'Book Antiqua', serif;
+  --font-accent: 'Playfair Display', serif;
+
+  /* Font Weights - Conservative & Readable */
+  --fw-light: 400;
+  --fw-regular: 500;
+  --fw-medium: 600;
+  --fw-semibold: 700;
+  --fw-bold: 800;
+  --fw-black: 900;
+
+  /* Letter Spacing - Refined Old Money */
+  --ls-tight: -0.02em;
+  --ls-normal: 0;
+  --ls-wide: 0.05em;
+  --ls-wider: 0.1em;
+  --ls-widest: 0.15em;
+
+  /* Line Heights - Elegant Proportions */
+  --lh-tight: 1.1;
+  --lh-normal: 1.4;
+  --lh-relaxed: 1.6;
+  --lh-loose: 1.8;
+
+  /* Color Contrast - High Readability */
+  --text-primary-light: #1a1a1a;
+  --text-secondary-light: #2d2d2d;
+  --text-muted-light: #4a4a4a;
+  
+  --text-primary-dark: #f8f8f8;
+  --text-secondary-dark: #e8e8e8;
+  --text-muted-dark: #c8c8c8;
+}
+
+/* REMOVE ALL BLURRING EFFECTS - CRITICAL FIX */
+* {
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  -webkit-text-stroke: none !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* OVERRIDE ALL GRADIENT TEXT EFFECTS */
+*[style*="background-clip"],
+*[style*="-webkit-background-clip"],
+*[style*="text-fill-color"],
+*[style*="-webkit-text-fill-color"] {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  color: inherit !important;
+}
+
+/* BASE TYPOGRAPHY - OLD MONEY FOUNDATION */
+html {
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  line-height: var(--lh-normal) !important;
+  font-weight: var(--fw-regular) !important;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  line-height: var(--lh-normal) !important;
+  font-weight: var(--fw-regular) !important;
+  letter-spacing: var(--ls-normal) !important;
+}
+
+/* HEADING HIERARCHY - OLD MONEY ELEGANCE */
+h1, .h1,
+.hero-title-luxury,
+.brand-name-luxury,
+.luxury-title {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--fw-bold) !important;
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-tight) !important;
+  margin-bottom: 0.75em !important;
+  color: inherit !important;
+}
+
+h2, .h2,
+.section-title,
+.pricing-title {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--fw-semibold) !important;
+  font-size: clamp(1.75rem, 4vw, 2.75rem) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-tight) !important;
+  margin-bottom: 0.6em !important;
+  color: inherit !important;
+}
+
+h3, .h3,
+.steps-title,
+.benefit-title {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-semibold) !important;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-normal) !important;
+  margin-bottom: 0.5em !important;
+  color: inherit !important;
+}
+
+h4, .h4,
+.card-title {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-medium) !important;
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-normal) !important;
+  margin-bottom: 0.4em !important;
+  color: inherit !important;
+}
+
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-medium) !important;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-wide) !important;
+  margin-bottom: 0.3em !important;
+  color: inherit !important;
+}
+
+/* BODY TEXT - IMPROVED READABILITY */
+p, .text-body,
+.description-text,
+.step-description {
+  font-family: var(--font-body) !important;
+  font-weight: var(--fw-regular) !important;
+  font-size: clamp(1rem, 2.25vw, 1.125rem) !important;
+  line-height: var(--lh-relaxed) !important;
+  letter-spacing: var(--ls-normal) !important;
+  margin-bottom: 1em !important;
+  color: inherit !important;
+}
+
+/* ENHANCED READABILITY - LIGHT MODE */
+[data-mantine-color-scheme="light"],
+.light-mode {
+  color: var(--text-primary-light) !important;
+}
+
+[data-mantine-color-scheme="light"] h1,
+[data-mantine-color-scheme="light"] h2,
+[data-mantine-color-scheme="light"] h3,
+[data-mantine-color-scheme="light"] h4,
+[data-mantine-color-scheme="light"] h5,
+[data-mantine-color-scheme="light"] h6,
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode h4,
+.light-mode h5,
+.light-mode h6 {
+  color: var(--text-primary-light) !important;
+}
+
+[data-mantine-color-scheme="light"] p,
+[data-mantine-color-scheme="light"] span,
+[data-mantine-color-scheme="light"] div,
+.light-mode p,
+.light-mode span,
+.light-mode div {
+  color: var(--text-secondary-light) !important;
+}
+
+/* ENHANCED READABILITY - DARK MODE */
+[data-mantine-color-scheme="dark"],
+.dark-mode {
+  color: var(--text-primary-dark) !important;
+}
+
+[data-mantine-color-scheme="dark"] h1,
+[data-mantine-color-scheme="dark"] h2,
+[data-mantine-color-scheme="dark"] h3,
+[data-mantine-color-scheme="dark"] h4,
+[data-mantine-color-scheme="dark"] h5,
+[data-mantine-color-scheme="dark"] h6,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+  color: var(--text-primary-dark) !important;
+}
+
+[data-mantine-color-scheme="dark"] p,
+[data-mantine-color-scheme="dark"] span,
+[data-mantine-color-scheme="dark"] div,
+.dark-mode p,
+.dark-mode span,
+.dark-mode div {
+  color: var(--text-secondary-dark) !important;
+}
+
+/* MANTINE COMPONENT FIXES */
+.mantine-Text-root {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.mantine-Title-root {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--fw-semibold) !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.mantine-Button-root {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-medium) !important;
+  letter-spacing: var(--ls-wide) !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.mantine-Button-root .mantine-Button-label {
+  font-weight: var(--fw-medium) !important;
+  letter-spacing: var(--ls-wide) !important;
+  color: inherit !important;
+}
+
+/* NAVIGATION - OLD MONEY STYLING */
+.mantine-Paper-root[data-navigation="true"] .mantine-Text-root {
+  font-family: var(--font-accent) !important;
+  font-weight: var(--fw-bold) !important;
+  letter-spacing: var(--ls-wider) !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+}
+
+/* HERO SECTION - REFINED SPACING & OLD MONEY AESTHETICS */
+.hero-title-luxury {
+  margin-bottom: 0.35em !important;
+  text-align: center !important;
+  font-family: var(--font-primary) !important;
+  font-weight: var(--fw-bold) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-tight) !important;
+}
+
+.hero-glowing-tagline {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-medium) !important;
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-normal) !important;
+  margin-bottom: 1em !important;
+  text-align: center !important;
+  color: inherit !important;
+}
+
+.brand-name-luxury {
+  font-family: var(--font-accent) !important;
+  font-weight: var(--fw-black) !important;
+  font-size: clamp(2.5rem, 6vw, 4rem) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-wider) !important;
+  margin-bottom: 0.25em !important;
+  text-align: center !important;
+  color: inherit !important;
+}
+
+.brand-essence {
+  font-family: var(--font-body) !important;
+  font-weight: var(--fw-regular) !important;
+  font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-wider) !important;
+  margin-bottom: 1.5em !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+}
+
+.description-text {
+  font-family: var(--font-body) !important;
+  font-weight: var(--fw-regular) !important;
+  font-size: clamp(1rem, 2.25vw, 1.125rem) !important;
+  line-height: var(--lh-relaxed) !important;
+  letter-spacing: var(--ls-normal) !important;
+  margin-bottom: 1em !important;
+  text-align: center !important;
+  color: inherit !important;
+}
+
+.luxury-promise {
+  margin-top: 1em !important;
+  margin-bottom: 1.5em !important;
+}
+
+.promise-item {
+  margin-bottom: 0.5em !important;
+}
+
+.promise-item span {
+  font-family: var(--font-body) !important;
+  font-weight: var(--fw-medium) !important;
+  font-size: clamp(0.9rem, 2vw, 1rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-normal) !important;
+  color: inherit !important;
+}
+
+/* SECTION SPACING - REDUCED SEPARATION & TIGHTER COHESION */
+.section-title {
+  margin-bottom: 0.4em !important;
+  margin-top: 0.2em !important;
+}
+
+.section-subtitle {
+  font-family: var(--font-body) !important;
+  font-weight: var(--fw-regular) !important;
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-normal) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0 !important;
+  color: inherit !important;
+}
+
+/* REDUCE EXCESSIVE SPACING BETWEEN SECTIONS */
+section {
+  padding: clamp(2rem, 5vw, 3rem) 0 !important;
+  margin: 0 !important;
+}
+
+.container {
+  padding: 0 clamp(1rem, 3vw, 2rem) !important;
+}
+
+/* TIGHTER TEXT BLOCKS */
+.text-block,
+.content-block {
+  margin-bottom: 1em !important;
+}
+
+.text-block:last-child,
+.content-block:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* CARD COMPONENTS - IMPROVED TYPOGRAPHY & TIGHTER SPACING */
+.step-card h3,
+.benefit-card h3,
+.pricing-card h3,
+.card-title {
+  margin-bottom: 0.3em !important;
+  margin-top: 0 !important;
+}
+
+.step-card p,
+.benefit-card p,
+.pricing-card p,
+.card-description {
+  margin-bottom: 0.5em !important;
+  margin-top: 0 !important;
+}
+
+.step-card,
+.benefit-card,
+.pricing-card {
+  padding: clamp(1rem, 3vw, 1.5rem) !important;
+}
+
+/* STEP DESCRIPTIONS - CLOSER TO TITLES */
+.step-description,
+.benefit-description {
+  margin-top: 0.25em !important;
+  margin-bottom: 0.75em !important;
+}
+
+/* TRUST INDICATORS - OLD MONEY STYLE */
+.trust-number {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--fw-black) !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-tight) !important;
+  color: inherit !important;
+}
+
+.trust-label {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-medium) !important;
+  font-size: clamp(0.875rem, 2vw, 1rem) !important;
+  line-height: var(--lh-normal) !important;
+  letter-spacing: var(--ls-wider) !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+}
+
+/* PREMIUM BUTTON STYLING */
+.primary-cta-luxury,
+.liquid-glass-button {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-semibold) !important;
+  font-size: clamp(1rem, 2.25vw, 1.125rem) !important;
+  letter-spacing: var(--ls-wider) !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+}
+
+/* FORM ELEMENTS - CONSISTENT TYPOGRAPHY */
+input, textarea, select {
+  font-family: var(--font-body) !important;
+  font-weight: var(--fw-regular) !important;
+  font-size: 1rem !important;
+  line-height: var(--lh-normal) !important;
+  color: inherit !important;
+}
+
+label {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--fw-medium) !important;
+  font-size: 0.9375rem !important;
+  letter-spacing: var(--ls-wide) !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+}
+
+/* MODAL CONTENT - ENHANCED READABILITY */
+.mantine-Modal-content,
+.mantine-Modal-body,
+.mantine-Modal-header {
+  color: inherit !important;
+}
+
+.mantine-Modal-content * {
+  text-shadow: none !important;
+  filter: none !important;
+  color: inherit !important;
+}
+
+/* REMOVE ALL VISUAL EFFECTS THAT COMPROMISE READABILITY */
+.luxury-particles,
+.floating-elements,
+.backdrop-element,
+.glass-panel,
+.liquid-glass-background {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Only apply backdrop blur to actual background elements, not text containers */
+.liquid-glass-background:not(:has(h1, h2, h3, h4, h5, h6, p, span, div)),
+.backdrop-element:not(:has(h1, h2, h3, h4, h5, h6, p, span, div)),
+.glass-panel:not(:has(h1, h2, h3, h4, h5, h6, p, span, div)) {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* ACCESSIBILITY IMPROVEMENTS */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary-light: #000000;
+    --text-primary-dark: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* MOBILE RESPONSIVENESS - OLD MONEY AESTHETIC */
+@media (max-width: 768px) {
+  h1, .hero-title-luxury {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+    margin-bottom: 0.4em !important;
+  }
+  
+  h2, .section-title {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+    margin-bottom: 0.4em !important;
+  }
+  
+  p, .text-body {
+    font-size: clamp(0.9375rem, 2.5vw, 1.0625rem) !important;
+    line-height: var(--lh-normal) !important;
+    margin-bottom: 0.75em !important;
+  }
+  
+  .hero-glowing-tagline {
+    font-size: clamp(1.125rem, 3.5vw, 1.375rem) !important;
+    margin-bottom: 1em !important;
+  }
+}
+
+/* PRINT STYLES - OLD MONEY ELEGANCE */
+@media print {
+  * {
+    font-family: 'Times New Roman', serif !important;
+    color: black !important;
+    background: white !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+}
+
+/* FALLBACK FONTS FOR SYSTEM COMPATIBILITY */
+@supports not (font-display: swap) {
+  :root {
+    --font-primary: 'Times New Roman', serif;
+    --font-secondary: 'Georgia', serif;
+    --font-body: 'Book Antiqua', serif;
+  }
+}

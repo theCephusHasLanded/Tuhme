@@ -116,34 +116,34 @@ const Hero = ({ onStartExpressOrder }) => {
         </div>
 
         <div className="brand-section-luxury">
-          <h1 className="brand-name-luxury">TUHME</h1>
+          <h1 className="brand-name-luxury" style={{ color: 'inherit', textShadow: 'none', filter: 'none' }}>TUHME</h1>
           <div className="brand-line" style={{ background: currentPalette.accent }}></div>
-          <p className="brand-essence">Curated Personal Shopping • Delivered</p>
+          <p className="brand-essence" style={{ color: 'inherit', textShadow: 'none', filter: 'none' }}>Curated Personal Shopping • Delivered</p>
         </div>
 
         <div className="hero-main-luxury">
-          <h2 className="hero-title-luxury">
-            <span className="title-line hero-glowing-tagline">
+          <h2 className="hero-title-luxury" style={{ color: 'inherit', textShadow: 'none', filter: 'none', background: 'none', WebkitBackgroundClip: 'unset', backgroundClip: 'unset', WebkitTextFillColor: 'unset' }}>
+            <span className="title-line hero-glowing-tagline" style={{ color: 'inherit', textShadow: 'none', filter: 'none', background: 'none', WebkitBackgroundClip: 'unset', backgroundClip: 'unset', WebkitTextFillColor: 'unset' }}>
               We'll Pay For It, And Bring The Store To You
             </span>
           </h2>
 
           <div className="hero-description-luxury">
-            <p className="description-text">
+            <p className="description-text" style={{ color: 'inherit', textShadow: 'none', filter: 'none' }}>
               Shop from any luxury store in Manhattan & Brooklyn without leaving home. We handle the shopping, you handle the styling. Try on items in comfort, pay for only what you keep.
             </p>
             <div className="luxury-promise">
               <div className="promise-item">
                 <IconDiamond size={16} style={{ color: currentPalette.accent, flexShrink: 0 }} />
-                <span>Zero upfront payment</span>
+                <span style={{ color: 'inherit', textShadow: 'none', filter: 'none' }}>Zero upfront payment</span>
               </div>
               <div className="promise-item">
                 <IconDiamond size={16} style={{ color: currentPalette.accent, flexShrink: 0 }} />
-                <span>Private 15-minute sessions</span>
+                <span style={{ color: 'inherit', textShadow: 'none', filter: 'none' }}>Private 15-minute sessions</span>
               </div>
               <div className="promise-item">
                 <IconDiamond size={16} style={{ color: currentPalette.accent, flexShrink: 0 }} />
-                <span>Return what doesn't fit</span>
+                <span style={{ color: 'inherit', textShadow: 'none', filter: 'none' }}>Return what doesn't fit</span>
               </div>
             </div>
           </div>

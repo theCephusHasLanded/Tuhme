@@ -39,6 +39,9 @@ import './styles/apple-design-fixes.css';
 // Labubu modal styling
 import './styles/labubu-modal.css';
 
+// Old money typography system - LOADED LAST for maximum priority
+import './styles/old-money-typography.css';
+
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeSystemProvider from './contexts/ThemeSystemContext';
 import { ModalProvider } from './contexts/ModalContext';

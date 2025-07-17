@@ -17,34 +17,35 @@ p, span, div, a, button,
 .cta-text,
 .promise-text,
 .section-title,
-.section-subtitle {
+.section-subtitle,
+.mantine-Text-root,
+.mantine-Title-root,
+.mantine-Button-root {
   text-shadow: none !important;
   filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  -webkit-text-stroke: none !important;
 }
 
-/* Ensure text has perfect contrast and readability */
+/* OVERRIDE ALL GRADIENT TEXT EFFECTS - CRITICAL FIX */
+*[style*="background-clip"],
+*[style*="-webkit-background-clip"],
+*[style*="text-fill-color"],
+*[style*="-webkit-text-fill-color"],
 .hero-title-luxury,
 .hero-glowing-tagline,
-.title-line {
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  text-shadow: none !important;
-}
-
-.brand-name-luxury {
-  color: #ffffff !important;
-  text-shadow: none !important;
-  font-weight: 700 !important;
-}
-
-/* Remove gradient text effects that reduce readability */
-.hero-title-luxury,
+.title-line,
+.brand-name-luxury,
 .luxury-title,
 .section-title {
   background: none !important;
   -webkit-background-clip: unset !important;
   -webkit-text-fill-color: unset !important;
   background-clip: unset !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
 }
 
 /* Center "How TUHME Works" numbers while maintaining icon offset */
@@ -122,13 +123,20 @@ p, span, div, a, button,
   padding: 4rem 2rem;
 }
 
-/* Remove gradient effects from headers */
-h1, h2, h3, h4, h5, h6 {
+/* FORCE SOLID COLORS FOR ALL TEXT ELEMENTS */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button,
+.mantine-Text-root,
+.mantine-Title-root,
+.mantine-Button-root,
+.mantine-Button-label {
   background: none !important;
   -webkit-background-clip: unset !important;
   -webkit-text-fill-color: unset !important;
   background-clip: unset !important;
   color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
 }
 
 /* Fix shopping experience section colors */
