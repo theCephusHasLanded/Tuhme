@@ -199,7 +199,11 @@ const ImmersiveStoreDiscovery = () => {
               <div
               key={`${store.id}-${queuePosition}`}
               className={`store-card ${isMainStore ? 'main-store' : 'queue-store'} ${saleInfo ? 'on-sale' : ''}`}
-              onClick={() => window.open(store.website, '_blank')}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(store.website, '_blank');
+              }}
               style={{
                 '--queue-position': queuePosition,
               cursor: 'pointer'

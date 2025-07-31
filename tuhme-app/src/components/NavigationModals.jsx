@@ -328,7 +328,6 @@ const NavigationModals = ({ activeModal, closeModal }) => {
     <>
       {activeModal === 'mission' && <MissionModal />}
       {activeModal === 'partner' && <PartnerModal />}
-      {activeModal === 'luxury-items' && <LuxuryModal />}
       {activeModal === 'tuhme-now' && <TuhmeNowModal />}
     </>
   );

@@ -15,7 +15,6 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
     { id: 'how-it-works', label: 'How Tuhme Works', icon: '⚡', type: 'navigate' },
     { id: 'mission', label: 'Mission Statement', icon: '🎯', type: 'modal' },
     { id: 'partner', label: 'Partner With Us', icon: '🤝', type: 'modal' },
-    { id: 'luxury-items', label: 'Luxury Items', icon: '💎', type: 'modal' },
     { id: 'hiring', label: "We're Hiring!", icon: '🚀', type: 'navigate' },
     { id: 'tuhme-now', label: 'Tuhme Now', icon: '⚡', type: 'modal' }
   ];
