@@ -119,8 +119,22 @@ const EnhancedSaviAssistant = ({ isOpen = false }) => {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    if (isTyping) {
+      scrollToBottom();
+    }
+  }, [isTyping]);
+
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'end',
+          inline: 'nearest'
+        });
+      }
+    }, 100);
   };
 
   const getStatusColor = () => {
@@ -141,22 +155,70 @@ const EnhancedSaviAssistant = ({ isOpen = false }) => {
     }
   };
 
-  // Text-to-Speech with Zephyr voice
+  // Text-to-Speech with Google Cloud TTS API
   const speakText = async (text) => {
+    setIsSpeaking(true);
+    
+    try {
+      // Use Google Cloud TTS API with the provided key
+      const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          input: { text: text },
+          voice: {
+            languageCode: 'en-US',
+            name: 'en-US-Neural2-F', // Female neural voice (Zephyr-like)
+            ssmlGender: 'FEMALE'
+          },
+          audioConfig: {
+            audioEncoding: 'MP3',
+            pitch: 2.0,
+            speakingRate: 0.95
+          }
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const audioContent = data.audioContent;
+        
+        // Create audio from base64 data
+        const audio = new Audio(`data:audio/mp3;base64,${audioContent}`);
+        audio.onended = () => setIsSpeaking(false);
+        audio.onerror = () => {
+          console.log('TTS API failed, falling back to browser speech');
+          fallbackToWebSpeech(text);
+        };
+        await audio.play();
+      } else {
+        throw new Error('TTS API request failed');
+      }
+    } catch (error) {
+      console.log('TTS API error, using fallback:', error);
+      fallbackToWebSpeech(text);
+    }
+  };
+
+  // Fallback to browser speech synthesis
+  const fallbackToWebSpeech = (text) => {
     if ('speechSynthesis' in window) {
-      setIsSpeaking(true);
       const utterance = new SpeechSynthesisUtterance(text);
       
-      // Try to use Zephyr voice if available
+      // Try to use best available voice
       const voices = speechSynthesis.getVoices();
-      const zephyrVoice = voices.find(voice => 
+      const preferredVoice = voices.find(voice => 
         voice.name.toLowerCase().includes('zephyr') ||
         voice.name.toLowerCase().includes('samantha') ||
-        voice.name.toLowerCase().includes('female')
+        voice.name.toLowerCase().includes('female') ||
+        voice.name.toLowerCase().includes('karen') ||
+        voice.name.toLowerCase().includes('alex')
       );
       
-      if (zephyrVoice) {
-        utterance.voice = zephyrVoice;
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
       }
       
       utterance.rate = 0.9;
@@ -167,6 +229,8 @@ const EnhancedSaviAssistant = ({ isOpen = false }) => {
       utterance.onerror = () => setIsSpeaking(false);
       
       speechSynthesis.speak(utterance);
+    } else {
+      setIsSpeaking(false);
     }
   };
 
@@ -280,6 +344,7 @@ Respond as SAVI in a helpful, enthusiastic way:`;
   };
 
   const handleQuickAction = async (actionType) => {
+    console.log('Quick action triggered:', actionType);
     setStatus('generating');
     setIsTyping(true);
     setShowQuickActions(false);
@@ -293,19 +358,33 @@ Respond as SAVI in a helpful, enthusiastic way:`;
       future: "What are TUHME's future plans and upcoming features?"
     };
 
-    const response = await callGeminiAPI(actionPrompts[actionType] || "Tell me about TUHME");
-    
-    setTimeout(() => {
-      const saviMessage = {
-        type: 'savi',
-        text: response,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, saviMessage]);
-      setIsTyping(false);
-      setStatus('complete');
-      setTimeout(() => setStatus('online'), 1500);
-    }, 800);
+    try {
+      const response = await callGeminiAPI(actionPrompts[actionType] || "Tell me about TUHME");
+      
+      setTimeout(() => {
+        const saviMessage = {
+          type: 'savi',
+          text: response,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, saviMessage]);
+        setIsTyping(false);
+        setStatus('complete');
+        setTimeout(() => setStatus('online'), 1500);
+      }, 800);
+    } catch (error) {
+      console.error('Quick action error:', error);
+      setTimeout(() => {
+        const errorMessage = {
+          type: 'savi',
+          text: "I'm having trouble processing that request right now, but I'm still here to help! Feel free to ask me anything about TUHME! 😊",
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, errorMessage]);
+        setIsTyping(false);
+        setStatus('online');
+      }, 800);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -722,11 +801,15 @@ Respond as SAVI in a helpful, enthusiastic way:`;
         .savi-messages {
           flex: 1;
           padding: 16px;
+          padding-bottom: 24px;
           overflow-y: auto;
+          overflow-x: hidden;
           display: flex;
           flex-direction: column;
           gap: 12px;
           min-height: 0;
+          max-height: calc(520px - 180px);
+          scroll-behavior: smooth;
         }
 
         .savi-messages::-webkit-scrollbar {
