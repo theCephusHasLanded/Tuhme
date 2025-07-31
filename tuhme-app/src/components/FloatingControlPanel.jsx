@@ -11,7 +11,9 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
 
   const navItems = [
     { id: 'home', label: 'Home', icon: '🏠', type: 'navigate' },
-    { id: 'store-discovery', label: 'Discover Stores', icon: '🏪', type: 'navigate' },
+    { id: 'service-overview', label: 'Shop Any Store', icon: '🛍️', type: 'navigate' },
+    { id: 'store-finder', label: 'Find Stores', icon: '🔍', type: 'navigate' },
+    { id: 'store-discovery', label: 'Partner Stores', icon: '🏪', type: 'navigate' },
     { id: 'how-it-works', label: 'How Tuhme Works', icon: '⚡', type: 'navigate' },
     { id: 'mission', label: 'Mission Statement', icon: '🎯', type: 'modal' },
     { id: 'partner', label: 'Partner With Us', icon: '🤝', type: 'modal' },

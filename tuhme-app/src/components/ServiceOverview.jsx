@@ -5,11 +5,11 @@ const ServiceOverview = () => {
     <section className="luxury-section">
       <div className="container">
         <div className="service-intro">
-          <h2 className="section-title">Shop From Any Store, Without The Stress</h2>
+          <h2 className="section-title">Shop From Any Store</h2>
           <p className="section-subtitle">
             Whether it's that exclusive boutique you've been eyeing or a prestigious department store, 
-            we bring the entire shopping experience to your doorstep. No crowds, no pressure, 
-            no carrying bags - just pure convenience and sophistication.
+            we bring the entire shopping experience to your doorstep. Pure convenience and sophistication 
+            delivered right to your door.
           </p>
         </div>
 

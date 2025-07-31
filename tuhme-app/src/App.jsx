@@ -23,6 +23,8 @@ import { ModalProvider } from './contexts/ModalContext';
 import FloatingControlPanel from './components/FloatingControlPanel';
 import Hero from './components/Hero';
 import ServiceOverview from './components/ServiceOverview';
+import AIStoreFinder from './components/AIStoreFinder';
+import ImmersiveStoreDiscovery from './components/ImmersiveStoreDiscovery';
 import HowItWorks from './components/HowItWorks';
 import PricingTiers from './components/PricingTiers';
 import DeliveryInfo from './components/DeliveryInfo';
@@ -36,7 +38,6 @@ import CustomerTestimonials from './components/CustomerTestimonials';
 import Matrix3DInterface from './components/Matrix3DInterface';
 import EnhancedSaviAssistant from './components/EnhancedSaviAssistant';
 import FeedbackModal from './components/FeedbackModal';
-import ImmersiveStoreDiscovery from './components/ImmersiveStoreDiscovery';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -149,6 +150,10 @@ function App() {
 
             <section id="service-overview">
               <ServiceOverview />
+            </section>
+
+            <section id="store-finder">
+              <AIStoreFinder />
             </section>
 
             <section id="store-discovery">
