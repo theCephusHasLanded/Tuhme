@@ -9,6 +9,72 @@
   transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
   perspective: 1000px;
   transform-style: preserve-3d;
+  /* Default dark mode styling */
+  color: white;
+}
+
+/* Light mode theme adjustments */
+[data-theme="light"] .hero-luxury,
+[data-theme="luxury-light"] .hero-luxury {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .hero-luxury .brand-name-luxury,
+[data-theme="luxury-light"] .hero-luxury .brand-name-luxury {
+  color: #1a1a1a;
+  text-shadow: 
+    0 0 40px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .hero-luxury .brand-essence,
+[data-theme="luxury-light"] .hero-luxury .brand-essence,
+[data-theme="light"] .hero-luxury .description-text,
+[data-theme="luxury-light"] .hero-luxury .description-text {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+[data-theme="light"] .hero-luxury .promise-item span,
+[data-theme="luxury-light"] .hero-luxury .promise-item span {
+  color: rgba(26, 26, 26, 0.9);
+}
+
+[data-theme="light"] .hero-luxury .trust-number,
+[data-theme="luxury-light"] .hero-luxury .trust-number {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .hero-luxury .trust-label,
+[data-theme="luxury-light"] .hero-luxury .trust-label {
+  color: rgba(26, 26, 26, 0.7);
+}
+
+[data-theme="light"] .hero-luxury .track-order-label,
+[data-theme="luxury-light"] .hero-luxury .track-order-label {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+[data-theme="light"] .hero-luxury .phone-input,
+[data-theme="luxury-light"] .hero-luxury .phone-input {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .hero-luxury .phone-input::placeholder,
+[data-theme="luxury-light"] .hero-luxury .phone-input::placeholder {
+  color: rgba(26, 26, 26, 0.5);
+}
+
+[data-theme="light"] .hero-luxury .track-button,
+[data-theme="luxury-light"] .hero-luxury .track-button {
+  background: rgba(26, 26, 26, 0.9);
+  color: white;
+}
+
+[data-theme="light"] .hero-luxury .availability-indicator span,
+[data-theme="luxury-light"] .hero-luxury .availability-indicator span {
+  color: rgba(26, 26, 26, 0.8);
 }
 
 /* Animated Particles */

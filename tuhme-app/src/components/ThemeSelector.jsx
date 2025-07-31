@@ -165,88 +165,64 @@ const ThemeSelector = () => {
 
   return (
     <div className="theme-selector">
-      <button 
-        className="theme-selector-trigger"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Select theme"
-      >
-        <span className="theme-icon">🎨</span>
-        <span className="theme-name">{getCurrentThemeDisplay()}</span>
-        <span className={`chevron ${isOpen ? 'open' : ''}`}>▼</span>
-      </button>
+      {/* Mode Selector (Light/Dark) */}
+      <div className="mode-selector">
+        <button 
+          className="mode-button"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Select theme mode"
+        >
+          <span className="mode-icon">🎨</span>
+          <span className="mode-text">{getCurrentThemeDisplay()}</span>
+          <span className={`chevron ${isOpen ? 'open' : ''}`}>▼</span>
+        </button>
+      </div>
 
       {isOpen && (
         <>
-          <div className="theme-selector-overlay" onClick={() => setIsOpen(false)} />
-          <div className="theme-selector-dropdown">
-            <div className="theme-selector-header">
-              <h3>Choose Theme</h3>
-              <p>Select your preferred color scheme</p>
+          <div className="theme-overlay" onClick={() => setIsOpen(false)} />
+          <div className="theme-dropdown">
+            <div className="dropdown-header">
+              <h3>Theme Selection</h3>
             </div>
 
-            <div className="theme-options">
-              {/* System Options */}
-              <div className="theme-category">
-                <h4>System</h4>
+            <div className="theme-sections">
+              {/* Auto Mode */}
+              <div className="section">
                 <button
-                  className={`theme-option ${currentTheme === 'auto' ? 'active' : ''}`}
+                  className={`theme-item ${currentTheme === 'auto' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('auto')}
                 >
-                  <div className="theme-preview">
-                    <div className="preview-auto">🔄</div>
-                  </div>
-                  <div className="theme-info">
-                    <div className="theme-name">Auto</div>
-                    <div className="theme-description">System preference</div>
-                  </div>
-                  {currentTheme === 'auto' && (
-                    <div className="theme-check">✓</div>
-                  )}
+                  <span className="theme-icon">🔄</span>
+                  <span className="theme-label">Auto</span>
+                  {currentTheme === 'auto' && <span className="check">✓</span>}
                 </button>
               </div>
 
-              {/* Luxury Color Schemes */}
-              <div className="theme-category">
-                <h4>Luxury Themes</h4>
+              {/* Luxury Themes - simplified as simple buttons */}
+              <div className="section">
+                <div className="section-title">Luxury Collection</div>
                 {(() => {
-                  // Group themes by base name
-                  const themeGroups = {};
-                  Object.entries(colorSchemes)
+                  // Create simple list of all themes
+                  const allThemes = Object.entries(colorSchemes)
                     .filter(([key]) => key !== 'auto')
-                    .forEach(([key, scheme]) => {
-                      if (!themeGroups[scheme.name]) {
-                        themeGroups[scheme.name] = [];
-                      }
-                      themeGroups[scheme.name].push({ key, scheme });
-                    });
+                    .map(([key, scheme]) => ({ key, scheme }));
 
-                  return Object.entries(themeGroups).map(([themeName, variants]) => (
-                    <div key={themeName} className="theme-group">
-                      <div className="theme-group-name">{themeName}</div>
-                      <div className="theme-variants">
-                        {variants.map(({ key, scheme }) => (
-                          <button
-                            key={key}
-                            className={`theme-variant ${currentTheme === key ? 'active' : ''}`}
-                            onClick={() => handleThemeChange(key)}
-                            title={scheme.description}
-                          >
-                            <div className="variant-preview">
-                              <div 
-                                className="color-swatch"
-                                style={{ backgroundColor: scheme.accent }}
-                              />
-                            </div>
-                            <div className="variant-mode">
-                              {scheme.mode === 'light' ? '☀️' : '🌙'}
-                            </div>
-                            {currentTheme === key && (
-                              <div className="variant-check">✓</div>
-                            )}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                  return allThemes.map(({ key, scheme }) => (
+                    <button
+                      key={key}
+                      className={`theme-item ${currentTheme === key ? 'active' : ''}`}
+                      onClick={() => handleThemeChange(key)}
+                    >
+                      <div 
+                        className="theme-color"
+                        style={{ backgroundColor: scheme.accent }}
+                      />
+                      <span className="theme-label">
+                        {scheme.name} {scheme.mode === 'light' ? '☀️' : '🌙'}
+                      </span>
+                      {currentTheme === key && <span className="check">✓</span>}
+                    </button>
                   ));
                 })()}
               </div>
