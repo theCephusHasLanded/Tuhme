@@ -34,8 +34,7 @@ import ModalsSystem from './components/ModalsSystem';
 import MembershipModal from './components/MembershipModal';
 import CustomerTestimonials from './components/CustomerTestimonials';
 import Matrix3DInterface from './components/Matrix3DInterface';
-import SaviAssistant from './components/SaviAssistant';
-import FloatingSaviBot from './components/FloatingSaviBot';
+import EnhancedSaviAssistant from './components/EnhancedSaviAssistant';
 import FeedbackModal from './components/FeedbackModal';
 import ImmersiveStoreDiscovery from './components/ImmersiveStoreDiscovery';
 
@@ -44,7 +43,7 @@ function App() {
   const [showExpressFlow, setShowExpressFlow] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const [showMatrix, setShowMatrix] = useState(false);
-  const [showSavi, setShowSavi] = useState(false);
+
   const [showFeedback, setShowFeedback] = useState(false);
   const [userPhone, setUserPhone] = useState('');
 
@@ -139,7 +138,7 @@ function App() {
             onNavigate={handleNavigation} 
             currentSection={currentSection} 
             onMatrixToggle={toggleMatrix}
-            onOpenSavi={() => setShowSavi(true)}
+            onOpenSavi={() => window.dispatchEvent(new CustomEvent('openSavi'))}
             onOpenFeedback={() => setShowFeedback(true)}
           />
           
@@ -182,18 +181,8 @@ function App() {
           <Footer />
           <ModalsSystem />
           <MembershipModal />
-          {showSavi && (
-            <SaviAssistant 
-              isOpen={showSavi}
-              onClose={() => setShowSavi(false)} 
-            />
-          )}
-          
-          {/* Floating SAVI Bot */}
-          <FloatingSaviBot 
-            onOpenSavi={() => setShowSavi(true)}
-            showSavi={showSavi}
-          />
+          {/* Enhanced SAVI Assistant */}
+          <EnhancedSaviAssistant />
           
           {/* Feedback Modal */}
           <FeedbackModal 

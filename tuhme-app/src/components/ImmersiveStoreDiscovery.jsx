@@ -25,11 +25,11 @@ const ImmersiveStoreDiscovery = () => {
   const detectStoresSales = () => {
     const allStores = storeService.getAllStores();
     const salesStores = [];
-    
+
     allStores.forEach((store, index) => {
       const saleChance = (parseInt(store.id.replace(/\D/g, ''), 10) + dailySeed) % 100;
       const hasSale = saleChance < 25;
-      
+
       if (hasSale) {
         const salePercentage = 10 + (saleChance % 40);
         salesStores.push({
@@ -39,7 +39,7 @@ const ImmersiveStoreDiscovery = () => {
         });
       }
     });
-    
+
     return salesStores;
   };
 
@@ -47,39 +47,39 @@ const ImmersiveStoreDiscovery = () => {
   const shuffleWithSeed = (array, seed) => {
     const shuffled = [...array];
     let currentIndex = shuffled.length;
-    
+
     const seededRandom = (s) => {
       const x = Math.sin(s) * 10000;
       return x - Math.floor(x);
     };
-    
+
     while (0 !== currentIndex) {
       const randomIndex = Math.floor(seededRandom(seed + currentIndex) * currentIndex);
       currentIndex -= 1;
-      
+
       const temporaryValue = shuffled[currentIndex];
       shuffled[currentIndex] = shuffled[randomIndex];
       shuffled[randomIndex] = temporaryValue;
     }
-    
+
     return shuffled;
   };
 
   // Initialize stores with sales detection
   useEffect(() => {
     if (dailySeed === 0) return;
-    
+
     const salesStores = detectStoresSales();
     setSaleStores(salesStores);
-    
+
     const allStores = storeService.getAllStores();
-    const regularStores = allStores.filter(store => 
+    const regularStores = allStores.filter(store =>
       !salesStores.find(saleStore => saleStore.id === store.id)
     );
-    
+
     const shuffledRegular = shuffleWithSeed(regularStores, dailySeed);
     const finalStoreOrder = [...salesStores, ...shuffledRegular];
-    
+
     setStores(finalStoreOrder);
   }, [dailySeed]);
 
@@ -146,7 +146,7 @@ const ImmersiveStoreDiscovery = () => {
       'Sustainable Fashion': 'sustainable+fashion',
       'Activewear': 'activewear+store'
     };
-    
+
     const searchTerm = categoryMap[store.category] || 'luxury+retail+store';
     return `https://source.unsplash.com/800x600/?${searchTerm}&sig=${store.id}`;
   };
@@ -190,8 +190,8 @@ const ImmersiveStoreDiscovery = () => {
       </div>
 
       <div className="store-queue-container">
-        <button 
-          className="nav-button nav-prev" 
+        <button
+          className="nav-button nav-prev"
           onClick={prevStore}
           disabled={isTransitioning}
           aria-label="Previous store"
@@ -206,7 +206,7 @@ const ImmersiveStoreDiscovery = () => {
             const store = stores[storeIndex];
             const saleInfo = isStoreOnSale(store);
             const isMainStore = queuePosition === 0;
-            
+
             return (
               <div
                 key={`${store.id}-${queuePosition}`}
@@ -228,34 +228,34 @@ const ImmersiveStoreDiscovery = () => {
                   <div className="website-preview">
                     {/* TUHME Logo shown by default */}
                     <div className="tuhme-logo-preview default-view">
-                      <div 
+                      <div
                         className={`tuhme-logo-container animation-variant-${(storeIndex + queuePosition) % 4}`}
                         style={{
                           '--animation-delay': `${(storeIndex + queuePosition) * 0.3}s`,
                           '--store-accent': saleInfo ? '#d4af37' : '#8b9dc3'
                         }}
                       >
-                        <img 
-                          src={tuhmeLogo} 
-                          alt="TUHME" 
+                        <img
+                          src={tuhmeLogo}
+                          alt="TUHME"
                           className="tuhme-logo-image"
                         />
                         <div className="logo-glow-ring"></div>
                         <div className="logo-particles">
                           {[...Array(6)].map((_, i) => (
-                            <div 
-                              key={i} 
-                              className="particle" 
+                            <div
+                              key={i}
+                              className="particle"
                               style={{ '--particle-delay': `${i * 0.5}s` }}
                             />
                           ))}
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Actual website preview on hover */}
                     <div className="website-preview-overlay hover-view">
-                      <img 
+                      <img
                         src={generateWebsitePreview(store)}
                         alt={`${store.name} website preview`}
                         className="website-preview-image"
@@ -265,7 +265,7 @@ const ImmersiveStoreDiscovery = () => {
                         }}
                       />
                     </div>
-                    
+
                     <div className="brand-logo-overlay">
                       <div
                         className="brand-svg"
@@ -275,7 +275,7 @@ const ImmersiveStoreDiscovery = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="preview-overlay">
                     <span className="preview-label">Hover for website preview</span>
                   </div>
@@ -326,8 +326,8 @@ const ImmersiveStoreDiscovery = () => {
           })}
         </div>
 
-        <button 
-          className="nav-button nav-next" 
+        <button
+          className="nav-button nav-next"
           onClick={nextStore}
           disabled={isTransitioning}
           aria-label="Next store"
@@ -338,28 +338,9 @@ const ImmersiveStoreDiscovery = () => {
         </button>
       </div>
 
-      <div className="discovery-stats">
-        <div className="stat-item">
-          <span className="stat-number">{stores.length}</span>
-          <span className="stat-label">Partner Stores</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-number">{storeService.getFeaturedStores().length}</span>
-          <span className="stat-label">Featured Partners</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-number">{saleStores.length}</span>
-          <span className="stat-label">Sales Today</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-number">{storeService.getAverageRating()}</span>
-          <span className="stat-label">Avg Rating</span>
-        </div>
-      </div>
-
       {/* Interactive Preview Tooltip */}
       {previewStore && (
-        <div 
+        <div
           className="store-preview-tooltip"
           style={{
             left: previewPosition.x,
@@ -567,9 +548,9 @@ const ImmersiveStoreDiscovery = () => {
           z-index: 2;
           opacity: 1;
           transition: opacity 0.4s ease;
-          background: linear-gradient(135deg, 
-            rgba(0, 0, 0, 0.8) 0%, 
-            rgba(26, 26, 26, 0.9) 50%, 
+          background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(26, 26, 26, 0.9) 50%,
             rgba(0, 0, 0, 0.8) 100%);
           backdrop-filter: blur(10px);
         }
@@ -707,74 +688,74 @@ const ImmersiveStoreDiscovery = () => {
 
         /* Animation Keyframes */
         @keyframes logoFloat {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
+          0%, 100% {
+            transform: translateY(0) scale(1);
             filter: drop-shadow(0 0 20px var(--store-accent, #d4af37));
           }
-          50% { 
-            transform: translateY(-8px) scale(1.02); 
+          50% {
+            transform: translateY(-8px) scale(1.02);
             filter: drop-shadow(0 0 30px var(--store-accent, #d4af37));
           }
         }
 
         @keyframes logoPulse {
-          0%, 100% { 
-            transform: scale(1); 
+          0%, 100% {
+            transform: scale(1);
             filter: drop-shadow(0 0 15px var(--store-accent, #d4af37));
           }
-          50% { 
-            transform: scale(1.05); 
+          50% {
+            transform: scale(1.05);
             filter: drop-shadow(0 0 35px var(--store-accent, #d4af37));
           }
         }
 
         @keyframes logoSway {
-          0%, 100% { 
-            transform: rotate(0deg) translateY(0); 
+          0%, 100% {
+            transform: rotate(0deg) translateY(0);
             filter: drop-shadow(0 0 18px var(--store-accent, #d4af37));
           }
-          25% { 
-            transform: rotate(1deg) translateY(-3px); 
+          25% {
+            transform: rotate(1deg) translateY(-3px);
             filter: drop-shadow(0 0 25px var(--store-accent, #d4af37));
           }
-          75% { 
-            transform: rotate(-1deg) translateY(-3px); 
+          75% {
+            transform: rotate(-1deg) translateY(-3px);
             filter: drop-shadow(0 0 25px var(--store-accent, #d4af37));
           }
         }
 
         @keyframes logoGlow {
-          0%, 100% { 
+          0%, 100% {
             filter: drop-shadow(0 0 15px var(--store-accent, #d4af37)) brightness(1);
           }
-          50% { 
+          50% {
             filter: drop-shadow(0 0 40px var(--store-accent, #d4af37)) brightness(1.1);
           }
         }
 
         @keyframes ringPulse {
-          0%, 100% { 
-            transform: translate(-50%, -50%) scale(1); 
-            opacity: 0.3; 
+          0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.3;
           }
-          50% { 
-            transform: translate(-50%, -50%) scale(1.1); 
-            opacity: 0.6; 
+          50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.6;
           }
         }
 
         @keyframes particleFloat {
-          0%, 100% { 
-            opacity: 0; 
-            transform: translateY(0) scale(0.5); 
+          0%, 100% {
+            opacity: 0;
+            transform: translateY(0) scale(0.5);
           }
           25% {
             opacity: 0.8;
             transform: translateY(-15px) scale(1);
           }
-          50% { 
-            opacity: 1; 
-            transform: translateY(-30px) scale(1.2); 
+          50% {
+            opacity: 1;
+            transform: translateY(-30px) scale(1.2);
           }
           75% {
             opacity: 0.6;
@@ -1082,7 +1063,7 @@ const ImmersiveStoreDiscovery = () => {
             width: 400px;
             height: 550px;
           }
-          
+
           .store-card.queue-store {
             width: 300px;
             height: 450px;
@@ -1093,17 +1074,17 @@ const ImmersiveStoreDiscovery = () => {
           .immersive-store-discovery {
             padding: 4rem 1rem;
           }
-          
+
           .store-queue-container {
             flex-direction: column;
             gap: 2rem;
           }
-          
+
           .nav-button {
             width: 50px;
             height: 50px;
           }
-          
+
           .store-card.main-store,
           .store-card.queue-store {
             width: 100%;
@@ -1112,7 +1093,7 @@ const ImmersiveStoreDiscovery = () => {
             transform: scale(1);
             opacity: 1;
           }
-          
+
           .discovery-stats {
             flex-wrap: wrap;
             gap: 2rem;
@@ -1126,7 +1107,7 @@ const ImmersiveStoreDiscovery = () => {
           .nav-button {
             transition: none;
           }
-          
+
           .loading-spinner {
             animation: none;
           }
