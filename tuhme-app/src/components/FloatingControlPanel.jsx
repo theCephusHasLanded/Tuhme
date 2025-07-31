@@ -27,15 +27,28 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
   ];
 
   useEffect(() => {
+    let scrollTimer = null;
+    let keyPressTimer = null;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (scrollTimer) return;
+      scrollTimer = setTimeout(() => {
+        setIsScrolled(window.scrollY > 50);
+        scrollTimer = null;
+      }, 16); // Throttle to ~60fps
     };
 
     const handleKeyPress = (e) => {
+      if (keyPressTimer) return;
+      
       // Toggle control panel with Ctrl + Space or Cmd + Space
       if ((e.ctrlKey || e.metaKey) && e.code === 'Space') {
         e.preventDefault();
-        setIsOpen(!isOpen);
+        keyPressTimer = setTimeout(() => {
+          setIsOpen(prev => !prev);
+          keyPressTimer = null;
+        }, 100);
+        return;
       }
       // Close with Escape
       if (e.key === 'Escape') {
@@ -43,12 +56,28 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Passive listeners for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('keydown', handleKeyPress);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('keydown', handleKeyPress);
+      if (scrollTimer) clearTimeout(scrollTimer);
+      if (keyPressTimer) clearTimeout(keyPressTimer);
+    };
+  }, []);
+
+  // Handle body scroll lock when panel is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 

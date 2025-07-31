@@ -10,8 +10,7 @@ const ImmersiveStoreDiscovery = () => {
   const [saleStores, setSaleStores] = useState([]);
   const [dailySeed, setDailySeed] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [previewStore, setPreviewStore] = useState(null);
-  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
+
   const containerRef = useRef(null);
 
   // Generate daily seed for consistent randomization
@@ -21,66 +20,66 @@ const ImmersiveStoreDiscovery = () => {
     setDailySeed(seed);
   }, []);
 
-  // Sales detection algorithm
-  const detectStoresSales = () => {
-    const allStores = storeService.getAllStores();
-    const salesStores = [];
-
-    allStores.forEach((store, index) => {
-      const saleChance = (parseInt(store.id.replace(/\D/g, ''), 10) + dailySeed) % 100;
-      const hasSale = saleChance < 25;
-
-      if (hasSale) {
-        const salePercentage = 10 + (saleChance % 40);
-        salesStores.push({
-          ...store,
-          salePercentage,
-          saleType: saleChance < 8 ? 'Flash Sale' : saleChance < 15 ? 'Weekend Special' : 'Daily Deal'
-        });
-      }
-    });
-
-    return salesStores;
-  };
-
   // Shuffle array using daily seed
   const shuffleWithSeed = (array, seed) => {
-    const shuffled = [...array];
-    let currentIndex = shuffled.length;
-
-    const seededRandom = (s) => {
-      const x = Math.sin(s) * 10000;
-      return x - Math.floor(x);
-    };
-
-    while (0 !== currentIndex) {
-      const randomIndex = Math.floor(seededRandom(seed + currentIndex) * currentIndex);
-      currentIndex -= 1;
-
-      const temporaryValue = shuffled[currentIndex];
-      shuffled[currentIndex] = shuffled[randomIndex];
-      shuffled[randomIndex] = temporaryValue;
-    }
-
-    return shuffled;
+  const shuffled = [...array];
+  let currentIndex = shuffled.length;
+  
+  const seededRandom = (s) => {
+  const x = Math.sin(s) * 10000;
+  return x - Math.floor(x);
+  };
+  
+  while (0 !== currentIndex) {
+  const randomIndex = Math.floor(seededRandom(seed + currentIndex) * currentIndex);
+  currentIndex -= 1;
+  
+  const temporaryValue = shuffled[currentIndex];
+  shuffled[currentIndex] = shuffled[randomIndex];
+  shuffled[randomIndex] = temporaryValue;
+  }
+  
+  return shuffled;
   };
 
   // Initialize stores with sales detection
   useEffect(() => {
-    if (dailySeed === 0) return;
-
-    const salesStores = detectStoresSales();
-    setSaleStores(salesStores);
-
-    const allStores = storeService.getAllStores();
-    const regularStores = allStores.filter(store =>
-      !salesStores.find(saleStore => saleStore.id === store.id)
-    );
-
-    const shuffledRegular = shuffleWithSeed(regularStores, dailySeed);
-    const finalStoreOrder = [...salesStores, ...shuffledRegular];
-
-    setStores(finalStoreOrder);
+  if (dailySeed === 0) return;
+  
+  // Sales detection algorithm
+  const detectStoresSales = () => {
+  const allStores = storeService.getAllStores();
+  const salesStores = [];
+    
+    allStores.forEach((store) => {
+      const saleChance = (parseInt(store.id.replace(/\D/g, ''), 10) + dailySeed) % 100;
+    const hasSale = saleChance < 25;
+    
+    if (hasSale) {
+      const salePercentage = 10 + (saleChance % 40);
+      salesStores.push({
+        ...store,
+          salePercentage,
+          saleType: saleChance < 8 ? 'Flash Sale' : saleChance < 15 ? 'Weekend Special' : 'Daily Deal'
+        });
+        }
+      });
+      
+      return salesStores;
+  };
+  
+  const salesStores = detectStoresSales();
+  setSaleStores(salesStores);
+  
+  const allStores = storeService.getAllStores();
+  const regularStores = allStores.filter(store => 
+  !salesStores.find(saleStore => saleStore.id === store.id)
+  );
+  
+  const shuffledRegular = shuffleWithSeed(regularStores, dailySeed);
+  const finalStoreOrder = [...salesStores, ...shuffledRegular];
+  
+  setStores(finalStoreOrder);
   }, [dailySeed]);
 
   // Determine visible stores based on container width
@@ -117,18 +116,7 @@ const ImmersiveStoreDiscovery = () => {
     }, 300);
   };
 
-  const handleStoreHover = (store, event) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    setPreviewPosition({
-      x: rect.left + rect.width / 2,
-      y: rect.top
-    });
-    setPreviewStore(store);
-  };
 
-  const handleStoreLeave = () => {
-    setPreviewStore(null);
-  };
 
   const generateWebsitePreview = (store) => {
     // Generate a mock website preview based on store data
@@ -209,13 +197,13 @@ const ImmersiveStoreDiscovery = () => {
 
             return (
               <div
-                key={`${store.id}-${queuePosition}`}
-                className={`store-card ${isMainStore ? 'main-store' : 'queue-store'} ${saleInfo ? 'on-sale' : ''}`}
-                onMouseEnter={(e) => handleStoreHover(store, e)}
-                onMouseLeave={handleStoreLeave}
-                style={{
-                  '--queue-position': queuePosition
-                }}
+              key={`${store.id}-${queuePosition}`}
+              className={`store-card ${isMainStore ? 'main-store' : 'queue-store'} ${saleInfo ? 'on-sale' : ''}`}
+              onClick={() => window.open(store.website, '_blank')}
+              style={{
+                '--queue-position': queuePosition,
+              cursor: 'pointer'
+              }}
               >
                 {saleInfo && (
                   <div className="sale-badge">
@@ -226,8 +214,22 @@ const ImmersiveStoreDiscovery = () => {
 
                 <div className="store-preview-window">
                   <div className="website-preview">
-                    {/* TUHME Logo shown by default */}
-                    <div className="tuhme-logo-preview default-view">
+                    {/* Website preview background */}
+                    <div className="website-background">
+                      <img
+                        src={generateWebsitePreview(store)}
+                        alt={`${store.name} website preview`}
+                        className="website-preview-image"
+                        onError={(e) => {
+                          // Fallback to Unsplash if website preview fails
+                          e.target.src = generateUnsplashFallback(store);
+                        }}
+                      />
+                    </div>
+
+                    {/* Opaque TUHME Logo Overlay */}
+                    <div className="tuhme-logo-overlay">
+                      <div className="overlay-backdrop"></div>
                       <div
                         className={`tuhme-logo-container animation-variant-${(storeIndex + queuePosition) % 4}`}
                         style={{
@@ -253,19 +255,6 @@ const ImmersiveStoreDiscovery = () => {
                       </div>
                     </div>
 
-                    {/* Actual website preview on hover */}
-                    <div className="website-preview-overlay hover-view">
-                      <img
-                        src={generateWebsitePreview(store)}
-                        alt={`${store.name} website preview`}
-                        className="website-preview-image"
-                        onError={(e) => {
-                          // Fallback to Unsplash if website preview fails
-                          e.target.src = generateUnsplashFallback(store);
-                        }}
-                      />
-                    </div>
-
                     <div className="brand-logo-overlay">
                       <div
                         className="brand-svg"
@@ -277,7 +266,7 @@ const ImmersiveStoreDiscovery = () => {
                   </div>
 
                   <div className="preview-overlay">
-                    <span className="preview-label">Hover for website preview</span>
+                    <span className="preview-label">Click to visit {store.name}</span>
                   </div>
                 </div>
 
@@ -315,10 +304,24 @@ const ImmersiveStoreDiscovery = () => {
                   )}
 
                   <div className="store-actions">
-                    <button className="shop-btn primary">
+                    <button 
+                      className="shop-btn primary"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(store.website, '_blank');
+                      }}
+                    >
                       {saleInfo ? `Shop ${saleInfo.salePercentage}% Off` : 'Shop Now'}
                     </button>
-                    <button className="visit-btn secondary">Visit Store</button>
+                    <button 
+                      className="visit-btn secondary"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(store.website, '_blank');
+                      }}
+                    >
+                      Visit Store
+                    </button>
                   </div>
                 </div>
               </div>
@@ -338,27 +341,7 @@ const ImmersiveStoreDiscovery = () => {
         </button>
       </div>
 
-      {/* Interactive Preview Tooltip */}
-      {previewStore && (
-        <div
-          className="store-preview-tooltip"
-          style={{
-            left: previewPosition.x,
-            top: previewPosition.y - 150
-          }}
-        >
-          <div className="tooltip-content">
-            <h4>{previewStore.name}</h4>
-            <p>{previewStore.description}</p>
-            <div className="tooltip-tags">
-              {previewStore.specialties?.slice(0, 2).map((specialty, idx) => (
-                <span key={idx} className="tooltip-tag">{specialty}</span>
-              ))}
-            </div>
-          </div>
-          <div className="tooltip-arrow"></div>
-        </div>
-      )}
+
 
       <style jsx>{`
         .immersive-store-discovery {
@@ -535,55 +518,47 @@ const ImmersiveStoreDiscovery = () => {
           overflow: hidden;
         }
 
-        /* TUHME Logo Default View */
-        .tuhme-logo-preview.default-view {
+        /* Website Background */
+        .website-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        }
+
+        .website-preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        }
+
+        /* TUHME Logo Overlay */
+        .tuhme-logo-overlay {
           position: absolute;
           top: 0;
-          left: 0;
+        left: 0;
           width: 100%;
           height: 100%;
           display: flex;
           align-items: center;
-          justify-content: center;
-          z-index: 2;
-          opacity: 1;
-          transition: opacity 0.4s ease;
-          background: linear-gradient(135deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(26, 26, 26, 0.9) 50%,
-            rgba(0, 0, 0, 0.8) 100%);
-          backdrop-filter: blur(10px);
+        justify-content: center;
+        z-index: 2;
         }
 
-        .store-card:hover .tuhme-logo-preview.default-view {
-          opacity: 0;
-        }
-
-        /* Website Preview on Hover */
-        .website-preview-overlay.hover-view {
-          position: absolute;
-          top: 0;
-          left: 0;
+        .overlay-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
           width: 100%;
           height: 100%;
-          opacity: 0;
-          transition: opacity 0.4s ease;
-          z-index: 1;
-        }
-
-        .store-card:hover .website-preview-overlay.hover-view {
-          opacity: 1;
-        }
-
-        .website-preview-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-
-        .store-card:hover .website-preview-image {
-          transform: scale(1.05);
+          background: linear-gradient(135deg, 
+          rgba(0, 0, 0, 0.7) 0%, 
+            rgba(26, 26, 26, 0.8) 50%, 
+            rgba(0, 0, 0, 0.7) 100%);
+          backdrop-filter: blur(8px);
         }
 
         .brand-logo-overlay {
