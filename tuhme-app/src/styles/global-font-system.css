@@ -1,0 +1,444 @@
+/* ===== GLOBAL FONT SYSTEM ===== */
+/* Matches Hero Section Typography Exactly */
+
+/* Primary Brand Font - Used for main titles and headers */
+.brand-font, 
+h1, 
+.section-title,
+.discovery-title,
+.brand-name-luxury,
+.hero-title-luxury {
+  font-family: var(--font-family-primary) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.3em !important;
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.1) !important;
+  animation: brandGlow 4s ease-in-out infinite alternate !important;
+}
+
+/* Secondary titles and hero text */
+.hero-font,
+h2,
+.title-line,
+.accent-text {
+  font-family: var(--font-family-primary) !important;
+  font-weight: 300 !important;
+  color: var(--text-primary) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  line-height: 1.1 !important;
+}
+
+/* Subheadings and card titles */
+.luxury-font,
+h3,
+.luxury-card-title,
+.store-name,
+.theme-group-name {
+  font-family: var(--font-family-secondary) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--text-primary) !important;
+}
+
+/* Body text and descriptions */
+.body-font,
+p,
+.description-text,
+.luxury-card-description,
+.section-subtitle,
+.discovery-subtitle {
+  font-family: var(--font-family-secondary) !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ===== RESPONSIVE FONT SIZES ===== */
+/* Large Headers (H1, Main Titles) */
+h1, 
+.section-title,
+.discovery-title,
+.brand-name-luxury {
+  font-size: clamp(3rem, 8vw, 6rem) !important;
+}
+
+/* Medium Headers (H2, Hero Titles) */
+h2,
+.hero-title-luxury,
+.title-line {
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+}
+
+/* Small Headers (H3, Card Titles) */
+h3,
+.luxury-card-title,
+.store-name {
+  font-size: clamp(1.25rem, 3vw, 1.5rem) !important;
+}
+
+/* Body Text */
+p,
+.description-text,
+.section-subtitle,
+.discovery-subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem) !important;
+}
+
+/* ===== GLOW EFFECTS ===== */
+/* Main Brand Glow - matches TUHME title */
+@keyframes brandGlow {
+  0% { 
+    text-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(255, 255, 255, 0.1);
+  }
+  100% { 
+    text-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      0 0 60px rgba(255, 255, 255, 0.2),
+      0 0 80px var(--color-primary-600, #d4af37);
+  }
+}
+
+/* Accent Color Glow */
+.accent-glow,
+.accent-text {
+  color: var(--color-primary-600) !important;
+  text-shadow: 
+    0 0 20px var(--color-primary-600),
+    0 0 40px var(--color-primary-600),
+    0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  animation: accentGlow 3s ease-in-out infinite alternate !important;
+}
+
+/* Enhanced Section Title Glow */
+.section-title,
+h2.section-title {
+  animation: sectionTitleGlow 5s ease-in-out infinite alternate !important;
+}
+
+@keyframes sectionTitleGlow {
+  0% { 
+    text-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.5),
+      0 0 20px var(--color-primary-600, #d4af37),
+      0 0 40px var(--color-primary-600, #d4af37),
+      0 0 60px rgba(255, 255, 255, 0.1);
+  }
+  100% { 
+    text-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.5),
+      0 0 30px var(--color-primary-600, #d4af37),
+      0 0 60px var(--color-primary-600, #d4af37),
+      0 0 90px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes accentGlow {
+  0% {
+    text-shadow: 
+      0 0 20px var(--color-primary-600),
+      0 0 40px var(--color-primary-600),
+      0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 30px var(--color-primary-600),
+      0 0 60px var(--color-primary-600),
+      0 0 80px var(--color-primary-600),
+      0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ===== THEME RESPONSIVE ADJUSTMENTS ===== */
+/* Dark Mode Adjustments - High Contrast Glow */
+[data-theme="dark"] .brand-font,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .hero-title-luxury,
+[data-theme="dark"] .title-line,
+[data-theme="luxury-dark"] .brand-font,
+[data-theme="luxury-dark"] h1,
+[data-theme="luxury-dark"] h2,
+[data-theme="luxury-dark"] h3,
+[data-theme="luxury-dark"] .section-title,
+[data-theme="luxury-dark"] .hero-title-luxury,
+[data-theme="luxury-dark"] .title-line {
+  color: #ffffff !important;
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.8),
+    0 0 30px var(--color-primary-600, #d4af37),
+    0 0 60px var(--color-primary-600, #d4af37),
+    0 0 80px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Light Mode Adjustments - High Contrast */
+[data-theme="light"] .brand-font,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] .section-title,
+[data-theme="light"] .hero-title-luxury,
+[data-theme="light"] .title-line,
+[data-theme="luxury-light"] .brand-font,
+[data-theme="luxury-light"] h1,
+[data-theme="luxury-light"] h2,
+[data-theme="luxury-light"] h3,
+[data-theme="luxury-light"] .section-title,
+[data-theme="luxury-light"] .hero-title-luxury,
+[data-theme="luxury-light"] .title-line {
+  color: #1a1a1a !important;
+  text-shadow: 
+    0 4px 20px rgba(255, 255, 255, 0.9),
+    0 0 20px var(--color-primary-600, #d4af37),
+    0 0 40px var(--color-primary-600, #d4af37),
+    0 0 60px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Pricing Cards Dark Mode Fix */
+[data-theme="dark"] .luxury-card,
+[data-theme="dark"] .pricing-card,
+[data-theme="dark"] .luxury-pricing-card,
+[data-theme="luxury-dark"] .luxury-card,
+[data-theme="luxury-dark"] .pricing-card,
+[data-theme="luxury-dark"] .luxury-pricing-card {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .luxury-card h3,
+[data-theme="dark"] .luxury-card .luxury-card-title,
+[data-theme="dark"] .luxury-pricing-card h3,
+[data-theme="dark"] .luxury-pricing-card .luxury-pricing-title,
+[data-theme="dark"] .pricing-card h3,
+[data-theme="luxury-dark"] .luxury-card h3,
+[data-theme="luxury-dark"] .luxury-card .luxury-card-title,
+[data-theme="luxury-dark"] .luxury-pricing-card h3,
+[data-theme="luxury-dark"] .luxury-pricing-card .luxury-pricing-title,
+[data-theme="luxury-dark"] .pricing-card h3 {
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 20px var(--color-primary-600, #d4af37) !important;
+}
+
+[data-theme="dark"] .luxury-card p,
+[data-theme="dark"] .luxury-card .luxury-card-description,
+[data-theme="dark"] .luxury-pricing-card p,
+[data-theme="dark"] .luxury-pricing-card .luxury-pricing-period,
+[data-theme="dark"] .luxury-pricing-card .luxury-pricing-price,
+[data-theme="dark"] .luxury-pricing-card div,
+[data-theme="dark"] .luxury-pricing-card span,
+[data-theme="dark"] .luxury-pricing-card li,
+[data-theme="dark"] .luxury-pricing-card small,
+[data-theme="dark"] .pricing-card p,
+[data-theme="luxury-dark"] .luxury-card p,
+[data-theme="luxury-dark"] .luxury-card .luxury-card-description,
+[data-theme="luxury-dark"] .luxury-pricing-card p,
+[data-theme="luxury-dark"] .luxury-pricing-card .luxury-pricing-period,
+[data-theme="luxury-dark"] .luxury-pricing-card .luxury-pricing-price,
+[data-theme="luxury-dark"] .luxury-pricing-card div,
+[data-theme="luxury-dark"] .luxury-pricing-card span,
+[data-theme="luxury-dark"] .luxury-pricing-card li,
+[data-theme="luxury-dark"] .luxury-pricing-card small,
+[data-theme="luxury-dark"] .pricing-card p {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Light Mode Pricing Cards */
+[data-theme="light"] .luxury-card,
+[data-theme="light"] .pricing-card,
+[data-theme="light"] .luxury-pricing-card,
+[data-theme="luxury-light"] .luxury-card,
+[data-theme="luxury-light"] .pricing-card,
+[data-theme="luxury-light"] .luxury-pricing-card {
+  color: #1a1a1a !important;
+}
+
+[data-theme="light"] .luxury-card h3,
+[data-theme="light"] .luxury-card .luxury-card-title,
+[data-theme="light"] .luxury-pricing-card h3,
+[data-theme="light"] .luxury-pricing-card .luxury-pricing-title,
+[data-theme="light"] .pricing-card h3,
+[data-theme="luxury-light"] .luxury-card h3,
+[data-theme="luxury-light"] .luxury-card .luxury-card-title,
+[data-theme="luxury-light"] .luxury-pricing-card h3,
+[data-theme="luxury-light"] .luxury-pricing-card .luxury-pricing-title,
+[data-theme="luxury-light"] .pricing-card h3 {
+  color: #1a1a1a !important;
+  text-shadow: 
+    0 2px 10px rgba(255, 255, 255, 0.8),
+    0 0 15px var(--color-primary-600, #d4af37) !important;
+}
+
+[data-theme="light"] .luxury-card p,
+[data-theme="light"] .luxury-card .luxury-card-description,
+[data-theme="light"] .luxury-pricing-card p,
+[data-theme="light"] .luxury-pricing-card .luxury-pricing-period,
+[data-theme="light"] .luxury-pricing-card .luxury-pricing-price,
+[data-theme="light"] .luxury-pricing-card div,
+[data-theme="light"] .luxury-pricing-card span,
+[data-theme="light"] .luxury-pricing-card li,
+[data-theme="light"] .luxury-pricing-card small,
+[data-theme="light"] .pricing-card p,
+[data-theme="luxury-light"] .luxury-card p,
+[data-theme="luxury-light"] .luxury-card .luxury-card-description,
+[data-theme="luxury-light"] .luxury-pricing-card p,
+[data-theme="luxury-light"] .luxury-pricing-card .luxury-pricing-period,
+[data-theme="luxury-light"] .luxury-pricing-card .luxury-pricing-price,
+[data-theme="luxury-light"] .luxury-pricing-card div,
+[data-theme="luxury-light"] .luxury-pricing-card span,
+[data-theme="luxury-light"] .luxury-pricing-card li,
+[data-theme="luxury-light"] .luxury-pricing-card small,
+[data-theme="luxury-light"] .pricing-card p {
+  color: rgba(26, 26, 26, 0.9) !important;
+}
+
+/* ===== COMPONENT SPECIFIC FIXES ===== */
+/* ImmersiveStoreDiscovery specific styles */
+.immersive-store-discovery .discovery-title {
+  /* Removed gradient - using glow effects instead */
+}
+
+/* Pricing Card Specific Overrides */
+[data-theme="dark"] .luxury-pricing-card .luxury-pricing-price,
+[data-theme="luxury-dark"] .luxury-pricing-card .luxury-pricing-price {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 20px var(--color-primary-600, #d4af37) !important;
+}
+
+[data-theme="light"] .luxury-pricing-card .luxury-pricing-price,
+[data-theme="luxury-light"] .luxury-pricing-card .luxury-pricing-price {
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 15px var(--color-primary-600, #d4af37) !important;
+}
+
+/* Force all pricing card content to be visible */
+[data-theme="dark"] .luxury-pricing-card *,
+[data-theme="luxury-dark"] .luxury-pricing-card * {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="light"] .luxury-pricing-card *,
+[data-theme="luxury-light"] .luxury-pricing-card * {
+  color: rgba(26, 26, 26, 0.9) !important;
+}
+
+/* ServiceOverview specific styles */
+.service-intro .section-title {
+  margin-bottom: 1rem !important;
+}
+
+/* Navigation specific styles */
+.nav-logo .nav-logo-text {
+  font-family: var(--font-family-primary) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.3em !important;
+}
+
+/* Ensure all luxury cards follow the system */
+.luxury-card .luxury-card-title {
+  font-family: var(--font-family-secondary) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.luxury-card .luxury-card-description {
+  font-family: var(--font-family-secondary) !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  h1, .section-title, .discovery-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    letter-spacing: 0.2em !important;
+  }
+  
+  h2, .hero-title-luxury {
+    font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+  }
+  
+  h3, .luxury-card-title {
+    font-size: clamp(1rem, 4vw, 1.25rem) !important;
+  }
+  
+  p, .description-text {
+    font-size: clamp(0.875rem, 3vw, 1rem) !important;
+  }
+}
+
+/* ===== GLOBAL CONTRAST ENFORCEMENT ===== */
+/* Dark themes - ensure all text is light */
+[data-theme="dark"],
+[data-theme="luxury-dark"] {
+  color: #ffffff;
+}
+
+[data-theme="dark"] *,
+[data-theme="luxury-dark"] * {
+  color: inherit;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] li,
+[data-theme="dark"] small,
+[data-theme="luxury-dark"] p,
+[data-theme="luxury-dark"] span,
+[data-theme="luxury-dark"] div,
+[data-theme="luxury-dark"] li,
+[data-theme="luxury-dark"] small {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Light themes - ensure all text is dark */
+[data-theme="light"],
+[data-theme="luxury-light"] {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] *,
+[data-theme="luxury-light"] * {
+  color: inherit;
+}
+
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] div,
+[data-theme="light"] li,
+[data-theme="light"] small,
+[data-theme="luxury-light"] p,
+[data-theme="luxury-light"] span,
+[data-theme="luxury-light"] div,
+[data-theme="luxury-light"] li,
+[data-theme="luxury-light"] small {
+  color: rgba(26, 26, 26, 0.9) !important;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .brand-font,
+  h1, h2, h3,
+  .accent-glow,
+  .accent-text {
+    animation: none !important;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+  .brand-font,
+  h1, h2, h3 {
+    text-shadow: none !important;
+    font-weight: 400 !important;
+  }
+}

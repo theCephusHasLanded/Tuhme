@@ -189,7 +189,7 @@ body {
 
 /* Main Website Layout */
 .main-website {
-  margin-top: 80px;
+  margin-top: 0;
   width: 100%;
   overflow-x: hidden;
 }
@@ -930,9 +930,9 @@ body {
 }
 
 .membership-error {
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-  color: #f59e0b;
+  background: var(--theme-accent)20;
+  border: 1px solid var(--theme-accent)40;
+  color: var(--theme-accent);
   padding: var(--space-3);
   border-radius: 6px;
   margin-bottom: var(--space-6);
@@ -2911,11 +2911,11 @@ body {
 
 .form-group input.error,
 .form-group select.error {
-  border-color: #ff6b6b;
+  border-color: var(--theme-accent);
 }
 
 .error-message {
-  color: #f59e0b;
+  color: var(--theme-accent);
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }

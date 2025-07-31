@@ -27,7 +27,7 @@ const DeliveryWidget = ({ variant = "default" }) => {
       id: 'express',
       title: 'Express Service',
       subtitle: 'Rush orders when needed',
-      time: '2-4 hours',
+      time: '4-12 hours',
       icon: 'professional'
     }
   ];
@@ -57,7 +57,7 @@ const DeliveryWidget = ({ variant = "default" }) => {
         'Brooklyn Heights',
         'Park Slope',
         'Fort Greene',
-        'And expanding...'
+        'New Jersey: Coming Soon'
       ],
       icon: 'delivery'
     }
@@ -69,7 +69,7 @@ const DeliveryWidget = ({ variant = "default" }) => {
         <div className="delivery-header">
           <h2 className="delivery-title">Delivery Information</h2>
           <p className="delivery-subtitle">
-            Fast, reliable delivery throughout Manhattan and Brooklyn
+            Fast, reliable delivery throughout Manhattan and Brooklyn. New Jersey coming soon!
           </p>
         </div>
 

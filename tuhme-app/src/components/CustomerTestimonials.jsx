@@ -84,11 +84,11 @@ const CustomerTestimonials = () => {
   };
 
   return (
-    <section className="testimonials-section">
-      <div className="testimonials-container">
+    <section className="luxury-section">
+      <div className="container">
         <div className="testimonials-header">
-          <h2 className="testimonials-title">What Our Clients Say</h2>
-          <p className="testimonials-subtitle">
+          <h2 className="section-title">What Our Clients Say</h2>
+          <p className="section-subtitle">
             Join thousands of satisfied customers who've discovered luxury shopping reimagined
           </p>
         </div>
@@ -151,18 +151,18 @@ const CustomerTestimonials = () => {
           ))}
         </div>
 
-        <div className="testimonials-stats">
-          <div className="stat">
-            <span className="stat-number">98%</span>
-            <span className="stat-label">Customer Satisfaction</span>
+        <div className="luxury-stats">
+          <div className="luxury-stat">
+            <span className="luxury-stat-number">98%</span>
+            <span className="luxury-stat-label">Customer Satisfaction</span>
           </div>
-          <div className="stat">
-            <span className="stat-number">$2.3M+</span>
-            <span className="stat-label">In Luxury Goods Delivered</span>
+          <div className="luxury-stat">
+            <span className="luxury-stat-number">2 Boroughs</span>
+            <span className="luxury-stat-label">Manhattan & Brooklyn</span>
           </div>
-          <div className="stat">
-            <span className="stat-number">24hr</span>
-            <span className="stat-label">Average Delivery Time</span>
+          <div className="luxury-stat">
+            <span className="luxury-stat-number">4-12hr</span>
+            <span className="luxury-stat-label">Average Delivery Time</span>
           </div>
         </div>
       </div>

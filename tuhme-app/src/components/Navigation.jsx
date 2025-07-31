@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useModal } from '../contexts/ModalContext';
-import ThemeToggle from './ThemeToggle';
+import ThemeSelector from './ThemeSelector';
 import NavigationModals from './NavigationModals';
 import tuhmeLogo from '../assets/tuhme.png';
 
@@ -12,6 +12,7 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
 
   const navItems = [
     { id: 'home', label: 'Home', type: 'navigate' },
+    { id: 'store-discovery', label: 'Discover Stores', type: 'navigate' },
     { id: 'how-it-works', label: 'How Tuhme Works', type: 'navigate' },
     { id: 'mission', label: 'Mission Statement', type: 'modal' },
     { id: 'partner', label: 'Partner With Us', type: 'modal' },
@@ -77,15 +78,9 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
             <span className="feedback-icon">💬</span>
           </button>
 
-          <ThemeToggle />
+          <ThemeSelector />
           
-          <button 
-            className="membership-button"
-            onClick={() => openModal('membership')}
-          >
-            <span className="button-text">Join Premium</span>
-            <div className="button-shine"></div>
-          </button>
+
           
           <button 
             className="express-button"

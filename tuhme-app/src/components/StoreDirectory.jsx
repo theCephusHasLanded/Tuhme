@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import storeService from '../services/storeService.js';
 import unsplashService from '../services/unsplashService.js';
-import StoreLogoTrain from './StoreLogoTrain';
+import AIStoreFinder from './AIStoreFinder';
 import StoreSearchModal from './StoreSearchModal';
 import { getBrandSVG } from './BrandSVGs';
 
@@ -156,8 +156,8 @@ const StoreDirectory = () => {
       )}
 
       <div className="container">
-        {/* Store Logo Train */}
-        <StoreLogoTrain speed={60} direction="left" />
+        {/* AI Store Finder */}
+        <AIStoreFinder />
         
         <div className="luxury-section-header">
           <h2 className="luxury-title">Exclusive Store Partners</h2>

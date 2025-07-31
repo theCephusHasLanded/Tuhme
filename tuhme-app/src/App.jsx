@@ -17,9 +17,10 @@ import './styles/enhanced-contrast.css';
 import './styles/enhanced-typography.css';
 import './styles/enhanced-accessibility.css';
 import './styles/luxury-hero.css';
+import './styles/global-font-system.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ModalProvider } from './contexts/ModalContext';
-import Navigation from './components/Navigation';
+import FloatingControlPanel from './components/FloatingControlPanel';
 import Hero from './components/Hero';
 import ServiceOverview from './components/ServiceOverview';
 import HowItWorks from './components/HowItWorks';
@@ -36,6 +37,7 @@ import Matrix3DInterface from './components/Matrix3DInterface';
 import SaviAssistant from './components/SaviAssistant';
 import FloatingSaviBot from './components/FloatingSaviBot';
 import FeedbackModal from './components/FeedbackModal';
+import ImmersiveStoreDiscovery from './components/ImmersiveStoreDiscovery';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
@@ -133,7 +135,7 @@ function App() {
     <ThemeProvider>
       <ModalProvider>
         <div className="app">
-          <Navigation 
+          <FloatingControlPanel
             onNavigate={handleNavigation} 
             currentSection={currentSection} 
             onMatrixToggle={toggleMatrix}
@@ -148,6 +150,10 @@ function App() {
 
             <section id="service-overview">
               <ServiceOverview />
+            </section>
+
+            <section id="store-discovery">
+              <ImmersiveStoreDiscovery />
             </section>
 
             <section id="how-it-works">

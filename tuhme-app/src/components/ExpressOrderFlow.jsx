@@ -27,26 +27,29 @@ const ExpressOrderFlow = ({ onBack }) => {
   
   const packageOptions = [
     {
-      id: 'starter',
-      name: 'Starter',
+      id: 'essential',
+      name: 'Essential',
       items: '3-5 items',
+      maxItems: 5,
       price: '$9.99/item',
       total: '$29.97-$49.95',
       icon: 'shopping'
     },
     {
-      id: 'popular',
-      name: 'Popular',
+      id: 'preferred',
+      name: 'Preferred',
       items: '5-10 items',
+      maxItems: 10,
       price: '$7.99/item',
       total: '$39.95-$79.90',
       icon: 'event',
       popular: true
     },
     {
-      id: 'premium',
-      name: 'Premium',
+      id: 'elite',
+      name: 'Elite',
       items: '10-15 items',
+      maxItems: 15,
       price: '$5.99/item',
       total: '$59.90-$89.85',
       icon: 'professional'
@@ -97,9 +100,10 @@ const ExpressOrderFlow = ({ onBack }) => {
     }
   };
 
-  // Set reasonable upload limit
+  // Set upload limit based on selected package
   const getMaxItems = () => {
-    return 8;
+    const selectedPackage = packageOptions.find(pkg => pkg.id === orderData.packageSize);
+    return selectedPackage ? selectedPackage.maxItems : 5; // Default to 5 if no package selected
   };
 
   const getUploadLimitClass = () => {

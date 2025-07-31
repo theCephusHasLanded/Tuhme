@@ -41,17 +41,44 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="liquid-footer">
+    <footer className="luxury-section" style={{
+      backgroundImage: `
+        linear-gradient(135deg, var(--theme-primary)e0 0%, var(--theme-secondary)e0 100%),
+        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')
+      `,
+      backgroundBlendMode: 'overlay, normal',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+      borderTop: '1px solid var(--theme-accent)'
+    }}>
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <div className="footer-logo">
-              <img src={tuhmeLogo} alt="TUHME" className="footer-logo-image" />
+        <div className="luxury-grid luxury-grid-4" style={{ alignItems: 'flex-start' }}>
+          <div style={{ gridColumn: 'span 2' }}>
+            <div style={{ marginBottom: 'var(--space-4)' }}>
+              <img src={tuhmeLogo} alt="TUHME" style={{
+                height: '48px',
+                filter: 'brightness(0) invert(1)',
+                marginBottom: 'var(--space-4)'
+              }} />
             </div>
-            <p className="footer-tagline">
+            <h3 style={{
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif',
+              fontSize: 'var(--text-lg)',
+              fontWeight: '700',
+              color: 'var(--theme-accent)',
+              margin: '0 0 var(--space-3) 0'
+            }}>
               We'll Pay For It, And Bring The Store To You
-            </p>
-            <p className="footer-description">
+            </h3>
+            <p style={{
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif',
+              fontSize: 'var(--text-base)',
+              lineHeight: '1.6',
+              color: 'var(--button-secondary-text)',
+              opacity: '0.9',
+              margin: '0 0 var(--space-6) 0'
+            }}>
               Skip the hassle of shopping in-store. We bring your favorite items 
               directly to your door in Manhattan and Brooklyn, so you can try 
               everything on in comfort and pay for only what you keep.

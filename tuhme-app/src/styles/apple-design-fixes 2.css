@@ -1,0 +1,590 @@
+/* APPLE-LEVEL DESIGN FIXES - COMPREHENSIVE OVERRIDES */
+/* Removes all text blur effects and ensures perfect readability */
+
+/* CRITICAL: Remove ALL text-shadow effects that impair readability */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button,
+.hero-title-luxury,
+.hero-glowing-tagline,
+.title-line,
+.brand-name-luxury,
+.luxury-title,
+.luxury-subtitle,
+.steps-title,
+.steps-subtitle,
+.step-description,
+.description-text,
+.cta-text,
+.promise-text,
+.section-title,
+.section-subtitle {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Ensure text has perfect contrast and readability */
+.hero-title-luxury,
+.hero-glowing-tagline,
+.title-line {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+}
+
+.brand-name-luxury {
+  color: #ffffff !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* Remove gradient text effects that reduce readability */
+.hero-title-luxury,
+.luxury-title,
+.section-title {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+/* Center "How TUHME Works" numbers while maintaining icon offset */
+.step-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.step-background-number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 800;
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.step-corner-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+}
+
+.step-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+/* Fix button icon visibility with proper Mantine integration */
+.mantine-Button-root,
+.primary-cta-luxury,
+.liquid-glass-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+}
+
+.mantine-Button-root svg,
+.primary-cta-luxury svg,
+.liquid-glass-button svg {
+  color: inherit !important;
+  opacity: 1 !important;
+  flex-shrink: 0;
+}
+
+/* Ensure cookie bar is opaque */
+.cookie-consent,
+.cookie-bar,
+.privacy-notice {
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  opacity: 1 !important;
+}
+
+/* Center "Everything You Need" section */
+.everything-you-need-section,
+.section-everything-you-need {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Remove gradient effects from headers */
+h1, h2, h3, h4, h5, h6 {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  color: inherit !important;
+}
+
+/* Fix shopping experience section colors */
+.shopping-experience-section {
+  color: inherit !important;
+}
+
+.shopping-experience-section h1,
+.shopping-experience-section h2,
+.shopping-experience-section h3,
+.shopping-experience-section p {
+  color: inherit !important;
+}
+
+/* Mobile responsive pricing fixes */
+.pricing-section,
+.transparent-pricing {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+@media (max-width: 768px) {
+  .pricing-container {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .pricing-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .transparent-pricing {
+    padding: 1rem !important;
+  }
+}
+
+/* Maintain liquid glass effects ONLY for backgrounds, not text */
+.liquid-glass-background,
+.backdrop-element,
+.glass-panel {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* Text elements should never have blur */
+.liquid-glass-background *,
+.backdrop-element *,
+.glass-panel * {
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Apple-level button styling */
+.mantine-Button-root,
+.primary-cta-luxury,
+.liquid-glass-button {
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: none !important;
+  min-height: 44px !important; /* Apple minimum touch target */
+  padding: 8px 16px !important;
+}
+
+.mantine-Button-root:hover,
+.primary-cta-luxury:hover,
+.liquid-glass-button:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+.mantine-Button-root:active,
+.primary-cta-luxury:active,
+.liquid-glass-button:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* Ensure all buttons have proper icon styling */
+.mantine-Button-root svg,
+.primary-cta-luxury svg,
+.liquid-glass-button svg,
+.cta-section-luxury svg {
+  color: inherit !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Perfect icon alignment */
+.mantine-Button-root .mantine-Button-leftSection,
+.mantine-Button-root .mantine-Button-rightSection {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Single page architecture improvements */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Apple-level navigation smooth scrolling */
+.main-website {
+  scroll-behavior: smooth;
+}
+
+/* Improved section spacing for Apple-level design */
+section {
+  padding: 4rem 0 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 0 !important;
+  }
+}
+
+/* Ensure consistent spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Apple-level navigation highlighting */
+.mantine-Button-root[data-active="true"] {
+  background: var(--global-accent, #ffffff) !important;
+  color: var(--global-primary, #000000) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Perfect button focus states */
+.mantine-Button-root:focus-visible {
+  outline: 2px solid var(--global-accent, #ffffff) !important;
+  outline-offset: 2px !important;
+}
+
+/* Seamless modal transitions */
+.mantine-Modal-overlay {
+  backdrop-filter: blur(20px) !important;
+  animation: fadeIn 0.3s ease-out !important;
+}
+
+.mantine-Modal-content {
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.9) translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1) translateY(0); 
+  }
+}
+
+/* Apple-level performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Remove all unnecessary animations that could affect performance */
+.floating-elements,
+.luxury-particles {
+  will-change: transform !important;
+  transform: translateZ(0) !important;
+}
+
+/* Enhanced Mobile Responsive Trust Indicators */
+.trust-indicators {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 3rem !important;
+  flex-wrap: wrap !important;
+  margin-top: 2rem !important;
+  padding: 0 1rem !important;
+}
+
+.trust-indicators .indicator {
+  text-align: center !important;
+  min-width: 120px !important;
+}
+
+.trust-number {
+  display: block !important;
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  font-weight: 200 !important;
+  color: var(--accent-primary, #ffffff) !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.1 !important;
+}
+
+.trust-label {
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+}
+
+/* Mobile-specific trust indicators */
+@media (max-width: 480px) {
+  .trust-indicators {
+    gap: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .trust-indicators .indicator {
+    min-width: 100px !important;
+    flex: 1 !important;
+    max-width: 120px !important;
+  }
+
+  .trust-number {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.75rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .trust-indicators {
+    gap: 2rem !important;
+    margin-top: 1.75rem !important;
+  }
+
+  .trust-indicators .indicator {
+    min-width: 110px !important;
+  }
+
+  .trust-number {
+    font-size: 1.75rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .trust-indicators {
+    margin-top: 1rem !important;
+    gap: 2rem !important;
+  }
+
+  .trust-number {
+    font-size: 1.5rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* Touch device optimizations for trust indicators */
+@media (hover: none) and (pointer: coarse) {
+  .trust-indicators .indicator {
+    padding: 0.5rem !important;
+    touch-action: manipulation !important;
+  }
+}
+
+/* Enhanced Responsive Typography with Fluid Scaling */
+/* Base typography with clamp() for fluid scaling */
+body, html {
+  font-size: clamp(14px, 2.5vw, 16px) !important;
+  line-height: 1.6 !important;
+}
+
+/* Heading typography with fluid scaling */
+h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: clamp(0.75rem, 2vw, 1.5rem) !important;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.25 !important;
+  margin-bottom: clamp(0.5rem, 1.5vw, 1.25rem) !important;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3.5vw, 2rem) !important;
+  line-height: 1.3 !important;
+  margin-bottom: clamp(0.5rem, 1.25vw, 1rem) !important;
+}
+
+h4 {
+  font-size: clamp(1.125rem, 3vw, 1.5rem) !important;
+  line-height: 1.35 !important;
+  margin-bottom: clamp(0.375rem, 1vw, 0.75rem) !important;
+}
+
+h5 {
+  font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+  line-height: 1.4 !important;
+  margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem) !important;
+}
+
+h6 {
+  font-size: clamp(0.875rem, 2vw, 1.125rem) !important;
+  line-height: 1.45 !important;
+  margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem) !important;
+}
+
+/* Paragraph and text scaling */
+p {
+  font-size: clamp(0.875rem, 2.25vw, 1rem) !important;
+  line-height: clamp(1.5, 2vw, 1.7) !important;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1rem) !important;
+}
+
+/* Component-specific responsive typography */
+.hero-title-luxury {
+  font-size: clamp(2rem, 6vw, 4rem) !important;
+  line-height: 1.1 !important;
+}
+
+.hero-glowing-tagline {
+  font-size: clamp(1.25rem, 4vw, 2rem) !important;
+  line-height: 1.2 !important;
+}
+
+.brand-name-luxury {
+  font-size: clamp(2.5rem, 8vw, 5rem) !important;
+  line-height: 1 !important;
+}
+
+.pricing-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.2 !important;
+}
+
+.cta-title {
+  font-size: clamp(1.25rem, 3.5vw, 2rem) !important;
+  line-height: 1.25 !important;
+}
+
+/* Button text scaling */
+.mantine-Button-root,
+.primary-cta-luxury,
+.liquid-glass-button {
+  font-size: clamp(0.875rem, 2vw, 1rem) !important;
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 2.5vw, 1.5rem) !important;
+}
+
+/* Navigation text scaling */
+.mantine-Button-root[data-navigation="true"] {
+  font-size: clamp(0.8125rem, 1.8vw, 0.9375rem) !important;
+}
+
+/* Small text elements */
+.trust-label,
+.feature-text,
+.benefit-description,
+.pricing-subtitle {
+  font-size: clamp(0.75rem, 2vw, 0.875rem) !important;
+  line-height: clamp(1.4, 1.5vw, 1.5) !important;
+}
+
+/* Large display text */
+.trust-number,
+.price {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.1 !important;
+}
+
+/* Mobile-specific typography adjustments */
+@media (max-width: 480px) {
+  /* More conservative scaling on very small screens */
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.625rem !important;
+  }
+
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-title-luxury {
+    font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
+  }
+
+  .brand-name-luxury {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+}
+
+/* Tablet-specific typography */
+@media (min-width: 481px) and (max-width: 768px) {
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem) !important;
+  }
+
+  .hero-title-luxury {
+    font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+  /* Cap font sizes on very large screens */
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h2 {
+    font-size: 2.5rem !important;
+  }
+
+  .hero-title-luxury {
+    font-size: 4rem !important;
+  }
+
+  .brand-name-luxury {
+    font-size: 5rem !important;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body, html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+}

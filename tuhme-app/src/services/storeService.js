@@ -1501,8 +1501,8 @@ class StoreService {
         accent: '#FFFFFF'
       },
       'Streetwear': {
-        primary: '#FF6B35',
-        secondary: '#2E3440',
+        primary: '#2E3440',
+        secondary: '#34495e',
         accent: '#ECEFF4'
       },
       'Sustainable Fashion': {

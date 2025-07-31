@@ -1,19 +1,19 @@
 /* TUHME Color Scheme - Based on #ff6e57 */
 
 :root {
-  /* Primary Brand Color - Coral Red */
-  --color-primary: #ff6e57;
-  --color-primary-50: #fff5f3;
-  --color-primary-100: #ffe7e3;
-  --color-primary-200: #ffd4cc;
-  --color-primary-300: #ffb3a8;
-  --color-primary-400: #ff8a74;
-  --color-primary-500: #ff6e57; /* Base color */
-  --color-primary-600: #ed4a2f;
-  --color-primary-700: #c8341f;
-  --color-primary-800: #a52c1c;
-  --color-primary-900: #89291c;
-  --color-primary-950: #4b120a;
+  /* Primary Brand Color - Theme Aware */
+  --color-primary: var(--theme-accent);
+  --color-primary-50: var(--theme-accent)05;
+  --color-primary-100: var(--theme-accent)10;
+  --color-primary-200: var(--theme-accent)20;
+  --color-primary-300: var(--theme-accent)30;
+  --color-primary-400: var(--theme-accent)50;
+  --color-primary-500: var(--theme-accent); /* Base color */
+  --color-primary-600: var(--theme-accent)dd;
+  --color-primary-700: var(--theme-accent)bb;
+  --color-primary-800: var(--theme-accent)99;
+  --color-primary-900: var(--theme-accent)77;
+  --color-primary-950: var(--theme-accent)44;
 
   /* Complementary Colors - Teal/Cyan (opposite on color wheel) */
   --color-secondary: #57d4ff;
@@ -29,8 +29,8 @@
   --color-secondary-900: #0e5368;
   --color-secondary-950: #053544;
 
-  /* Analogous Colors - Orange and Pink */
-  --color-accent-warm: #ff8c42; /* Orange - warmer neighbor */
+  /* Analogous Colors - Theme Based */
+--color-accent-warm: var(--theme-accent); /* Theme accent neighbor */
   --color-accent-cool: #ff4757; /* Pink-red - cooler neighbor */
 
   /* Triadic Colors - Purple and Green */

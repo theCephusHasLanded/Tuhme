@@ -30,8 +30,8 @@
 }
 
 .limit-indicator.limit-reached {
-  color: #ff6b6b;
-  border-color: rgba(255, 107, 107, 0.3);
+  color: var(--theme-accent);
+  border-color: var(--theme-accent)40;
 }
 
 .upgrade-hint {
@@ -76,8 +76,8 @@
 .upload-label.disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background: rgba(255, 107, 107, 0.05);
-  border-color: rgba(255, 107, 107, 0.3);
+  background: var(--theme-accent)10;
+  border-color: var(--theme-accent)40;
 }
 
 .uploaded-items-grid {
@@ -184,8 +184,8 @@
 }
 
 .remove-item-btn {
-  color: #ff6b6b;
-  border-color: rgba(255, 107, 107, 0.3);
+  color: var(--theme-accent);
+  border-color: var(--theme-accent)40;
   width: 28px;
   height: 28px;
   justify-content: center;
@@ -193,8 +193,8 @@
 }
 
 .remove-item-btn:hover {
-  background: rgba(255, 107, 107, 0.1);
-  border-color: #ff6b6b;
+  background: var(--theme-accent)20;
+  border-color: var(--theme-accent);
 }
 
 .item-metadata {

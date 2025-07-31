@@ -83,8 +83,8 @@ const StoreLogoTrain = ({ speed = 5, direction = 'left' }) => {
             <span className="stat-label">Featured Partners</span>
           </div>
           <div className="stat">
-            <span className="stat-number">2</span>
-            <span className="stat-label">NYC Boroughs</span>
+            <span className="stat-number">NJ</span>
+            <span className="stat-label">Coming Soon</span>
           </div>
           <div className="stat">
             <span className="stat-number">{storeService.getAverageRating()}</span>
@@ -412,27 +412,8 @@ const StoreLogoTrain = ({ speed = 5, direction = 'left' }) => {
 
         /* Responsive Design */
         @media (max-width: 768px) {
-          .train-container {
-            padding: 0 1rem;
-          }
-
-          .train-car {
-            min-width: 260px;
-            height: 120px;
-            padding: 1rem;
-          }
-
-          .train-stats {
-            gap: 1.5rem;
-            flex-wrap: wrap;
-          }
-
-          .stat-number {
-            font-size: var(--text-xl);
-          }
-
-          .stat-label {
-            font-size: var(--text-xs);
+          .store-logo-train {
+            display: none;
           }
         }
 
