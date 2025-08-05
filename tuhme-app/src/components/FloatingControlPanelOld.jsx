@@ -94,32 +94,13 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
     };
   }, [isOpen]);
 
-  const handleNavClick = (item, e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleNavClick = (item) => {
     if (item.type === 'modal') {
       setActiveModal(item.id);
     } else {
       onNavigate(item.id);
     }
     setIsOpen(false);
-  };
-
-  const handleActionClick = (action, e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    action();
-    setIsOpen(false);
-  };
-
-  const handleBackdropClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsOpen(false);
-  };
-
-  const handlePanelClick = (e) => {
-    e.stopPropagation();
   };
 
   const closeModal = () => setActiveModal(null);
@@ -129,11 +110,7 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
       {/* Floating Control Button */}
       <button 
         className={`floating-control-trigger ${isScrolled ? 'scrolled' : ''} ${isOpen ? 'active' : ''}`}
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsOpen(!isOpen);
-        }}
+        onClick={() => setIsOpen(!isOpen)}
         title="Control Panel (Ctrl+Space)"
         aria-label="Open control panel"
       >
@@ -151,15 +128,12 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
       {isOpen && (
         <div 
           className="control-panel-backdrop" 
-          onClick={handleBackdropClick}
+          onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Floating Control Panel */}
-      <div 
-        className={`floating-control-panel ${isOpen ? 'open' : ''}`}
-        onClick={handlePanelClick}
-      >
+      <div className={`floating-control-panel ${isOpen ? 'open' : ''}`}>
         <div className="control-panel-header">
           <h3 className="panel-title">Navigation Hub</h3>
           <p className="panel-subtitle">Quick access to all sections</p>
@@ -177,7 +151,7 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
                 <button
                   key={item.id}
                   className={`nav-card ${currentSection === item.id ? 'active' : ''}`}
-                  onClick={(e) => handleNavClick(item, e)}
+                  onClick={() => handleNavClick(item)}
                 >
                   <div className="nav-icon">{item.icon}</div>
                   <span className="nav-label">{item.label}</span>
@@ -197,7 +171,10 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
                 <button
                   key={item.id}
                   className="action-card"
-                  onClick={(e) => handleActionClick(item.action, e)}
+                  onClick={() => {
+                    item.action();
+                    setIsOpen(false);
+                  }}
                   style={{ '--accent-color': item.color }}
                 >
                   <div className="action-icon">{item.icon}</div>
@@ -219,11 +196,7 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
         <div className="control-panel-footer">
           <button 
             className="close-panel-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsOpen(false);
-            }}
+            onClick={() => setIsOpen(false)}
           >
             Close Panel
           </button>
@@ -236,7 +209,7 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
         onClose={closeModal} 
       />
 
-      <style jsx="true">{`
+      <style jsx>{`
         .floating-control-trigger {
           position: fixed;
           top: 1.5rem;
@@ -248,7 +221,7 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
           border: 2px solid rgba(255, 255, 255, 0.1);
           border-radius: 16px;
           cursor: pointer;
-          z-index: 10000;
+          z-index: 9999;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           display: flex;
           align-items: center;
@@ -358,13 +331,11 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
           box-shadow: 
             0 25px 50px rgba(0, 0, 0, 0.3),
             0 0 0 1px rgba(255, 255, 255, 0.05);
-          pointer-events: none;
         }
 
         .floating-control-panel.open {
           transform: translate(-50%, -50%) scale(1);
           opacity: 1;
-          pointer-events: auto;
         }
 
         .control-panel-header {

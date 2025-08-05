@@ -39,10 +39,7 @@
   margin: 0 0 20px 0;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tighter);
-  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-text);
 }
 
 .pricing-subtitle {
@@ -378,10 +375,7 @@
   font-weight: 600;
   color: var(--primary-text);
   margin: 0;
-  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-text);
 }
 
 .faq-list {
@@ -471,10 +465,7 @@
   margin: 0 0 16px 0;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-text);
 }
 
 .delivery-subtitle {

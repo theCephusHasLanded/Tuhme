@@ -11,10 +11,7 @@
   line-height: 1.2;
   letter-spacing: -0.025em;
   margin: 0 0 var(--space-6) 0;
-  background: linear-gradient(135deg, var(--theme-accent), var(--button-primary-bg));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--theme-accent);
   text-align: center;
 }
 

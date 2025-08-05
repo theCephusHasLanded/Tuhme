@@ -6,9 +6,25 @@ const ThemeSelector = () => {
   const [currentTheme, setCurrentTheme] = useState('auto');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Color scheme definitions with light/dark variants for each luxury theme
+  // Color scheme definitions with light/dark variants and accessibility theme
   const colorSchemes = {
     auto: { name: 'Auto', description: 'System preference' },
+    'monotone-dark': { 
+      name: 'Monotone', 
+      mode: 'dark',
+      primary: '#000000', 
+      secondary: '#1a1a1a', 
+      accent: '#ffffff',
+      description: 'High contrast black & white'
+    },
+    'monotone-light': { 
+      name: 'Monotone', 
+      mode: 'light',
+      primary: '#ffffff', 
+      secondary: '#f5f5f5', 
+      accent: '#000000',
+      description: 'High contrast white & black'
+    },
     'midnight-gold-dark': { 
       name: 'Midnight Gold', 
       mode: 'dark',

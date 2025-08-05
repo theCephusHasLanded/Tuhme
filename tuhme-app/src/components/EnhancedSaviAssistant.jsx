@@ -587,7 +587,7 @@ Respond as SAVI in a helpful, enthusiastic way:`;
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         .enhanced-savi-container {
           position: fixed;
           bottom: 24px;

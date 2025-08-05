@@ -246,10 +246,6 @@ body {
   margin-bottom: var(--space-6);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--primary-text), var(--accent-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .luxury-subtitle {
@@ -405,10 +401,6 @@ body {
   color: var(--primary-text);
   text-align: center;
   margin-bottom: var(--space-12);
-  background: linear-gradient(135deg, var(--primary-text), var(--accent-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .lifestyle-scenarios {
@@ -2381,12 +2373,7 @@ body {
   color: #ffffff;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  background: linear-gradient(45deg, #ffffff, #d4af37, #ffffff);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gold-shimmer 4s ease-in-out infinite;
+  color: #d4af37;
 }
 
 @keyframes gold-shimmer {
@@ -2739,11 +2726,7 @@ body {
   font-weight: 200;
   margin-bottom: 1rem;
   text-align: center;
-  color: #fff;
-  background: linear-gradient(45deg, #ffffff, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #d4af37;
 }
 
 .section-description {
@@ -3815,12 +3798,8 @@ body {
 .dashboard-header h1 {
   font-size: 2.5rem;
   font-weight: 200;
-  color: #ffffff;
+  color: #d4af37;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, #ffffff, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .dashboard-subtitle {
@@ -6135,10 +6114,6 @@ body {
   font-size: var(--text-4xl);
   color: var(--primary-text);
   margin-bottom: var(--space-2);
-  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .flow-subtitle {
@@ -8612,10 +8587,6 @@ body {
   font-weight: 300;
   color: var(--primary-text);
   margin-bottom: var(--space-4);
-  background: linear-gradient(135deg, var(--primary-text), var(--accent-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .testimonials-subtitle {

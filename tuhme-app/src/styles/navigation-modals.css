@@ -28,10 +28,10 @@
 }
 
 .modal-content {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--modal-bg, rgba(255, 255, 255, 0.95));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid var(--theme-accent, rgba(212, 175, 55, 0.3));
   border-radius: 20px;
   max-width: 600px;
   width: 100%;
@@ -39,16 +39,40 @@
   overflow-y: auto;
   position: relative;
   animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--border-light, rgba(255, 255, 255, 0.1));
   margin: auto;
   transform-origin: center;
+  color: var(--primary-text);
 }
 
-/* Dark Theme Modal Support */
-[data-theme="dark"] .modal-content {
-  background: rgba(26, 26, 26, 0.92);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+/* Enhanced Theme Support */
+[data-theme="dark"] .modal-content,
+[data-theme="midnight"] .modal-content,
+[data-theme="obsidian"] .modal-content {
+  background: var(--secondary-bg, rgba(26, 26, 26, 0.95));
+  border: 1px solid var(--theme-accent, rgba(212, 175, 55, 0.3));
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Luxury theme variations */
+[data-theme="royal"] .modal-content {
+  background: var(--secondary-bg, rgba(15, 23, 42, 0.95));
+  border: 1px solid var(--theme-accent, #8b5cf6);
+}
+
+[data-theme="emerald"] .modal-content {
+  background: var(--secondary-bg, rgba(16, 25, 20, 0.95));
+  border: 1px solid var(--theme-accent, #10b981);
+}
+
+[data-theme="gold"] .modal-content {
+  background: var(--secondary-bg, rgba(30, 25, 15, 0.95));
+  border: 1px solid var(--theme-accent, #f59e0b);
+}
+
+[data-theme="rose"] .modal-content {
+  background: var(--secondary-bg, rgba(30, 15, 20, 0.95));
+  border: 1px solid var(--theme-accent, #f43f5e);
 }
 
 @keyframes modalSlideIn {
@@ -71,7 +95,7 @@
   background: none;
   border: none;
   font-size: 24px;
-  color: #666;
+  color: var(--secondary-text, #666);
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -84,26 +108,22 @@
 }
 
 .modal-close:hover {
-  background: rgba(212, 175, 55, 0.1);
-  color: var(--accent-primary);
+  background: var(--theme-accent-bg, rgba(212, 175, 55, 0.1));
+  color: var(--theme-accent);
   transform: scale(1.1);
 }
 
 .modal-header {
   text-align: center;
   padding: 40px 40px 20px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid var(--border-light, rgba(212, 175, 55, 0.1));
 }
 
 .modal-header h2 {
   margin: 15px 0 0;
   font-size: 2rem;
   font-weight: 600;
-  color: var(--primary-text);
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--theme-accent);
 }
 
 .modal-body {
@@ -134,16 +154,16 @@
 .pillar {
   text-align: center;
   padding: 20px;
-  background: rgba(212, 175, 55, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: var(--tertiary-bg, rgba(212, 175, 55, 0.05));
+  border: 1px solid var(--border-light, rgba(212, 175, 55, 0.1));
   border-radius: 15px;
   transition: all 0.3s ease;
 }
 
 .pillar:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 20px var(--theme-accent-shadow, rgba(212, 175, 55, 0.2));
+  border-color: var(--theme-accent, rgba(212, 175, 55, 0.3));
 }
 
 .pillar h4 {
@@ -665,15 +685,301 @@
 }
 
 .modal-action-btn.primary {
-  background: var(--accent-primary);
+  background: var(--theme-accent);
   color: var(--primary-bg);
-  border-color: var(--accent-primary);
+  border-color: var(--theme-accent);
 }
 
 .modal-action-btn.primary:hover {
-  background: var(--accent-secondary);
+  background: var(--theme-accent-hover, var(--accent-secondary));
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px var(--theme-accent-shadow, rgba(212, 175, 55, 0.3));
+}
+
+/* Additional Modal Content Styles */
+
+/* About Modal */
+.about-content .about-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.about-content .value {
+  text-align: center;
+  padding: 20px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.about-content .value:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--theme-accent-shadow, rgba(212, 175, 55, 0.2));
+}
+
+/* Careers Modal */
+.careers-content .position {
+  padding: 20px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.careers-content .position h5 {
+  color: var(--theme-accent);
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+/* Express Orders Modal */
+.express-content .express-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.express-content .tier {
+  padding: 25px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.express-content .tier.premium {
+  border-color: var(--theme-accent);
+  background: var(--theme-accent-bg, rgba(212, 175, 55, 0.05));
+}
+
+.express-content .price {
+  display: block;
+  font-weight: 600;
+  color: var(--theme-accent);
+  margin-top: 10px;
+}
+
+.express-content .steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.express-content .step {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: var(--tertiary-bg);
+  border-radius: 10px;
+}
+
+.express-content .step-number {
+  width: 30px;
+  height: 30px;
+  background: var(--theme-accent);
+  color: var(--primary-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* FAQ Modal */
+.faq-content .faq-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.faq-content .faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-content .faq-item h4 {
+  color: var(--theme-accent);
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+}
+
+/* Contact Modal */
+.contact-content .contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.contact-content .contact-method {
+  text-align: center;
+  padding: 25px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+}
+
+.contact-content .contact-btn {
+  background: var(--theme-accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.contact-content .contact-btn:hover {
+  background: var(--theme-accent-hover, var(--accent-secondary));
+  transform: translateY(-2px);
+}
+
+.contact-content .info-grid {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.contact-content .info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: var(--tertiary-bg);
+  border-radius: 8px;
+}
+
+/* Track Order Modal */
+.track-content .track-form {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.track-content .track-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  background: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+.track-content .track-btn {
+  background: var(--theme-accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.track-content .support-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Feedback Modal */
+.feedback-content .feedback-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.feedback-content .feedback-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feedback-content .feedback-option:hover {
+  background: var(--theme-accent);
+  color: var(--primary-bg);
+  transform: translateY(-3px);
+}
+
+/* WhatsApp Modal */
+.whatsapp-content .whatsapp-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.whatsapp-content .feature {
+  text-align: center;
+  padding: 20px;
+  background: var(--tertiary-bg);
+  border-radius: 12px;
+}
+
+.whatsapp-content .whatsapp-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-content .phone-number {
+  text-align: center;
+  color: var(--secondary-text);
+  margin-top: 10px;
+}
+
+/* Legal Modals */
+.legal-content .legal-section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.legal-content .legal-section:last-child {
+  border-bottom: none;
+}
+
+.legal-content .legal-section h4 {
+  color: var(--theme-accent);
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.legal-content .legal-section ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.legal-content .legal-section li {
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
 
 @media (max-width: 480px) {
@@ -684,5 +990,21 @@
   
   .modal-action-btn {
     width: 100%;
+  }
+  
+  .about-values,
+  .express-tiers,
+  .contact-methods,
+  .feedback-options,
+  .whatsapp-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .express-content .steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .track-content .track-form {
+    flex-direction: column;
   }
 }

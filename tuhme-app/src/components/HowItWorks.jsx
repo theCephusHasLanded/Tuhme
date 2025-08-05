@@ -1,7 +1,6 @@
 import TuhmeIcon from './TuhmeIcon';
 import CallToActionWidget from './CallToActionWidget';
 import BenefitsWidget from './BenefitsWidget';
-import CompactStoreSearch from './CompactStoreSearch';
 
 
 const HowItWorks = () => {
@@ -109,9 +108,6 @@ const HowItWorks = () => {
             </div>
           ))}
         </div>
-
-        {/* Store Search */}
-        <CompactStoreSearch />
 
         <CallToActionWidget />
 

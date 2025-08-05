@@ -3,6 +3,11 @@ import { getBrandSVG } from './BrandSVGs';
 import storeService from '../services/storeService';
 import tuhmeLogo from '../assets/tuhme.png';
 
+
+// Google Gemini API configuration (reuse from SAVI Assistant)
+const GEMINI_API_KEY = '[REDACTED:api-key]';
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+
 const ImmersiveStoreDiscovery = () => {
   const [stores, setStores] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -151,6 +156,59 @@ const ImmersiveStoreDiscovery = () => {
     return saleStores.find(saleStore => saleStore.id === store.id);
   };
 
+  // Handle store click with robust URL handling
+  const handleStoreClick = (store) => {
+    // Generate a more universal URL based on store name
+    const generateStoreUrl = (storeName, originalWebsite) => {
+      // Remove location-specific terms and clean the name
+      const cleanName = storeName
+        .replace(/\s+(SoHo|Flatiron|Manhattan|Brooklyn|NYC|Midtown|Downtown|Upper East Side|Upper West Side|Lower East Side|West Village|East Village|Tribeca|Chelsea|Meatpacking|Financial District)\s*/gi, '')
+        .replace(/\s+/g, '')
+        .toLowerCase();
+      
+      // Try the original website first if it exists and looks valid
+      if (originalWebsite && originalWebsite.startsWith('http')) {
+        return originalWebsite;
+      }
+      
+      // Generate common website patterns
+      const commonPatterns = [
+        `https://www.${cleanName}.com`,
+        `https://${cleanName}.com`,
+        `https://www.${cleanName}.net`,
+        `https://${cleanName}.net`
+      ];
+      
+      return commonPatterns[0]; // Default to the most common pattern
+    };
+
+    try {
+      const targetUrl = generateStoreUrl(store.name, store.website);
+      console.log(`Opening store: ${store.name} -> ${targetUrl}`);
+      
+      // Open in new tab with better error handling
+      const newWindow = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      
+      // Fallback if popup was blocked or failed
+      if (!newWindow) {
+        console.warn('Popup blocked, trying alternative method');
+        // Create a temporary link and click it
+        const link = document.createElement('a');
+        link.href = targetUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    } catch (error) {
+      console.error('Error opening store website:', error);
+      // Fallback to Google search if all else fails
+      const searchQuery = encodeURIComponent(`${store.name} official website store`);
+      window.open(`https://www.google.com/search?q=${searchQuery}`, '_blank');
+    }
+  };
+
   if (stores.length === 0) {
     return (
       <div className="immersive-store-discovery loading">
@@ -177,6 +235,8 @@ const ImmersiveStoreDiscovery = () => {
         )}
       </div>
 
+
+
       <div className="store-queue-container">
         <button
           className="nav-button nav-prev"
@@ -202,7 +262,9 @@ const ImmersiveStoreDiscovery = () => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                window.open(store.website, '_blank');
+                e.stopImmediatePropagation();
+                // Add a small delay to ensure other event handlers don't interfere
+                setTimeout(() => handleStoreClick(store), 50);
               }}
               style={{
                 '--queue-position': queuePosition,
@@ -270,7 +332,7 @@ const ImmersiveStoreDiscovery = () => {
                   </div>
 
                   <div className="preview-overlay">
-                    <span className="preview-label">Click to visit {store.name}</span>
+                    <span className="preview-label">Click to explore {store.name.replace(/\s+(SoHo|Flatiron|Manhattan|Brooklyn|NYC|Midtown|Downtown|Upper East Side|Upper West Side|Lower East Side|West Village|East Village|Tribeca|Chelsea|Meatpacking|Financial District)\s*/gi, '')}</span>
                   </div>
                 </div>
 
@@ -347,7 +409,7 @@ const ImmersiveStoreDiscovery = () => {
 
 
 
-      <style jsx>{`
+      <style>{`
         .immersive-store-discovery {
           padding: 6rem 2rem;
           background: linear-gradient(135deg,
@@ -458,7 +520,7 @@ const ImmersiveStoreDiscovery = () => {
           width: 450px;
           height: 600px;
           transform: scale(1);
-          z-index: 3;
+          z-index: 100;
         }
 
         .store-card.queue-store {
@@ -466,7 +528,7 @@ const ImmersiveStoreDiscovery = () => {
           height: 520px;
           transform: scale(0.9);
           opacity: 0.8;
-          z-index: calc(2 - var(--queue-position));
+          z-index: calc(99 - var(--queue-position));
         }
 
         .store-card:hover {
@@ -1078,6 +1140,8 @@ const ImmersiveStoreDiscovery = () => {
             gap: 2rem;
           }
         }
+
+
 
         /* Reduced motion support */
         @media (prefers-reduced-motion: reduce) {

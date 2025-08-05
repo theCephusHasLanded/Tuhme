@@ -35,10 +35,7 @@
   margin: 0 0 16px 0;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-text);
 }
 
 .cta-subtitle {

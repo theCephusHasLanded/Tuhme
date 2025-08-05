@@ -1,4 +1,5 @@
 import TuhmeIcon from './TuhmeIcon';
+import AIStoreSearch from './AIStoreSearch';
 
 const ServiceOverview = () => {
   return (
@@ -12,6 +13,8 @@ const ServiceOverview = () => {
             delivered right to your door.
           </p>
         </div>
+
+        <AIStoreSearch />
 
         <div className="service-features">
           <div className="luxury-grid luxury-grid-3">
