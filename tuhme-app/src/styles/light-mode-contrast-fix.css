@@ -1,0 +1,233 @@
+/* Light Mode Contrast and Visibility Fix for Safari and All Browsers */
+/* This file addresses font visibility issues where text appears too light in light mode */
+
+/* Enhanced Light Theme Variables with Better Contrast */
+:root,
+[data-theme="light"] {
+  /* Primary text colors with stronger contrast */
+  --primary-text: #111111 !important;
+  --secondary-text: #2c2c2c !important;  /* Darker than original #333333 */
+  --tertiary-text: #404040 !important;   /* Darker than original #555555 */
+  --quaternary-text: #4a4a4a !important; /* For very subtle text */
+  
+  /* Enhanced text colors for different contexts */
+  --text-high-contrast: #000000 !important;
+  --text-medium-contrast: #1a1a1a !important;
+  --text-low-contrast: #333333 !important;
+  --text-subtle: #4d4d4d !important;
+  
+  /* Background colors optimized for contrast */
+  --primary-bg: #ffffff !important;
+  --secondary-bg: #fafafa !important;
+  --tertiary-bg: #f5f5f5 !important;
+  
+  /* Border colors with better visibility */
+  --border-light: rgba(0, 0, 0, 0.12) !important;
+  --border-medium: rgba(0, 0, 0, 0.2) !important;
+  --border-strong: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Fix for elements using opacity that might be too light */
+[data-theme="light"] .subtitle,
+[data-theme="light"] .caption,
+[data-theme="light"] .text-muted,
+[data-theme="light"] .secondary-text {
+  opacity: 1 !important;
+  color: var(--secondary-text) !important;
+}
+
+/* Ensure all text elements have sufficient contrast in light mode */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
+[data-theme="light"] .h1,
+[data-theme="light"] .h2,
+[data-theme="light"] .h3,
+[data-theme="light"] .h4,
+[data-theme="light"] .h5,
+[data-theme="light"] .h6 {
+  color: var(--primary-text) !important;
+}
+
+/* Paragraph and body text */
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] div,
+[data-theme="light"] label {
+  color: var(--primary-text) !important;
+}
+
+/* Navigation and menu items */
+[data-theme="light"] .nav-item,
+[data-theme="light"] .menu-item,
+[data-theme="light"] .navigation a {
+  color: var(--primary-text) !important;
+}
+
+/* Button text enhancements */
+[data-theme="light"] button,
+[data-theme="light"] .btn {
+  color: var(--primary-text) !important;
+}
+
+[data-theme="light"] .btn-secondary,
+[data-theme="light"] .btn-outline {
+  color: var(--secondary-text) !important;
+  border-color: var(--border-medium) !important;
+}
+
+/* Form elements */
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  color: var(--primary-text) !important;
+  background-color: var(--primary-bg) !important;
+  border-color: var(--border-medium) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: var(--tertiary-text) !important;
+  opacity: 1 !important;
+}
+
+/* Card and widget text */
+[data-theme="light"] .card,
+[data-theme="light"] .widget {
+  color: var(--primary-text) !important;
+  background-color: var(--primary-bg) !important;
+}
+
+[data-theme="light"] .card-title,
+[data-theme="light"] .widget-title {
+  color: var(--primary-text) !important;
+}
+
+[data-theme="light"] .card-subtitle,
+[data-theme="light"] .widget-subtitle {
+  color: var(--secondary-text) !important;
+}
+
+/* Store carousel and directory text */
+[data-theme="light"] .store-card h3,
+[data-theme="light"] .store-card h4,
+[data-theme="light"] .store-name {
+  color: var(--primary-text) !important;
+}
+
+[data-theme="light"] .store-description,
+[data-theme="light"] .store-hours,
+[data-theme="light"] .store-location {
+  color: var(--secondary-text) !important;
+}
+
+/* Modal text */
+[data-theme="light"] .modal-title {
+  color: var(--primary-text) !important;
+}
+
+[data-theme="light"] .modal-content,
+[data-theme="light"] .modal-body {
+  color: var(--primary-text) !important;
+}
+
+/* Footer text */
+[data-theme="light"] .footer {
+  color: var(--secondary-text) !important;
+}
+
+[data-theme="light"] .footer a {
+  color: var(--primary-text) !important;
+}
+
+/* Price and pricing text */
+[data-theme="light"] .price,
+[data-theme="light"] .pricing {
+  color: var(--primary-text) !important;
+}
+
+/* Express order and form text */
+[data-theme="light"] .express-order,
+[data-theme="light"] .form-group label {
+  color: var(--primary-text) !important;
+}
+
+/* Links with better contrast */
+[data-theme="light"] a {
+  color: var(--primary-text) !important;
+}
+
+[data-theme="light"] a:hover {
+  color: var(--accent-primary) !important;
+}
+
+/* Search and filter text */
+[data-theme="light"] .search-input,
+[data-theme="light"] .filter-option {
+  color: var(--primary-text) !important;
+}
+
+/* Ensure no text is completely invisible by removing problematic opacity */
+[data-theme="light"] * {
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .text-light,
+[data-theme="light"] .text-muted,
+[data-theme="light"] .text-secondary {
+  color: var(--secondary-text) !important;
+  opacity: 1 !important;
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+  [data-theme="light"] body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  [data-theme="light"] * {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Accessibility improvements - ensure WCAG AA compliance */
+[data-theme="light"] .accessible-text {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  [data-theme="light"] {
+    --primary-text: #000000 !important;
+    --secondary-text: #1a1a1a !important;
+    --tertiary-text: #2c2c2c !important;
+  }
+}
+
+/* Force inheritance of dark colors in light mode to prevent bleed-through */
+[data-theme="light"] {
+  --text-white: #000000 !important;
+  --text-light: #1a1a1a !important;
+  --text-muted-light: #333333 !important;
+}
+
+/* Prevent any glassmorphism or transparency issues in light mode */
+[data-theme="light"] .glass,
+[data-theme="light"] .backdrop,
+[data-theme="light"] .overlay {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Debug helper - uncomment to identify problem elements */
+/*
+[data-theme="light"] * {
+  border: 1px solid red !important;
+}
+*/

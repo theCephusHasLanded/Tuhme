@@ -1,0 +1,220 @@
+/* Safari Light Mode Visibility Fix */
+/* Addresses specific Safari rendering issues with light text on light backgrounds */
+
+/* Safari-specific overrides for light mode */
+@supports (-webkit-appearance: none) {
+  /* Light theme overrides specifically for Safari */
+  [data-theme="light"], 
+  :root:not([data-theme="dark"]) {
+    /* Ensure maximum contrast for text */
+    --primary-text: #000000 !important;
+    --secondary-text: #1a1a1a !important;
+    --tertiary-text: #2d2d2d !important;
+    --text-color: #000000 !important;
+    --heading-color: #000000 !important;
+    --body-color: #000000 !important;
+  }
+  
+  /* Force black text on all elements in light mode */
+  [data-theme="light"] *,
+  :root:not([data-theme="dark"]) * {
+    color: #000000 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+  
+  /* Headers with extra boldness for Safari */
+  [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3,
+  [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6,
+  :root:not([data-theme="dark"]) h1, :root:not([data-theme="dark"]) h2, 
+  :root:not([data-theme="dark"]) h3, :root:not([data-theme="dark"]) h4, 
+  :root:not([data-theme="dark"]) h5, :root:not([data-theme="dark"]) h6 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    -webkit-text-stroke: 0.3px #000000 !important;
+  }
+  
+  /* Paragraphs and body text */
+  [data-theme="light"] p, [data-theme="light"] span, [data-theme="light"] div,
+  [data-theme="light"] li, [data-theme="light"] td, [data-theme="light"] th,
+  :root:not([data-theme="dark"]) p, :root:not([data-theme="dark"]) span, 
+  :root:not([data-theme="dark"]) div, :root:not([data-theme="dark"]) li,
+  :root:not([data-theme="dark"]) td, :root:not([data-theme="dark"]) th {
+    color: #000000 !important;
+    font-weight: 400 !important;
+  }
+  
+  /* Buttons with high contrast */
+  [data-theme="light"] button, [data-theme="light"] .btn,
+  [data-theme="light"] .button, [data-theme="light"] input[type="submit"],
+  :root:not([data-theme="dark"]) button, :root:not([data-theme="dark"]) .btn,
+  :root:not([data-theme="dark"]) .button, :root:not([data-theme="dark"]) input[type="submit"] {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    border-color: #000000 !important;
+  }
+  
+  /* Navigation elements */
+  [data-theme="light"] nav, [data-theme="light"] .navigation,
+  [data-theme="light"] .nav-item, [data-theme="light"] a,
+  :root:not([data-theme="dark"]) nav, :root:not([data-theme="dark"]) .navigation,
+  :root:not([data-theme="dark"]) .nav-item, :root:not([data-theme="dark"]) a {
+    color: #000000 !important;
+  }
+  
+  /* Form elements */
+  [data-theme="light"] input, [data-theme="light"] textarea, 
+  [data-theme="light"] select, [data-theme="light"] label,
+  :root:not([data-theme="dark"]) input, :root:not([data-theme="dark"]) textarea,
+  :root:not([data-theme="dark"]) select, :root:not([data-theme="dark"]) label {
+    color: #000000 !important;
+    border-color: #333333 !important;
+  }
+  
+  [data-theme="light"] input::placeholder, [data-theme="light"] textarea::placeholder,
+  :root:not([data-theme="dark"]) input::placeholder, :root:not([data-theme="dark"]) textarea::placeholder {
+    color: #666666 !important;
+    opacity: 1 !important;
+  }
+  
+  /* Cards and containers */
+  [data-theme="light"] .card, [data-theme="light"] .widget,
+  [data-theme="light"] .container, [data-theme="light"] .component,
+  :root:not([data-theme="dark"]) .card, :root:not([data-theme="dark"]) .widget,
+  :root:not([data-theme="dark"]) .container, :root:not([data-theme="dark"]) .component {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    border-color: #dddddd !important;
+  }
+  
+  /* Store carousel and directory items */
+  [data-theme="light"] .store-card, [data-theme="light"] .store-item,
+  [data-theme="light"] .store-name, [data-theme="light"] .store-title,
+  :root:not([data-theme="dark"]) .store-card, :root:not([data-theme="dark"]) .store-item,
+  :root:not([data-theme="dark"]) .store-name, :root:not([data-theme="dark"]) .store-title {
+    color: #000000 !important;
+  }
+  
+  [data-theme="light"] .store-description, [data-theme="light"] .store-hours,
+  [data-theme="light"] .store-location, [data-theme="light"] .store-specialty,
+  :root:not([data-theme="dark"]) .store-description, :root:not([data-theme="dark"]) .store-hours,
+  :root:not([data-theme="dark"]) .store-location, :root:not([data-theme="dark"]) .store-specialty {
+    color: #1a1a1a !important;
+  }
+  
+  /* Modal content */
+  [data-theme="light"] .modal, [data-theme="light"] .modal-content,
+  [data-theme="light"] .modal-header, [data-theme="light"] .modal-body,
+  :root:not([data-theme="dark"]) .modal, :root:not([data-theme="dark"]) .modal-content,
+  :root:not([data-theme="dark"]) .modal-header, :root:not([data-theme="dark"]) .modal-body {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+  }
+  
+  /* Footer content */
+  [data-theme="light"] .footer, [data-theme="light"] footer,
+  :root:not([data-theme="dark"]) .footer, :root:not([data-theme="dark"]) footer {
+    color: #000000 !important;
+  }
+  
+  /* Pricing elements */
+  [data-theme="light"] .price, [data-theme="light"] .pricing,
+  [data-theme="light"] .tier, [data-theme="light"] .plan,
+  :root:not([data-theme="dark"]) .price, :root:not([data-theme="dark"]) .pricing,
+  :root:not([data-theme="dark"]) .tier, :root:not([data-theme="dark"]) .plan {
+    color: #000000 !important;
+  }
+  
+  /* Express order and delivery forms */
+  [data-theme="light"] .express-order, [data-theme="light"] .delivery-form,
+  [data-theme="light"] .order-form, [data-theme="light"] .contact-form,
+  :root:not([data-theme="dark"]) .express-order, :root:not([data-theme="dark"]) .delivery-form,
+  :root:not([data-theme="dark"]) .order-form, :root:not([data-theme="dark"]) .contact-form {
+    color: #000000 !important;
+  }
+  
+  /* Hero section */
+  [data-theme="light"] .hero, [data-theme="light"] .hero-content,
+  [data-theme="light"] .hero-title, [data-theme="light"] .hero-subtitle,
+  :root:not([data-theme="dark"]) .hero, :root:not([data-theme="dark"]) .hero-content,
+  :root:not([data-theme="dark"]) .hero-title, :root:not([data-theme="dark"]) .hero-subtitle {
+    color: #000000 !important;
+  }
+  
+  /* Benefits and features */
+  [data-theme="light"] .benefits, [data-theme="light"] .features,
+  [data-theme="light"] .benefit-item, [data-theme="light"] .feature-item,
+  :root:not([data-theme="dark"]) .benefits, :root:not([data-theme="dark"]) .features,
+  :root:not([data-theme="dark"]) .benefit-item, :root:not([data-theme="dark"]) .feature-item {
+    color: #000000 !important;
+  }
+  
+  /* FAQ and help sections */
+  [data-theme="light"] .faq, [data-theme="light"] .help,
+  [data-theme="light"] .question, [data-theme="light"] .answer,
+  :root:not([data-theme="dark"]) .faq, :root:not([data-theme="dark"]) .help,
+  :root:not([data-theme="dark"]) .question, :root:not([data-theme="dark"]) .answer {
+    color: #000000 !important;
+  }
+  
+  /* Remove any problematic opacity or transparency */
+  [data-theme="light"] .text-muted, [data-theme="light"] .text-secondary,
+  [data-theme="light"] .text-light, [data-theme="light"] .subtitle,
+  [data-theme="light"] .caption, [data-theme="light"] .small-text,
+  :root:not([data-theme="dark"]) .text-muted, :root:not([data-theme="dark"]) .text-secondary,
+  :root:not([data-theme="dark"]) .text-light, :root:not([data-theme="dark"]) .subtitle,
+  :root:not([data-theme="dark"]) .caption, :root:not([data-theme="dark"]) .small-text {
+    color: #333333 !important;
+    opacity: 1 !important;
+  }
+  
+  /* SAVI Assistant */
+  [data-theme="light"] .savi, [data-theme="light"] .assistant,
+  [data-theme="light"] .chat, [data-theme="light"] .message,
+  :root:not([data-theme="dark"]) .savi, :root:not([data-theme="dark"]) .assistant,
+  :root:not([data-theme="dark"]) .chat, :root:not([data-theme="dark"]) .message {
+    color: #000000 !important;
+  }
+  
+  /* Search components */
+  [data-theme="light"] .search, [data-theme="light"] .search-results,
+  [data-theme="light"] .search-item, [data-theme="light"] .filter,
+  :root:not([data-theme="dark"]) .search, :root:not([data-theme="dark"]) .search-results,
+  :root:not([data-theme="dark"]) .search-item, :root:not([data-theme="dark"]) .filter {
+    color: #000000 !important;
+  }
+}
+
+/* Default fallback for any theme attribute missing */
+body:not([data-theme="dark"]) {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+body:not([data-theme="dark"]) * {
+  color: inherit !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  [data-theme="light"], :root:not([data-theme="dark"]) {
+    --primary-text: #000000 !important;
+    --secondary-text: #000000 !important;
+    --tertiary-text: #000000 !important;
+  }
+  
+  [data-theme="light"] *, :root:not([data-theme="dark"]) * {
+    color: #000000 !important;
+    font-weight: 600 !important;
+  }
+}
+
+/* Print styles - ensure readability when printed */
+@media print {
+  * {
+    color: #000000 !important;
+    background: #ffffff !important;
+    font-weight: 500 !important;
+  }
+}

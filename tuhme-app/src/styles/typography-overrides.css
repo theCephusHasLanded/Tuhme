@@ -502,3 +502,72 @@ h1, h2, .h1, .h2,
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+/* Light Mode Typography Contrast Enhancements */
+[data-theme="light"] {
+  /* Ensure all text has proper contrast in light mode */
+  color: var(--primary-text) !important;
+}
+
+[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, 
+[data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6,
+[data-theme="light"] .h1, [data-theme="light"] .h2, [data-theme="light"] .h3, 
+[data-theme="light"] .h4, [data-theme="light"] .h5, [data-theme="light"] .h6 {
+  color: var(--primary-text) !important;
+  font-weight: 600 !important; /* Slightly bolder for better visibility */
+}
+
+[data-theme="light"] p, [data-theme="light"] span, [data-theme="light"] div,
+[data-theme="light"] .hero-subtitle, [data-theme="light"] .luxury-subtitle,
+[data-theme="light"] .section-subtitle, [data-theme="light"] .step-description {
+  color: var(--primary-text) !important;
+}
+
+/* Button text should be clearly visible */
+[data-theme="light"] .button-text, [data-theme="light"] .btn, 
+[data-theme="light"] .button, [data-theme="light"] .cta-button {
+  color: var(--primary-text) !important;
+  font-weight: 600 !important;
+}
+
+/* Navigation text */
+[data-theme="light"] .navigation .nav-item-text {
+  color: var(--primary-text) !important;
+  font-weight: 500 !important;
+}
+
+/* Form elements */
+[data-theme="light"] .liquid-label, [data-theme="light"] label {
+  color: var(--primary-text) !important;
+  font-weight: 500 !important;
+}
+
+[data-theme="light"] .liquid-input, [data-theme="light"] .liquid-textarea,
+[data-theme="light"] .liquid-select, [data-theme="light"] input,
+[data-theme="light"] textarea, [data-theme="light"] select {
+  color: var(--primary-text) !important;
+}
+
+/* Modal and overlay text */
+[data-theme="light"] .modal-header h2, [data-theme="light"] .modal-title {
+  color: var(--primary-text) !important;
+}
+
+/* Cards and components */
+[data-theme="light"] .card-title, [data-theme="light"] .tier-name,
+[data-theme="light"] .benefit-title, [data-theme="light"] .process-title {
+  color: var(--primary-text) !important;
+}
+
+/* Safari-specific font rendering fixes */
+@supports (-webkit-appearance: none) {
+  [data-theme="light"] * {
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+  }
+  
+  [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3,
+  [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 {
+    -webkit-text-stroke: 0.5px var(--primary-text);
+  }
+}
