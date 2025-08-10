@@ -1,0 +1,244 @@
+/* Light Mode Text Darkening - Switch Case Approach */
+/* Only affects text visibility when system preference is light mode */
+/* Preserves all dark mode styling and hero section */
+
+/* ===== LIGHT MODE SYSTEM PREFERENCE ONLY ===== */
+
+@media (prefers-color-scheme: light) {
+  /* Exclude hero section completely from any changes */
+  body *:not(.hero-luxury):not(.hero-luxury *):not(.hero-content-luxury):not(.hero-content-luxury *) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  /* Service overview and how-it-works sections */
+  .service-overview:not(.hero-luxury) *:not(.hero-luxury *),
+  .how-it-works:not(.hero-luxury) *:not(.hero-luxury *),
+  .luxury-section:not(.hero-luxury) *:not(.hero-luxury *) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  /* Step cards and feature cards */
+  .luxury-feature:not(.hero-luxury *) *,
+  .process-step:not(.hero-luxury *) *,
+  .benefit-item:not(.hero-luxury *) *,
+  .service-item:not(.hero-luxury *) * {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  /* Card titles and descriptions */
+  .luxury-feature:not(.hero-luxury *) h3,
+  .luxury-feature:not(.hero-luxury *) h4,
+  .process-step:not(.hero-luxury *) h3,
+  .process-step:not(.hero-luxury *) h4,
+  .benefit-item:not(.hero-luxury *) h3,
+  .benefit-item:not(.hero-luxury *) h4 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Section titles and headings (excluding hero) */
+  .section-title:not(.hero-luxury *),
+  .widget-title:not(.hero-luxury *),
+  .modal-title:not(.hero-luxury *) {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Paragraphs and descriptions */
+  .luxury-feature:not(.hero-luxury *) p,
+  .process-step:not(.hero-luxury *) p,
+  .benefit-item:not(.hero-luxury *) p,
+  .service-item:not(.hero-luxury *) p,
+  .description:not(.hero-luxury *),
+  .subtitle:not(.hero-luxury *) {
+    color: #2a2a2a !important;
+    text-shadow: none !important;
+  }
+  
+  /* Store cards (if not in hero) */
+  .store-card:not(.hero-luxury *) *,
+  .luxury-card:not(.hero-luxury *) *,
+  .card:not(.hero-luxury *) * {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  .store-card:not(.hero-luxury *) h3,
+  .store-card:not(.hero-luxury *) h4,
+  .store-name:not(.hero-luxury *),
+  .store-title:not(.hero-luxury *) {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Pricing sections */
+  .pricing:not(.hero-luxury) *:not(.hero-luxury *),
+  .pricing-card:not(.hero-luxury *) *,
+  .pricing-tier:not(.hero-luxury *) * {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  .pricing-card:not(.hero-luxury *) h3,
+  .pricing-tier:not(.hero-luxury *) h3 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Keep accent colors but darken them for visibility */
+  .price:not(.hero-luxury *),
+  .pricing-amount:not(.hero-luxury *),
+  .accent-text:not(.hero-luxury *) {
+    color: #b8860b !important; /* Darker gold for light mode */
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Contact and footer sections */
+  .contact:not(.hero-luxury) *:not(.hero-luxury *),
+  .footer:not(.hero-luxury) *:not(.hero-luxury *) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  .contact:not(.hero-luxury) h1,
+  .contact:not(.hero-luxury) h2,
+  .contact:not(.hero-luxury) h3,
+  .footer:not(.hero-luxury) h1,
+  .footer:not(.hero-luxury) h2,
+  .footer:not(.hero-luxury) h3 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Form elements */
+  .form-label:not(.hero-luxury *),
+  .liquid-label:not(.hero-luxury *),
+  label:not(.hero-luxury *) {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Navigation (if not in hero) */
+  .navigation:not(.hero-luxury) *:not(.hero-luxury *),
+  .nav-item:not(.hero-luxury *) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  /* Modal content */
+  .modal:not(.hero-luxury) *:not(.hero-luxury *),
+  .modal-content:not(.hero-luxury) *:not(.hero-luxury *) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  .modal:not(.hero-luxury) h1,
+  .modal:not(.hero-luxury) h2,
+  .modal:not(.hero-luxury) h3 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Generic headings (excluding hero) */
+  h1:not(.hero-luxury *),
+  h2:not(.hero-luxury *),
+  h3:not(.hero-luxury *),
+  h4:not(.hero-luxury *),
+  h5:not(.hero-luxury *),
+  h6:not(.hero-luxury *),
+  .h1:not(.hero-luxury *),
+  .h2:not(.hero-luxury *),
+  .h3:not(.hero-luxury *),
+  .h4:not(.hero-luxury *),
+  .h5:not(.hero-luxury *),
+  .h6:not(.hero-luxury *) {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Generic paragraphs and text (excluding hero) */
+  p:not(.hero-luxury *),
+  span:not(.hero-luxury *),
+  div:not(.hero-luxury *) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+  
+  /* Button text adjustments for light mode */
+  button:not(.hero-luxury *),
+  .btn:not(.hero-luxury *) {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Links */
+  a:not(.hero-luxury *) {
+    color: #b8860b !important; /* Darker gold for links */
+    text-shadow: none !important;
+  }
+  
+  a:not(.hero-luxury *):hover {
+    color: #8b6914 !important; /* Even darker on hover */
+  }
+}
+
+/* ===== PRESERVE DARK MODE COMPLETELY ===== */
+
+/* Dark mode stays exactly as is - no changes */
+@media (prefers-color-scheme: dark) {
+  /* All existing dark mode styling preserved */
+  /* This ensures no interference with current dark mode */
+}
+
+/* ===== SAFARI SPECIFIC LIGHT MODE FIXES ===== */
+
+@supports (-webkit-appearance: none) {
+  @media (prefers-color-scheme: light) {
+    /* Safari-specific text fill color for light mode */
+    *:not(.hero-luxury):not(.hero-luxury *) {
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+    
+    h1:not(.hero-luxury *),
+    h2:not(.hero-luxury *),
+    h3:not(.hero-luxury *),
+    h4:not(.hero-luxury *),
+    h5:not(.hero-luxury *),
+    h6:not(.hero-luxury *) {
+      -webkit-text-fill-color: #000000 !important;
+    }
+    
+    .price:not(.hero-luxury *),
+    .accent-text:not(.hero-luxury *),
+    a:not(.hero-luxury *) {
+      -webkit-text-fill-color: #b8860b !important;
+    }
+  }
+}
+
+/* ===== HIGH CONTRAST MODE LIGHT ===== */
+
+@media (prefers-color-scheme: light) and (prefers-contrast: high) {
+  *:not(.hero-luxury):not(.hero-luxury *) {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  .price:not(.hero-luxury *),
+  .accent-text:not(.hero-luxury *) {
+    color: #8b6914 !important; /* Higher contrast gold */
+  }
+}

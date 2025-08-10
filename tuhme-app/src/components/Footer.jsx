@@ -123,7 +123,7 @@ const Footer = () => {
             fontSize: 'var(--text-sm)',
             opacity: '0.8'
           }}>
-            <p style={{ margin: '0 0 var(--space-2) 0' }}>&copy; 2024 TUHME. All rights reserved.</p>
+            <p style={{ margin: '0 0 var(--space-2) 0' }}>&copy; 2025 TUHME. All rights reserved.</p>
             <p style={{ margin: '0' }}>Licensed luxury fashion delivery service in New York City.</p>
           </div>
         </div>

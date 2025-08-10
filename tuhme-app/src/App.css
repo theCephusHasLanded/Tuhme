@@ -9,6 +9,9 @@
 /* Import Component-Specific Readability Fixes */
 @import './styles/component-readability-fixes.css';
 
+/* Import Light Mode Text Darkening - Switch Case Approach */
+@import './styles/light-mode-text-darkening.css';
+
 /* Import Mobile Text and Centering Fixes */
 @import './styles/mobile-text-fixes.css';
 
