@@ -3,14 +3,11 @@
 
 /* Light mode styles removed - using mandatory dark mode only */
 
-/* Import Apple.com-Style Universal Readability System */
-@import './styles/apple-style-universal-readability.css';
+/* Import Smart Text Contrast System */
+@import './styles/smart-text-contrast.css';
 
-/* Import Auto-Apply Universal Styles */
-@import './styles/auto-apply-universal-styles.css';
-
-/* Import Store Placeholder Visibility Fix */
-@import './styles/store-placeholder-visibility.css';
+/* Import Component-Specific Readability Fixes */
+@import './styles/component-readability-fixes.css';
 
 /* Import Mobile Text and Centering Fixes */
 @import './styles/mobile-text-fixes.css';

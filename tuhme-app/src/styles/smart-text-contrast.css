@@ -1,0 +1,363 @@
+/* Smart Text Contrast System - Apple.com Style */
+/* Ensures optimal text visibility across all system modes without heavy overlays */
+
+/* ===== UNIVERSAL COLOR SCHEME ENFORCEMENT ===== */
+
+:root {
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+}
+
+html, body {
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+/* ===== HERO SECTION OPTIMIZATION ===== */
+
+.hero-luxury {
+  /* Preserve existing dark gradients */
+  color-scheme: dark only !important;
+}
+
+/* Enhanced text visibility for hero without overlays */
+.hero-luxury,
+.hero-luxury * {
+  color: #ffffff !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hero-luxury .brand-name-luxury {
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(212, 175, 55, 0.3) !important;
+  font-weight: 700 !important;
+}
+
+.hero-luxury .hero-title-luxury,
+.hero-luxury .hero-main-title {
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(0, 0, 0, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.hero-luxury .description-text {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero-luxury .accent-text,
+.hero-luxury .promise-icon {
+  color: var(--accent-primary) !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.7),
+    0 0 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ===== STORE CARDS SMART CONTRAST ===== */
+
+.store-card,
+.luxury-card,
+.card {
+  /* Preserve existing glass morphism backgrounds */
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.store-card *,
+.luxury-card *,
+.card * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.store-card h3,
+.store-card h4,
+.luxury-card h3,
+.luxury-card h4,
+.card h3,
+.card h4 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.store-description,
+.store-hours,
+.store-location {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== SERVICE OVERVIEW COMPONENTS ===== */
+
+.service-overview,
+.service-overview * {
+  color: #ffffff !important;
+}
+
+.service-overview h1,
+.service-overview h2,
+.service-overview h3 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.service-overview p,
+.service-overview .description {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== PRICING COMPONENTS ===== */
+
+.pricing,
+.pricing-card,
+.pricing-tier {
+  color: #ffffff !important;
+}
+
+.pricing h1,
+.pricing h2,
+.pricing h3,
+.pricing-card h3,
+.pricing-tier h3 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.price,
+.pricing-amount {
+  color: var(--accent-primary) !important;
+  font-weight: 700 !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== FORM ELEMENTS ===== */
+
+input,
+textarea,
+select {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+label {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== BUTTON ENHANCEMENTS ===== */
+
+button,
+.btn {
+  font-weight: 600 !important;
+}
+
+.primary-cta-luxury,
+.btn-primary {
+  background-color: var(--accent-primary) !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+.secondary-cta-luxury,
+.btn-secondary {
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+  background-color: transparent !important;
+}
+
+/* ===== SYSTEM MODE ADAPTATIONS ===== */
+
+/* Light mode system preference handling */
+@media (prefers-color-scheme: light) {
+  :root,
+  html,
+  body {
+    color-scheme: dark only !important;
+    background-color: var(--primary-bg) !important;
+    color: var(--primary-text) !important;
+  }
+  
+  /* Stronger text shadows in light mode for better visibility */
+  .hero-luxury *,
+  .store-card *,
+  .luxury-card *,
+  .card * {
+    text-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.6),
+      0 0 8px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  .hero-luxury .brand-name-luxury,
+  .hero-luxury .hero-title-luxury {
+    text-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.8),
+      0 0 12px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* Enhanced contrast for all components */
+  .service-overview *,
+  .pricing *,
+  .contact *,
+  .footer * {
+    text-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      0 0 4px rgba(0, 0, 0, 0.3) !important;
+  }
+}
+
+/* ===== SAFARI-SPECIFIC OPTIMIZATIONS ===== */
+
+@supports (-webkit-appearance: none) {
+  :root,
+  html,
+  body {
+    -webkit-color-scheme: dark !important;
+  }
+  
+  .hero-luxury *,
+  .store-card *,
+  .luxury-card *,
+  .card * {
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  
+  .hero-luxury .accent-text,
+  .hero-luxury .promise-icon,
+  .price,
+  .pricing-amount {
+    -webkit-text-fill-color: var(--accent-primary) !important;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .hero-luxury *,
+    .store-card *,
+    .luxury-card *,
+    .card *,
+    .service-overview *,
+    .pricing * {
+      -webkit-text-fill-color: #ffffff !important;
+      -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .hero-luxury .accent-text,
+    .hero-luxury .promise-icon,
+    .price,
+    .pricing-amount {
+      -webkit-text-fill-color: var(--accent-primary) !important;
+      -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3) !important;
+    }
+  }
+}
+
+/* ===== HIGH CONTRAST MODE SUPPORT ===== */
+
+@media (prefers-contrast: high) {
+  .hero-luxury *,
+  .store-card *,
+  .luxury-card *,
+  .card *,
+  .service-overview *,
+  .pricing * {
+    color: #ffffff !important;
+    text-shadow: 
+      0 0 2px rgba(0, 0, 0, 1),
+      0 2px 4px rgba(0, 0, 0, 0.9) !important;
+    font-weight: 600 !important;
+  }
+  
+  .hero-luxury .accent-text,
+  .hero-luxury .promise-icon,
+  .price,
+  .pricing-amount {
+    color: #ffdd44 !important; /* Higher contrast gold */
+    text-shadow: 
+      0 0 2px rgba(0, 0, 0, 1),
+      0 2px 4px rgba(0, 0, 0, 0.9) !important;
+  }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+@media screen and (max-width: 768px) {
+  .hero-luxury *,
+  .store-card *,
+  .luxury-card *,
+  .card * {
+    text-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  .hero-luxury .brand-name-luxury,
+  .hero-luxury .hero-title-luxury {
+    font-weight: 700 !important;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+/* ===== PRESERVE GLASS MORPHISM EFFECTS ===== */
+
+/* Ensure glass effects remain while improving text contrast */
+.store-card,
+.luxury-card,
+.card {
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.store-card:hover,
+.luxury-card:hover,
+.card:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Ensure minimum contrast ratios */
+.text-primary {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.text-secondary {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500 !important;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500 !important;
+}
+
+/* ===== FORCED COLOR ADJUSTMENTS ===== */
+
+* {
+  forced-color-adjust: none !important;
+  -webkit-forced-color-adjust: none !important;
+}

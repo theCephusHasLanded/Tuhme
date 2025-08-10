@@ -1,0 +1,345 @@
+/* Component-Specific Readability Fixes */
+/* Optimizes text visibility for each component's unique background design */
+
+/* ===== HERO SECTION SPECIFIC FIXES ===== */
+
+/* Hero maintains dynamic gradients but ensures text visibility */
+.hero-luxury {
+  /* Preserve existing background system */
+  position: relative;
+}
+
+.hero-luxury .palette-indicator {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero-luxury .time-indicator {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+}
+
+.hero-luxury .trust-number {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+.hero-luxury .trust-label {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.hero-luxury .availability-indicator span {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ===== STORE CARDS SPECIFIC FIXES ===== */
+
+/* Preserve glass morphism while ensuring readability */
+.horizontal-store-carousel,
+.store-carousel,
+.store-grid {
+  /* Maintain existing background styling */
+}
+
+.store-card {
+  /* Enhance border visibility */
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.store-card:hover {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.store-name,
+.store-title {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.store-hours {
+  color: var(--accent-primary) !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.store-location,
+.store-specialty {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== SERVICE OVERVIEW CARDS ===== */
+
+.luxury-feature,
+.benefit-item,
+.service-item {
+  /* Enhance glass morphism borders */
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.luxury-feature h3,
+.benefit-item h3,
+.service-item h3 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.luxury-feature p,
+.benefit-item p,
+.service-item p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== PRICING COMPONENTS ===== */
+
+.pricing-card,
+.pricing-tier {
+  /* Enhanced borders for glass morphism */
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.pricing-card.featured,
+.pricing-tier.featured {
+  border: 2px solid var(--accent-primary) !important;
+  box-shadow: 
+    0 12px 32px rgba(212, 175, 55, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.pricing-card h3,
+.pricing-tier h3 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.pricing-card .price,
+.pricing-tier .price {
+  color: var(--accent-primary) !important;
+  font-weight: 800 !important;
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+.pricing-feature {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== FORM ELEMENTS SPECIFIC FIXES ===== */
+
+.liquid-form,
+.express-form,
+.contact-form {
+  /* Maintain form background styling */
+}
+
+.liquid-input,
+.express-input,
+.form-input {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+.liquid-input:focus,
+.express-input:focus,
+.form-input:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(212, 175, 55, 0.2) !important;
+}
+
+.liquid-label,
+.form-label {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== NAVIGATION SPECIFIC FIXES ===== */
+
+.navigation,
+.nav-item {
+  color: #ffffff !important;
+}
+
+.nav-item:hover {
+  color: var(--accent-primary) !important;
+}
+
+.nav-logo {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
+}
+
+/* ===== FOOTER SPECIFIC FIXES ===== */
+
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer h4,
+.footer h5 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.footer p,
+.footer a,
+.footer span {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.footer a:hover {
+  color: var(--accent-primary) !important;
+}
+
+/* ===== MODAL SPECIFIC FIXES ===== */
+
+.modal,
+.modal-content {
+  background: rgba(10, 10, 10, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+}
+
+.modal h2,
+.modal h3,
+.modal-title {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.modal p,
+.modal-body {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== FLOATING ELEMENTS ===== */
+
+.floating-savi-bot,
+.floating-control-panel {
+  background: rgba(10, 10, 10, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* ===== SYSTEM MODE ADAPTATIONS ===== */
+
+@media (prefers-color-scheme: light) {
+  /* Stronger shadows for better visibility in light system mode */
+  .store-card,
+  .luxury-feature,
+  .pricing-card,
+  .modal {
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  .store-name,
+  .store-title,
+  .luxury-feature h3,
+  .pricing-card h3,
+  .modal h2 {
+    text-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.6),
+      0 0 8px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .liquid-input,
+  .express-input,
+  .form-input {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Focus indicators */
+.store-card:focus,
+.luxury-feature:focus,
+.pricing-card:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--accent-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  .store-card,
+  .luxury-feature,
+  .pricing-card {
+    border-width: 2px !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  .store-name,
+  .store-title,
+  .luxury-feature h3,
+  .pricing-card h3 {
+    font-weight: 700 !important;
+    text-shadow: 
+      0 0 4px rgba(0, 0, 0, 1),
+      0 2px 4px rgba(0, 0, 0, 0.9) !important;
+  }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+@media screen and (max-width: 768px) {
+  .store-card,
+  .luxury-feature,
+  .pricing-card {
+    border-width: 1px !important;
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+  
+  .store-name,
+  .luxury-feature h3,
+  .pricing-card h3 {
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
+  }
+}
