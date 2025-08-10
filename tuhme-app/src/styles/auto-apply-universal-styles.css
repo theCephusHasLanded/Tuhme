@@ -1,0 +1,299 @@
+/* Auto-Apply Universal Readability Styles */
+/* Automatically applies universal backdrop and contrast to all major components */
+
+/* ===== AUTOMATIC BACKDROP APPLICATION ===== */
+
+/* Apply universal backdrop to major sections */
+.hero-luxury,
+.service-overview,
+.how-it-works,
+.pricing,
+.delivery-info,
+.contact,
+.footer,
+section,
+main {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-luxury::before,
+.service-overview::before,
+.how-it-works::before,
+.pricing::before,
+.delivery-info::before,
+.contact::before,
+.footer::before,
+section::before,
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      135deg, 
+      rgba(0, 0, 0, 0.85) 0%, 
+      rgba(0, 0, 0, 0.8) 50%, 
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  backdrop-filter: blur(1px) contrast(1.2) brightness(0.8);
+  -webkit-backdrop-filter: blur(1px) contrast(1.2) brightness(0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-luxury > *,
+.service-overview > *,
+.how-it-works > *,
+.pricing > *,
+.delivery-info > *,
+.contact > *,
+.footer > *,
+section > *,
+main > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== AUTO-APPLY TO ALL CARDS ===== */
+
+/* Any element with 'card' in the class name gets universal treatment */
+[class*="card"],
+[class*="Card"],
+.luxury-feature,
+.benefit-item,
+.process-step,
+.pricing-tier,
+.service-item {
+  position: relative;
+  isolation: isolate;
+  backdrop-filter: blur(1.5px) contrast(1.1);
+  -webkit-backdrop-filter: blur(1.5px) contrast(1.1);
+}
+
+[class*="card"]::before,
+[class*="Card"]::before,
+.luxury-feature::before,
+.benefit-item::before,
+.process-step::before,
+.pricing-tier::before,
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  border-radius: inherit;
+  backdrop-filter: blur(2px) contrast(1.1) brightness(0.8);
+  -webkit-backdrop-filter: blur(2px) contrast(1.1) brightness(0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+[class*="card"] > *,
+[class*="Card"] > *,
+.luxury-feature > *,
+.benefit-item > *,
+.process-step > *,
+.pricing-tier > *,
+.service-item > * {
+  position: relative;
+  z-index: 2;
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 1px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ===== AUTO-APPLY TO ALL TEXT ELEMENTS ===== */
+
+/* Universal text treatment for all major text elements */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+p, span, div, label,
+.title, .subtitle, .description,
+.text, .content {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 1px rgba(0, 0, 0, 0.9),
+    0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Enhanced treatment for headings */
+h1, h2, h3,
+.h1, .h2, .h3,
+.title, .section-title, .hero-title {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 2px rgba(0, 0, 0, 1),
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 8px rgba(0, 0, 0, 0.6) !important;
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.4);
+  font-weight: 600 !important;
+}
+
+/* ===== INTERACTIVE ELEMENTS ===== */
+
+/* Buttons and interactive elements */
+button,
+.button,
+.btn,
+a,
+input,
+textarea,
+select {
+  position: relative;
+  isolation: isolate;
+}
+
+button::before,
+.button::before,
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: inherit;
+  backdrop-filter: blur(1px) contrast(1.05);
+  -webkit-backdrop-filter: blur(1px) contrast(1.05);
+  z-index: 1;
+  pointer-events: none;
+}
+
+button > *,
+.button > *,
+.btn > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== FORM ELEMENTS ===== */
+
+input,
+textarea,
+select {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(2px) contrast(1.1);
+  -webkit-backdrop-filter: blur(2px) contrast(1.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ===== SYSTEM MODE ENHANCEMENTS ===== */
+
+@media (prefers-color-scheme: light) {
+  /* Stronger backdrops in light mode */
+  .hero-luxury::before,
+  .service-overview::before,
+  .how-it-works::before,
+  .pricing::before,
+  .delivery-info::before,
+  .contact::before,
+  .footer::before,
+  section::before,
+  main::before {
+    background: 
+      linear-gradient(
+        135deg, 
+        rgba(0, 0, 0, 0.95) 0%, 
+        rgba(0, 0, 0, 0.9) 50%, 
+        rgba(0, 0, 0, 0.95) 100%
+      );
+    backdrop-filter: blur(2px) contrast(1.4) brightness(0.6);
+    -webkit-backdrop-filter: blur(2px) contrast(1.4) brightness(0.6);
+  }
+  
+  [class*="card"]::before,
+  [class*="Card"]::before,
+  .luxury-feature::before,
+  .benefit-item::before,
+  .process-step::before,
+  .pricing-tier::before,
+  .service-item::before {
+    background: 
+      linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.9) 100%
+      );
+    backdrop-filter: blur(3px) contrast(1.3) brightness(0.7);
+    -webkit-backdrop-filter: blur(3px) contrast(1.3) brightness(0.7);
+  }
+  
+  /* Enhanced text shadows in light mode */
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  p, span, div, label {
+    text-shadow: 
+      0 0 2px rgba(0, 0, 0, 1),
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 4px 8px rgba(0, 0, 0, 0.7) !important;
+  }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+@media screen and (max-width: 768px) {
+  /* Lighter backdrops on mobile for performance */
+  .hero-luxury::before,
+  section::before,
+  main::before {
+    backdrop-filter: blur(1px) contrast(1.2) brightness(0.8);
+    -webkit-backdrop-filter: blur(1px) contrast(1.2) brightness(0.8);
+  }
+  
+  [class*="card"]::before,
+  [class*="Card"]::before {
+    backdrop-filter: blur(1.5px) contrast(1.1) brightness(0.8);
+    -webkit-backdrop-filter: blur(1.5px) contrast(1.1) brightness(0.8);
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .hero-luxury::before,
+  section::before,
+  main::before,
+  [class*="card"]::before,
+  [class*="Card"]::before {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.9) !important;
+  }
+}
+
+/* ===== ACCENT COLOR PRESERVATION ===== */
+
+/* Preserve accent colors while maintaining readability */
+.accent-text,
+.accent-color,
+[class*="accent"],
+.promise-icon,
+.trust-number {
+  color: var(--accent-primary) !important;
+  text-shadow: 
+    0 0 2px rgba(0, 0, 0, 1),
+    0 2px 4px rgba(0, 0, 0, 0.8) !important;
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
+}
