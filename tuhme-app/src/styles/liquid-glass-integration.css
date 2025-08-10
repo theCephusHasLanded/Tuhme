@@ -1,0 +1,405 @@
+/* ===== LIQUID GLASS INTEGRATION ===== */
+/* This file integrates liquid glass styling with existing components */
+
+/* Global liquid glass application */
+body {
+  --liquid-glass-active: true;
+}
+
+/* Icon centering system */
+.tuhme-icon {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.step-corner-icon .tuhme-icon,
+.liquid-glass-icon .tuhme-icon,
+.nav-item .tuhme-icon,
+.footer-logo .tuhme-icon {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 28px;
+  max-height: 28px;
+}
+
+/* Ensure all icon containers properly center their contents */
+.step-corner-icon,
+.liquid-glass-icon,
+.nav-item,
+.footer-logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+}
+
+/* Fix any residual icon sizing issues */
+.step-corner-icon svg,
+.liquid-glass-icon svg,
+.nav-item svg,
+.footer-logo svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+}
+
+/* Ensure SAVI icon is perfectly centered */
+.savi-button svg,
+.savi-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Remove any unwanted circles or background elements */
+.step-corner-icon::before,
+.step-corner-icon::after {
+  display: none !important;
+}
+
+/* Fix any residual background circles */
+.step-corner-icon > *:not(.tuhme-icon):not(svg) {
+  display: none;
+}
+
+/* Modal system integration */
+.modal-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: rgba(var(--liquid-primary-bg, 10, 10, 10), 0.95);
+  backdrop-filter: blur(40px) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(105%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.modal-header {
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Button system integration */
+button:not(.liquid-glass-button):not(.liquid-glass-icon):not(.liquid-glass-nav-item) {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+button:not(.liquid-glass-button):not(.liquid-glass-icon):not(.liquid-glass-nav-item):hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Input system integration */
+input:not(.liquid-glass-input),
+textarea:not(.liquid-glass-input),
+select:not(.liquid-glass-input) {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s ease;
+}
+
+input:not(.liquid-glass-input):focus,
+textarea:not(.liquid-glass-input):focus,
+select:not(.liquid-glass-input):focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* Card system integration */
+.card,
+.info-card,
+.feature-card,
+.service-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(180%) brightness(110%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(110%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover,
+.info-card:hover,
+.feature-card:hover,
+.service-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.16),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Navigation specific enhancements */
+.nav-item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.nav-item:hover::before {
+  left: 100%;
+}
+
+/* Footer specific enhancements */
+.footer-logo img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.form-input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Progress indicators */
+.progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  height: 8px;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--accent-primary), #f4c430);
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Tooltip system */
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  transform: translateY(-4px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading states */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #fca5a5;
+  font-size: 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 1rem;
+}
+
+/* Success states */
+.success-message {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #86efac;
+  font-size: 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 1rem;
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .liquid-glass-base,
+  .liquid-glass-accent,
+  .liquid-glass-elevated,
+  .liquid-glass-card,
+  .liquid-glass-modal,
+  .liquid-glass-button,
+  .liquid-glass-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Print styles */
+@media print {
+  .liquid-glass-base,
+  .liquid-glass-accent,
+  .liquid-glass-elevated,
+  .liquid-glass-card,
+  .liquid-glass-modal,
+  .liquid-glass-button,
+  .liquid-glass-icon {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}

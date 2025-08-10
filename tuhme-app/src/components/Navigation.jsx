@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useModal } from '../contexts/ModalContext';
-import ThemeSelector from './ThemeSelector';
+// ThemeSelector removed - using mandatory dark mode
 import NavigationModals from './NavigationModals';
 import tuhmeLogo from '../assets/tuhme.png';
 
@@ -78,7 +78,7 @@ const Navigation = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback }) 
             <span className="feedback-icon">💬</span>
           </button>
 
-          <ThemeSelector />
+          {/* Theme selector removed - using mandatory dark mode */}
           
 
           

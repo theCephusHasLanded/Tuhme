@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useModal } from '../contexts/ModalContext';
-import ThemeSelector from './ThemeSelector';
+// ThemeSelector removed - using mandatory dark mode
 import NavigationModals from './NavigationModals';
 
 const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFeedback, onMatrixToggle }) => {
@@ -184,13 +184,7 @@ const FloatingControlPanel = ({ onNavigate, currentSection, onOpenSavi, onOpenFe
             </div>
           </div>
 
-          {/* Theme Section */}
-          <div className="panel-section">
-            <h4 className="section-title">Appearance</h4>
-            <div className="theme-section">
-              <ThemeSelector />
-            </div>
-          </div>
+          {/* Appearance section removed - using mandatory dark mode */}
         </div>
 
         <div className="control-panel-footer">

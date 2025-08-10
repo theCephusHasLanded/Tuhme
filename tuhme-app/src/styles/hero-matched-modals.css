@@ -1,0 +1,357 @@
+/* Hero-Matched Modal Typography and Styling */
+
+/* Override existing modal styles to match Hero */
+.modal-content h1,
+.modal-content h2,
+.modal-content h3,
+.liquid-glass-text,
+.membership-step h3,
+.step-header h3,
+.plan-header h4 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.2 !important;
+}
+
+.modal-content h1,
+.modal-content h2,
+.liquid-glass-text {
+  font-size: 32px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.05em !important;
+}
+
+.modal-content h3,
+.membership-step h3,
+.step-header h3 {
+  font-size: 24px !important;
+  font-weight: 400 !important;
+}
+
+.modal-content h4,
+.plan-header h4 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+/* Body text and labels */
+.modal-content p,
+.modal-content label,
+.modal-content span,
+.step-header p,
+.membership-step p {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.5 !important;
+}
+
+/* Small text and badges */
+.modal-content small,
+.progress-step span,
+.plan-badge,
+.stat-label {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+}
+
+/* Button typography */
+.modal-content button,
+.btn-primary,
+.btn-secondary,
+.tier-action-button {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+/* Input fields */
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Progress indicators */
+.step-number {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* Plan pricing */
+.plan-price .price {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Feature lists */
+.plan-features li,
+.feature-text {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Modal overlay enhancement to match hero style */
+.modal-overlay {
+  backdrop-filter: blur(12px) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Modal content background matching hero style */
+.modal-content.liquid-glass-modal {
+  background: linear-gradient(135deg, 
+    rgba(26, 26, 26, 0.95) 0%, 
+    rgba(42, 42, 42, 0.95) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.1) !important;
+  position: relative !important;
+  z-index: 1001 !important;
+  overflow: visible !important;
+  border-radius: 16px !important;
+  max-width: 800px !important;
+  width: 90vw !important;
+  max-height: 90vh !important;
+}
+
+/* Modal body styling */
+.modal-body {
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1002 !important;
+}
+
+/* Progress steps styling */
+.membership-progress {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  overflow: visible !important;
+}
+
+.progress-step.active .step-number {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #f4d03f 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Plans grid container */
+.plans-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 24px !important;
+  margin-bottom: 32px !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Plan cards styling */
+.plan-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 16px !important;
+  padding: var(--space-6, 24px) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 1 !important;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+}
+
+.plan-card.selected {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+  z-index: 5 !important;
+}
+
+.plan-card.featured {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.1) 100%) !important;
+  transform: scale(1.02) !important;
+  z-index: 2 !important;
+  animation: planPulse 3s ease-in-out infinite alternate !important;
+}
+
+.plan-card.featured:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.1) 100%) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+  z-index: 15 !important;
+}
+
+/* Plan badge styling */
+.plan-badge {
+  display: block !important;
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  background: var(--accent-primary) !important;
+  color: #ffffff !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.plan-card:hover .plan-badge {
+  background: #f4d03f !important;
+  transform: scale(1.05) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Plan pulse animation */
+@keyframes planPulse {
+  from {
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.15),
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 30px rgba(0, 0, 0, 0.1),
+      0 0 60px rgba(0, 0, 0, 0.1);
+  }
+  to {
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.15),
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 40px rgba(0, 0, 0, 0.1),
+      0 0 80px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Form styling */
+.form-group input,
+.form-group select {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Button styling */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #f4d03f 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #f4d03f 0%, var(--accent-primary) 100%) !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-secondary {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Summary card */
+.summary-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Payment info */
+.payment-info .info-item {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+}
+
+/* Error messages */
+.error-message {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  color: #fca5a5 !important;
+}
+
+/* Close button */
+.modal-close {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--accent-primary) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Spinner */
+.spinner {
+  border-top-color: var(--accent-primary) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .modal-content h1,
+  .modal-content h2,
+  .liquid-glass-text {
+    font-size: 28px !important;
+  }
+  
+  .modal-content h3,
+  .membership-step h3,
+  .step-header h3 {
+    font-size: 20px !important;
+  }
+}

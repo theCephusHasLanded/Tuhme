@@ -1,0 +1,385 @@
+/* ===== GLOBAL COLOR SCHEME SYSTEM ===== */
+/* Synchronized color scheme that matches hero's hourly palette changes */
+
+:root {
+  /* Default palette (will be overridden by JavaScript) */
+  --global-primary: #0a0a0a;
+  --global-secondary: #1a1a1a;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
+  --palette-name: 'midnight-mono';
+}
+
+/* Hourly Luxury Palettes - matches Hero component exactly */
+[data-global-palette="midnight-mono"] {
+  --global-primary: #0a0a0a;
+  --global-secondary: #1a1a1a;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
+}
+
+[data-global-palette="champagne-dusk"] {
+  --global-primary: #1a0f1a;
+  --global-secondary: #2a1a2a;
+  --global-accent: #e6c2a6;
+  --global-accent-rgb: 230, 194, 166;
+}
+
+[data-global-palette="sapphire-night"] {
+  --global-primary: #0f1419;
+  --global-secondary: #1a2129;
+  --global-accent: #8b9dc3;
+  --global-accent-rgb: 139, 157, 195;
+}
+
+[data-global-palette="cognac-dream"] {
+  --global-primary: #191414;
+  --global-secondary: #2a2125;
+  --global-accent: #dda15e;
+  --global-accent-rgb: 221, 161, 94;
+}
+
+[data-global-palette="tiffany-dawn"] {
+  --global-primary: #0d1421;
+  --global-secondary: #1a2332;
+  --global-accent: #a8dadc;
+  --global-accent-rgb: 168, 218, 220;
+}
+
+[data-global-palette="pearl-morning"] {
+  --global-primary: #1a1a0f;
+  --global-secondary: #2a2a1a;
+  --global-accent: #f1faee;
+  --global-accent-rgb: 241, 250, 238;
+}
+
+[data-global-palette="rose-aurora"] {
+  --global-primary: #1a0f14;
+  --global-secondary: #2a1a25;
+  --global-accent: #ffb3ba;
+  --global-accent-rgb: 255, 179, 186;
+}
+
+[data-global-palette="emerald-mist"] {
+  --global-primary: #0f1a14;
+  --global-secondary: #1a2a25;
+  --global-accent: #c7f9cc;
+  --global-accent-rgb: 199, 249, 204;
+}
+
+[data-global-palette="crystal-blue"] {
+  --global-primary: #14141a;
+  --global-secondary: #25252a;
+  --global-accent: #bde0ff;
+  --global-accent-rgb: 189, 224, 255;
+}
+
+[data-global-palette="saffron-luxury"] {
+  --global-primary: #1a140f;
+  --global-secondary: #2a251a;
+  --global-accent: #ffd23f;
+  --global-accent-rgb: 255, 210, 63;
+}
+
+[data-global-palette="amethyst-elite"] {
+  --global-primary: #141a1a;
+  --global-secondary: #252a2a;
+  --global-accent: #a663cc;
+  --global-accent-rgb: 166, 99, 204;
+}
+
+[data-global-palette="mono-prestige"] {
+  --global-primary: #1a1914;
+  --global-secondary: #2a2925;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
+}
+
+[data-global-palette="turquoise-calm"] {
+  --global-primary: #0f141a;
+  --global-secondary: #1a252a;
+  --global-accent: #4ecdc4;
+  --global-accent-rgb: 78, 205, 196;
+}
+
+[data-global-palette="coral-sunset"] {
+  --global-primary: #1a0f0f;
+  --global-secondary: #2a1a1a;
+  --global-accent: #e6c2a6;
+  --global-accent-rgb: 230, 194, 166;
+}
+
+[data-global-palette="citrine-bright"] {
+  --global-primary: #14141a;
+  --global-secondary: #25252a;
+  --global-accent: #f8f32b;
+  --global-accent-rgb: 248, 243, 43;
+}
+
+[data-global-palette="mint-elegance"] {
+  --global-primary: #1a1a14;
+  --global-secondary: #2a2a25;
+  --global-accent: #95e1d3;
+  --global-accent-rgb: 149, 225, 211;
+}
+
+[data-global-palette="peony-blush"] {
+  --global-primary: #191014;
+  --global-secondary: #2a1a25;
+  --global-accent: #f38ba8;
+  --global-accent-rgb: 243, 139, 168;
+}
+
+[data-global-palette="azure-luxury"] {
+  --global-primary: #141a19;
+  --global-secondary: #252a29;
+  --global-accent: #74c0fc;
+  --global-accent-rgb: 116, 192, 252;
+}
+
+[data-global-palette="topaz-glow"] {
+  --global-primary: #1a1414;
+  --global-secondary: #2a2525;
+  --global-accent: #ffd43b;
+  --global-accent-rgb: 255, 212, 59;
+}
+
+[data-global-palette="lavender-dusk"] {
+  --global-primary: #0f1a1a;
+  --global-secondary: #1a2a2a;
+  --global-accent: #b197fc;
+  --global-accent-rgb: 177, 151, 252;
+}
+
+[data-global-palette="jade-prosperity"] {
+  --global-primary: #1a190f;
+  --global-secondary: #2a291a;
+  --global-accent: #69db7c;
+  --global-accent-rgb: 105, 219, 124;
+}
+
+[data-global-palette="blush-elegance"] {
+  --global-primary: #1a0f19;
+  --global-secondary: #2a1a29;
+  --global-accent: #f1faee;
+  --global-accent-rgb: 241, 250, 238;
+}
+
+[data-global-palette="peridot-fresh"] {
+  --global-primary: #0f1a0f;
+  --global-secondary: #1a2a1a;
+  --global-accent: #82c91e;
+  --global-accent-rgb: 130, 201, 30;
+}
+
+[data-global-palette="classic-mono"] {
+  --global-primary: #1a1a1a;
+  --global-secondary: #2a2a2a;
+  --global-accent: var(--accent-primary);
+  --global-accent-rgb: 255, 255, 255;
+}
+
+/* Update liquid glass system to use global colors */
+:root {
+  --liquid-accent-color: var(--global-accent);
+  --liquid-accent-rgb: var(--global-accent-rgb);
+  --liquid-primary-bg: var(--global-primary);
+  --liquid-secondary-bg: var(--global-secondary);
+}
+
+/* Global background that matches hero */
+body {
+  background: linear-gradient(135deg, var(--global-primary) 0%, var(--global-secondary) 100%);
+  transition: background 1s ease-in-out;
+}
+
+/* Synchronized glow effects */
+.global-glow {
+  box-shadow: 0 0 20px rgba(var(--global-accent-rgb), 0.3);
+  animation: globalPulse 4s ease-in-out infinite;
+}
+
+@keyframes globalPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(var(--global-accent-rgb), 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(var(--global-accent-rgb), 0.5);
+  }
+}
+
+/* Synchronized text colors */
+.global-accent-text {
+  color: var(--global-accent);
+  text-shadow: 0 0 10px rgba(var(--global-accent-rgb), 0.5);
+}
+
+.global-primary-text {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.global-secondary-text {
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Synchronized borders and backgrounds */
+.global-accent-border {
+  border-color: rgba(var(--global-accent-rgb), 0.5);
+}
+
+.global-accent-bg {
+  background: rgba(var(--global-accent-rgb), 0.1);
+}
+
+.global-glass-bg {
+  background: rgba(var(--global-accent-rgb), 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--global-accent-rgb), 0.2);
+}
+
+/* Glowing Tagline - Adaptive Glow Effects */
+.glowing-tagline {
+  font-weight: 700 !important;
+  position: relative;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+  animation: glowPulse 3s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(255, 255, 255, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5),
+      0 0 45px rgba(255, 255, 255, 0.4),
+      0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Hover effect for glowing tagline */
+.glowing-tagline:hover {
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.6),
+    0 0 50px rgba(255, 255, 255, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+
+/* Adaptive glow for light color schemes */
+[data-global-palette="pearl-morning"] .glowing-tagline,
+[data-global-palette="emerald-mist"] .glowing-tagline,
+[data-global-palette="crystal-blue"] .glowing-tagline,
+[data-global-palette="mint-elegance"] .glowing-tagline,
+[data-global-palette="blush-elegance"] .glowing-tagline {
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+[data-global-palette="pearl-morning"] .glowing-tagline:hover,
+[data-global-palette="emerald-mist"] .glowing-tagline:hover,
+[data-global-palette="crystal-blue"] .glowing-tagline:hover,
+[data-global-palette="mint-elegance"] .glowing-tagline:hover,
+[data-global-palette="blush-elegance"] .glowing-tagline:hover {
+  text-shadow: 
+    0 0 20px rgba(0, 0, 0, 1),
+    0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Light color schemes need black glow animations */
+@keyframes glowPulseDark {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(0, 0, 0, 0.9),
+      0 0 25px rgba(0, 0, 0, 0.7),
+      0 0 35px rgba(0, 0, 0, 0.5),
+      0 0 45px rgba(0, 0, 0, 0.4),
+      0 1px 3px rgba(255, 255, 255, 0.3);
+  }
+}
+
+[data-global-palette="pearl-morning"] .glowing-tagline,
+[data-global-palette="emerald-mist"] .glowing-tagline,
+[data-global-palette="crystal-blue"] .glowing-tagline,
+[data-global-palette="mint-elegance"] .glowing-tagline,
+[data-global-palette="blush-elegance"] .glowing-tagline {
+  animation: glowPulseDark 3s ease-in-out infinite alternate;
+}
+
+/* Hero-specific glowing text - always white regardless of color scheme */
+.hero-glowing-tagline {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  position: relative;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 25px rgba(255, 255, 255, 0.7),
+    0 0 35px rgba(255, 255, 255, 0.5),
+    0 0 45px rgba(255, 255, 255, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  animation: heroGlowPulse 3s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+@keyframes heroGlowPulse {
+  0% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5),
+      0 0 45px rgba(255, 255, 255, 0.4),
+      0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 30px rgba(255, 255, 255, 0.8),
+      0 0 40px rgba(255, 255, 255, 0.6),
+      0 0 50px rgba(255, 255, 255, 0.5),
+      0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Hero hover effect */
+.hero-glowing-tagline:hover {
+  text-shadow: 
+    0 0 25px rgba(255, 255, 255, 1),
+    0 0 35px rgba(255, 255, 255, 0.9),
+    0 0 45px rgba(255, 255, 255, 0.7),
+    0 0 55px rgba(255, 255, 255, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
+}

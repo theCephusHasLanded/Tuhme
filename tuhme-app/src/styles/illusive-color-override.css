@@ -1,0 +1,266 @@
+/* ===== ILLUSIVE COLOR OVERRIDE ===== */
+/* Remove all orange/red colors and replace with subtle liquid glass opacity */
+
+/* Override any orange/red accent colors */
+:root {
+  --orange-override: rgba(255, 255, 255, 0.1);
+  --red-override: rgba(255, 255, 255, 0.08);
+  --warning-override: rgba(255, 255, 255, 0.12);
+  --error-override: rgba(255, 255, 255, 0.15);
+}
+
+/* Remove orange/red from error messages */
+.error-message,
+.alert-error,
+.danger,
+.warning {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Override success messages to be more subtle */
+.success-message,
+.alert-success {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Remove orange/red from status indicators */
+.status-badge.error,
+.status-badge.warning,
+.status-badge.danger {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Override progress indicators */
+.progress-bar.error,
+.progress-bar.warning {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.progress-fill.error,
+.progress-fill.warning {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.3)
+  ) !important;
+}
+
+/* Remove orange/red from buttons */
+.btn-danger,
+.btn-warning,
+.button-danger,
+.button-warning {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.btn-danger:hover,
+.btn-warning:hover,
+.button-danger:hover,
+.button-warning:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+/* Override notification styles */
+.notification.error,
+.notification.warning,
+.toast.error,
+.toast.warning {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Remove orange/red from form validation */
+.form-input.error,
+.form-input.invalid,
+input.error,
+input.invalid {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+}
+
+.error-text,
+.invalid-text,
+.validation-error {
+  color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Override accent colors that might be orange/red */
+.accent-orange,
+.accent-red,
+.accent-warning,
+.accent-danger {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Override any remaining orange/red backgrounds */
+.bg-orange,
+.bg-red,
+.bg-warning,
+.bg-danger {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Override text colors */
+.text-orange,
+.text-red,
+.text-warning,
+.text-danger {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Override border colors */
+.border-orange,
+.border-red,
+.border-warning,
+.border-danger {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Remove orange/red from loading states */
+.loading.error,
+.loading.warning,
+.spinner.error,
+.spinner.warning {
+  border-top-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Override any remaining colored elements */
+[class*="orange"],
+[class*="red"] {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[style*="color: orange"],
+[style*="color: red"],
+[style*="color: #ff"],
+[style*="color: #f"] {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[style*="background: orange"],
+[style*="background: red"],
+[style*="background: #ff"],
+[style*="background: #f"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Override coming soon badges and similar orange elements */
+.coming-soon-badge,
+.coming-soon-badge-small,
+.beta-badge,
+.new-badge {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Override feedback buttons and CTAs */
+.feedback-button,
+.feedback-cta {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Override any remaining orange/red icon backgrounds */
+.icon-orange,
+.icon-red,
+.icon-warning,
+.icon-danger {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Subtle hover effects for all overridden elements */
+.error-message:hover,
+.warning:hover,
+.btn-danger:hover,
+.coming-soon-badge:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure global accent color never shows orange/red */
+:root {
+  --accent-color: var(--global-accent);
+  --accent-rgb: var(--global-accent-rgb);
+}
+
+/* Override any hardcoded orange/red values in existing CSS */
+* {
+  --orange: rgba(255, 255, 255, 0.1);
+  --red: rgba(255, 255, 255, 0.08);
+  --warning: rgba(255, 255, 255, 0.12);
+  --danger: rgba(255, 255, 255, 0.15);
+  --error: rgba(255, 255, 255, 0.1);
+}
+
+/* Remove orange/red from any SVG fills or strokes */
+svg [fill*="#ff"],
+svg [fill*="#f"],
+svg [fill*="orange"],
+svg [fill*="red"] {
+  fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+svg [stroke*="#ff"],
+svg [stroke*="#f"],
+svg [stroke*="orange"],
+svg [stroke*="red"] {
+  stroke: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Specific overrides for notification systems */
+.notice-info,
+.notice-warning,
+.notice-error {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-left: 3px solid rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Override any remaining bright colors that might clash */
+[style*="color: #ff6b35"],
+[style*="background: #ff6b35"],
+[style*="border-color: #ff6b35"] {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}

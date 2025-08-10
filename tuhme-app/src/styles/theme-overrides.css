@@ -1,0 +1,526 @@
+/* Apple-Grade Theme Overrides - Component-Specific Fixes */
+
+/* ===== NAVIGATION FIXES ===== */
+.navigation,
+.liquid-glass-nav {
+  background: var(--bg-secondary) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+}
+
+.nav-menu a,
+.nav-link,
+.nav-item {
+  color: var(--text-secondary) !important;
+}
+
+.nav-menu a:hover,
+.nav-link:hover,
+.nav-item:hover,
+.nav-menu a.active,
+.nav-link.active {
+  color: var(--accent-primary) !important;
+}
+
+.nav-logo-image {
+  /* CSS doesn't support ternary operators, use media queries or classes instead */
+  filter: brightness(1);
+}
+
+[data-theme="light"] .nav-logo-image {
+  filter: brightness(0);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-primary) !important;
+}
+
+/* ===== HERO SECTION FIXES ===== */
+.hero-section {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.hero-title,
+.hero-subtitle,
+.hero-description {
+  color: var(--text-primary) !important;
+}
+
+.hero-cta-primary {
+  background: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-text) !important;
+}
+
+.hero-cta-secondary {
+  background: var(--btn-secondary-bg) !important;
+  color: var(--btn-secondary-text) !important;
+  border: 1px solid var(--btn-secondary-border) !important;
+}
+
+/* ===== MODAL FIXES ===== */
+.modal-overlay {
+  background: var(--bg-overlay) !important;
+}
+
+.modal-content,
+.liquid-glass-modal {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-primary) !important;
+}
+
+.modal-title,
+.modal-header h1,
+.modal-header h2,
+.modal-header h3 {
+  color: var(--text-primary) !important;
+}
+
+.modal-text,
+.modal-body p,
+.modal-body span,
+.modal-body div {
+  color: var(--text-primary) !important;
+}
+
+.modal-close,
+.close-button {
+  background: var(--btn-secondary-bg) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-primary) !important;
+}
+
+.modal-close:hover,
+.close-button:hover {
+  background: var(--bg-surface-hover) !important;
+  color: var(--accent-primary) !important;
+  border-color: var(--border-accent) !important;
+}
+
+/* ===== MEMBERSHIP MODAL SPECIFIC FIXES ===== */
+.membership-progress {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+}
+
+.progress-step {
+  color: var(--text-secondary) !important;
+}
+
+.progress-step.active {
+  color: var(--accent-primary) !important;
+}
+
+.step-number {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border: 2px solid var(--border-primary) !important;
+}
+
+.progress-step.active .step-number {
+  background: var(--accent-primary) !important;
+  color: var(--btn-primary-text) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+.plan-card {
+  background: var(--bg-surface) !important;
+  border: 2px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+  overflow: visible !important;
+}
+
+.plan-card:hover {
+  border-color: var(--border-accent) !important;
+  background: var(--bg-surface-hover) !important;
+  transform: translateY(-4px) !important;
+}
+
+.plan-card.selected {
+  border-color: var(--accent-primary) !important;
+  background: var(--accent-subtle) !important;
+}
+
+.plan-card.featured {
+  border-color: var(--accent-tertiary) !important;
+  background: var(--accent-subtle) !important;
+}
+
+.plan-badge {
+  background: var(--accent-primary) !important;
+  color: var(--btn-primary-text) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 20 !important;
+}
+
+.plan-header h4,
+.plan-name {
+  color: var(--text-primary) !important;
+}
+
+.plan-price .price {
+  color: var(--accent-primary) !important;
+}
+
+.plan-features,
+.plan-features li {
+  color: var(--text-secondary) !important;
+}
+
+.feature-check {
+  color: var(--accent-primary) !important;
+}
+
+/* ===== FORM FIXES ===== */
+.form-group label {
+  color: var(--text-primary) !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--input-bg) !important;
+  border: 1px solid var(--input-border) !important;
+  color: var(--input-text) !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--input-placeholder) !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--input-focus-border) !important;
+  box-shadow: 0 0 0 2px var(--input-focus-shadow) !important;
+}
+
+.form-group small {
+  color: var(--text-tertiary) !important;
+}
+
+/* ===== BUTTON FIXES ===== */
+.btn-primary,
+.button-primary,
+.tier-action-button {
+  background: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-text) !important;
+  border: none !important;
+}
+
+.btn-primary:hover,
+.button-primary:hover,
+.tier-action-button:hover {
+  background: var(--btn-primary-hover) !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-secondary,
+.button-secondary {
+  background: var(--btn-secondary-bg) !important;
+  color: var(--btn-secondary-text) !important;
+  border: 1px solid var(--btn-secondary-border) !important;
+}
+
+.btn-secondary:hover,
+.button-secondary:hover {
+  background: var(--btn-secondary-hover-bg) !important;
+  border-color: var(--btn-secondary-hover-border) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* ===== SERVICE OVERVIEW FIXES ===== */
+.service-overview {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.service-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.service-card:hover {
+  background: var(--bg-surface-hover) !important;
+  border-color: var(--border-accent) !important;
+}
+
+.service-title {
+  color: var(--text-primary) !important;
+}
+
+.service-description {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== HOW IT WORKS FIXES ===== */
+.how-it-works {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.step-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.step-number {
+  background: var(--accent-primary) !important;
+  color: var(--btn-primary-text) !important;
+}
+
+.step-title {
+  color: var(--text-primary) !important;
+}
+
+.step-description {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== PRICING WIDGET FIXES ===== */
+.pricing-widget {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.pricing-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.pricing-card:hover {
+  background: var(--bg-surface-hover) !important;
+  border-color: var(--border-accent) !important;
+}
+
+.pricing-card.featured {
+  border-color: var(--accent-primary) !important;
+  background: var(--accent-subtle) !important;
+}
+
+.price-amount {
+  color: var(--accent-primary) !important;
+}
+
+.price-period {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== FOOTER FIXES ===== */
+.footer {
+  background: var(--bg-secondary) !important;
+  border-top: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.footer-link {
+  color: var(--text-secondary) !important;
+}
+
+.footer-link:hover {
+  color: var(--accent-primary) !important;
+}
+
+.footer-title {
+  color: var(--text-primary) !important;
+}
+
+.footer-text {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== DAILY SALES FLYER FIXES ===== */
+.daily-sales-flyer-overlay {
+  background: var(--bg-overlay) !important;
+}
+
+.daily-sales-flyer-modal {
+  color: var(--text-primary) !important;
+}
+
+.flyer-brand-name {
+  color: var(--text-primary) !important;
+}
+
+.flyer-title-line {
+  color: var(--accent-primary) !important;
+}
+
+.sale-store-name {
+  color: var(--text-primary) !important;
+}
+
+.sale-category {
+  color: var(--text-secondary) !important;
+}
+
+.sale-type {
+  color: var(--text-tertiary) !important;
+}
+
+/* ===== STORE DIRECTORY FIXES ===== */
+.store-section {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.store-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.store-card:hover {
+  background: var(--bg-surface-hover) !important;
+  border-color: var(--border-accent) !important;
+}
+
+.store-name {
+  color: var(--text-primary) !important;
+}
+
+.store-category {
+  color: var(--accent-primary) !important;
+}
+
+.store-location {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== TESTIMONIALS FIXES ===== */
+.testimonials {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.testimonial-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.testimonial-text {
+  color: var(--text-primary) !important;
+}
+
+.testimonial-author {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== CONTACT FORM FIXES ===== */
+.contact-form {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.contact-title {
+  color: var(--text-primary) !important;
+}
+
+.contact-description {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== ERROR AND SUCCESS STATES ===== */
+.error-message {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+}
+
+[data-theme="light"] .error-message {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #dc2626 !important;
+}
+
+.success-message {
+  background: rgba(34, 197, 94, 0.1) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #86efac !important;
+}
+
+[data-theme="light"] .success-message {
+  background: rgba(34, 197, 94, 0.1) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #16a34a !important;
+}
+
+.warning-message {
+  background: rgba(245, 158, 11, 0.1) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #fcd34d !important;
+}
+
+[data-theme="light"] .warning-message {
+  background: rgba(245, 158, 11, 0.1) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #d97706 !important;
+}
+
+/* ===== SPINNER AND LOADING STATES ===== */
+.spinner,
+.loading-spinner {
+  border-top-color: var(--accent-primary) !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+}
+
+.loading-text {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+*:focus-visible {
+  outline: 2px solid var(--accent-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    border-color: black !important;
+  }
+  
+  .theme-toggle {
+    display: none !important;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #ffffff !important;
+    --bg-primary: #000000 !important;
+    --border-primary: #ffffff !important;
+    --accent-primary: #ffff00 !important;
+  }
+  
+  [data-theme="light"] {
+    --text-primary: #000000 !important;
+    --bg-primary: #ffffff !important;
+    --border-primary: #000000 !important;
+    --accent-primary: #0000ff !important;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

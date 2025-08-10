@@ -1,0 +1,402 @@
+/* Labubu Exclusive Modal Styling */
+/* Pastel aesthetic with collectible-themed animations */
+
+/* Modal animations */
+@keyframes labubuFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes labubuPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+  }
+}
+
+@keyframes labubuFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes labubuSparkle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+@keyframes labubuGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 182, 193, 0.8), 0 0 30px rgba(230, 230, 250, 0.6);
+  }
+}
+
+@keyframes labubuCountdown {
+  0% {
+    background: linear-gradient(45deg, #FFB6C1, #FFE4B5);
+  }
+  25% {
+    background: linear-gradient(45deg, #E6E6FA, #FFB6C1);
+  }
+  50% {
+    background: linear-gradient(45deg, #FFE4B5, #E6E6FA);
+  }
+  75% {
+    background: linear-gradient(45deg, #FFB6C1, #E6E6FA);
+  }
+  100% {
+    background: linear-gradient(45deg, #FFB6C1, #FFE4B5);
+  }
+}
+
+/* Labubu modal container */
+.labubu-modal {
+  animation: labubuFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Exclusive badge styling */
+.labubu-exclusive-badge {
+  animation: labubuPulse 2s infinite;
+  background: linear-gradient(135deg, #FFB6C1, #FFE4B5, #E6E6FA);
+  background-size: 200% 200%;
+  animation: labubuPulse 2s infinite, gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Hero title with Labubu glow effect */
+.labubu-hero-title {
+  animation: labubuGlow 3s ease-in-out infinite;
+  background: linear-gradient(45deg, #FFB6C1, #E6E6FA, #FFE4B5);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease-in-out infinite, labubuGlow 3s ease-in-out infinite;
+}
+
+/* Floating collectible elements */
+.labubu-floating-element {
+  animation: labubuFloat 4s ease-in-out infinite;
+}
+
+.labubu-floating-element:nth-child(2) {
+  animation-delay: -1s;
+}
+
+.labubu-floating-element:nth-child(3) {
+  animation-delay: -2s;
+}
+
+/* Sparkle effects */
+.labubu-sparkle {
+  animation: labubuSparkle 2s ease-in-out infinite;
+}
+
+.labubu-sparkle:nth-child(odd) {
+  animation-delay: -0.5s;
+}
+
+/* Product showcase container */
+.labubu-showcase {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #E6E6FA 0%, #FFE4B5 50%, #FFB6C1 100%);
+  box-shadow: 
+    inset 0 2px 8px rgba(255, 255, 255, 0.3),
+    0 8px 25px rgba(255, 182, 193, 0.2);
+}
+
+.labubu-showcase::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0px,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
+}
+
+/* Benefits list styling */
+.labubu-benefit-icon {
+  background: linear-gradient(135deg, #FFB6C1, #E6E6FA);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.labubu-benefit-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
+}
+
+/* Countdown timer styling */
+.labubu-countdown {
+  background: linear-gradient(45deg, #FFB6C1, #FFE4B5);
+  background-size: 400% 400%;
+  animation: labubuCountdown 6s ease-in-out infinite;
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 25px rgba(255, 182, 193, 0.4),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.labubu-countdown-number {
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: labubuPulse 1s ease-in-out infinite;
+}
+
+/* CTA button styling */
+.labubu-cta-button {
+  background: linear-gradient(135deg, #FFB6C1, #FFE4B5);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 
+    0 8px 25px rgba(255, 182, 193, 0.4),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.labubu-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.labubu-cta-button:hover::before {
+  left: 100%;
+}
+
+.labubu-cta-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 12px 35px rgba(255, 182, 193, 0.6),
+    inset 0 2px 8px rgba(255, 255, 255, 0.4);
+}
+
+.labubu-cta-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Social proof numbers */
+.labubu-social-proof {
+  animation: labubuFloat 5s ease-in-out infinite;
+}
+
+.labubu-social-number {
+  color: #FFB6C1;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+  animation: labubuGlow 4s ease-in-out infinite;
+}
+
+/* Mobile responsiveness - Enhanced for all screen sizes */
+@media (max-width: 768px) {
+  /* Modal container adjustments */
+  .mantine-Modal-content {
+    margin: 0.5rem !important;
+    max-height: 95vh !important;
+    overflow-y: auto !important;
+    border-radius: 16px !important;
+  }
+  
+  .mantine-Modal-body {
+    padding: 1rem !important;
+  }
+  
+  /* Hero title responsive scaling */
+  .mantine-Text-root[style*="2rem"] {
+    font-size: clamp(1.5rem, 5vw, 1.75rem) !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Grid adjustments for mobile */
+  .mantine-Grid-col {
+    padding: 0.5rem !important;
+  }
+  
+  /* Showcase container mobile sizing */
+  .labubu-showcase {
+    height: 150px !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Benefits section mobile layout */
+  .mantine-Group-root:has(.mantine-Paper-root[style*="40px"]) {
+    gap: 0.75rem !important;
+    align-items: flex-start !important;
+  }
+  
+  /* Countdown timer mobile styling */
+  .mantine-Paper-root:has(.mantine-Text-root[style*="xl"]) {
+    padding: 0.75rem !important;
+  }
+  
+  .mantine-Text-root[style*="xl"][style*="fw={800}"] {
+    font-size: 1.25rem !important;
+  }
+  
+  /* CTA button mobile optimization */
+  .mantine-Button-root[style*="60px"] {
+    height: 50px !important;
+    font-size: 0.9rem !important;
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screen optimizations */
+  .mantine-Modal-content {
+    margin: 0.25rem !important;
+    max-height: 98vh !important;
+  }
+  
+  .mantine-Container-root {
+    padding: 0.75rem !important;
+  }
+  
+  /* Hero title for very small screens */
+  .mantine-Text-root[style*="2rem"] {
+    font-size: clamp(1.25rem, 6vw, 1.5rem) !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+  
+  /* Showcase height reduction */
+  .labubu-showcase {
+    height: 120px !important;
+  }
+  
+  /* Stack vertical on very small screens */
+  .mantine-Grid-root {
+    gap: 0.5rem !important;
+  }
+  
+  /* Countdown timer very small screens */
+  .mantine-Text-root[style*="xl"][style*="fw={800}"] {
+    font-size: 1rem !important;
+  }
+  
+  /* Benefits icons smaller */
+  .mantine-Paper-root[style*="40px"] {
+    min-width: 32px !important;
+    height: 32px !important;
+  }
+  
+  /* CTA button compact */
+  .mantine-Button-root[style*="60px"] {
+    height: 44px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .labubu-floating-element,
+  .labubu-sparkle,
+  .labubu-exclusive-badge,
+  .labubu-countdown,
+  .labubu-social-proof {
+    animation: none;
+  }
+  
+  .labubu-hero-title {
+    animation: none;
+    background: #FFB6C1;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .labubu-modal {
+    border: 3px solid #000;
+  }
+  
+  .labubu-showcase {
+    background: #fff;
+    border: 2px solid #000;
+  }
+  
+  .labubu-cta-button {
+    background: #FFB6C1;
+    border: 2px solid #000;
+    color: #000;
+  }
+}
+
+/* Print styles */
+@media print {
+  .labubu-modal {
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  .labubu-floating-element,
+  .labubu-sparkle {
+    display: none;
+  }
+}

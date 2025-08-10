@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
@@ -11,37 +11,27 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('tuhme-theme');
-    if (saved) return JSON.parse(saved);
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
+  // Force dark mode as the only theme
   useEffect(() => {
-    localStorage.setItem('tuhme-theme', JSON.stringify(isDarkMode));
-    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsTransitioning(true);
-    setIsDarkMode(!isDarkMode);
-    
-    // Remove transition class after animation completes
-    setTimeout(() => setIsTransitioning(false), 500);
-  };
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.body.classList.add('dark-theme');
+    // Remove any light theme classes
+    document.body.classList.remove('light-theme');
+    // Clean up any old localStorage theme preferences
+    localStorage.removeItem('tuhme-theme');
+  }, []);
 
   const value = {
-    isDarkMode,
-    toggleTheme,
-    isTransitioning,
-    theme: isDarkMode ? 'dark' : 'light'
+    isDarkMode: true,
+    theme: 'dark',
+    // Keep these for backward compatibility but they do nothing
+    toggleTheme: () => {},
+    isTransitioning: false
   };
 
   return (
     <ThemeContext.Provider value={value}>
-      <div className={`theme-container ${isTransitioning ? 'theme-transitioning' : ''}`}>
+      <div className="theme-container dark-theme">
         {children}
       </div>
     </ThemeContext.Provider>

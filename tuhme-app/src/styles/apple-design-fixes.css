@@ -1,0 +1,1240 @@
+/* APPLE-LEVEL DESIGN FIXES - COMPREHENSIVE OVERRIDES */
+/* Removes all text blur effects and ensures perfect readability */
+
+/* CRITICAL: Remove ALL text-shadow effects that impair readability */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button,
+.hero-title-luxury,
+.hero-glowing-tagline,
+.title-line,
+.brand-name-luxury,
+.luxury-title,
+.luxury-subtitle,
+.steps-title,
+.steps-subtitle,
+.step-description,
+.description-text,
+.cta-text,
+.promise-text,
+.section-title,
+.section-subtitle,
+.mantine-Text-root,
+.mantine-Title-root,
+.mantine-Button-root {
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  -webkit-text-stroke: none !important;
+}
+
+/* OVERRIDE ALL GRADIENT TEXT EFFECTS - CRITICAL FIX */
+*[style*="background-clip"],
+*[style*="-webkit-background-clip"],
+*[style*="text-fill-color"],
+*[style*="-webkit-text-fill-color"],
+.hero-title-luxury,
+.hero-glowing-tagline,
+.title-line,
+.brand-name-luxury,
+.luxury-title,
+.section-title {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Center "How TUHME Works" numbers while maintaining icon offset */
+.step-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.step-background-number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 800;
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.step-corner-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+}
+
+.step-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+/* Fix button icon visibility with proper Mantine integration */
+.mantine-Button-root,
+.primary-cta-luxury,
+.liquid-glass-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+}
+
+.mantine-Button-root svg,
+.primary-cta-luxury svg,
+.liquid-glass-button svg {
+  color: inherit !important;
+  opacity: 1 !important;
+  flex-shrink: 0;
+}
+
+/* Ensure cookie bar is opaque */
+.cookie-consent,
+.cookie-bar,
+.privacy-notice {
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  opacity: 1 !important;
+}
+
+/* Center "Everything You Need" section */
+.everything-you-need-section,
+.section-everything-you-need {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* FORCE SOLID COLORS FOR ALL TEXT ELEMENTS */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button,
+.mantine-Text-root,
+.mantine-Title-root,
+.mantine-Button-root,
+.mantine-Button-label {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Fix shopping experience section colors */
+.shopping-experience-section {
+  color: inherit !important;
+}
+
+.shopping-experience-section h1,
+.shopping-experience-section h2,
+.shopping-experience-section h3,
+.shopping-experience-section p {
+  color: inherit !important;
+}
+
+/* Mobile responsive pricing fixes */
+.pricing-section,
+.transparent-pricing {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+@media (max-width: 768px) {
+  .pricing-container {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .pricing-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .transparent-pricing {
+    padding: 1rem !important;
+  }
+}
+
+/* Maintain liquid glass effects ONLY for backgrounds, not text */
+.liquid-glass-background,
+.backdrop-element,
+.glass-panel {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* Text elements should never have blur */
+.liquid-glass-background *,
+.backdrop-element *,
+.glass-panel * {
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Apple-level button styling */
+.mantine-Button-root,
+.primary-cta-luxury,
+.liquid-glass-button {
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: none !important;
+  min-height: 44px !important; /* Apple minimum touch target */
+  padding: 8px 16px !important;
+}
+
+.mantine-Button-root:hover,
+.primary-cta-luxury:hover,
+.liquid-glass-button:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+.mantine-Button-root:active,
+.primary-cta-luxury:active,
+.liquid-glass-button:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* Ensure all buttons have proper icon styling */
+.mantine-Button-root svg,
+.primary-cta-luxury svg,
+.liquid-glass-button svg,
+.cta-section-luxury svg {
+  color: inherit !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Perfect icon alignment */
+.mantine-Button-root .mantine-Button-leftSection,
+.mantine-Button-root .mantine-Button-rightSection {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Single page architecture improvements */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Apple-level navigation smooth scrolling */
+.main-website {
+  scroll-behavior: smooth;
+}
+
+/* Improved section spacing for Apple-level design */
+section {
+  padding: 4rem 0 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 0 !important;
+  }
+}
+
+/* Ensure consistent spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Apple-level navigation highlighting */
+.mantine-Button-root[data-active="true"] {
+  background: var(--global-accent, #ffffff) !important;
+  color: var(--global-primary, #000000) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Perfect button focus states */
+.mantine-Button-root:focus-visible {
+  outline: 2px solid var(--global-accent, #ffffff) !important;
+  outline-offset: 2px !important;
+}
+
+/* Seamless modal transitions */
+.mantine-Modal-overlay {
+  backdrop-filter: blur(20px) !important;
+  animation: fadeIn 0.3s ease-out !important;
+}
+
+.mantine-Modal-content {
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.9) translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1) translateY(0); 
+  }
+}
+
+/* Apple-level performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Remove all unnecessary animations that could affect performance */
+.floating-elements,
+.luxury-particles {
+  will-change: transform !important;
+  transform: translateZ(0) !important;
+}
+
+/* Enhanced Mobile Responsive Trust Indicators */
+.trust-indicators {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 3rem !important;
+  flex-wrap: wrap !important;
+  margin-top: 2rem !important;
+  padding: 0 1rem !important;
+}
+
+.trust-indicators .indicator {
+  text-align: center !important;
+  min-width: 120px !important;
+}
+
+.trust-number {
+  display: block !important;
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  font-weight: 200 !important;
+  color: var(--accent-primary, #ffffff) !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.1 !important;
+}
+
+.trust-label {
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+}
+
+/* Mobile-specific trust indicators */
+@media (max-width: 480px) {
+  .trust-indicators {
+    gap: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .trust-indicators .indicator {
+    min-width: 100px !important;
+    flex: 1 !important;
+    max-width: 120px !important;
+  }
+
+  .trust-number {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.75rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .trust-indicators {
+    gap: 2rem !important;
+    margin-top: 1.75rem !important;
+  }
+
+  .trust-indicators .indicator {
+    min-width: 110px !important;
+  }
+
+  .trust-number {
+    font-size: 1.75rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .trust-indicators {
+    margin-top: 1rem !important;
+    gap: 2rem !important;
+  }
+
+  .trust-number {
+    font-size: 1.5rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* Touch device optimizations for trust indicators */
+@media (hover: none) and (pointer: coarse) {
+  .trust-indicators .indicator {
+    padding: 0.5rem !important;
+    touch-action: manipulation !important;
+  }
+}
+
+/* Enhanced Responsive Typography with Fluid Scaling */
+/* Base typography with clamp() for fluid scaling */
+body, html {
+  font-size: clamp(14px, 2.5vw, 16px) !important;
+  line-height: 1.6 !important;
+}
+
+/* Heading typography with fluid scaling */
+h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: clamp(0.75rem, 2vw, 1.5rem) !important;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.25 !important;
+  margin-bottom: clamp(0.5rem, 1.5vw, 1.25rem) !important;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3.5vw, 2rem) !important;
+  line-height: 1.3 !important;
+  margin-bottom: clamp(0.5rem, 1.25vw, 1rem) !important;
+}
+
+h4 {
+  font-size: clamp(1.125rem, 3vw, 1.5rem) !important;
+  line-height: 1.35 !important;
+  margin-bottom: clamp(0.375rem, 1vw, 0.75rem) !important;
+}
+
+h5 {
+  font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+  line-height: 1.4 !important;
+  margin-bottom: clamp(0.25rem, 0.75vw, 0.5rem) !important;
+}
+
+h6 {
+  font-size: clamp(0.875rem, 2vw, 1.125rem) !important;
+  line-height: 1.45 !important;
+  margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem) !important;
+}
+
+/* Paragraph and text scaling */
+p {
+  font-size: clamp(0.875rem, 2.25vw, 1rem) !important;
+  line-height: clamp(1.5, 2vw, 1.7) !important;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1rem) !important;
+}
+
+/* Component-specific responsive typography */
+.hero-title-luxury {
+  font-size: clamp(2rem, 6vw, 4rem) !important;
+  line-height: 1.1 !important;
+}
+
+.hero-glowing-tagline {
+  font-size: clamp(1.25rem, 4vw, 2rem) !important;
+  line-height: 1.2 !important;
+}
+
+.brand-name-luxury {
+  font-size: clamp(2.5rem, 8vw, 5rem) !important;
+  line-height: 1 !important;
+}
+
+.pricing-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.2 !important;
+}
+
+.cta-title {
+  font-size: clamp(1.25rem, 3.5vw, 2rem) !important;
+  line-height: 1.25 !important;
+}
+
+/* Button text scaling */
+.mantine-Button-root,
+.primary-cta-luxury,
+.liquid-glass-button {
+  font-size: clamp(0.875rem, 2vw, 1rem) !important;
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 2.5vw, 1.5rem) !important;
+}
+
+/* Navigation text scaling */
+.mantine-Button-root[data-navigation="true"] {
+  font-size: clamp(0.8125rem, 1.8vw, 0.9375rem) !important;
+}
+
+/* Small text elements */
+.trust-label,
+.feature-text,
+.benefit-description,
+.pricing-subtitle {
+  font-size: clamp(0.75rem, 2vw, 0.875rem) !important;
+  line-height: clamp(1.4, 1.5vw, 1.5) !important;
+}
+
+/* Large display text */
+.trust-number,
+.price {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.1 !important;
+}
+
+/* Mobile-specific typography adjustments */
+@media (max-width: 480px) {
+  /* More conservative scaling on very small screens */
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.625rem !important;
+  }
+
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-title-luxury {
+    font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
+  }
+
+  .brand-name-luxury {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+}
+
+/* Tablet-specific typography */
+@media (min-width: 481px) and (max-width: 768px) {
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem) !important;
+  }
+
+  .hero-title-luxury {
+    font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+  /* Cap font sizes on very large screens */
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h2 {
+    font-size: 2.5rem !important;
+  }
+
+  .hero-title-luxury {
+    font-size: 4rem !important;
+  }
+
+  .brand-name-luxury {
+    font-size: 5rem !important;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body, html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+}
+
+/* Navigation Dropdown Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fix Blurred Text Issues - Remove ALL text blur effects */
+.mantine-Button-root,
+.mantine-Text-root,
+.mantine-Title-root,
+.mantine-ActionIcon-root,
+.message-us,
+.contact-button,
+.support-button,
+.feedback-button,
+[data-mantine-component] {
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure all interactive elements have proper contrast */
+.mantine-Button-root {
+  color: inherit !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.mantine-Button-root:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: inherit !important;
+}
+
+/* Fix dark text on dark backgrounds */
+.dark-mode .mantine-Button-root,
+[data-mantine-color-scheme="dark"] .mantine-Button-root {
+  color: #ffffff !important;
+}
+
+.light-mode .mantine-Button-root,
+[data-mantine-color-scheme="light"] .mantine-Button-root {
+  color: #000000 !important;
+}
+
+/* Navigation specific fixes */
+.mantine-Paper-root[data-navigation="true"] * {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Modal text contrast fixes */
+.mantine-Modal-content,
+.mantine-Modal-body,
+.mantine-Modal-header {
+  color: inherit !important;
+}
+
+.mantine-Modal-content * {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Button text visibility enhancement */
+.mantine-Button-root .mantine-Button-label,
+.mantine-Button-root span {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Remove text blur from all interactive elements */
+button,
+a,
+input,
+textarea,
+select,
+.clickable,
+.interactive {
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure proper text contrast in all states */
+.mantine-Button-root:focus,
+.mantine-Button-root:active,
+.mantine-ActionIcon-root:focus,
+.mantine-ActionIcon-root:active {
+  color: inherit !important;
+  text-shadow: none !important;
+}
+
+/* Fix WhatsApp and contact button visibility */
+.whatsapp-button,
+.contact-support-button,
+.feedback-modal-button {
+  color: #ffffff !important;
+  text-shadow: none !important;
+  filter: none !important;
+  background-color: rgba(37, 211, 102, 0.9) !important;
+}
+
+.whatsapp-button:hover,
+.contact-support-button:hover {
+  background-color: rgba(37, 211, 102, 1) !important;
+  color: #ffffff !important;
+}
+
+/* Enhanced Navigation Responsiveness - Fixed Positioning */
+.mantine-Paper-root[data-navigation="true"] {
+  height: 70px !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+.mantine-Container-root {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.mantine-Group-root {
+  width: 100% !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Logo positioning fixes */
+.logo-container {
+  flex-shrink: 0 !important;
+  min-width: 0 !important;
+}
+
+/* Menu button positioning fixes */
+.menu-button-container {
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+
+@media (max-width: 480px) {
+  .mantine-Paper-root[data-navigation="true"] {
+    height: 60px !important;
+  }
+  
+  .mantine-Container-root {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  .mantine-Text-root {
+    font-size: clamp(1rem, 4vw, 1.25rem) !important;
+    letter-spacing: 0.1em !important;
+    white-space: nowrap !important;
+  }
+  
+  .mantine-ActionIcon-root {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .mantine-Paper-root[data-navigation="true"] {
+    height: 65px !important;
+  }
+  
+  .mantine-Container-root {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .mantine-Text-root {
+    font-size: clamp(1.25rem, 3vw, 1.5rem) !important;
+    letter-spacing: 0.15em !important;
+  }
+  
+  .mantine-ActionIcon-root {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mantine-Container-root {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    max-width: 100% !important;
+  }
+  
+  .mantine-Text-root {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mantine-Container-root {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+/* Dropdown Menu Responsiveness - Fixed Positioning */
+.dropdown-menu-overlay {
+  position: fixed !important;
+  top: 70px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  min-height: calc(100vh - 70px) !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  z-index: 999 !important;
+}
+
+@media (max-width: 480px) {
+  .dropdown-menu-overlay {
+    top: 60px !important;
+    min-height: calc(100vh - 60px) !important;
+  }
+  
+  .mantine-Container-root[data-dropdown="true"] {
+    padding: 1rem 0.75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .mantine-Stack-root[data-menu-items="true"] {
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+  
+  .mantine-Button-root[data-menu-item="true"] {
+    padding: 12px 16px !important;
+    font-size: 0.8125rem !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .dropdown-menu-overlay {
+    top: 65px !important;
+    min-height: calc(100vh - 65px) !important;
+  }
+  
+  .mantine-Container-root[data-dropdown="true"] {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .mantine-Button-root[data-menu-item="true"] {
+    padding: 14px 18px !important;
+    font-size: 0.875rem !important;
+    min-height: 52px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mantine-Container-root[data-dropdown="true"] {
+    padding: 2rem 1.5rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+  }
+  
+  .mantine-Button-root[data-menu-item="true"] {
+    padding: 16px 20px !important;
+    font-size: 0.9375rem !important;
+    min-height: 56px !important;
+  }
+}
+
+/* Safari-specific fixes for Mac */
+@supports (-webkit-appearance: none) and (not (contain: paint)) {
+  /* Safari detection */
+  .mantine-Paper-root[data-navigation="true"] {
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    will-change: transform !important;
+  }
+  
+  .dropdown-menu-overlay {
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Fix Safari backdrop-filter positioning */
+  .mantine-Paper-root[data-navigation="true"] {
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+  }
+  
+  .dropdown-menu-overlay {
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+  }
+}
+
+/* Cross-browser compatibility fixes */
+@supports (-webkit-backdrop-filter: blur(20px)) {
+  .liquid-glass-nav,
+  .mantine-Paper-root[data-navigation="true"] {
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  }
+  
+  .dropdown-menu-overlay {
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+  }
+}
+
+@supports (backdrop-filter: blur(20px)) {
+  .liquid-glass-nav,
+  .mantine-Paper-root[data-navigation="true"] {
+    backdrop-filter: blur(20px) saturate(180%) !important;
+  }
+  
+  .dropdown-menu-overlay {
+    backdrop-filter: blur(40px) saturate(180%) !important;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))) {
+  .mantine-Paper-root[data-navigation="true"] {
+    background: rgba(0, 0, 0, 0.95) !important;
+  }
+  
+  .dropdown-menu-overlay {
+    background: rgba(0, 0, 0, 0.98) !important;
+  }
+}
+
+/* Ensure proper font rendering across browsers */
+* {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Fix button and text positioning issues */
+.mantine-Button-root {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+}
+
+.mantine-Text-root {
+  position: relative !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+}
+
+/* Fix viewport issues on mobile Safari */
+@media screen and (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch !important;
+    overflow-x: hidden !important;
+  }
+  
+  .mantine-Paper-root[data-navigation="true"] {
+    position: fixed !important;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+/* Fix positioning for very small screens */
+@media (max-width: 320px) {
+  .mantine-Container-root {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  .mantine-Text-root {
+    font-size: 1rem !important;
+    letter-spacing: 0.05em !important;
+  }
+  
+  .mantine-ActionIcon-root {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+}
+
+/* Additional Safari Mac specific fixes for positioning */
+@media screen and (max-width: 1024px) {
+  /* Force navigation container to maintain structure */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Container-root {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure logo and menu button stay in position */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Group-root {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Prevent logo from shrinking */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Text-root {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+  
+  /* Keep action icon properly positioned */
+  .mantine-Paper-root[data-navigation="true"] .mantine-ActionIcon-root {
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+}
+
+/* Enhanced Safari Mac positioning fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 1024px) {
+  /* Safari-specific navigation fixes */
+  .mantine-Paper-root[data-navigation="true"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  
+  /* Force container to use full width on Safari */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Container-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Precise positioning fixes for small screens */
+@media (max-width: 600px) {
+  .mantine-Paper-root[data-navigation="true"] {
+    padding: 0 !important;
+  }
+  
+  .mantine-Paper-root[data-navigation="true"] .mantine-Container-root {
+    padding-left: clamp(0.75rem, 2vw, 1rem) !important;
+    padding-right: clamp(0.75rem, 2vw, 1rem) !important;
+  }
+  
+  .mantine-Text-root {
+    font-size: clamp(1rem, 3.5vw, 1.25rem) !important;
+    max-width: calc(100vw - 100px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* Browser window resize handling */
+@media (orientation: landscape) and (max-height: 500px) {
+  .mantine-Paper-root[data-navigation="true"] {
+    height: 50px !important;
+  }
+  
+  .dropdown-menu-overlay {
+    top: 50px !important;
+    min-height: calc(100vh - 50px) !important;
+  }
+}
+
+/* Safari Mac specific responsive fixes */
+@supports (-webkit-appearance: none) {
+  /* More aggressive Safari positioning fixes */
+  .mantine-Paper-root[data-navigation="true"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    box-sizing: border-box !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+  
+  /* Safari container positioning */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Container-root {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+  }
+  
+  /* Safari group layout fixes */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Group-root {
+    position: relative !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+  }
+  
+  /* Safari logo positioning */
+  .mantine-Paper-root[data-navigation="true"] .mantine-Text-root {
+    position: relative !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  
+  /* Safari button positioning */
+  .mantine-Paper-root[data-navigation="true"] .mantine-ActionIcon-root {
+    position: relative !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Safari smooth scrolling fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 1) {
+  html {
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Prevent Safari zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Safari dropdown menu positioning */
+  .dropdown-menu-overlay {
+    position: fixed !important;
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    box-sizing: border-box !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* Safari responsive breakpoints with enhanced positioning */
+@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 768px) {
+  .mantine-Paper-root[data-navigation="true"] {
+    height: clamp(60px, 10vw, 70px) !important;
+  }
+  
+  .mantine-Container-root {
+    padding-left: clamp(0.75rem, 3vw, 1.5rem) !important;
+    padding-right: clamp(0.75rem, 3vw, 1.5rem) !important;
+  }
+  
+  .mantine-Text-root {
+    font-size: clamp(1rem, 4vw, 1.5rem) !important;
+    letter-spacing: clamp(0.05em, 0.5vw, 0.2em) !important;
+  }
+  
+  .mantine-ActionIcon-root {
+    width: clamp(36px, 8vw, 48px) !important;
+    height: clamp(36px, 8vw, 48px) !important;
+    min-width: clamp(36px, 8vw, 48px) !important;
+    min-height: clamp(36px, 8vw, 48px) !important;
+  }
+}
+
+/* Safari Mac retina display optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .mantine-Paper-root[data-navigation="true"] {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+  
+  .mantine-Text-root,
+  .mantine-Button-root {
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+  }
+}
