@@ -1,0 +1,214 @@
+/* Hero Dark Mode System Override Fix */
+/* Forces white text on dark backgrounds regardless of system color scheme preferences */
+
+/* Override any system color scheme interference */
+@media (prefers-color-scheme: light) {
+  .hero-luxury,
+  .hero-luxury *,
+  .hero-content-luxury,
+  .hero-content-luxury * {
+    color-scheme: dark !important;
+  }
+}
+
+/* Force white text in hero regardless of system preferences */
+.hero-luxury,
+.hero-luxury .hero-content-luxury {
+  color: #ffffff !important;
+  background-color: var(--primary-bg) !important;
+}
+
+/* Brand section - always white */
+.hero-luxury .brand-name-luxury {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 60px rgba(212, 175, 55, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 0 0 transparent !important;
+}
+
+.hero-luxury .brand-essence {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Main title - always white with accent color override */
+.hero-luxury .hero-title-luxury,
+.hero-luxury .hero-main-title,
+.hero-luxury .title-line {
+  color: #ffffff !important;
+}
+
+/* Accent text specifically */
+.hero-luxury .accent-text {
+  color: var(--accent-primary) !important;
+}
+
+/* Description text - always white */
+.hero-luxury .description-text {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Promise items - always white */
+.hero-luxury .promise-item span:not(.promise-icon) {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Trust indicators - always white */
+.hero-luxury .trust-number {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.hero-luxury .trust-label {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Availability indicator */
+.hero-luxury .availability-indicator span {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Track order section */
+.hero-luxury .track-order-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-luxury .phone-input {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.hero-luxury .phone-input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.hero-luxury .track-button {
+  color: #000000 !important;
+  background-color: var(--accent-primary) !important;
+}
+
+/* Palette indicator */
+.hero-luxury .palette-name,
+.hero-luxury .time-indicator {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Remove any light mode theme overrides */
+[data-theme="light"] .hero-luxury,
+[data-theme="luxury-light"] .hero-luxury,
+body[data-theme="light"] .hero-luxury,
+body[data-theme="luxury-light"] .hero-luxury {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .hero-luxury .brand-name-luxury,
+[data-theme="luxury-light"] .hero-luxury .brand-name-luxury,
+body[data-theme="light"] .hero-luxury .brand-name-luxury,
+body[data-theme="luxury-light"] .hero-luxury .brand-name-luxury {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 60px rgba(212, 175, 55, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="light"] .hero-luxury .brand-essence,
+[data-theme="luxury-light"] .hero-luxury .brand-essence,
+[data-theme="light"] .hero-luxury .description-text,
+[data-theme="luxury-light"] .hero-luxury .description-text,
+body[data-theme="light"] .hero-luxury .brand-essence,
+body[data-theme="luxury-light"] .hero-luxury .brand-essence,
+body[data-theme="light"] .hero-luxury .description-text,
+body[data-theme="luxury-light"] .hero-luxury .description-text {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-theme="light"] .hero-luxury .promise-item span,
+[data-theme="luxury-light"] .hero-luxury .promise-item span,
+body[data-theme="light"] .hero-luxury .promise-item span,
+body[data-theme="luxury-light"] .hero-luxury .promise-item span {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme="light"] .hero-luxury .trust-number,
+[data-theme="luxury-light"] .hero-luxury .trust-number,
+body[data-theme="light"] .hero-luxury .trust-number,
+body[data-theme="luxury-light"] .hero-luxury .trust-number {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .hero-luxury .trust-label,
+[data-theme="luxury-light"] .hero-luxury .trust-label,
+body[data-theme="light"] .hero-luxury .trust-label,
+body[data-theme="luxury-light"] .hero-luxury .trust-label {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* System color scheme overrides */
+@media (prefers-color-scheme: light) {
+  .hero-luxury,
+  .hero-luxury * {
+    color: #ffffff !important;
+  }
+  
+  .hero-luxury .brand-name-luxury {
+    color: #ffffff !important;
+  }
+  
+  .hero-luxury .brand-essence,
+  .hero-luxury .description-text {
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+  
+  .hero-luxury .promise-item span:not(.promise-icon) {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .hero-luxury .trust-number {
+    color: #ffffff !important;
+  }
+  
+  .hero-luxury .trust-label {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  .hero-luxury .accent-text {
+    color: var(--accent-primary) !important;
+  }
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+  @media (prefers-color-scheme: light) {
+    .hero-luxury,
+    .hero-luxury * {
+      -webkit-text-fill-color: #ffffff !important;
+      color: #ffffff !important;
+    }
+    
+    .hero-luxury .accent-text {
+      -webkit-text-fill-color: var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
+    }
+  }
+}
+
+/* Force dark color scheme on hero container */
+.hero-luxury {
+  color-scheme: dark !important;
+  forced-color-adjust: none !important;
+}
+
+/* Ensure buttons maintain proper styling */
+.hero-luxury .primary-cta-luxury,
+.hero-luxury .secondary-cta-luxury {
+  color: inherit !important;
+}
+
+.hero-luxury .primary-cta-luxury .cta-text {
+  color: #000000 !important;
+}
+
+.hero-luxury .secondary-cta-luxury span {
+  color: var(--accent-primary) !important;
+}

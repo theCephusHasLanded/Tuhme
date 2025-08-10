@@ -1,0 +1,117 @@
+/* Mobile Text and Centering Fixes */
+
+/* Fix "Perfect For Busy Professionals" heading centering on mobile */
+.lifestyle-section .section-title {
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 var(--space-4) !important;
+  margin: 0 auto var(--space-6) auto !important;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
+/* Responsive text sizing for mobile */
+@media (max-width: 768px) {
+  .lifestyle-section .section-title {
+    font-size: var(--text-xl) !important;
+    line-height: 1.3 !important;
+    padding: 0 var(--space-3) !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .lifestyle-section .section-title {
+    font-size: var(--text-lg) !important;
+    line-height: 1.4 !important;
+    padding: 0 var(--space-2) !important;
+    text-align: center !important;
+    word-break: normal !important;
+    hyphens: none !important;
+  }
+}
+
+/* Ensure parent container is properly centered */
+.lifestyle-section {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Additional mobile text centering for all section titles */
+@media (max-width: 768px) {
+  .section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 90% !important;
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+  }
+  
+  /* Ensure service overview section is centered */
+  .service-overview .section-title,
+  .luxury-section .section-title {
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
+/* Force centering for any text that might trail off */
+@media (max-width: 480px) {
+  h1, h2, h3, .h1, .h2, .h3,
+  .section-title, .hero-title, .widget-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+    max-width: 95% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Specific fix for the "Perfect For Busy Professionals" container */
+.lifestyle-section {
+  padding-left: var(--space-4) !important;
+  padding-right: var(--space-4) !important;
+}
+
+@media (max-width: 768px) {
+  .lifestyle-section {
+    padding-left: var(--space-3) !important;
+    padding-right: var(--space-3) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .lifestyle-section {
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+  }
+}
+
+/* Ensure the luxury grid below is also centered */
+.luxury-grid {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  .luxury-grid {
+    padding: 0 var(--space-3) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .luxury-grid {
+    padding: 0 var(--space-2) !important;
+  }
+}

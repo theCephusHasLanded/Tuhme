@@ -3,6 +3,12 @@
 
 /* Light mode styles removed - using mandatory dark mode only */
 
+/* Import Hero Dark Mode System Override Fix */
+@import './styles/hero-dark-mode-fix.css';
+
+/* Import Mobile Text and Centering Fixes */
+@import './styles/mobile-text-fixes.css';
+
 /* CSS Custom Properties - Dark Mode Only */
 :root {
   /* Dark Theme Variables (Mandatory) */
