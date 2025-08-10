@@ -1,0 +1,358 @@
+/* Universal Color Scheme Fix - Apple.com Level Solution */
+/* Ensures dark theme works perfectly across all system preferences and browsers */
+
+/* ===== CORE COLOR SCHEME DECLARATIONS ===== */
+
+/* Force dark color scheme at the root level */
+:root {
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+  -webkit-color-scheme: dark !important;
+}
+
+html {
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+  -webkit-color-scheme: dark !important;
+  background-color: #0a0a0a !important;
+}
+
+body {
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+  -webkit-color-scheme: dark !important;
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+/* ===== UNIVERSAL BACKGROUND ENFORCEMENT ===== */
+
+/* Force dark backgrounds on all major containers */
+body,
+#root,
+.app,
+.hero-luxury,
+.hero-content-luxury,
+main,
+section,
+article,
+header,
+footer {
+  background-color: #0a0a0a !important;
+  background: #0a0a0a !important;
+}
+
+/* ===== HERO SECTION COMPREHENSIVE FIX ===== */
+
+.hero-luxury {
+  /* Force dark background regardless of gradients */
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+  -webkit-color-scheme: dark !important;
+}
+
+/* Override any dynamic background styles */
+.hero-luxury[style*="background"] {
+  background-color: #0a0a0a !important;
+}
+
+/* Force all hero text to be white */
+.hero-luxury,
+.hero-luxury *,
+.hero-content-luxury,
+.hero-content-luxury * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-fill-color: #ffffff !important;
+}
+
+/* Specific hero text elements */
+.hero-luxury .brand-name-luxury {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 
+    0 0 60px rgba(212, 175, 55, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.8) !important;
+}
+
+.hero-luxury .brand-essence {
+  color: rgba(255, 255, 255, 0.9) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-luxury .hero-title-luxury,
+.hero-luxury .hero-main-title {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.hero-luxury .description-text {
+  color: rgba(255, 255, 255, 0.85) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.hero-luxury .promise-item span:not(.promise-icon) {
+  color: rgba(255, 255, 255, 0.9) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-luxury .trust-number {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.hero-luxury .trust-label {
+  color: rgba(255, 255, 255, 0.8) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Keep accent colors */
+.hero-luxury .accent-text,
+.hero-luxury .promise-icon {
+  color: var(--accent-primary) !important;
+  -webkit-text-fill-color: var(--accent-primary) !important;
+}
+
+/* ===== FORM ELEMENTS FIX ===== */
+
+.hero-luxury .phone-input {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.hero-luxury .phone-input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ===== STORE CARDS FIX ===== */
+
+.store-card,
+.luxury-card,
+.card {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.store-card *,
+.luxury-card *,
+.card * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ===== SYSTEM COLOR SCHEME OVERRIDES ===== */
+
+/* Override light mode preferences completely */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: dark only !important;
+    forced-color-adjust: none !important;
+  }
+  
+  html,
+  body {
+    background-color: #0a0a0a !important;
+    color: #ffffff !important;
+    color-scheme: dark only !important;
+  }
+  
+  .hero-luxury {
+    background-color: #0a0a0a !important;
+    background: #0a0a0a !important;
+    color: #ffffff !important;
+  }
+  
+  .hero-luxury *,
+  .hero-content-luxury * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  
+  .hero-luxury .accent-text,
+  .hero-luxury .promise-icon {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+  }
+  
+  .store-card,
+  .luxury-card,
+  .card {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  
+  .store-card *,
+  .luxury-card *,
+  .card * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+}
+
+/* ===== SAFARI-SPECIFIC FIXES ===== */
+
+@supports (-webkit-appearance: none) {
+  :root {
+    color-scheme: dark only !important;
+    -webkit-color-scheme: dark !important;
+  }
+  
+  html,
+  body {
+    -webkit-color-scheme: dark !important;
+    background-color: #0a0a0a !important;
+  }
+  
+  .hero-luxury {
+    -webkit-color-scheme: dark !important;
+    background-color: #0a0a0a !important;
+  }
+  
+  .hero-luxury *,
+  .hero-content-luxury * {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-color-scheme: dark !important;
+  }
+  
+  .hero-luxury .accent-text,
+  .hero-luxury .promise-icon {
+    -webkit-text-fill-color: var(--accent-primary) !important;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root,
+    html,
+    body,
+    .hero-luxury {
+      -webkit-color-scheme: dark !important;
+      background-color: #0a0a0a !important;
+    }
+    
+    .hero-luxury *,
+    .hero-content-luxury * {
+      -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    .hero-luxury .accent-text,
+    .hero-luxury .promise-icon {
+      -webkit-text-fill-color: var(--accent-primary) !important;
+    }
+  }
+}
+
+/* ===== CONTRAST ENHANCEMENT ===== */
+
+/* Ensure high contrast for all text */
+@media (prefers-contrast: high) {
+  .hero-luxury,
+  .hero-luxury * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-color: #000000 !important;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  .hero-luxury .accent-text,
+  .hero-luxury .promise-icon {
+    color: #f4d03f !important;
+    -webkit-text-fill-color: #f4d03f !important;
+  }
+}
+
+/* ===== FORCED COLOR ADJUSTMENTS ===== */
+
+/* Disable any automatic color adjustments */
+.hero-luxury,
+.hero-luxury *,
+.store-card,
+.store-card *,
+.luxury-card,
+.luxury-card *,
+.card,
+.card * {
+  forced-color-adjust: none !important;
+  -webkit-forced-color-adjust: none !important;
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+
+@media (forced-colors: active) {
+  .hero-luxury {
+    background-color: Canvas !important;
+    color: CanvasText !important;
+    forced-color-adjust: none !important;
+  }
+  
+  .hero-luxury * {
+    color: CanvasText !important;
+    forced-color-adjust: none !important;
+  }
+  
+  .hero-luxury .accent-text,
+  .hero-luxury .promise-icon {
+    color: Highlight !important;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .hero-luxury {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .hero-luxury * {
+    color: #ffffff !important;
+  }
+}
+
+/* ===== MOTION PREFERENCES ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-luxury * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== META VIEWPORT SPECIFIC ===== */
+
+/* Ensure proper behavior on mobile Safari */
+@media screen and (max-width: 768px) {
+  .hero-luxury {
+    background-color: #0a0a0a !important;
+    color: #ffffff !important;
+    -webkit-color-scheme: dark !important;
+  }
+  
+  .hero-luxury *,
+  .hero-content-luxury * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+}
+
+/* ===== FALLBACK FOR ANY MISSED ELEMENTS ===== */
+
+/* Global fallback to ensure nothing breaks */
+* {
+  color-scheme: inherit !important;
+}
+
+/* But force dark scheme on key containers */
+body,
+.hero-luxury,
+.store-card,
+.luxury-card,
+.card {
+  color-scheme: dark only !important;
+}

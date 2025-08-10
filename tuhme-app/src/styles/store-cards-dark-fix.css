@@ -1,0 +1,242 @@
+/* Store Cards Dark Mode Universal Fix */
+/* Ensures store carousel cards remain visible and properly styled across all system modes */
+
+/* ===== STORE CARDS BACKGROUND ENFORCEMENT ===== */
+
+.horizontal-store-carousel,
+.store-carousel,
+.store-directory,
+.store-grid {
+  background-color: #0a0a0a !important;
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+}
+
+/* Individual store cards */
+.store-card,
+.store-item,
+.luxury-card {
+  background-color: #1a1a1a !important;
+  background: #1a1a1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  color-scheme: dark only !important;
+  forced-color-adjust: none !important;
+}
+
+/* Store card content */
+.store-card *,
+.store-item *,
+.luxury-card * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Store names and titles */
+.store-card h3,
+.store-card h4,
+.store-name,
+.store-title {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* Store descriptions and details */
+.store-description,
+.store-hours,
+.store-location,
+.store-specialty {
+  color: rgba(255, 255, 255, 0.85) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Store status indicators */
+.store-status,
+.hours-indicator,
+.availability-badge {
+  color: var(--accent-primary) !important;
+  -webkit-text-fill-color: var(--accent-primary) !important;
+}
+
+/* ===== SYSTEM COLOR SCHEME OVERRIDES FOR CARDS ===== */
+
+@media (prefers-color-scheme: light) {
+  .horizontal-store-carousel,
+  .store-carousel,
+  .store-directory,
+  .store-grid {
+    background-color: #0a0a0a !important;
+    color-scheme: dark only !important;
+  }
+  
+  .store-card,
+  .store-item,
+  .luxury-card {
+    background-color: #1a1a1a !important;
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .store-card *,
+  .store-item *,
+  .luxury-card * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  
+  .store-status,
+  .hours-indicator,
+  .availability-badge {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+  }
+}
+
+/* ===== SAFARI-SPECIFIC STORE CARD FIXES ===== */
+
+@supports (-webkit-appearance: none) {
+  .store-card,
+  .store-item,
+  .luxury-card {
+    -webkit-color-scheme: dark !important;
+    background-color: #1a1a1a !important;
+  }
+  
+  .store-card *,
+  .store-item *,
+  .luxury-card * {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-color-scheme: dark !important;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .store-card,
+    .store-item,
+    .luxury-card {
+      -webkit-color-scheme: dark !important;
+      background-color: #1a1a1a !important;
+      background: #1a1a1a !important;
+    }
+    
+    .store-card *,
+    .store-item *,
+    .luxury-card * {
+      -webkit-text-fill-color: #ffffff !important;
+    }
+  }
+}
+
+/* ===== CAROUSEL NAVIGATION ELEMENTS ===== */
+
+.carousel-nav,
+.store-nav,
+.carousel-button,
+.store-carousel-button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.carousel-nav:hover,
+.store-nav:hover,
+.carousel-button:hover,
+.store-carousel-button:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* ===== SEARCH ELEMENTS ===== */
+
+.store-search,
+.search-input,
+.filter-input {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.store-search::placeholder,
+.search-input::placeholder,
+.filter-input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ===== MOBILE STORE CARDS ===== */
+
+@media screen and (max-width: 768px) {
+  .store-card,
+  .store-item,
+  .luxury-card {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    -webkit-color-scheme: dark !important;
+  }
+  
+  .store-card *,
+  .store-item *,
+  .luxury-card * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+}
+
+/* ===== HOVER AND INTERACTION STATES ===== */
+
+.store-card:hover,
+.store-item:hover,
+.luxury-card:hover {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.store-card:hover *,
+.store-item:hover *,
+.luxury-card:hover * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ===== ACTIVE AND FOCUS STATES ===== */
+
+.store-card:active,
+.store-item:active,
+.luxury-card:active,
+.store-card:focus,
+.store-item:focus,
+.luxury-card:focus {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  outline-color: var(--accent-primary) !important;
+}
+
+/* ===== LOADING STATES ===== */
+
+.store-card.loading,
+.store-item.loading,
+.luxury-card.loading {
+  background-color: #1a1a1a !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.store-card.loading *,
+.store-item.loading *,
+.luxury-card.loading * {
+  color: rgba(255, 255, 255, 0.5) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ===== FORCE ADJUSTMENTS ===== */
+
+.store-card,
+.store-item,
+.luxury-card,
+.store-card *,
+.store-item *,
+.luxury-card * {
+  forced-color-adjust: none !important;
+  -webkit-forced-color-adjust: none !important;
+}

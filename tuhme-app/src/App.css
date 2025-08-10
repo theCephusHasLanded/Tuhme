@@ -3,8 +3,11 @@
 
 /* Light mode styles removed - using mandatory dark mode only */
 
-/* Import Hero Dark Mode System Override Fix */
-@import './styles/hero-dark-mode-fix.css';
+/* Import Universal Color Scheme Fix - Apple.com Level Solution */
+@import './styles/universal-color-scheme-fix.css';
+
+/* Import Store Cards Dark Mode Fix */
+@import './styles/store-cards-dark-fix.css';
 
 /* Import Mobile Text and Centering Fixes */
 @import './styles/mobile-text-fixes.css';
